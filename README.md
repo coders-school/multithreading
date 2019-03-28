@@ -17,10 +17,11 @@ Zaimplementuj problem ucztujących filozofów z użyciem wątków i mutexów.
 - Pobaw się liczbą filozofów i zobacz czy zmienia się zachowanie programu
 - Zadanie dodatkowe: Strzeż się zagłodzenia (starvation). Jest to sytuacja w której przynajmniej 1 wątek z powodu implementacji lub swojego niższego priorytetu nigdy nie dostanie wszystkich wymaganych zasobów. Doimplementuj w tym celu pewien mechanizm, który zapobiegnie zagłodzeniu.
 
-<details><summary>Podpowiedzi</summary>
+<details><summary>Podpowiedź</summary>
 <p>
-* https://mariusbancila.ro/blog/2017/01/16/dining-philosophers-in-cpp11/
-* https://mariusbancila.ro/blog/2017/01/20/dining-philosophers-in-c11-chandy-misra-algorithm/
+https://mariusbancila.ro/blog/2017/01/16/dining-philosophers-in-cpp11/
+</p><p>
+https://mariusbancila.ro/blog/2017/01/20/dining-philosophers-in-c11-chandy-misra-algorithm/
 </p>
 </details>
 
@@ -28,7 +29,7 @@ Zaimplementuj problem ucztujących filozofów z użyciem wątków i mutexów.
 Napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera. Wyniki powinny zostać również zapisane w kontenerze.
   - on empty returns init
   - calculate number of threads - `hardware_threads = hardware_concurrency() != 0 ? hardware_concurrency() : 2`
-  - divide on blocks, according to number of threads
+  - divide on blocks according to the number of threads
   - create vector of results
   - run every thread in parallel
   - put results in vector element passed by reference (threads cannot return a value)
@@ -36,11 +37,11 @@ Napisz równoległą wersję algorytmu std::accumulate, który będzie współbi
   - accumulate results from the result vector
   - test on 1M elements and compare with standard std::accumulate
   - compare with std::par execution policy in std::accumulate from C++17 ;)
-  - template on Iterator (depends on container) and type T (int, double?)
+  - templatize algorithm on Iterator (depends on container) and type T (usually int, double)
 
-<details><summary>Podpowiedzi</summary>
+<details><summary>Podpowiedź</summary>
 <p>
-Rozwiązanie znajdziesz w ksiażce C++ Concurrency in Action, Anthony Williams, listing 2.8
+Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams*, listing 2.8
 </p>
 </details>
 
@@ -49,6 +50,14 @@ Rozwiązanie znajdziesz w ksiażce C++ Concurrency in Action, Anthony Williams, 
 - Napisz/przepisz/skopiuj sobie kawałek kodu, który ma ten problem i zmierz czas działania programu w zależności od wielkości danych wejściowych i liczby wątków
 - Napraw problem false sharingu i zmierz czas działania programu również przy różnej wielkości danych wejściowych i liczbie wątków
 - Wyciągnij wnioski jak pisać kod odporny na false sharing :)
+
+<details><summary>Podpowiedź</summary>
+<p>
+Zjawisko false sharingu możesz napotkać w zadaniu 2.
+</p><p>
+Zaobserwujesz je, jeśli utworzysz dużo wątków liczących bardzo małe fragmenty kontenera.
+</p>
+</details>
 
 ### Zadanie 4:
 - Zagraj w [The Deadlock Empire](https://deadlockempire.github.io) i przejdź wszystkie poziomy :D
@@ -66,23 +75,23 @@ Zaimplementuj grę w ping-ponga (zadanie 03\_ping\_pong.cpp z rozdziału o zmien
 ### Zadanie 6:
 Rozwiąż zadania z użyciem `promise` i `future` od Ihora - [GitHub](https://github.com/ihor-rud/future_promise_homework)
 
-
-<aside class="warning">
-## Dla chętnych:
+# Dla chętnych:
 ### Przetwarzanie obrazów
 Zainstaluj sobie bibliotekę OpenCV, która służy m.in. do przetwarzania obrazów.
 [Instrukcja instalacji](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)
 
 Przerób algorytmy podane w dokumentacji na ich wielowątkowe wersje:
-1. [Wykrywanie wzorców](https://docs.opencv.org/master/de/da9/tutorial_template_matching.html)
+1. [Wykrywanie wzorców](https://docs.opencv.org/master/de/da9/tutorial_template_matching.html).
+
 Każdy wątek sprawdza inny wzorzec. Możemy jednocześnie szukać kilku rzeczy na obrazku. Na koniec wyświetl na obrazku miejsca, gdzie wybrane wzorce najbardziej pasowały. Jeden wzorzec może występować w kilku miejscach.
 
-2. [Wykrywanie linii](https://docs.opencv.org/master/dd/dd7/tutorial_morph_lines_detection.html)
-Każdy wątek szuka linii pod innym kątem. Musisz stworzyć odpowiednie maski. Na koniec wyświetl na obrazku znalezione linie - każdy kąt innym kolorem. Możesz też dodać wyszukiwanie okręgów. 
-</aside>
+2. [Wykrywanie linii](https://docs.opencv.org/master/dd/dd7/tutorial_morph_lines_detection.html). 
 
-<aside class="success">
-## Projekt: Hardkorowi filozofowie
+Każdy wątek szuka linii pod innym kątem. Musisz stworzyć odpowiednie maski. Na koniec wyświetl na obrazku znalezione linie - każdy kąt innym kolorem. Możesz też dodać wyszukiwanie okręgów. 
+
+--- 
+
+# Projekt: Hardkorowi filozofowie
 Zaimplementuj trochę inną wersję algorytmu ucztujących filozofów :) Możesz to robić samemu lub w grupie.
 - Chłop zadaje ważne egzystencjalnie pytanie 5 filozofom (wprowadź je z klawiatury)
 - Każdy filozof posiada gotowy zestaw 10 odpowiedzi (każdy filozof ma inne odpowiedzi)
@@ -111,4 +120,3 @@ struct {
 - Na koniec każdy filozof odczytuje odpowiedź która została przez niego wybrana (oblicza max z działań `result * period`). W tym celu musi odczytać księgę, gdyż tam zapisał swoje rozważania. Przy wybranej odpowiedzi ustawia `chosen = true`.
 
 MEGA PODPOWIEDŹ: Pracuj w TDD i używaj Thread Sanitizera :)
-</aside>
