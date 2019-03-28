@@ -19,7 +19,7 @@ public:
         // TODO: implement me :)
     }
 
-    void stop(chrono::seconds timeout) {
+    void stop([[maybe_unused]] chrono::seconds timeout) {
         // TODO: should stop execution after timeout
     }
 };

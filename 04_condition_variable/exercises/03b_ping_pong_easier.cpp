@@ -45,7 +45,7 @@ public:
         }
     }
 
-    void stop(chrono::seconds timeout) {
+    void stop([[maybe_unused]] chrono::seconds timeout) {
         unique_lock<mutex> l(m_);
         // TODO: wait_for to be used here. Check for a return value and set play_ to false       
 
