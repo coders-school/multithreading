@@ -1,8 +1,8 @@
 # Tematy:
 01. Teoria Wielowątkowości (multithreading theory)
-02. Wątki (threads)
-03. Współdzielenie danych (data_sharing)
-04. Zmienne warunku (condition_variable)
+02. Wątki (threads) - [Test](https://forms.gle/yRATL7rzMfTSnrGa9)
+03. Współdzielenie danych (data_sharing) - [Test](https://forms.gle/s517xwB7ZKpMgPTV6)
+04. Zmienne warunku (condition_variable) - [Test](https://forms.gle/e9uHQLAcYauHbtPS9)
 05. Zmienne atomowe i model pamięci (atomic)
 06. Jednokrotne wywołania (call_once)
 07. Funkcje asynchroniczne (async, future, promise)
@@ -91,16 +91,17 @@ Każdy wątek szuka linii pod innym kątem. Musisz stworzyć odpowiednie maski. 
 
 --- 
 
-# Projekt: Hardkorowi filozofowie
+# Projekt 1: Hardkorowi filozofowie
 Zaimplementuj trochę inną wersję algorytmu ucztujących filozofów :) Możesz to robić samemu lub w grupie.
 - Chłop zadaje ważne egzystencjalnie pytanie 5 filozofom (wprowadź je z klawiatury)
 - Każdy filozof posiada gotowy zestaw 10 odpowiedzi (każdy filozof ma inne odpowiedzi)
 - Każdy filozof podczas myślenia ma zaimplementowany inny algorytm obliczający pewne wartości
 - Algorytmy filozofów jako parametr wejściowy przyjmują pytanie (`std::string`) oraz odpowiedź (`std::string`) i zwracają liczbę `int`. Jeśli nie masz pomysłu na różne algorytmy oblicz kilkukrotny `std::hash` z zestawu pytanie + odpowiedź.
-- Wszyscy filozofowie podczas myślenia korzystają z bardzo mądrej księgi, która stanowi dla nich inspirację. Wielu filozofów może odczytywać księge jednocześnie.
+- Wszyscy filozofowie podczas myślenia korzystają także z bardzo mądrej księgi, która stanowi dla nich inspirację. Wielu filozofów może odczytywać księge jednocześnie. Wartości zapisane w księdze także mogą być brane pod uwagę w algorytmie.
 - Każdy filozof musi przemyśleć każdą z 10 swoich odpowiedzi, która stanowi parametr wejściowy do jego algorytmu myślenia.
+- Zadania do przemyślenia przez filozofów możesz zaimplementować jako pulę wątków (Thread Pool).
 - Każdy filozof, aby przemyśleć pojednynczą odpowiedź musi być najedzony. Nie może więc rozpocząć myślenia bez jedzenia.
-- Każdy filozof potrzebuje 2 sztućców, aby móc się najeść. Liczba szućców jest równa liczbie filozofów. 
+- Każdy filozof potrzebuje 2 sztućców, aby móc się najeść. Liczba szućców jest równa liczbie filozofów.
 - Każdy filozof po przemyśleniu odpowiedzi zapisuje swoje rozważania w księdze. Tylko 1 filozof na raz może zapisywać rozważania i żaden inny nie może tym momencie korzystać z księgi.
 - Przemyślenia w księdze mają następujący format:
 ```cpp
@@ -120,3 +121,9 @@ struct {
 - Na koniec każdy filozof odczytuje odpowiedź która została przez niego wybrana (oblicza max z działań `result * period`). W tym celu musi odczytać księgę, gdyż tam zapisał swoje rozważania. Przy wybranej odpowiedzi ustawia `chosen = true`.
 
 MEGA PODPOWIEDŹ: Pracuj w TDD i używaj Thread Sanitizera :)
+
+# Projekt 2: Wielowątkowy raytracer
+TBD.
+- Zapisywanie obrazów w plikach .ppm.
+- Podział obrazu pomiędzy wiele zadań asynchronicznych - badanie szybkości przetwarzania w zależności od rodzaju podziału
+- Unikanie false sharingu
