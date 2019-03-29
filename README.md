@@ -124,6 +124,7 @@ MEGA PODPOWIEDŹ: Pracuj w TDD i używaj Thread Sanitizera :)
 
 # Projekt 2: Wielowątkowy raytracer
 TBD.
+- Możesz wykorzystać [ten kod](https://github.com/ChinksofLight/Ray-tracer.git)
 - Zapisywanie obrazów w plikach .ppm.
 - Podział obrazu pomiędzy wiele zadań asynchronicznych - badanie szybkości przetwarzania w zależności od rodzaju podziału
 - Unikanie false sharingu
