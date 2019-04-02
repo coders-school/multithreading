@@ -5,7 +5,7 @@
 04. Zmienne warunku (condition_variable) - [Test](https://forms.gle/e9uHQLAcYauHbtPS9)
 05. Zmienne atomowe i model pamięci (atomic)
 06. Jednokrotne wywołania (call_once)
-07. Funkcje asynchroniczne (async, future, promise)
+07. Funkcje asynchroniczne (async, future, promise) - [Test future/promise](https://forms.gle/v8JvUtaXHNoXe2JGA)
 
 # Praca domowa:
 ### Zadanie 1:
