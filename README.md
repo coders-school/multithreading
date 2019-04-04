@@ -3,7 +3,7 @@
 02. Wątki (threads) - [Test](https://forms.gle/yRATL7rzMfTSnrGa9)
 03. Współdzielenie danych (data_sharing) - [Test](https://forms.gle/s517xwB7ZKpMgPTV6)
 04. Zmienne warunku (condition_variable) - [Test](https://forms.gle/e9uHQLAcYauHbtPS9)
-05. Zmienne atomowe i model pamięci (atomic)
+05. Zmienne atomowe i model pamięci (atomic) - [Test](https://forms.gle/rFtDNbJyiLqe7vef9)
 06. Jednokrotne wywołania (call_once)
 07. Funkcje asynchroniczne (async, future, promise) - [Test future/promise](https://forms.gle/v8JvUtaXHNoXe2JGA)
 
@@ -92,7 +92,7 @@ Każdy wątek szuka linii pod innym kątem. Musisz stworzyć odpowiednie maski. 
 --- 
 
 # Projekt 1: Hardkorowi filozofowie
-Zaimplementuj trochę inną wersję algorytmu ucztujących filozofów :) Możesz to robić samemu lub w grupie.
+Zaimplementuj trochę inną wersję [algorytmu ucztujących filozofów](https://pl.wikipedia.org/wiki/Problem_ucztujących_filozofów) :) Możesz to robić samemu lub w grupie.
 - Chłop zadaje ważne egzystencjalnie pytanie 5 filozofom (wprowadź je z klawiatury)
 - Każdy filozof posiada gotowy zestaw 10 odpowiedzi (każdy filozof ma inne odpowiedzi)
 - Każdy filozof podczas myślenia ma zaimplementowany inny algorytm obliczający pewne wartości
@@ -115,16 +115,23 @@ struct {
 ```
 - Żaden filozof nie może się przejeść. Po posiłku musi on poczekać 3 sekundy zanim zacznie kolejny posiłek.
 - Jeśli filozof nie jadł przez 20 sekund to umiera śmiercią głodą. Nie dopuść do tego!
-- W czasie poszukiwania odpowiedzi, możesz usypiać filozofów. W tym celu musisz z klawiatury podać odpowiednią komendę.
+- W czasie poszukiwania odpowiedzi, możesz usypiać filozofów. W tym celu musisz z klawiatury podać odpowiednią komendę w czasie działania programu (np. sleep Platon).
 - Uśpiony filozof nie może myśleć ani jeść. Umiera on z głodu dopiero po 60 sekundach.
-- Uśpionego filozofa można obudzić podając odpowiednią komendę z klawiatury.
+- Uśpionego filozofa można obudzić podając odpowiednią komendę z klawiatury (np. wakeup Platon).
 - Na koniec każdy filozof odczytuje odpowiedź która została przez niego wybrana (oblicza max z działań `result * period`). W tym celu musi odczytać księgę, gdyż tam zapisał swoje rozważania. Przy wybranej odpowiedzi ustawia `chosen = true`.
 
 MEGA PODPOWIEDŹ: Pracuj w TDD i używaj Thread Sanitizera :)
 
+
 # Projekt 2: Wielowątkowy raytracer
-TBD.
-- Możesz wykorzystać [ten kod](https://github.com/ChinksofLight/Ray-tracer.git)
-- Zapisywanie obrazów w plikach .ppm.
-- Podział obrazu pomiędzy wiele zadań asynchronicznych - badanie szybkości przetwarzania w zależności od rodzaju podziału
-- Unikanie false sharingu
+[Czym jest ray tracing](https://www.youtube.com/watch?v=JdfV2sB-Qcw)
+Rozwiń [algorytm śledzenia promieni](https://pl.wikipedia.org/wiki/Śledzenie_promieni), implementując jego współbieżną wersję, która wygeneruje jakąś statyczną scenę i zapisze ją w jako obrazek (najlepiej użyj sceny chessboard).
+Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_code.html).
+- Zaimplementuj współbieżną wersję istniejącego algorytmu
+- Podziel obraz na różne sposoby pomiędzy wiele zadań asynchronicznych
+    - użyj async, future, promise i/lub packaged_task
+- Zbadaj szybkości przetwarzania w zależności od rodzaju podziału (użyj std::chrono)
+    - podział na wiersze
+    - podział na kolumny
+    - podział na prostokąty
+
