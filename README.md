@@ -6,6 +6,13 @@
 05. Zmienne atomowe i model pamięci (atomic) - [Test](https://forms.gle/rFtDNbJyiLqe7vef9)
 06. Jednokrotne wywołania (call_once)
 07. Funkcje asynchroniczne (async, future, promise) - [Test future/promise](https://forms.gle/v8JvUtaXHNoXe2JGA)
+08. Problemy współbieżności
+09. Współbieżne wzorce projektowe
+10. Testowanie programów współbieżnych
+
+
+# Nagrania:
+[30.03.2019 - Teoria wielowątkowości, wątki, współdzielenie danych](https://www.youtube.com/watch?v=Uz-98Ui0hH0)
 
 # Praca domowa:
 ### Zadanie 1:
@@ -130,8 +137,8 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 - Zaimplementuj współbieżną wersję istniejącego algorytmu
 - Podziel obraz na różne sposoby pomiędzy wiele zadań asynchronicznych
     - użyj async, future, promise i/lub packaged_task
-- Zbadaj szybkości przetwarzania w zależności od rodzaju podziału (użyj std::chrono)
+- Zbadaj szybkość przetwarzania w zależności od rodzaju podziału (użyj std::chrono)
     - podział na wiersze
     - podział na kolumny
     - podział na prostokąty
-
+- Zbadaj szybkość przetwarzania w zależności od liczby współbieżnych zadań
