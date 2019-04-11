@@ -5,15 +5,16 @@
 04. Zmienne warunku (condition_variable) - [Test](https://forms.gle/e9uHQLAcYauHbtPS9)
 05. Zmienne atomowe i model pamięci (atomic) - [Test](https://forms.gle/rFtDNbJyiLqe7vef9)
 06. Jednokrotne wywołania (call_once) - [Test](https://forms.gle/Vu6bUc5VEtZ69MRr7)
-07. Funkcje asynchroniczne (async, future, promise) - [Test future/promise](https://forms.gle/v8JvUtaXHNoXe2JGA)
+07. Funkcje asynchroniczne (async, future, promise) - [Test future/promise](https://forms.gle/v8JvUtaXHNoXe2JGA), [Test async/packaged_task](https://forms.gle/AtASJcopK4uFJCSr8)
 08. Problemy współbieżności
 09. Współbieżne wzorce projektowe
 10. Testowanie programów współbieżnych
 
 
 # Nagrania:
-[30.03.2019 - Teoria wielowątkowości, wątki, współdzielenie danych](https://www.youtube.com/watch?v=Uz-98Ui0hH0)
-[06.04-2019 - Współdzielenie danych, promise/future, atomic](https://www.youtube.com/watch?v=733jR38z4AQ)
+- [30.03.2019 - Teoria wielowątkowości, wątki, współdzielenie danych](https://www.youtube.com/watch?v=Uz-98Ui0hH0)
+- [06.04-2019 - Współdzielenie danych, promise/future, atomic](https://www.youtube.com/watch?v=733jR38z4AQ)
+- [13.04.2019 - Zmienna warunku, jednokrotne wywołania, async/packaged_task (jeszcze niedostępne)]
 
 # Praca domowa:
 ### Zadanie 1:
@@ -82,6 +83,9 @@ Zaimplementuj grę w ping-ponga (zadanie 03\_ping\_pong.cpp z rozdziału o zmien
 
 ### Zadanie 6:
 Rozwiąż zadania z użyciem `promise` i `future` od Ihora - [GitHub](https://github.com/ihor-rud/future_promise_homework)
+
+### Zadanie 7:
+Tak jak w zadaniu 2 - napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera, ale użyj w tym celu zadań asynchronicznych
 
 # Dla chętnych:
 ### Przetwarzanie obrazów
