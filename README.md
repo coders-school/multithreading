@@ -5,7 +5,8 @@
 04. Zmienne warunku (condition_variable) - [Test](https://forms.gle/e9uHQLAcYauHbtPS9)
 05. Zmienne atomowe i model pamięci (atomic) - [Test](https://forms.gle/rFtDNbJyiLqe7vef9)
 06. Jednokrotne wywołania (call_once) - [Test](https://forms.gle/Vu6bUc5VEtZ69MRr7)
-07. Funkcje asynchroniczne (async, future, promise) - [Test future/promise](https://forms.gle/v8JvUtaXHNoXe2JGA), [Test async/packaged_task](https://forms.gle/AtASJcopK4uFJCSr8)
+07. Komunikacja jednokierunkowa (future, promise) - [Test](https://forms.gle/v8JvUtaXHNoXe2JGA)
+08. Zadania asynchroniczne (async, packaged_task) - [Test](https://forms.gle/AtASJcopK4uFJCSr8)
 08. Problemy współbieżności
 09. Współbieżne wzorce projektowe
 10. Testowanie programów współbieżnych
@@ -14,7 +15,7 @@
 # Nagrania:
 - [30.03.2019 - Teoria wielowątkowości, wątki, współdzielenie danych](https://www.youtube.com/watch?v=Uz-98Ui0hH0)
 - [06.04-2019 - Współdzielenie danych, promise/future, atomic](https://www.youtube.com/watch?v=733jR38z4AQ)
-- [13.04.2019 - Zmienna warunku, jednokrotne wywołania, async/packaged_task (jeszcze niedostępne)]
+- [13.04.2019 - Zmienna warunku, jednokrotne wywołania, zadania asynchroniczne](https://www.youtube.com/watch?v=xq_riNS3yTM)
 
 # Praca domowa:
 ### Zadanie 1:
@@ -50,7 +51,7 @@ Napisz równoległą wersję algorytmu std::accumulate, który będzie współbi
 
 <details><summary>Podpowiedź</summary>
 <p>
-Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams*, listing 2.8
+Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams*, listing 2.8. [Link do mojego rozwiązania opartego na ww](https://github.com/coders-school/multithreading/blob/solutions/homework/02_parallel_accumulate.cpp)
 </p>
 </details>
 

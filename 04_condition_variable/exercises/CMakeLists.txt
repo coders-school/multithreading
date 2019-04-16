@@ -12,6 +12,6 @@ file(GLOB SOURCES *.cpp)
 foreach(FILE ${SOURCES})
     get_filename_component(BINNAME ${FILE} NAME_WE)
     add_executable(${BINNAME} ${FILE})
-    target_link_libraries(${BINNAME} pthread)
+    target_link_libraries(${BINNAME} pthread -fsanitize=thread)
 endforeach(FILE)
 
