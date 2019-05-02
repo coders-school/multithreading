@@ -16,13 +16,9 @@ public:
         // TODO: Implement me :)
     }
 
-    void enqueue(const Task & task)
+    auto enqueue(Task && task)
     {
-        // TODO: Implement me :)
-    }
-
-    void showCompleted()
-    {
-        // TODO: Implement me :)
+       // TODO: Implement me :)
+       return std::future<Task::PromiseType>{};
     }
 };

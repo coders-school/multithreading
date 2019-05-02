@@ -22,10 +22,10 @@ public:
         return queue_.end();
     }
 
-    void push(const T &element)
+    void push(T && element)
     {
         Lock l(m_);
-        queue_.push_front(element);
+        queue_.emplace_front(std::move(element));
         nonEmpty_.notify_all();
     }
 
@@ -34,7 +34,7 @@ public:
         Lock l(m_);
         auto hasData = [&] { return not queue_.empty(); };
         nonEmpty_.wait(l, hasData);
-        auto top = queue_.back();
+        auto top = std::move(queue_.back());
         queue_.pop_back();
         return top;
     }
