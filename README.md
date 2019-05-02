@@ -6,10 +6,10 @@
 05. Zmienne atomowe i model pamięci (atomic) - [Test](https://forms.gle/rFtDNbJyiLqe7vef9)
 06. Jednokrotne wywołania (call_once) - [Test](https://forms.gle/Vu6bUc5VEtZ69MRr7)
 07. Komunikacja jednokierunkowa (future, promise) - [Test](https://forms.gle/v8JvUtaXHNoXe2JGA)
-08. Zadania asynchroniczne (async, packaged_task) - [Test](https://forms.gle/AtASJcopK4uFJCSr8)
-08. Problemy współbieżności
-09. Współbieżne wzorce projektowe
-10. Testowanie programów współbieżnych
+07b. Zadania asynchroniczne (async, packaged_task) - [Test](https://forms.gle/AtASJcopK4uFJCSr8)
+08. Problemy współbieżności  ---------------┐
+09. Współbieżne wzorce projektowe  -------┼- [Test z 08, 09, 10](https://forms.gle/GctQkxiYmZN4rKGu7)
+10. Testowanie programów współbieżnych ┘
 
 
 # Nagrania:
