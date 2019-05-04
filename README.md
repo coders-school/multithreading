@@ -1,4 +1,7 @@
-# Tematy:
+# Wielowątkowość i współbieżność w C++
+
+## Tematy
+
 01. Teoria Wielowątkowości (multithreading theory)
 02. Wątki (threads) - [Test](https://forms.gle/yRATL7rzMfTSnrGa9)
 03. Współdzielenie danych (data_sharing) - [Test](https://forms.gle/s517xwB7ZKpMgPTV6)
@@ -11,15 +14,44 @@
 09. Współbieżne wzorce projektowe  -------┼- [Test z 08, 09, 10](https://forms.gle/GctQkxiYmZN4rKGu7)
 10. Testowanie programów współbieżnych ┘
 
+## Nagrania
 
-# Nagrania:
 - [30.03.2019 - Teoria wielowątkowości, wątki, współdzielenie danych](https://www.youtube.com/watch?v=Uz-98Ui0hH0)
 - [06.04-2019 - Współdzielenie danych, promise/future, atomic](https://www.youtube.com/watch?v=733jR38z4AQ)
 - [13.04.2019 - Zmienna warunku, jednokrotne wywołania, zadania asynchroniczne](https://www.youtube.com/watch?v=xq_riNS3yTM)
 
-# Praca domowa:
-### Zadanie 1:
+## Praca domowa
+
+### Zadanie 1
+
+- Zagraj w [The Deadlock Empire](https://deadlockempire.github.io) i przejdź wszystkie poziomy :D
+
+### Zadanie 2
+
+Napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera. Wyniki powinny zostać również zapisane w kontenerze.
+
+- on empty returns init
+- calculate number of threads - `hardware_threads = hardware_concurrency()  0 ? hardware_concurrency() : 2`
+- divide on blocks according to the number of threads
+- create vector of results
+- run every thread in parallel
+- put results in vector element passed by reference (threads cannot return value)
+- join threads
+- accumulate results from the result vector
+- test on 1M elements and compare with standard std::accumulate
+- compare with std::par execution policy in std::accumulate from C++17 ;)
+- templatize algorithm on Iterator (depends on container) and type T sually int, double)
+
+<details><summary>Podpowiedź</summary>
+<p>
+Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams*, listing 2.8. [Link do mojego rozwiązania opartego na ww](https://github.com/coders-school/multithreading/blob/solutions/homework/02_parallel_accumulate.cpp)
+</p>
+</details>
+
+### Zadanie 3
+
 Zaimplementuj problem ucztujących filozofów z użyciem wątków i mutexów.
+
 - Każdy filozof ma być kontrolowany przez oddzielny wątek.
 - Każdy sztuciec ma być chroniony przez 1 mutex
 - Postaraj się o wizualizację problemu
@@ -35,27 +67,8 @@ https://mariusbancila.ro/blog/2017/01/20/dining-philosophers-in-c11-chandy-misra
 </p>
 </details>
 
-### Zadanie 2:
-Napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera. Wyniki powinny zostać również zapisane w kontenerze.
-  - on empty returns init
-  - calculate number of threads - `hardware_threads = hardware_concurrency() != 0 ? hardware_concurrency() : 2`
-  - divide on blocks according to the number of threads
-  - create vector of results
-  - run every thread in parallel
-  - put results in vector element passed by reference (threads cannot return a value)
-  - join threads
-  - accumulate results from the result vector
-  - test on 1M elements and compare with standard std::accumulate
-  - compare with std::par execution policy in std::accumulate from C++17 ;)
-  - templatize algorithm on Iterator (depends on container) and type T (usually int, double)
+### Zadanie 4
 
-<details><summary>Podpowiedź</summary>
-<p>
-Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams*, listing 2.8. [Link do mojego rozwiązania opartego na ww](https://github.com/coders-school/multithreading/blob/solutions/homework/02_parallel_accumulate.cpp)
-</p>
-</details>
-
-### Zadanie 3:
 - Poszukaj informacji na temat zjawiska nazywanego **false sharing**. Jest to bardzo niemiłe zjawisko, wynikające z architektury współczesnych komputerów, które znacząco spowalnia równoległe wykonywanie programów.
 - Napisz/przepisz/skopiuj sobie kawałek kodu, który ma ten problem i zmierz czas działania programu w zależności od wielkości danych wejściowych i liczby wątków
 - Napraw problem false sharingu i zmierz czas działania programu również przy różnej wielkości danych wejściowych i liczbie wątków
@@ -63,49 +76,53 @@ Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams
 
 <details><summary>Podpowiedź</summary>
 <p>
-Zjawisko false sharingu możesz napotkać w zadaniu 2.
+Zjawisko false sharingu możesz napotkać w zadaniu 1.
 </p><p>
 Zaobserwujesz je, jeśli utworzysz dużo wątków liczących bardzo małe fragmenty kontenera.
 </p>
 </details>
 
-### Zadanie 4:
-- Zagraj w [The Deadlock Empire](https://deadlockempire.github.io) i przejdź wszystkie poziomy :D
+### Zadanie 5
 
-### Zadanie 5:
 Zaimplementuj grę w ping-ponga (zadanie 03\_ping\_pong.cpp z rozdziału o zmiennych warunku)
+
 - 1 wątek wypisuje "ping" oraz kolejny numer
 - 2 wątek wypisuje "pong" oraz kolejny numer
 - Zaczyna wątek ping, a kończy zawsze pong. Wątki muszą pracować na przemian. Nie mogą być 2 pingi lub pongi po sobie. Program nie może zakończyć się pingiem, na który nie będzie odpowiedzi – ponga.
 - Zakończenie działania programu ma nastąpić albo po wykonanej liczbie odbić albo po limicie czasowym, w zależności które wystąpi pierwsze. Powód zakończenia powinien zostać wyświetlony na ekranie
 - Parametry programu:
-    - liczba odbić
-    - limit czasowy (w sekundach)
+  - liczba odbić
+  - limit czasowy (w sekundach)
 
-### Zadanie 6:
+### Zadanie 6
+
 Rozwiąż zadania z użyciem `promise` i `future` od Ihora - [GitHub](https://github.com/ihor-rud/future_promise_homework)
 
-### Zadanie 7:
+### Zadanie 7
+
 Tak jak w zadaniu 2 - napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera, ale użyj w tym celu zadań asynchronicznych
 
-# Dla chętnych:
-### Przetwarzanie obrazów
+### Zadanie 8 (dla chętnych) - Przetwarzanie obrazów
+
 Zainstaluj sobie bibliotekę OpenCV, która służy m.in. do przetwarzania obrazów.
 [Instrukcja instalacji](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)
 
 Przerób algorytmy podane w dokumentacji na ich wielowątkowe wersje:
+
 1. [Wykrywanie wzorców](https://docs.opencv.org/master/de/da9/tutorial_template_matching.html).
 
-Każdy wątek sprawdza inny wzorzec. Możemy jednocześnie szukać kilku rzeczy na obrazku. Na koniec wyświetl na obrazku miejsca, gdzie wybrane wzorce najbardziej pasowały. Jeden wzorzec może występować w kilku miejscach.
+    Każdy wątek sprawdza inny wzorzec. Możemy jednocześnie szukać kilku rzeczy na obrazku. Na koniec wyświetl na obrazku miejsca, gdzie wybrane wzorce najbardziej pasowały. Jeden wzorzec może występować w kilku miejscach.
 
 2. [Wykrywanie linii](https://docs.opencv.org/master/dd/dd7/tutorial_morph_lines_detection.html). 
 
-Każdy wątek szuka linii pod innym kątem. Musisz stworzyć odpowiednie maski. Na koniec wyświetl na obrazku znalezione linie - każdy kąt innym kolorem. Możesz też dodać wyszukiwanie okręgów. 
+    Każdy wątek szuka linii pod innym kątem. Musisz stworzyć odpowiednie maski. Na koniec wyświetl na obrazku znalezione linie - każdy kąt innym kolorem. Możesz też dodać wyszukiwanie okręgów. 
 
---- 
+---
 
-# Projekt 1: Hardkorowi filozofowie
+## Projekt 1: Hardkorowi filozofowie
+
 Zaimplementuj trochę inną wersję [algorytmu ucztujących filozofów](https://pl.wikipedia.org/wiki/Problem_ucztujących_filozofów) :) Możesz to robić samemu lub w grupie.
+
 - Chłop zadaje ważne egzystencjalnie pytanie 5 filozofom (wprowadź je z klawiatury)
 - Każdy filozof posiada gotowy zestaw 10 odpowiedzi (każdy filozof ma inne odpowiedzi)
 - Każdy filozof podczas myślenia ma zaimplementowany inny algorytm obliczający pewne wartości
@@ -117,15 +134,17 @@ Zaimplementuj trochę inną wersję [algorytmu ucztujących filozofów](https://
 - Każdy filozof potrzebuje 2 sztućców, aby móc się najeść. Liczba szućców jest równa liczbie filozofów.
 - Każdy filozof po przemyśleniu odpowiedzi zapisuje swoje rozważania w księdze. Tylko 1 filozof na raz może zapisywać rozważania i żaden inny nie może tym momencie korzystać z księgi.
 - Przemyślenia w księdze mają następujący format:
-```cpp
-struct {
-    string philosopher,
-    string answer,
-    int result,
-    chrono::duration period,
-    bool chosen = false,
-}
-```
+
+    ```cpp
+    struct {
+        string philosopher,
+        string answer,
+        int result,
+        chrono::duration period,
+        bool chosen = false,
+    }
+    ```
+
 - Żaden filozof nie może się przejeść. Po posiłku musi on poczekać 3 sekundy zanim zacznie kolejny posiłek.
 - Jeśli filozof nie jadł przez 20 sekund to umiera śmiercią głodą. Nie dopuść do tego!
 - W czasie poszukiwania odpowiedzi, możesz usypiać filozofów. W tym celu musisz z klawiatury podać odpowiednią komendę w czasie działania programu (np. sleep Platon).
@@ -135,16 +154,26 @@ struct {
 
 MEGA PODPOWIEDŹ: Pracuj w TDD i używaj Thread Sanitizera :)
 
+## Projekt 2: Wielowątkowy raytracer
 
-# Projekt 2: Wielowątkowy raytracer
-[Czym jest ray tracing](https://www.youtube.com/watch?v=JdfV2sB-Qcw)
+[Czym jest ray tracing?](https://www.youtube.com/watch?v=JdfV2sB-Qcw)
 Rozwiń [algorytm śledzenia promieni](https://pl.wikipedia.org/wiki/Śledzenie_promieni), implementując jego współbieżną wersję, która wygeneruje jakąś statyczną scenę i zapisze ją w jako obrazek (najlepiej użyj sceny chessboard).
 Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_code.html).
+
 - Zaimplementuj współbieżną wersję istniejącego algorytmu
 - Podziel obraz na różne sposoby pomiędzy wiele zadań asynchronicznych
-    - użyj async, future, promise i/lub packaged_task
+  - użyj async, future, promise i/lub packaged_task
 - Zbadaj szybkość przetwarzania w zależności od rodzaju podziału (użyj std::chrono)
-    - podział na wiersze
-    - podział na kolumny
-    - podział na prostokąty
+  - podział na wiersze
+  - podział na kolumny
+  - podział na prostokąty
 - Zbadaj szybkość przetwarzania w zależności od liczby współbieżnych zadań
+
+## Zakończenie
+
+1. [Wypełnij ankietę zadowolenia z kursu](https://forms.gle/6gzPT8PU6cKAY7eg8)
+2. [Obserwuj Coders School na LinkedInie](https://www.linkedin.com/company/coders-school/)
+3. [Polub Coders School na Facebooku](https://www.facebook.com/szkola.coders.school) :)
+4. Jeśli uważasz, że odwalam dobrą robotę to [skrobnij parę słów na ten temat na FB](https://www.facebook.com/pg/szkola.coders.school/reviews/?ref=page_internal), niech się niesie w świat ;)
+5. Zachęcam też do [potwierdzenia moich umiejętności i wystawienia mi rekomendacji na LinkedInie](https://www.linkedin.com/in/lukaszziobron/). Mogę odwdzięczyć się tym samym :)
+5. [Zapisz się na newsletter](coders.school/#newsletter), jeśli chcesz otrzymywać informacje o przyszłych kursach.
