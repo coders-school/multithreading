@@ -33,22 +33,23 @@ public:
 using StringQueue = WaitQueue<string>;
 
 void saveToScreen(StringQueue & sq) {
-    while (file) {
+    while (true) {
         cout << sq.pop() << endl;
         this_thread::sleep_for(1s);
     }
 }
 
 void produceText(StringQueue & sq, int number) {
-    for (int i = 0; i < number; i++)
+    for (int i = 0; i < number; i++) {
         sq.push("This is random text number " + to_string(i));
+        cout << "Pushed " << i << '\n';
+    }
 }
 
 int main() {
     StringQueue sq;
     thread textProducer(produceText, ref(sq), 10);
     thread consumer(saveToScreen, ref(sq));
-    userDataProducer.join();
     textProducer.join();
     consumer.join();
     return 0;
