@@ -10,6 +10,7 @@ int main()
 
     ActiveObject ao{std::make_unique<Object>()};
     auto pushFuture = ao.push(50);
+    //pushFuture.wait();
     auto popFuture = ao.pop();
     
     std::cout << popFuture.get() << '\n';
