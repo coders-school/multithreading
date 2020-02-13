@@ -16,7 +16,7 @@ public:
         // TODO: Implement me :)
     }
 
-    auto enqueue(Task && task)
+    auto enqueue([[maybe_unused]] Task && task)
     {
        // TODO: Implement me :)
        return std::future<Task::PromiseType>{};

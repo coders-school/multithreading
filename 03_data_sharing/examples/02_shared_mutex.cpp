@@ -4,9 +4,9 @@
 std::deque<int> ids;
 std::shared_mutex mtxIds;
 
-int getIdsIndex() { /* ... */ }
+int getIdsIndex() { /* ... */ return 0; }
 void process(int) { /* ... */ }
-int newValue()    { /* ... */ }
+int newValue()    { /* ... */ return 0; }
 
 void reader() {
     int index = getIdsIndex();

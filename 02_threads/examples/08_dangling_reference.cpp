@@ -1,6 +1,6 @@
 #include <thread>
 
-void do_sth(int i) { /* ... */ }
+void do_sth([[maybe_unused]] int i) { /* ... */ }
 
 struct A {
     int& ref_;
