@@ -14,6 +14,8 @@
 10. Współbieżne wzorce projektowe  ---------┼- [Test z 08, 09, 10](https://forms.gle/GctQkxiYmZN4rKGu7)
 11. Testowanie programów współbieżnych -----┘
 
+[Ankieta oceniająca trenera - Mateusz Adamski](https://forms.gle/8Nidginm5wURfiFB6)
+
 ## Nagrania
 
 ### Nagrania z poprzedniej edycji
@@ -31,6 +33,7 @@
 ### Zadanie 2
 
 (11 punktów, 1 za każdy podpunkt) Termin: 22.02.2020 23:59
+
 Napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera. Wyniki powinny zostać również zapisane w kontenerze.
 
 - on empty returns init
@@ -54,11 +57,13 @@ Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams
 ### Zadanie 3
 
 (20 punktów) Termin: 22.02.2020 23:59
+
 Napisz współbieżną wersję algorytmu std::count_if. Zmierz czas działania i napisz testy, pokazujące, że zwraca ona takie same wyniki, jak std::count_if.
 
 ### Zadanie 4
 
 (24 punkty, 4 za każdy podpunkt) Termin: 29.02.2020 23:59
+
 Zaimplementuj problem ucztujących filozofów z użyciem wątków i mutexów.
 
 - Każdy filozof ma być kontrolowany przez oddzielny wątek.
@@ -94,6 +99,7 @@ Możesz spróbować zaimplementować algorytm std::fill
 ### Zadanie 6
 
 (20 punktów, 4 za każdy zrealizowany podpunkt) Termin: 07.03.2020 23:59
+
 Zaimplementuj grę w ping-ponga (zadanie `03_ping_pong.cpp` z rozdziału o zmiennych warunku)
 
 - 1 wątek wypisuje "ping" oraz kolejny numer
@@ -107,16 +113,19 @@ Zaimplementuj grę w ping-ponga (zadanie `03_ping_pong.cpp` z rozdziału o zmien
 ### Zadanie 7
 
 (15 punktów, 3 za każde zadanie) Termin: 07.03.2020 23:59
+
 Rozwiąż zadania z użyciem `promise` i `future` od Ihora z katalogu [07_future_promise/homework](07_future_promise/homework)
 
 ### Zadanie 8
 
 (20 punktów) Termin: 07.03.2020 23:59
+
 Tak jak w zadaniu 2 - napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera, ale użyj w tym celu zadań asynchronicznych
 
 ### Zadanie 9 - Przetwarzanie obrazów
 
 (36 punktów, 18 za każdy podpunkt) Termin: 21.03.2020 23:59
+
 Zainstaluj sobie bibliotekę OpenCV - [Instrukcja instalacji](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)
 
 Przerób algorytmy podane w dokumentacji na ich wielowątkowe wersje:
@@ -134,6 +143,7 @@ Przerób algorytmy podane w dokumentacji na ich wielowątkowe wersje:
 ## Projekt 1: Hardkorowi filozofowie
 
 (68 punktów, 4 za każde wymaganie) Termin: 21.03.2020 23:59
+
 Zaimplementuj trochę inną wersję [algorytmu ucztujących filozofów](https://pl.wikipedia.org/wiki/Problem_ucztujących_filozofów). Polecam pracę w grupie.
 
 - Chłop zadaje ważne egzystencjalnie pytanie 5 filozofom (wprowadź je z klawiatury)
@@ -170,6 +180,7 @@ MEGA PODPOWIEDŹ: Pracuj w TDD i używaj Thread Sanitizera :)
 ## Projekt 2: Wielowątkowy raytracer
 
 (40 punktów) Termin: 21.03.2020 23:59
+
 [Czym jest ray tracing? - wideo na YT](https://www.youtube.com/watch?v=JdfV2sB-Qcw)
 Rozwiń [algorytm śledzenia promieni](https://pl.wikipedia.org/wiki/Śledzenie_promieni), implementując jego współbieżną wersję, która wygeneruje jakąś statyczną scenę i zapisze ją w jako obrazek (najlepiej użyj sceny chessboard).
 Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_code.html).
@@ -195,7 +206,7 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | [Hikarina](https://github.com/OriaTori)             |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [jzych](https://github.com/jzych)                   |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [Kamil.Waszkiewicz](https://github.com/darkassazi)  |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [kawapa](#)                                         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                                         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [Krzysiek](#)                                       |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [matijaz](#)                                        |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [MonikaZ](https://github.com/MonikaZelechowska)     |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
@@ -233,6 +244,8 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 - 300 punktów - dowolny przyszły kurs w Coders School za darmo :)
 
 ## Zakończenie
+
+Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się w kwietniu. Dokładną datę podam później.
 
 1. [Wypełnij ankietę zadowolenia z kursu](https://forms.gle/6gzPT8PU6cKAY7eg8)
 2. [Obserwuj Coders School na LinkedInie](https://www.linkedin.com/company/coders-school/)
