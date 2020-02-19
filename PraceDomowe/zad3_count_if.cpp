@@ -3,6 +3,7 @@
 #include <numeric>
 #include <thread>
 #include <vector>
+#include <functional>
 
 
 constexpr size_t minSize = 10000;
@@ -12,7 +13,6 @@ typename std::iterator_traits<It>::difference_type p_count_if(It first, It last,
 
     if(std::distance(first, last) == 0)
         return 0;
-
     const size_t dataSize = std::distance(first, last);
 	if (dataSize < minSize){
 		return std::count_if(first, last, pred);
@@ -22,9 +22,27 @@ typename std::iterator_traits<It>::difference_type p_count_if(It first, It last,
 	const size_t neededThreads = std::min(dataSize / minSize, hardwareThread);
 	const size_t chunkSize = dataSize / neededThreads;
 	std::vector<std::thread> threads(neededThreads - 1);
-    std::vector<int> countedResults(neededThreads);
+    std::vector<int> results(neededThreads);
 
+    auto threadBegin = first;
+   
+    for (size_t i = 0; i < neededThreads - 1; ++i) {
+            auto threadEnd = std::next(threadBegin, chunkSize);
+            threads[i] = std::thread([](It firstIterator, It lastIterator, Predicate threadPred, int& counter)
+                {
+                    counter = std::count_if(firstIterator, lastIterator, threadPred);
+                }, threadBegin, threadEnd, pred, std::ref(results[i]));
+            threadBegin = threadEnd;
+        }
 
+    results[neededThreads - 1] = std::count_if(threadBegin, last, pred);
+    std::for_each(std::begin(threads), std::end(threads), std::mem_fn(&std::thread::join));
+
+    int counter = 0;
+    for(auto element : results)
+        counter += element;
+
+    return counter;
 }
 
 /* cppreference implementation
