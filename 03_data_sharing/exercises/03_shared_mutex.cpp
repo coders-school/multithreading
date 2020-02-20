@@ -11,21 +11,23 @@ int getNextValue() {
 }
 
 void read(int index) {
-    int value = numbers[index];
-    cout << value << " ";
+    for (int i = 0; i < 10; i++) {
+        int value = numbers[index];
+        cout << value << " ";
+    }
 }
 
 void write() {
-    int newValue = getNextValue();
-    numbers.emplace_back(newValue);
+    for (int i = 0; i < 3; i++) {
+        int newValue = getNextValue();
+        numbers.emplace_back(newValue);
+    }
 }
 
 int main() {
     vector<thread> writers;
     for(int i = 0; i < 10; i++)
         writers.emplace_back(write);
-    for(auto && writer : writers)
-    	writer.join();
 
     cout << "Writers produced: ";
     for(const auto & n : numbers)
@@ -36,6 +38,9 @@ int main() {
     vector<thread> readers;
     for(int i = 0; i < 10; i++)
         readers.emplace_back(read, i);
+
+    for(auto && writer : writers)
+    	writer.join();
     for(auto && reader : readers)
         reader.join();
 
