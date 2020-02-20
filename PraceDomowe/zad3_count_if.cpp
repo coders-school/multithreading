@@ -1,10 +1,10 @@
 #include <algorithm>
+#include <chrono>
+#include <functional>
 #include <iostream>
 #include <numeric>
 #include <thread>
 #include <vector>
-#include <functional>
-
 
 constexpr size_t minSize = 10000;
 
@@ -72,6 +72,25 @@ int main(){
     std::vector<int> emptyVector;
     auto emptyResult = p_count_if(emptyVector.begin(), emptyVector.end(), [](int i){return i % 3 == 0;});
     std::cout << "Result of p_count_if for empty vector: " << emptyResult << '\n';
+
+    std::vector<int> testVector(1000000);
+    std::iota(testVector.begin(), testVector.end(), 0);
+
+    auto startp_count_if = std::chrono::steady_clock::now();
+    p_count_if(testVector.begin(), testVector.end(), [](int i){return i % 3 == 0;});
+    auto stopp_count_if = std::chrono::steady_clock::now();
+
+    auto startSTL_count_if = std::chrono::steady_clock::now();
+    std::count_if(testVector.begin(), testVector.end(), [](int i){return i % 3 == 0;});
+    auto stopSTL_count_if = std::chrono::steady_clock::now();
+
+    std::cout << "Pararel algorithm lasted: "
+            << std::chrono::duration_cast<std::chrono::microseconds>(stopp_count_if - startp_count_if).count()
+            << "us\n";
+
+    std::cout << "STL algorithm lasted: "
+            << std::chrono::duration_cast<std::chrono::microseconds>(stopSTL_count_if - startSTL_count_if).count()
+            << "us\n";
 
     return 0;
 }
