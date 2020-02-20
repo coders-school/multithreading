@@ -201,18 +201,18 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 |                                                     | SUMA | Punktualność | P1 | P2 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 | Z8 | Z9 | Testy | Inne |
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
 | [Adam](#)                                           |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Adam Mierzwiak](https://github.com/adamvm)         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Cypher](https://github.com/ChopSeeGuy)             |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Hikarina](https://github.com/OriaTori)             |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [Adam Mierzwiak](https://github.com/adamvm)         |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [Cypher](https://github.com/ChopSeeGuy)             |   52 |              |    |    | 38 |    | 14 |    |    |    |    |    |    |       |      |
+| [Hikarina](https://github.com/OriaTori)             |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
 | [jzych](https://github.com/jzych)                   |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                 |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Krzysiek](#)                                       |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [matijaz](#)                                        |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [Krzysiek](https://github.com/kdoroszko)            |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [matijaz](https://github.com/matijaz)               |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [mkijew](#)                                         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [RyszardH](https://github.com/RyszardHalapacz)      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [RyszardH](https://github.com/RyszardHalapacz)      |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
 | [Szafirmag](#)                                      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 
 ### Punktacja
@@ -240,9 +240,14 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 - 0 punktów - notes z długopisem
 - 60 punktów - zaślepka na kamerkę
 - 120 punktów - certyfikat na zakończenie kursu
-- 200 punktów - zniżka 50% na dowolny przyszły kurs w Coders School
+- 200 punktów - zniżka 50% na dowolny przyszły kurs w Coders School<sup>*</sup>
 - 260 punktów - książka Anthony Williams, C++ Concurrency in Action
-- 325 punktów - kurs online w Coders School za darmo :)
+- 325 punktów - kurs online w Coders School za darmo<sup>*</sup> :)
+
+<sup>*</sup> <sub>wymaganymi dodatkowymi "kosztami" w przypadku zniżki lub darmowego kursu będzie:
+a) pay by tweet or share - udostępnienie informacji o kursie na swoich mediach społecznościowych,
+b) opinia o kursie z Wielowątkowości na Facebooku (lub LinkedInie w przypadku braku FB, ewentualnie po prostu mail z opinią i pozwoleniem na opublikowanie go na naszej stronie)
+Sorki, ale umiem w social media i liczę na to, że jakoś pomożecie mi dotrzeć do większej liczby zainteresowanych :)</sub>
 
 ## Zakończenie
 
