@@ -4,7 +4,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-Wno-unused-variable)
-add_definitions(-Wno-unused-but-set-variable)
 add_definitions(-Wall -Werror -pedantic -Wextra)
 
 file(GLOB SOURCES *.cpp)
