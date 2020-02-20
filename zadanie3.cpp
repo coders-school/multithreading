@@ -14,10 +14,10 @@ template <typename IT, typename UP>
 int t_count_if(IT first, IT last, UP predicate)
 {
     const size_t distance = std::distance(first, last);
-    if(distance < minDataSize)
+    const size_t maxThreads = std::thread::hardware_concurrency();
+    if(distance < minDataSize or maxThreads == 0)
         return std::count_if(first, last, predicate);
 
-    const size_t maxThreads = std::thread::hardware_concurrency();
     const size_t neededThreads = std::min(distance/minDataSize, maxThreads);
     const size_t dataChunk = distance / neededThreads;
     std::vector<size_t> results (neededThreads);
@@ -40,7 +40,7 @@ int t_count_if(IT first, IT last, UP predicate)
     return std::accumulate(std::begin(results), std::end(results), 0);
 }
 
-void printTime (const decltype(std::chrono::steady_clock::now()) &startStandard,
+void printTime (const decltype(std::chrono::high_resolution_clock::now()) &startStandard,
                 const decltype(startStandard) &stopStandard,
                 const decltype(startStandard) &startPararel,
                 const decltype(startPararel) &stopPararel,
@@ -56,13 +56,13 @@ void printTime (const decltype(std::chrono::steady_clock::now()) &startStandard,
 
 void useAlgorithm(const std::vector<int> &v)
 {
-    auto start = std::chrono::steady_clock::now();
+    auto start = std::chrono::high_resolution_clock::now();
     size_t standardCount = std::count_if(v.begin(), v.end(), [](const int &a){return a%2 == 0;});
-    auto stop = std::chrono::steady_clock::now();
+    auto stop = std::chrono::high_resolution_clock::now();
 
-    auto start3 = std::chrono::steady_clock::now();
+    auto start3 = std::chrono::high_resolution_clock::now();
     size_t pararelCount = t_count_if(std::begin(v), std::end(v), [](const int &a){return a%2 == 0;});
-    auto stop3 = std::chrono::steady_clock::now();
+    auto stop3 = std::chrono::high_resolution_clock::now();
 
     assert(standardCount==pararelCount);
 
