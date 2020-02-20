@@ -10,9 +10,9 @@
 06. Jednokrotne wywołania (call_once) - [Test](https://forms.gle/Vu6bUc5VEtZ69MRr7)
 07. Komunikacja jednokierunkowa (future, promise) - [Test](https://forms.gle/v8JvUtaXHNoXe2JGA)
 08. Zadania asynchroniczne (async, packaged_task) - [Test](https://forms.gle/AtASJcopK4uFJCSr8)
-09. Problemy współbieżności  ---------------┐
+09. Problemy współbieżności  ----------------┐
 10. Współbieżne wzorce projektowe  ---------┼- [Test z 08, 09, 10](https://forms.gle/GctQkxiYmZN4rKGu7)
-11. Testowanie programów współbieżnych -----┘
+11. Testowanie programów współbieżnych ---┘
 
 [Ankieta oceniająca trenera - Mateusz Adamski](https://forms.gle/8Nidginm5wURfiFB6)
 
@@ -205,14 +205,15 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | [Cypher](https://github.com/ChopSeeGuy)             |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [Hikarina](https://github.com/OriaTori)             |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [jzych](https://github.com/jzych)                   |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Kamil.Waszkiewicz](https://github.com/darkassazi)  |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                                         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [kamil waszkiewicz](https://github.com/darkassazi)  |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [Krzysiek](#)                                       |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [matijaz](#)                                        |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [mkijew](#)                                         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [MonikaZ](https://github.com/MonikaZelechowska)     |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [pablos_23](#)                                      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [piotr.kowandy](https://github.com/PiotrKowandy)    |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [RyszardH](https://github.com/RyszardHalapacz)      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [Szafirmag](#)                                      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 
 ### Punktacja
 
@@ -239,9 +240,9 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 - 0 punktów - notes z długopisem
 - 60 punktów - zaślepka na kamerkę
 - 120 punktów - certyfikat na zakończenie kursu
-- 180 punktów - zniżka 50% na dowolny przyszły kurs w Coders School
-- 240 punktów - książka Anthony Williams, C++ Concurrency in Action
-- 300 punktów - dowolny przyszły kurs w Coders School za darmo :)
+- 200 punktów - zniżka 50% na dowolny przyszły kurs w Coders School
+- 260 punktów - książka Anthony Williams, C++ Concurrency in Action
+- 325 punktów - kurs online w Coders School za darmo :)
 
 ## Zakończenie
 
