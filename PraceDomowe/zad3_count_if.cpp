@@ -1,8 +1,12 @@
 #include <algorithm>
+#include <array>
 #include <chrono>
 #include <functional>
 #include <iostream>
+#include <list>
 #include <numeric>
+#include <set>
+#include <string>
 #include <thread>
 #include <vector>
 
@@ -61,6 +65,16 @@ typename iterator_traits<InputIt>::difference_type
 }
 */
 
+template <typename It, typename Predicate>
+void testCompareResultsOfp_count_ifWithSTLcount_if(It first, It last, Predicate pred)
+{
+    bool sameResult = p_count_if(first, last, pred) == std::count_if(first, last, pred);
+
+    if(sameResult)
+        std::cout << "Test passed\n";
+    else std::cout << "Test failed\n";
+}
+
 int main(){
 
 
@@ -91,6 +105,17 @@ int main(){
     std::cout << "STL algorithm lasted: "
             << std::chrono::duration_cast<std::chrono::microseconds>(stopSTL_count_if - startSTL_count_if).count()
             << "us\n";
+
+    std::array<double, 1000000> testArray;
+    std::iota(testArray.begin(), testArray.end(), 100);
+    std::set<std::string> testSet {"abc", "edf", "abc", "xyz"};
+    std::list<int> testList;
+
+    testCompareResultsOfp_count_ifWithSTLcount_if(testVector.begin(), testVector.end(), [](int i){return i % 3 == 0;});
+    testCompareResultsOfp_count_ifWithSTLcount_if(testArray.begin(), testArray.end(), [](int i){return i % 11 == 0;});
+    testCompareResultsOfp_count_ifWithSTLcount_if(testSet.begin(), testSet.end(), [](std::string s){return s == "abc";});
+    testCompareResultsOfp_count_ifWithSTLcount_if(testList.begin(), testList.end(), [](int i){return i % 3 == 0;});
+
 
     return 0;
 }
