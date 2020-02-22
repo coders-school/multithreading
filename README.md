@@ -201,19 +201,19 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 |                                                     | SUMA | Punktualność | P1 | P2 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 | Z8 | Z9 | Testy | Inne |
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
 | [Adam](#)                                           |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Adam Mierzwiak](https://github.com/adamvm)         |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [Cypher](https://github.com/ChopSeeGuy)             |   52 |              |    |    | 38 |    | 14 |    |    |    |    |    |    |       |      |
+| [Adam Mierzwiak](https://github.com/adamvm)         |   48 |              |    |    | 38 | 10 |    |    |    |    |    |    |    |       |      |
+| [Cypher](https://github.com/ChopSeeGuy)             |   74 |            5 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
 | [Hikarina](https://github.com/OriaTori)             |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [jzych](https://github.com/jzych)                   |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [kamil waszkiewicz](https://github.com/darkassazi)  |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                 |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [Krzysiek](https://github.com/kdoroszko)            |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [matijaz](https://github.com/matijaz)               |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [mkijew](#)                                         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [Jakub Zych](https://github.com/jzych)              |   71 |            5 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
+| [kamil waszkiewicz](https://github.com/darkassazi)  |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |   71 |            5 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
+| [Krzysiek](https://github.com/kdoroszko)            |   41 |            5 |    |    | 10 | 10 | 16 |    |    |    |    |    |    |       |      |
+| [matijaz](https://github.com/matijaz)               |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [mkijew](https://github.com/mkijew)                 |   74 |            5 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |   69 |            5 |    |    | 38 | 10 | 16 |    |    |    |    |    |    |       |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |   43 |              |    |    | 38 |  8 |    |    |    |    |    |    |    |       |      |
 | [RyszardH](https://github.com/RyszardHalapacz)      |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [Szafirmag](#)                                      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [Szafirmag](https://github.com/WBigaj)              |   71 |            5 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 
 ### Punktacja
 
