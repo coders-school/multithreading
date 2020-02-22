@@ -1,0 +1,56 @@
+
+Number of elements in vector: 1000
+Minimum elements for one thread: 200
+res1: 500
+res2: 500
+
+Create threads: 202us
+Wait for finish threads: 994us
+
+Pararel algorithm: 1311us
+
+Normal algorithm: 142us
+
+ ----- end test ----
+
+Number of elements in vector: 1000000
+Minimum elements for one thread: 200
+res1: 500000
+res2: 500000
+
+Create threads: 149us
+Wait for finish threads: 38674us
+
+Pararel algorithm: 38850us
+
+Normal algorithm: 68281us
+
+ ----- end test ----
+
+Number of elements in vector: 1000
+Minimum elements for one thread: 5000
+res1: 500
+res2: 500
+
+Create threads: 0us
+Wait for finish threads: 0us
+
+Pararel algorithm: 63us
+
+Normal algorithm: 61us
+
+ ----- end test ----
+
+Number of elements in vector: 1000000
+Minimum elements for one thread: 5000
+res1: 500000
+res2: 500000
+
+Create threads: 133us
+Wait for finish threads: 37662us
+
+Pararel algorithm: 37822us
+
+Normal algorithm: 65041us
+
+ ----- end test ----
