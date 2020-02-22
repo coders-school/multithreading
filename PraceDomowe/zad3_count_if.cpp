@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <array>
 #include <chrono>
+#include <execution>
 #include <functional>
 #include <iostream>
 #include <list>
@@ -77,6 +78,10 @@ int main(){
     std::count_if(testVector.begin(), testVector.end(), [](int i){return i % 3 == 0;});
     auto stopSTL_count_if = std::chrono::steady_clock::now();
 
+    auto startSTLExecution_count_if = std::chrono::steady_clock::now();
+    std::count_if(std::execution::par, testVector.begin(), testVector.end(), [](int i){return i % 3 == 0;});
+    auto stopSTLExecution_count_if = std::chrono::steady_clock::now();
+
     std::cout << "\n--- Algorithm running time calculation ---\n";
     std::cout << "Parallel algorithm for 1'000'000 element vector lasted: "
             << std::chrono::duration_cast<std::chrono::microseconds>(stopp_count_if - startp_count_if).count()
@@ -84,6 +89,10 @@ int main(){
 
     std::cout << "STL algorithm for 1'000'000 element vector lasted: "
             << std::chrono::duration_cast<std::chrono::microseconds>(stopSTL_count_if - startSTL_count_if).count()
+            << "us\n";
+
+    std::cout << "STL algorithm with execution policy for 1'000'000 element vector lasted: "
+            << std::chrono::duration_cast<std::chrono::microseconds>(stopSTLExecution_count_if - startSTLExecution_count_if).count()
             << "us\n";
 
     std::array<double, 1000000> testArray;
