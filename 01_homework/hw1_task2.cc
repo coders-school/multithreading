@@ -3,6 +3,7 @@
 #include <iterator>
 #include <numeric>
 #include <iostream>
+#include <cassert>
 //#include <execution>
 
 template<typename Iterator, typename T>
@@ -62,30 +63,33 @@ int main() {
 
     std::cout << "========== Accumulate ===========\n";
     auto start = std::chrono::high_resolution_clock::now();
-    auto result = std::accumulate(data.begin(), data.end(), 0);
+    auto result_seq = std::accumulate(data.begin(), data.end(), 0);
     auto stop = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration<float> duration = stop - start;
     std::cout << "Duration: " << duration.count() << '\n'
-              << "Result: " << result << '\n';
+              << "Result: " << result_seq << '\n';
 
     std::cout << "====== Parallel Accumulate ======\n";
     start = std::chrono::high_resolution_clock::now();
-    result = parallel_accumulate(data.begin(), data.end(), 0);
+    auto result_par = parallel_accumulate(data.begin(), data.end(), 0);
     stop = std::chrono::high_resolution_clock::now();
 
     duration = stop - start;
     std::cout << "Duration: " << duration.count() << '\n'
-              << "Result: " << result << '\n';
+              << "Result: " << result_par << '\n';
+
+    assert(result_seq == result_par);
+
 /* my compiler doesn't support execution lib :(
     std::cout << "======== Accumulate::par ========\n";
     start = std::chrono::high_resolution_clock::now();
-    result = accumulate(std::execution::par, data.begin(), data.end(), 0);
+    auto result_par2 = accumulate(std::execution::par, data.begin(), data.end(), 0);
     stop = std::chrono::high_resolution_clock::now();
 
     duration = stop - start;
     std::cout << "Duration: " << duration.count() << '\n'
-              << "Result: " << result << '\n';
+              << "Result: " << result_par2 << '\n';
 */
     return 0;
 }

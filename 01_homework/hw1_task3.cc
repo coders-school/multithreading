@@ -4,6 +4,7 @@
 #include <numeric>
 #include <iostream>
 #include <algorithm>
+#include <cassert>
 //#include <execution>
 
 template<typename T>
@@ -12,9 +13,9 @@ using iter_type = typename std::iterator_traits<T>::difference_type;
 template<typename Iterator, typename Predicate, typename T>
 struct count_if_block
 {
-    void operator()(Iterator first, Iterator last, Predicate &policy, T& result)
+    void operator()(Iterator first, Iterator last, Predicate &condition, T& result)
     {
-        result = std::count_if(first, last, policy);
+        result = std::count_if(first, last, condition);
     }
 };
 
@@ -22,7 +23,7 @@ template<typename Iterator, typename Predicate>
 iter_type<Iterator> parallel_count_if(
     Iterator first,
     Iterator last,
-    Predicate policy)
+    Predicate condition)
 {
     auto length = std::distance(first, last);
 
@@ -47,14 +48,14 @@ iter_type<Iterator> parallel_count_if(
         count_threads[i] = std::thread(count_if_block<Iterator, Predicate, iter_type<Iterator>>(),
                                 chunk_start,
                                 chunk_end,
-                                std::ref(policy),
+                                std::ref(condition),
                                 std::ref(count_results[i]));
         chunk_start = chunk_end;
     }
 
     // find result for last chunk
     count_if_block<Iterator, Predicate, iter_type<Iterator>>()
-        (chunk_start, last, policy, count_results[hardware_threads - 1]);
+        (chunk_start, last, condition, count_results[hardware_threads - 1]);
 
     // wait for all threads
     for (auto && thread : count_threads)
@@ -73,30 +74,33 @@ int main() {
 
     std::cout << "========== Count If ===========\n";
     auto start = std::chrono::high_resolution_clock::now();
-    auto result = std::count_if(data.begin(), data.end(), [](int i){return i % 7 == 0;});
+    auto result_seq = std::count_if(data.begin(), data.end(), [](int i){return i % 7 == 0;});
     auto stop = std::chrono::high_resolution_clock::now();
 
     std::chrono::duration<float> duration = stop - start;
     std::cout << "Duration: " << duration.count() << '\n'
-              << "Result: " << result << '\n';
+              << "Result: " << result_seq << '\n';
 
     std::cout << "====== Parallel Count If ======\n";
     start = std::chrono::high_resolution_clock::now();
-    result = parallel_count_if(data.begin(), data.end(), [](int i){return i % 7 == 0;});
+    auto result_par = parallel_count_if(data.begin(), data.end(), [](int i){return i % 7 == 0;});
     stop = std::chrono::high_resolution_clock::now();
 
     duration = stop - start;
     std::cout << "Duration: " << duration.count() << '\n'
-              << "Result: " << result << '\n';
+              << "Result: " << result_par << '\n';
+
+    assert(result_seq == result_par);
+
 /* my compiler doesn't support execution lib :(
     std::cout << "======== Count If::par ========\n";
     start = std::chrono::high_resolution_clock::now();
-    result = count_if(std::execution::par, data.begin(), data.end(), 0);
+    auto result_par2 = count_if(std::execution::par, data.begin(), data.end(), 0);
     stop = std::chrono::high_resolution_clock::now();
 
     duration = stop - start;
     std::cout << "Duration: " << duration.count() << '\n'
-              << "Result: " << result << '\n';
+              << "Result: " << result_par2 << '\n';
 */
     return 0;
 }
