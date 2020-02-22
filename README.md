@@ -34,7 +34,7 @@
 
 (11 punktów, 1 za każdy podpunkt) Termin: 22.02.2020 23:59
 
-Napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera. Wyniki powinny zostać również zapisane w kontenerze.
+Napisz współbieżną wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera. Wyniki powinny zostać również zapisane w kontenerze.
 
 - on empty returns init
 - calculate number of threads - `hardware_threads = hardware_concurrency()  0 ? hardware_concurrency() : 2`
