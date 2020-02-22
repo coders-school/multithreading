@@ -36,7 +36,11 @@ pararelCountIf(IT first, IT last, T fun, size_t minSizeForThread = minimumSize, 
 	if (size < minSizeForThread)
 		return std::count_if(first, last, fun);
 
-	const size_t hardwareThread = std::thread::hardware_concurrency();
+	size_t hardwareThread = std::thread::hardware_concurrency();
+
+    if (hardwareThread == 0)
+        hardwareThread = 1;
+
 	const size_t neededThreads = std::min(size / minSizeForThread, hardwareThread);
 	const size_t chunkSize = size / neededThreads;
 	
