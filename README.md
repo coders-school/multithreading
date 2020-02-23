@@ -10,9 +10,9 @@
 06. Jednokrotne wywołania (call_once) - [Test](https://forms.gle/Vu6bUc5VEtZ69MRr7)
 07. Komunikacja jednokierunkowa (future, promise) - [Test](https://forms.gle/v8JvUtaXHNoXe2JGA)
 08. Zadania asynchroniczne (async, packaged_task) - [Test](https://forms.gle/AtASJcopK4uFJCSr8)
-09. Problemy współbieżności  ---------------┐
+09. Problemy współbieżności  ----------------┐
 10. Współbieżne wzorce projektowe  ---------┼- [Test z 08, 09, 10](https://forms.gle/GctQkxiYmZN4rKGu7)
-11. Testowanie programów współbieżnych -----┘
+11. Testowanie programów współbieżnych ---┘
 
 [Ankieta oceniająca trenera - Mateusz Adamski](https://forms.gle/8Nidginm5wURfiFB6)
 
@@ -201,18 +201,19 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 |                                                     | SUMA | Punktualność | P1 | P2 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 | Z8 | Z9 | Testy | Inne |
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
 | [Adam](#)                                           |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Adam Mierzwiak](https://github.com/adamvm)         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Cypher](https://github.com/ChopSeeGuy)             |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Hikarina](https://github.com/OriaTori)             |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [jzych](https://github.com/jzych)                   |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Kamil.Waszkiewicz](https://github.com/darkassazi)  |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                                         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Krzysiek](#)                                       |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [matijaz](#)                                        |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [pablos_23](#)                                      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [RyszardH](https://github.com/RyszardHalapacz)      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [Adam Mierzwiak](https://github.com/adamvm)         |   48 |              |    |    | 38 | 10 |    |    |    |    |    |    |    |       |      |
+| [Cypher](https://github.com/ChopSeeGuy)             |   74 |            5 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
+| [Hikarina](https://github.com/OriaTori)             |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [Jakub Zych](https://github.com/jzych)              |   71 |            5 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
+| [kamil waszkiewicz](https://github.com/darkassazi)  |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |   71 |            5 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
+| [Krzysiek](https://github.com/kdoroszko)            |   41 |            5 |    |    | 10 | 10 | 16 |    |    |    |    |    |    |       |      |
+| [matijaz](https://github.com/matijaz)               |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [mkijew](https://github.com/mkijew)                 |   74 |            5 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |   69 |            5 |    |    | 38 | 10 | 16 |    |    |    |    |    |    |       |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |   43 |              |    |    | 38 |  8 |    |    |    |    |    |    |    |       |      |
+| [RyszardH](https://github.com/RyszardHalapacz)      |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [Szafirmag](https://github.com/WBigaj)              |   71 |            5 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 
 ### Punktacja
 
@@ -239,9 +240,14 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 - 0 punktów - notes z długopisem
 - 60 punktów - zaślepka na kamerkę
 - 120 punktów - certyfikat na zakończenie kursu
-- 180 punktów - zniżka 50% na dowolny przyszły kurs w Coders School
-- 240 punktów - książka Anthony Williams, C++ Concurrency in Action
-- 300 punktów - dowolny przyszły kurs w Coders School za darmo :)
+- 200 punktów - zniżka 50% na dowolny przyszły kurs w Coders School<sup>*</sup>
+- 260 punktów - książka Anthony Williams, C++ Concurrency in Action
+- 325 punktów - kurs online w Coders School za darmo<sup>*</sup> :)
+
+<sup>*</sup> <sub>wymaganymi dodatkowymi "kosztami" w przypadku zniżki lub darmowego kursu będzie:
+a) pay by tweet or share - udostępnienie informacji o kursie na swoich mediach społecznościowych,
+b) opinia o kursie z Wielowątkowości na Facebooku (lub LinkedInie w przypadku braku FB, ewentualnie po prostu mail z opinią i pozwoleniem na opublikowanie go na naszej stronie)
+Sorki, ale umiem w social media i liczę na to, że jakoś pomożecie mi dotrzeć do większej liczby zainteresowanych :)</sub>
 
 ## Zakończenie
 
