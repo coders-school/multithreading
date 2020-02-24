@@ -15,15 +15,14 @@ constexpr size_t minSize = 10000;
 
 template <typename It, typename Predicate>
 typename std::iterator_traits<It>::difference_type p_count_if(It first, It last, Predicate pred){
-    if(std::distance(first, last) == 0)
-        return 0;
-
     const size_t dataSize = std::distance(first, last);
+    if(dataSize == 0)
+        return 0;
 
 	if (dataSize < minSize)
 		return std::count_if(first, last, pred);
 
-	const size_t hardwareThread = std::thread::hardware_concurrency();
+	const size_t hardwareThread = std::thread::hardware_concurrency() != 0 ? std::thread::hardware_concurrency() : 2;
 	const size_t neededThreads = std::min(dataSize / minSize, hardwareThread);
 	const size_t chunkSize = dataSize / neededThreads;
 	std::vector<std::thread> threads(neededThreads - 1);

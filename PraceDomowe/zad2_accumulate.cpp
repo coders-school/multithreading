@@ -21,7 +21,7 @@ T pararelAccumulate(IT first, IT last, T init) {
 	if (size < minimumSize)
 		return std::accumulate(first, last, init);
 
-	const size_t hardwareThread = std::thread::hardware_concurrency();
+	const size_t hardwareThread = std::thread::hardware_concurrency() != 0 ? std::thread::hardware_concurrency() : 2;
 	const size_t neededThreads = std::min(size / minimumSize, hardwareThread);
 	const size_t chunkSize = size / neededThreads;
 	std::vector<std::thread> threads(neededThreads - 1);
