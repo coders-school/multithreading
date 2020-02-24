@@ -1,7 +1,7 @@
 #include <vector>
 
-#include <libmail/send_mail.h>
-#include <libmail/randomize_results.h>
+#include <libmail/include/send_mail.h>
+#include <libmail/include/randomize_results.h>
 
 
 int main()
