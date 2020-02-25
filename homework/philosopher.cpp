@@ -66,7 +66,7 @@ void action( int idx )
 
     while ( iActionStep < actionCnt )
     {
-        if (philCanEat[idx] == true)
+        if (philCanEat[idx])
         {
             std::scoped_lock lock( forks[left_fork], forks[right_fork] );
             
