@@ -1,10 +1,13 @@
 #pragma once
 
 #include "Fork.hpp"
-#include <array>
-
-const int philosophersNumber = 5;
+#include "Philosopher.hpp"
+#include <vector>
 
 class Table{ 
-    std::array <Fork, philosophersNumber> forks;
+private:
+    int philosophersNumber;
+
+public:
+    Table(int number);
 };
