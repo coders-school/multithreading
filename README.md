@@ -203,16 +203,16 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | [Adam](#)                                           |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
 | [Adam Mierzwiak](https://github.com/adamvm)         |   58 |           10 |    |    | 38 | 10 |    |    |    |    |    |    |    |       |      |
 | [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [Hikarina](https://github.com/OriaTori)             |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [Hikarina](https://github.com/OriaTori)             |   43 |            5 |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
 | [Jakub Zych](https://github.com/jzych)              |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |   71 |            5 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 | [kawapa](https://github.com/kawapa)                 |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [Krzysiek](https://github.com/kdoroszko)            |   51 |           15 |    |    | 10 | 10 | 16 |    |    |    |    |    |    |       |      |
-| [matijaz](https://github.com/matijaz)               |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [Krzysiek](https://github.com/kdoroszko)            |   56 |           15 |    |    | 10 | 11 | 20 |    |    |    |    |    |    |       |      |
+| [matijaz](https://github.com/matijaz)               |   43 |            5 |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
 | [mkijew](https://github.com/mkijew)                 |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |   79 |           15 |    |    | 38 | 10 | 16 |    |    |    |    |    |    |       |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |   53 |           10 |    |    | 38 |  8 |    |    |    |    |    |    |    |       |      |
-| [RyszardH](https://github.com/RyszardHalapacz)      |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |   71 |           10 |    |    | 38 | 10 | 16 |    |    |    |    |    |    |       |      |
+| [RyszardH](https://github.com/RyszardHalapacz)      |   43 |            5 |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
 | [Szafirmag](https://github.com/WBigaj)              |   81 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 
 ### Punktacja
@@ -245,7 +245,7 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 - 325 punktów - kurs online w Coders School za darmo<sup>*</sup> :)
 
 <sup>*</sup> <sub>wymaganymi dodatkowymi "kosztami" w przypadku zniżki lub darmowego kursu będzie:
-a) pay by tweet or share - udostępnienie informacji o kursie na swoich mediach społecznościowych,
+a) pay by tweet or share - udostępnienie informacji o kursie na swoich mediach społecznościowych oraz
 b) opinia o kursie z Wielowątkowości na Facebooku (lub LinkedInie w przypadku braku FB, ewentualnie po prostu mail z opinią i pozwoleniem na opublikowanie go na naszej stronie)
 Sorki, ale umiem w social media i liczę na to, że jakoś pomożecie mi dotrzeć do większej liczby zainteresowanych :)</sub>
 
