@@ -9,6 +9,7 @@
 #include <string>
 #include <sstream>
 #include <thread>
+#include <vector>
 
 constexpr size_t itemsCnt = 5;       // number of items (philosophers, forks)
 constexpr size_t actionCnt = 10;     // number of action to take by philosopher
@@ -19,10 +20,20 @@ std::thread philosopher[itemsCnt];
 
 std::mutex displayMutex;
 std::mutex updateMutex;
-std::atomic<bool> canEat[itemsCnt];
-std::atomic<bool> eat[itemsCnt];
+std::atomic<bool> philCanEat[itemsCnt];   // philosopher can eat
+std::atomic<bool> philEat[itemsCnt];      // philosopher is eating
 
 using namespace std::chrono_literals;
+
+struct report_item
+{
+    int iPhilosopherID;
+    bool bEat;
+    decltype(std::chrono::steady_clock::now()) time;
+};
+
+std::vector<report_item> resport_events(itemsCnt * actionCnt * 2);
+int resport_events_idx = 0;
 
 void displayState()
 {
@@ -32,7 +43,7 @@ void displayState()
 
     for ( int i = 0; i < itemsCnt; ++i )
     {
-        if ( eat[i] )
+        if ( philEat[i] )
         {
             ss << "-F" << i << "- ";
         }
@@ -55,15 +66,16 @@ void action( int idx )
 
     while ( iActionStep < actionCnt )
     {
-        if (canEat[idx] == true)
+        if (philCanEat[idx] == true)
         {
             std::scoped_lock lock( forks[left_fork], forks[right_fork] );
             
-            // NOTE: Here is a race condition on eat[idx] variable and display_state.
-            // Race can be solved by using i.e. queue.
+            // NOTE: Here is a small race condition on philEat[idx] variable and display_state() function.
+            // Proper results are shown in post processing. See show events in main function().
 
             displayMutex.lock();
-            eat[idx] = true;
+            philEat[idx] = true;
+            resport_events[resport_events_idx++] = {idx, true, std::chrono::steady_clock::now()};
             displayMutex.unlock();
 
             if ( action_debug )
@@ -78,10 +90,11 @@ void action( int idx )
             displayState();
             
             displayMutex.lock();
-            eat[idx] = false;
+            philEat[idx] = false;
+            resport_events[resport_events_idx++] = {idx, false, std::chrono::steady_clock::now()};
             displayMutex.unlock();
             
-            canEat[idx] = false;
+            philCanEat[idx] = false;
             iActionStep++;
 
             if ( action_debug )
@@ -102,7 +115,7 @@ void action( int idx )
             bool allEaten = true;
             for (int i = 0; i < itemsCnt; ++i)
             {
-                if ( canEat[i] )
+                if ( philCanEat[i] )
                 {
                     allEaten = false;
                     break;
@@ -114,7 +127,7 @@ void action( int idx )
             {
                 for (int i = 0; i < itemsCnt; ++i)
                 {
-                    canEat[i] = true;
+                    philCanEat[i] = true;
                 }
             }
         }
@@ -126,10 +139,11 @@ int main()
     // init
     for (int i = 0; i < itemsCnt; ++i)
     {
-        canEat[i] = true;
-        eat[i] = false;
+        philCanEat[i] = true;
+        philEat[i] = false;
     }
     std::srand(std::time(nullptr));
+    auto start = std::chrono::steady_clock::now();
 
     // start threads
     for (int i = 0; i < itemsCnt; ++i)
@@ -140,5 +154,26 @@ int main()
     // join threads
     std::for_each(&(philosopher[0]), &(philosopher[itemsCnt]), std::mem_fn(&std::thread::join));
     
+    std::cout << "------------------------------------" << std::endl;
+
+    for( std::atomic<bool>& a : philEat )
+    {
+        a = false;
+    }
+
+    // sort report events
+    std::sort(resport_events.begin(), resport_events.end(), [](report_item a, report_item b){ return a.time < b.time;});
+
+    // show events
+    std::cout << "time\tID\teat\tstatus" << std::endl;
+    for( report_item ri : resport_events)
+    {
+        philEat[ri.iPhilosopherID] = ri.bEat;
+
+        std::cout <<  std::chrono::duration_cast<std::chrono::microseconds>(ri.time - start).count() << "\t" 
+            << "F" << ri.iPhilosopherID << "\t" << ri.bEat << "\t";
+        displayState();
+    }
+
     return 0;
 }
