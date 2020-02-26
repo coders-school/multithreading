@@ -1,6 +1,6 @@
 #include <chrono>
 #include <thread>
-#include <libmail/send_mail.h>
+#include <libmail/include/send_mail.h>
 
 namespace libmail {
 
