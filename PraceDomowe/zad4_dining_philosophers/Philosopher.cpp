@@ -1,6 +1,6 @@
 #include "Philosopher.hpp"
 
-Philosopher::Philosopher(std::string name, Fork lFork, Fork rFork):
+Philosopher::Philosopher(std::string name, Fork& lFork, Fork& rFork):
     philosopherName(name), leftFork(lFork), rightFork(rFork), philosopherThread(&Philosopher::dine, this) {}
 
 Philosopher::~Philosopher(){

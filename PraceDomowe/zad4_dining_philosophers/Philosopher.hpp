@@ -14,7 +14,7 @@ private:
     std::thread philosopherThread;
 
 public:
-    Philosopher(std::string name, Fork lFork, Fork rFork);
+    Philosopher(std::string name, Fork& lFork, Fork& rFork);
     ~Philosopher();
 
     void eat();

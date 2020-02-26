@@ -7,7 +7,7 @@
 class Table{ 
 private:
     int philosophersNumber;
-
+    
 public:
     Table(int number);
 };
