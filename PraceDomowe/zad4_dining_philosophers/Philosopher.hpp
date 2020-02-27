@@ -15,6 +15,7 @@ private:
 
 public:
     Philosopher(std::string name, Fork& lFork, Fork& rFork);
+    Philosopher(Philosopher && other);
     ~Philosopher();
 
     void eat();
