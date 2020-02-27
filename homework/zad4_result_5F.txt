@@ -1,0 +1,152 @@
+-F0-  F1   F2   F3   F4  
+ F0  -F1-  F2   F3   F4  
+ F0   F1  -F2-  F3   F4  
+ F0   F1   F2  -F3-  F4  
+ F0   F1   F2   F3  -F4- 
+-F0-  F1   F2   F3   F4  
+-F0-  F1  -F2-  F3   F4  
+ F0  -F1-  F2   F3   F4  
+ F0   F1   F2   F3  -F4- 
+ F0   F1   F2  -F3-  F4  
+ F0   F1  -F2-  F3   F4  
+ F0  -F1-  F2   F3   F4  
+-F0-  F1   F2   F3   F4  
+ F0   F1   F2  -F3-  F4  
+ F0   F1   F2   F3  -F4- 
+ F0  -F1-  F2   F3   F4  
+-F0-  F1   F2   F3   F4  
+ F0   F1  -F2-  F3   F4  
+ F0   F1   F2  -F3-  F4  
+ F0   F1   F2   F3  -F4- 
+ F0  -F1-  F2   F3  -F4- 
+ F0   F1   F2   F3  -F4- 
+ F0   F1  -F2-  F3   F4  
+-F0-  F1   F2   F3   F4  
+ F0   F1   F2  -F3-  F4  
+ F0   F1  -F2-  F3  -F4- 
+ F0   F1  -F2-  F3   F4  
+ F0  -F1-  F2  -F3-  F4  
+ F0  -F1-  F2   F3   F4  
+-F0-  F1   F2   F3   F4  
+-F0-  F1   F2   F3   F4  
+ F0  -F1-  F2   F3   F4  
+ F0   F1  -F2-  F3   F4  
+ F0   F1   F2  -F3-  F4  
+ F0   F1   F2   F3  -F4- 
+ F0   F1   F2   F3  -F4- 
+ F0   F1   F2  -F3-  F4  
+-F0-  F1   F2  -F3-  F4  
+ F0   F1  -F2-  F3   F4  
+ F0  -F1-  F2   F3   F4  
+ F0  -F1-  F2   F3   F4  
+-F0-  F1   F2   F3   F4  
+ F0   F1   F2  -F3-  F4  
+ F0   F1   F2   F3  -F4- 
+ F0   F1  -F2-  F3   F4  
+ F0  -F1-  F2   F3  -F4- 
+ F0  -F1-  F2  -F3-  F4  
+ F0  -F1-  F2   F3   F4  
+-F0-  F1   F2   F3   F4  
+ F0   F1  -F2-  F3   F4  
+------------------------------------
+time	ID	eat	status
+6755	F0	1	-F0-  F1   F2   F3   F4  
+7366	F0	0	 F0   F1   F2   F3   F4  
+21354	F1	1	 F0  -F1-  F2   F3   F4  
+21541	F1	0	 F0   F1   F2   F3   F4  
+27572	F2	1	 F0   F1  -F2-  F3   F4  
+27755	F2	0	 F0   F1   F2   F3   F4  
+35018	F3	1	 F0   F1   F2  -F3-  F4  
+35199	F3	0	 F0   F1   F2   F3   F4  
+55562	F4	1	 F0   F1   F2   F3  -F4- 
+55743	F4	0	 F0   F1   F2   F3   F4  
+55819	F0	1	-F0-  F1   F2   F3   F4  
+55955	F2	1	-F0-  F1  -F2-  F3   F4  
+56048	F2	0	-F0-  F1   F2   F3   F4  
+56059	F0	0	 F0   F1   F2   F3   F4  
+56106	F1	1	 F0  -F1-  F2   F3   F4  
+56164	F1	0	 F0   F1   F2   F3   F4  
+57489	F4	1	 F0   F1   F2   F3  -F4- 
+57558	F4	0	 F0   F1   F2   F3   F4  
+57749	F3	1	 F0   F1   F2  -F3-  F4  
+57816	F3	0	 F0   F1   F2   F3   F4  
+57872	F2	1	 F0   F1  -F2-  F3   F4  
+57924	F2	0	 F0   F1   F2   F3   F4  
+57948	F1	1	 F0  -F1-  F2   F3   F4  
+57998	F1	0	 F0   F1   F2   F3   F4  
+58102	F0	1	-F0-  F1   F2   F3   F4  
+58155	F0	0	 F0   F1   F2   F3   F4  
+58562	F3	1	 F0   F1   F2  -F3-  F4  
+58621	F3	0	 F0   F1   F2   F3   F4  
+62952	F4	1	 F0   F1   F2   F3  -F4- 
+63023	F4	0	 F0   F1   F2   F3   F4  
+63096	F1	1	 F0  -F1-  F2   F3   F4  
+63220	F1	0	 F0   F1   F2   F3   F4  
+63239	F0	1	-F0-  F1   F2   F3   F4  
+63299	F0	0	 F0   F1   F2   F3   F4  
+63359	F2	1	 F0   F1  -F2-  F3   F4  
+63410	F2	0	 F0   F1   F2   F3   F4  
+63458	F3	1	 F0   F1   F2  -F3-  F4  
+63515	F3	0	 F0   F1   F2   F3   F4  
+63863	F4	1	 F0   F1   F2   F3  -F4- 
+64016	F4	0	 F0   F1   F2   F3   F4  
+64081	F1	1	 F0  -F1-  F2   F3   F4  
+64110	F4	1	 F0  -F1-  F2   F3  -F4- 
+64225	F1	0	 F0   F1   F2   F3  -F4- 
+64305	F4	0	 F0   F1   F2   F3   F4  
+64347	F2	1	 F0   F1  -F2-  F3   F4  
+64396	F2	0	 F0   F1   F2   F3   F4  
+64494	F0	1	-F0-  F1   F2   F3   F4  
+64554	F0	0	 F0   F1   F2   F3   F4  
+66829	F3	1	 F0   F1   F2  -F3-  F4  
+66951	F3	0	 F0   F1   F2   F3   F4  
+67011	F2	1	 F0   F1  -F2-  F3   F4  
+67024	F4	1	 F0   F1  -F2-  F3  -F4- 
+67088	F4	0	 F0   F1  -F2-  F3   F4  
+74722	F2	0	 F0   F1   F2   F3   F4  
+74789	F3	1	 F0   F1   F2  -F3-  F4  
+74801	F1	1	 F0  -F1-  F2  -F3-  F4  
+74946	F3	0	 F0  -F1-  F2   F3   F4  
+75352	F1	0	 F0   F1   F2   F3   F4  
+75380	F0	1	-F0-  F1   F2   F3   F4  
+75485	F0	0	 F0   F1   F2   F3   F4  
+75508	F0	1	-F0-  F1   F2   F3   F4  
+75551	F0	0	 F0   F1   F2   F3   F4  
+75733	F1	1	 F0  -F1-  F2   F3   F4  
+75846	F1	0	 F0   F1   F2   F3   F4  
+75984	F2	1	 F0   F1  -F2-  F3   F4  
+76035	F2	0	 F0   F1   F2   F3   F4  
+76100	F3	1	 F0   F1   F2  -F3-  F4  
+76182	F3	0	 F0   F1   F2   F3   F4  
+76427	F4	1	 F0   F1   F2   F3  -F4- 
+76795	F4	0	 F0   F1   F2   F3   F4  
+76868	F4	1	 F0   F1   F2   F3  -F4- 
+76911	F4	0	 F0   F1   F2   F3   F4  
+77064	F3	1	 F0   F1   F2  -F3-  F4  
+77176	F0	1	-F0-  F1   F2  -F3-  F4  
+77303	F0	0	 F0   F1   F2  -F3-  F4  
+82579	F3	0	 F0   F1   F2   F3   F4  
+82656	F2	1	 F0   F1  -F2-  F3   F4  
+83117	F2	0	 F0   F1   F2   F3   F4  
+98596	F1	1	 F0  -F1-  F2   F3   F4  
+98722	F1	0	 F0   F1   F2   F3   F4  
+98758	F1	1	 F0  -F1-  F2   F3   F4  
+98803	F1	0	 F0   F1   F2   F3   F4  
+98826	F0	1	-F0-  F1   F2   F3   F4  
+98943	F0	0	 F0   F1   F2   F3   F4  
+98984	F3	1	 F0   F1   F2  -F3-  F4  
+99038	F3	0	 F0   F1   F2   F3   F4  
+99435	F4	1	 F0   F1   F2   F3  -F4- 
+99567	F4	0	 F0   F1   F2   F3   F4  
+100709	F2	1	 F0   F1  -F2-  F3   F4  
+100770	F2	0	 F0   F1   F2   F3   F4  
+100815	F4	1	 F0   F1   F2   F3  -F4- 
+100825	F1	1	 F0  -F1-  F2   F3  -F4- 
+100931	F4	0	 F0  -F1-  F2   F3   F4  
+100950	F3	1	 F0  -F1-  F2  -F3-  F4  
+101039	F3	0	 F0  -F1-  F2   F3   F4  
+101199	F1	0	 F0   F1   F2   F3   F4  
+101216	F0	1	-F0-  F1   F2   F3   F4  
+101291	F0	0	 F0   F1   F2   F3   F4  
+101351	F2	1	 F0   F1  -F2-  F3   F4  
+101405	F2	0	 F0   F1   F2   F3   F4  

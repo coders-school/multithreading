@@ -1,0 +1,602 @@
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10  -F11-  F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10  -F11-  F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10  -F11-  F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8- -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+-F0-  F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9  -F10-  F11  -F12-  F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11  -F12-  F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3  -F4- -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+ F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+ F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+ F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+------------------------------------
+time	ID	eat	status
+6910	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+7574	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+17113	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+17379	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+21456	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+21704	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+27787	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+28053	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+43545	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+50490	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+54831	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+55074	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+58217	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+58617	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+71569	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+71841	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+75413	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+75682	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+79952	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+80230	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+87235	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+87468	F10	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+94094	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+94390	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+127323	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+127576	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+134609	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+134887	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+145481	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+145739	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+152981	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+155308	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+191897	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+192174	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+259743	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+260002	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+266005	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+268237	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+269575	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+269843	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+269943	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+270097	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14  -F15-  F16   F17   F18   F19  
+270245	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+270344	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13  -F14-  F15   F16   F17   F18   F19  
+270374	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10  -F11-  F12   F13  -F14-  F15   F16   F17   F18   F19  
+270478	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13  -F14-  F15   F16   F17   F18   F19  
+274321	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10  -F11-  F12   F13  -F14-  F15   F16   F17   F18   F19  
+274735	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+282331	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+282385	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8- -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+282564	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+286389	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+294398	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+294566	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+298347	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+298569	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+302348	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+302570	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+306389	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+306553	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+306607	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+306695	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+306841	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+307010	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+314429	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+314592	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+314836	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+314984	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+315031	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+315117	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+315253	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+315348	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+315368	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+331773	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+331936	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+332058	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+332158	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+334486	F10	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+334531	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+334645	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+337032	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+337192	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+337231	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+337415	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+337499	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+337589	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+337609	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+337703	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+337793	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+337903	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+337940	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+338059	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338135	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338223	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338243	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+338405	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338430	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338520	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338605	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338701	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338761	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338848	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338906	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+338991	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+339138	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+339771	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+339803	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+339834	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13  -F14-  F15   F16   F17   F18   F19  
+339938	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+340029	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16  -F17-  F18   F19  
+340150	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+340227	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17  -F18-  F19  
+340338	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+340491	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+340590	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+340829	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+340927	F10	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+343076	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+345123	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+345263	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+345405	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+345532	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+350019	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+350180	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+350226	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+350522	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+350632	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+358401	F15	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+358603	F15	0	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+358676	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+358712	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+358904	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+358927	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+359109	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+359222	F10	0	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+359395	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+359538	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+362377	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+362558	F8	0	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+362642	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+363532	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+363844	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+364721	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+364832	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+365007	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+365099	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+365123	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+370741	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+370794	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+371013	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+371134	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+371242	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+371444	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+371580	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+372258	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+372364	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+372625	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+372759	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+373182	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+373278	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+373375	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+373493	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+373537	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+373690	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+373776	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+373861	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+373930	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+374054	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+374071	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+374152	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+374228	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+374396	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+374417	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+374512	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+374557	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+374569	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+374780	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+374851	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+374897	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+374981	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+378604	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+378722	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+382659	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+382687	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+382860	F10	0	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+382886	F0	1	-F0-  F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+383008	F0	0	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+383135	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+383245	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+383366	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+383401	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+383509	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+389884	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+390060	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+390232	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+390850	F17	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+390981	F17	0	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+391025	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+407142	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+407295	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+407445	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+407710	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+413820	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+413979	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+414012	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+414187	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+414428	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+414552	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+426177	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+426418	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+426455	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+426612	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+426698	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+426791	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+426859	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+426983	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+428430	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+428588	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+433062	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+433134	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+433304	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+433424	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+433445	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11  -F12-  F13   F14   F15  -F16-  F17   F18   F19  
+433504	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9  -F10-  F11  -F12-  F13   F14   F15  -F16-  F17   F18   F19  
+433804	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11  -F12-  F13   F14   F15  -F16-  F17   F18   F19  
+433924	F10	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15  -F16-  F17   F18   F19  
+434033	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+434243	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+435668	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+435776	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+438794	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+438952	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+440544	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+440697	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+440725	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+440874	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+441068	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+441162	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+455710	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+455874	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+455975	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+456090	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+456150	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+456176	F18	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+456345	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+456370	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17  -F18-  F19  
+456463	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+456614	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+456631	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+456732	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+456802	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+456900	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+456920	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+457009	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+457068	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+457168	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+464595	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+464747	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+474381	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+474556	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+474593	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+474769	F10	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+474901	F10	0	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+475096	F16	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+475196	F16	0	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+478361	F5	1	 F0   F1   F2   F3  -F4- -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+478477	F5	0	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+482622	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+482677	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+482767	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+483009	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+483081	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+483234	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+483355	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+483391	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+483476	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+534460	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+534654	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+590453	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+590619	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+590678	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+590759	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+598410	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+598575	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+598666	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+598756	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+598796	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+598883	F10	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+598958	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+599045	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+603791	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+603987	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+606379	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+606480	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+610431	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+614651	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+616401	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+616678	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+616783	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+616879	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+627059	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+627220	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+627303	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+627400	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+638507	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+638661	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+646416	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+646576	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+654607	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+654767	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+660825	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+660986	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+682109	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+682305	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+684578	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+684692	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+702477	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+702640	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+749578	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+749736	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+749801	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+749884	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+750389	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+750479	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+758448	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+758602	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+765814	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+765941	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+766367	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+766456	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+770409	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+770538	F10	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+773527	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+773630	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+773723	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+773811	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+777512	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+777671	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+786396	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+786559	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+786653	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+786745	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+790413	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+790550	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+802445	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+802608	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+806362	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+806497	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+814046	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+814209	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+818566	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+818732	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+848345	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+848500	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+855654	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+855865	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+909290	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+909449	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+949979	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+950172	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+950232	F9	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8  -F9-  F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+950367	F9	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+950432	F14	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13  -F14-  F15   F16   F17   F18   F19  
+950612	F14	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+950760	F11	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10  -F11-  F12   F13   F14   F15   F16   F17   F18   F19  
+950873	F11	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+950937	F2	1	 F0   F1  -F2-  F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+951043	F2	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+951099	F13	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12  -F13-  F14   F15   F16   F17   F18   F19  
+951366	F13	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+951728	F15	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14  -F15-  F16   F17   F18   F19  
+951850	F15	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+952102	F5	1	 F0   F1   F2   F3   F4  -F5-  F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+952207	F5	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+952551	F18	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17  -F18-  F19  
+952671	F18	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+952918	F10	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9  -F10-  F11   F12   F13   F14   F15   F16   F17   F18   F19  
+953021	F10	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+953267	F0	1	-F0-  F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+953370	F0	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+953711	F3	1	 F0   F1   F2  -F3-  F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+953821	F3	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+954085	F8	1	 F0   F1   F2   F3   F4   F5   F6   F7  -F8-  F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+954190	F8	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+954457	F19	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18  -F19- 
+954553	F19	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+954911	F17	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16  -F17-  F18   F19  
+955021	F17	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+955228	F12	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11  -F12-  F13   F14   F15   F16   F17   F18   F19  
+955325	F12	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+955545	F7	1	 F0   F1   F2   F3   F4   F5   F6  -F7-  F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+955636	F7	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+955794	F6	1	 F0   F1   F2   F3   F4   F5  -F6-  F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+955886	F6	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+956047	F16	1	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15  -F16-  F17   F18   F19  
+956140	F16	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+956298	F4	1	 F0   F1   F2   F3  -F4-  F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+956390	F4	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+956543	F1	1	 F0  -F1-  F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
+956634	F1	0	 F0   F1   F2   F3   F4   F5   F6   F7   F8   F9   F10   F11   F12   F13   F14   F15   F16   F17   F18   F19  
