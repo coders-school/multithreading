@@ -1,0 +1,5 @@
+False sharing test.
+
+Time taken in Sequential computing: 5940 ms
+Time taken with false sharing:      15040 ms
+Time taken without false sharing:   3401 ms
