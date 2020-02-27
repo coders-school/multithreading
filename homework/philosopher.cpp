@@ -20,8 +20,8 @@ std::thread philosopher[itemsCnt];
 
 std::mutex displayMutex;
 std::mutex updateMutex;
-std::atomic<bool> philCanEat[itemsCnt];   // philosopher can eat
-std::atomic<bool> philEat[itemsCnt];      // philosopher is eating
+std::atomic<bool> philosopherCanEat[itemsCnt];
+bool philosopherIsEating[itemsCnt];
 
 using namespace std::chrono_literals;
 
@@ -43,7 +43,7 @@ void displayState()
 
     for ( int i = 0; i < itemsCnt; ++i )
     {
-        if ( philEat[i] )
+        if ( philosopherIsEating[i] )
         {
             ss << "-F" << i << "- ";
         }
@@ -66,15 +66,15 @@ void action( int idx )
 
     while ( iActionStep < actionCnt )
     {
-        if (philCanEat[idx])
+        if (philosopherCanEat[idx])
         {
             std::scoped_lock lock( forks[left_fork], forks[right_fork] );
             
-            // NOTE: Here is a small race condition on philEat[idx] variable and display_state() function.
+            // NOTE: Here is a small race condition on philosopherIsEating[idx] variable and display_state() function.
             // Proper results are shown in post processing. See show events in main function().
 
             displayMutex.lock();
-            philEat[idx] = true;
+            philosopherIsEating[idx] = true;
             resport_events[resport_events_idx++] = {idx, true, std::chrono::steady_clock::now()};
             displayMutex.unlock();
 
@@ -90,11 +90,11 @@ void action( int idx )
             displayState();
             
             displayMutex.lock();
-            philEat[idx] = false;
+            philosopherIsEating[idx] = false;
             resport_events[resport_events_idx++] = {idx, false, std::chrono::steady_clock::now()};
             displayMutex.unlock();
             
-            philCanEat[idx] = false;
+            philosopherCanEat[idx] = false;
             iActionStep++;
 
             if ( action_debug )
@@ -115,7 +115,7 @@ void action( int idx )
             bool allEaten = true;
             for (int i = 0; i < itemsCnt; ++i)
             {
-                if ( philCanEat[i] )
+                if ( philosopherCanEat[i] )
                 {
                     allEaten = false;
                     break;
@@ -127,7 +127,7 @@ void action( int idx )
             {
                 for (int i = 0; i < itemsCnt; ++i)
                 {
-                    philCanEat[i] = true;
+                    philosopherCanEat[i] = true;
                 }
             }
         }
@@ -139,8 +139,8 @@ int main()
     // init
     for (int i = 0; i < itemsCnt; ++i)
     {
-        philCanEat[i] = true;
-        philEat[i] = false;
+        philosopherCanEat[i] = true;
+        philosopherIsEating[i] = false;
     }
     std::srand(std::time(nullptr));
     auto start = std::chrono::steady_clock::now();
@@ -156,7 +156,7 @@ int main()
     
     std::cout << "------------------------------------" << std::endl;
 
-    for( std::atomic<bool>& a : philEat )
+    for( bool& a : philosopherIsEating )
     {
         a = false;
     }
@@ -168,7 +168,7 @@ int main()
     std::cout << "time\tID\teat\tstatus" << std::endl;
     for( report_item ri : resport_events)
     {
-        philEat[ri.iPhilosopherID] = ri.bEat;
+        philosopherIsEating[ri.iPhilosopherID] = ri.bEat;
 
         std::cout <<  std::chrono::duration_cast<std::chrono::microseconds>(ri.time - start).count() << "\t" 
             << "F" << ri.iPhilosopherID << "\t" << ri.bEat << "\t";
