@@ -1,10 +1,7 @@
 #include "Table.hpp"
 #include <sstream>
 
-//Table::Table();
-Table::~Table();
-
-Table::print() {
+void Table::print() {
     stringstream buff;
     for(int i = 0; i < population; i++) {
         // buff << table status;

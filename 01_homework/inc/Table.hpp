@@ -1,3 +1,4 @@
+#pragma once
 #include <mutex>
 #include <array>
 
@@ -6,16 +7,14 @@ struct Fork
    std::mutex mutex;
 };
 
-template<std::size_t S>
+//template<std::size_t S>
 class Table
 {
-    const std::size_t population = S;
+    //const std::size_t population = 5;
 public:
-    std::array<Fork, S> forks;
+    bool food = true;
+    std::array<Fork, 5> forks;
     // array for starving values
 
-    Table();
-    ~Table();
-
-    print();
+    void print();
 };

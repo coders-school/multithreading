@@ -1,19 +1,30 @@
 #include "Philosopher.hpp"
+#include <thread>
+#include <chrono>
+#include <iomanip>
+#include <random>
 
-#include <
+void philosopher(Table & table, Fork &fork_left, Fork &fork_right) {
+    std::mt19937 rng{ std::random_device{}()
 
-Philosopher::Philosopher(table const &table,
-                         fork& f_left,
-                         fork& f_right ) noexcept
-    : table_(table),
-      fork_left_(f_left),
-      fork_right_(f_right) {}
+    while(table.food) {
+        static thread_local std::uniform_int_distribution<> wait(1, 6);
+        std::this_thread::sleep_for(std::chrono::milliseconds(wait(rng) * 150));
 
-Philosopher::~Philosopher() {
-    //thread.join();
-}
+        print(" is thinking ");
 
-Philosopher::dine() {
+        std::lock(fork_left.mutex, fork_right.mutex);
+
+        std::lock_guard<std::mutex> left_lock(fork_left.mutex,   std::adopt_lock);
+        std::lock_guard<std::mutex> right_lock(fork_right.mutex, std::adopt_lock);
+
+        print(" started eating.");
+
+        static thread_local std::uniform_int_distribution<> dist(1, 6);
+        std::this_thread::sleep_for(std::chrono::milliseconds(dist(rng) * 50));
+
+        print(" finished eating.");
+    }
     // try to get forks
     // eat if successful
     // // incearse starving counter if fails
