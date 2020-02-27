@@ -1,13 +1,17 @@
 #include "Table.hpp"
-#include <mutex>
-#include <array>
+#include <sstream>
 
-struct fork
-{
-   std::mutex mutex;
-};
+//Table::Table();
+Table::~Table();
 
-struct table
-{
-   std::array<fork, 5> forks;
-};
+Table::print() {
+    stringstream buff;
+    for(int i = 0; i < population; i++) {
+        // buff << table status;
+
+    }
+    //buff << first fork as it is shared between first and last philosopher
+    //buff << return carrige
+
+    cout << buff;
+}

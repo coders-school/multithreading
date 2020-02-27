@@ -1,12 +1,21 @@
 #include "Philosopher.hpp"
-#include <string>
-#include <thread>
+
 #include <
 
-class Philosopher {
-   std::string const name;
-   table const &     dinnertable;
-   fork&             left_fork;
-   fork&             right_fork;
-   std::thread       lifethread;
-};
+Philosopher::Philosopher(table const &table,
+                         fork& f_left,
+                         fork& f_right ) noexcept
+    : table_(table),
+      fork_left_(f_left),
+      fork_right_(f_right) {}
+
+Philosopher::~Philosopher() {
+    //thread.join();
+}
+
+Philosopher::dine() {
+    // try to get forks
+    // eat if successful
+    // // incearse starving counter if fails
+    // time for some thinking
+}
