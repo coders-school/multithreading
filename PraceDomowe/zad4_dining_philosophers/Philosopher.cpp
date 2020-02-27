@@ -3,9 +3,6 @@
 Philosopher::Philosopher(std::string name, Fork& lFork, Fork& rFork):
     philosopherName(name), leftFork(lFork), rightFork(rFork), philosopherThread(&Philosopher::dine, this) {}
 
-Philosopher::Philosopher(Philosopher && other):
-    philosopherName(other.philosopherName), leftFork(other.leftFork), rightFork(other.rightFork), philosopherThread(&Philosopher::dine, this) {}
-
 Philosopher::~Philosopher(){
     philosopherThread.join();
 }
@@ -13,15 +10,27 @@ Philosopher::~Philosopher(){
 void Philosopher::eat(){
     std::scoped_lock lockForks(leftFork.getMutex(), rightFork.getMutex());
 
-    std::cout << this->philosopherName << "start eating." << std::endl;
-    std::cout << this->philosopherName << "stop eating." << std::endl;
+    std::stringstream eatStart;
+    eatStart << this->philosopherName << "start eating." << std::endl;
+    std::cout << eatStart.rdbuf();
+
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+
+    std::stringstream eatStop;
+    eatStop << this->philosopherName << "stop eating." << std::endl;
+    std::cout << eatStop.rdbuf();
     }
 
 void Philosopher::think(){
-        std::cout << this->philosopherName << "is thinking" << std::endl;
+        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+        std::stringstream trinkString;
+        trinkString << this->philosopherName << "is thinking." << std::endl;
+        std::cout << trinkString.rdbuf();
+
     }
 
 void Philosopher::dine(){
+    // dodac petle
         think();
         eat();
     }

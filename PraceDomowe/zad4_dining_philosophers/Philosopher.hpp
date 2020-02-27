@@ -3,7 +3,9 @@
 #include <iostream>
 #include <mutex>
 #include <string>
+#include <sstream>
 #include <thread>
+#include <chrono>
 #include "Fork.hpp"
 
 class Philosopher{
@@ -15,7 +17,7 @@ private:
 
 public:
     Philosopher(std::string name, Fork& lFork, Fork& rFork);
-    Philosopher(Philosopher && other);
+    Philosopher(Philosopher && other) = default;
     ~Philosopher();
 
     void eat();
