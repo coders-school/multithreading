@@ -1,5 +1,3 @@
-//code source: https://stackoverflow.com/questions/18236603/cache-lines-false-sharing-and-alignment
-
 #include <iostream>
 #include <thread>
 #include <chrono>
@@ -8,6 +6,8 @@
 
 int operatinos = 1'000'000'000;
 const int numberOfThreads = 4;
+const int spacing = 16; 
+const int padding = 4;
 
 void thread_func(int* data){
     for (unsigned i = 0; i < operatinos / numberOfThreads; ++i)    {
@@ -17,10 +17,11 @@ void thread_func(int* data){
 
 int main(){
     auto startCount = std::chrono::steady_clock::now();
-    std::array <int, numberOfThreads> arr;
+    const int arraySize = numberOfThreads*spacing + padding;
+    std::array <int, arraySize> arr;
     std::array <std::thread, numberOfThreads> threads;
     for (int i = 0; i < numberOfThreads; ++i){
-        threads[i] = std::thread(thread_func, &(arr[i]));
+        threads[i] = std::thread(thread_func, &(arr[i*spacing + padding]));
     }
     for (auto& element : threads){
         element.join();
