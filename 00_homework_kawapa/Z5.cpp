@@ -1,30 +1,18 @@
 #include <array>
 #include <chrono>
 #include <iostream>
+#include <new>
 #include <thread>
-#include <vector>
 
 const int CORES = 4;
 const int HOW_MANY = 10'000'000;
 
 struct Entity
 {
-    int value;
-    // int padding[1];
-    // if padding == 15, the entity object has exactly 64 bytes (one cache line)
-    // if 15 > padding >= 5, it still helps as at least one thread
-    // ... can work indepedently
+     alignas(64) int value;
 };
 
-void hardWork(std::array<Entity, CORES> & entities, int i)
-{    
-    for (size_t j = 0; j < HOW_MANY; j++)
-    {
-        entities[i].value = entities[i].value + 2;
-        // function hardWork overwrites one cell "HOW_MANY" times
-        // program execution time will tell if padding helps
-    }
-}
+void hardWork(std::array<Entity, CORES> & entities, int i);
 
 int main()
 {   
@@ -43,7 +31,13 @@ int main()
         auto end = std::chrono::high_resolution_clock::now();
 
         std::chrono::duration<double, std::milli> difference = end - start;
-        std::cout << "This took: " << difference.count() << std::endl;
+        std::cout << "This took: " << difference.count() << " ms" << std::endl;
 
     return 0;
+}
+
+void hardWork(std::array<Entity, CORES> & entities, int i);
+{    
+    for (size_t j = 0; j < HOW_MANY; j++)
+        entities[i].value = entities[i].value + 2;
 }
