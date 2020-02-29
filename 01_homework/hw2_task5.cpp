@@ -47,15 +47,16 @@ int main() {
     duration = stop - start;
     std::cout << "Duration: " << duration.count() << '\n';
 
-/**********************************************************************************************
+/*****************************************************************************
  *
- * Zjawisko false sharingu występuje poniewaz watki probuja dostac sie do tej samej komorki
- * pamieci mimo zeznajduja sie tam dwie niezalezne zmienne. Zeby uniknac tego zjawiska trzeba
- * sie upewnic ze dane na ktorych pracuja osobne watki znajduja sie w osobnych komorkach
- * pamieci. Ich rozsuwanie (padding można zrealizować poprzez wstawianie dodatkowcyh
- * sztucznych zmiennych albo za pomoca odpowiednich komend kompilatora (__declspec (align(64)))
+ * Zjawisko false sharingu występuje poniewaz watki probuja dostac sie do tej
+ * samej komorki pamieci mimo zeznajduja sie tam dwie niezalezne zmienne. Zeby
+ * uniknac tego zjawiska trzeba sie upewnic ze dane na ktorych pracuja osobne
+ * watki znajduja sie w osobnych komorkach pamieci. Ich rozsuwanie (padding
+ * można zrealizować poprzez wstawianie dodatkowcyh sztucznych zmiennych albo
+ * za pomoca odpowiednich komend kompilatora (__declspec (align(64)))
  *
- **********************************************************************************************/
+ *****************************************************************************/
 
     return 0;
 }
