@@ -1,8 +1,8 @@
-#include "iterator"
-#include "iostream"
-#include "numeric"
-#include "thread"
-#include "vector"
+#include <iterator>
+#include <iostream>
+#include <numeric>
+#include <thread>
+#include <vector>
 
 
 template<typename IT, typename T>
@@ -46,7 +46,9 @@ T parallelAccumulate(IT first, IT last, T init)
 
     for (auto && iThread : threadvector)
         iThread.join();
-    
+
+
+
     return std::accumulate( result.begin(), result.end(), init);
 }
 

@@ -1,10 +1,10 @@
-#include "algorithm"
-#include "iterator"
-#include "iostream"
-#include "numeric"
-#include "thread"
-#include "vector"
-#include "cassert"
+#include <algorithm>
+#include <iterator>
+#include <iostream>
+#include <numeric>
+#include <thread>
+#include <vector>
+#include <cassert>
 
 
 template<typename IT, typename Predictor, typename T>
@@ -128,3 +128,11 @@ int main()
     Test2();
     return 0;
 }
+
+/*
+Count_if Result ; Duration: 0.023463 ; Result: 500000
+Count_if Result ; Duration: 0.106612; Result: 5000000
+
+Count_if in parallel Result ; Duration: 0.0278646; Result: 500000
+Count_if in parallel Result; Duration: 0.0468752; Result: 5000000
+*/
