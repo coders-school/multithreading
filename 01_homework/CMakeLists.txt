@@ -9,8 +9,5 @@ add_definitions(-Wno-unused-variable)
 add_definitions(-Wno-unused-parameter)
 add_definitions(-Wall -Werror -pedantic -Wextra)
 
-include_directories(src)
-include_directories(inc)
-
-add_executable(${PROJECT_NAME} src/main.cpp)
+add_executable(${PROJECT_NAME} hw2_task4.cpp)
 target_link_libraries(${PROJECT_NAME} pthread -fsanitize=thread)
