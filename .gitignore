@@ -5,3 +5,7 @@ build
 # CLion IDE
 .idea
 cmake-build-debug
+
+# Homework
+*/build
+*.auto
