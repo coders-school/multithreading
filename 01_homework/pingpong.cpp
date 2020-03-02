@@ -9,7 +9,7 @@ using namespace std;
 
 class PingPong {
     long int repetitions_;
-    atomic<bool> game_is_on_{true};
+    atomic<bool> timeout_{false};
     atomic<bool> ping_turn_{true};
     mutex mutex_;
     condition_variable cv_ping_, cv_pong_;
@@ -25,13 +25,19 @@ public:
             unique_lock<mutex> ping_lock(mutex_);
 
             while (ping_reps < repetitions_) {
+
                 cout << "ping ";
                 ping_turn_.store(false);
                 ping_lock.unlock();
-                cv_pong_.notify_one();
+                cv_ping_.notify_all();
                 ping_reps++;
 
-                this_thread::sleep_for(100ms);
+                this_thread::sleep_for(1ms);
+                if(timeout_.load()) {
+                    cout << ".";
+                    cv_ping_.notify_all();
+                    return;
+                }
 
                 ping_lock.lock();
                 cv_ping_.wait(ping_lock, my_turn_check);
@@ -45,17 +51,35 @@ public:
 
             while (pong_reps < repetitions_) {
                 pong_lock.lock();
-                cv_pong_.wait(pong_lock, my_turn_check);
+                cv_ping_.wait(pong_lock, my_turn_check);
                 cout << "pong : " << pong_reps << "\n";
                 ping_turn_.store(true);
                 pong_lock.unlock();
+                if(timeout_.load()) {
+                    cout << "Timeout reached\n";
+                    return;
+                }
                 cv_ping_.notify_all();
                 pong_reps++;
             }
+            timeout_.store(true);
+            cout << "Max repetitions reached\n";
         }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
-        // TODO: should stop execution after timeout
+        auto start = std::chrono::high_resolution_clock::now();
+        unique_lock<mutex> to_lock(mutex_, defer_lock);
+
+        while(not timeout_.load()) {
+            to_lock.lock();
+            cv_ping_.wait(to_lock);
+            auto duration = std::chrono::high_resolution_clock::now() - start;
+            if(timeout <= duration) {
+                timeout_.store(true);
+                cout << ",\n";
+            }
+            to_lock.unlock();
+        }
     }
 };
 
