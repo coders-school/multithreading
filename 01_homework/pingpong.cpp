@@ -6,79 +6,76 @@
 #include <condition_variable>
 
 using namespace std;
+constexpr auto step_time = std::chrono::milliseconds(10000);
 
 class PingPong {
     long int repetitions_;
-    atomic<bool> timeout_{false};
+    atomic<bool> game_is_on_{true};
     atomic<bool> ping_turn_{true};
-    mutex mutex_;
-    condition_variable cv_ping_, cv_pong_;
+    mutex mutex_, to_mutex_;
+    condition_variable cv_step_;
+
+    void end_message() {
+        if(game_is_on_) {
+            game_is_on_.store(false);
+            cout << "Max repetitions reached\n";
+            cv_step_.notify_all();
+        } else {
+            cout << "Timeout reached\n";
+        }
+    }
+
+    void pingponging(string text, bool is_ping) {
+        long int ping_reps = 0;
+        unique_lock<mutex> ping_lock(mutex_, defer_lock);
+        unique_lock<mutex> to_lock(to_mutex_, defer_lock);
+        auto ping_turn_check = [&]{return ping_turn_.load() == is_ping;};
+        auto check_timeout = [&]{return not game_is_on_.load();};
+
+        while (game_is_on_) {
+            ping_lock.lock();
+            cv_step_.wait(ping_lock, ping_turn_check);
+
+            cout << text;
+            ping_turn_.store(not is_ping);
+            ping_lock.unlock();
+            cv_step_.notify_all();
+
+            ping_reps++;
+            if(ping_reps >= repetitions_) break;
+
+            to_lock.lock();
+            cv_step_.wait_for(to_lock, step_time, check_timeout);
+            to_lock.unlock();
+        }
+
+        if(is_ping)
+            cv_step_.notify_all();
+        else
+            end_message();
+    }
 
 public:
     PingPong(int repetitions)
         : repetitions_(repetitions)
     {}
 
-        void ping() {
-            long int ping_reps = 0;
-            auto my_turn_check = [&]{return ping_turn_ == true;};
-            unique_lock<mutex> ping_lock(mutex_);
+    void ping() {
+        pingponging("ping ", true);
+    }
 
-            while (ping_reps < repetitions_) {
-
-                cout << "ping ";
-                ping_turn_.store(false);
-                ping_lock.unlock();
-                cv_ping_.notify_all();
-                ping_reps++;
-
-                this_thread::sleep_for(1ms);
-                if(timeout_.load()) {
-                    cout << ".";
-                    cv_ping_.notify_all();
-                    return;
-                }
-
-                ping_lock.lock();
-                cv_ping_.wait(ping_lock, my_turn_check);
-            }
-        }
-
-        void pong() {
-            long int pong_reps = 0;
-            auto my_turn_check = [&]{return ping_turn_ == false;};
-            unique_lock<mutex> pong_lock(mutex_, defer_lock);
-
-            while (pong_reps < repetitions_) {
-                pong_lock.lock();
-                cv_ping_.wait(pong_lock, my_turn_check);
-                cout << "pong : " << pong_reps << "\n";
-                ping_turn_.store(true);
-                pong_lock.unlock();
-                if(timeout_.load()) {
-                    cout << "Timeout reached\n";
-                    return;
-                }
-                cv_ping_.notify_all();
-                pong_reps++;
-            }
-            timeout_.store(true);
-            cout << "Max repetitions reached\n";
-        }
+    void pong() {
+        pingponging("pong\n", false);
+    }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
-        auto start = std::chrono::high_resolution_clock::now();
-        unique_lock<mutex> to_lock(mutex_, defer_lock);
+        auto check_max_reps = [&]{return not game_is_on_.load();};
 
-        while(not timeout_.load()) {
-            to_lock.lock();
-            cv_ping_.wait(to_lock);
-            auto duration = std::chrono::high_resolution_clock::now() - start;
-            if(timeout <= duration) {
-                timeout_.store(true);
-                cout << ",\n";
-            }
-            to_lock.unlock();
+        unique_lock<mutex> stop_lock(mutex_);
+        if(not cv_step_.wait_for(stop_lock, timeout, check_max_reps)) {
+            game_is_on_.store(false);
+            stop_lock.unlock();
+            cv_step_.notify_all();
         }
     }
 };
