@@ -203,11 +203,11 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | [Adam Mierzwiak](https://github.com/adamvm)         |   58 |           10 |    |    | 38 | 10 |    |    |    |    |    |    |    |       |      |
 | [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
 | [Jakub Zych](https://github.com/jzych)              |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [kamil waszkiewicz](https://github.com/darkassazi)  |   71 |            5 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
+| [kamil waszkiewicz](https://github.com/darkassazi)  |   94 |           20 |    |    | 38 | 11 | 20 |    |  5 |    |    |    |    |       |      |
 | [kawapa](https://github.com/kawapa)                 |   99 |           20 |    |    | 38 | 11 | 20 |    | 10 |    |    |    |    |       |      |
 | [Krzysiek](https://github.com/kdoroszko)            |   56 |           15 |    |    | 10 | 11 | 20 |    |    |    |    |    |    |       |      |
 | [matijaz](https://github.com/matijaz)               |   43 |            5 |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [mkijew](https://github.com/mkijew)                 |  128 |           25 |    |    | 38 | 11 | 20 | 24 | 10 |    |    |    |    |       |      |
+| [mkijew](https://github.com/mkijew)                 |  153 |           30 |    |    | 38 | 11 | 20 | 24 | 10 | 20 |    |    |    |       |      |
 | [MonikaZ](https://github.com/MonikaZelechowska)     |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
 | [piotr.kowandy](https://github.com/PiotrKowandy)    |   79 |           10 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
 | [Szafirmag](https://github.com/WBigaj)              |   81 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
