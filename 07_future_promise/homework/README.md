@@ -13,7 +13,8 @@ Here are the most important attributes that **you have to achieve**:
 > Sending mail to: dev5@company.com - FAIL  
 
 Your SW architect decided to use libmail as a framework for mail notifications.  
-libmail can be found in 3rdparty folder
+libmail can be found in 3rdparty folder. Use promises and futures to achieve the goal.
+The main thread should be the only one which prints anything on the screen.
 
 ## Task2
 
