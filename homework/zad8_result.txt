@@ -1,0 +1,104 @@
+
+Number of elements in vector: 1000
+Minimum elements for one thread: 200
+Number of hardware threads: 2
+
+Create threads: 17673us
+Wait for finish threads: 188us
+
+Pararel algorithm: 18078us
+
+Normal algorithm: 458us
+
+ ----- end test ----
+
+Number of elements in vector: 1000000
+Minimum elements for one thread: 200
+Number of hardware threads: 2
+
+Create threads: 16146us
+Wait for finish threads: 317617us
+
+Pararel algorithm: 333888us
+
+Normal algorithm: 393250us
+
+ ----- end test ----
+
+Number of elements in vector: 1000000
+Minimum elements for one thread: 256
+Number of hardware threads: 2
+
+Create threads: 14793us
+Wait for finish threads: 336343us
+
+Pararel algorithm: 351262us
+
+Normal algorithm: 393014us
+
+ ----- end test ----
+
+Number of elements in vector: 1000
+Minimum elements for one thread: 500
+Number of hardware threads: 2
+
+Create threads: 9198us
+Wait for finish threads: 126us
+
+Pararel algorithm: 9389us
+
+Normal algorithm: 386us
+
+ ----- end test ----
+
+Number of elements in vector: 1000000
+Minimum elements for one thread: 500
+Number of hardware threads: 2
+
+Create threads: 9987us
+Wait for finish threads: 243707us
+
+Pararel algorithm: 253921us
+
+Normal algorithm: 378383us
+
+ ----- end test ----
+
+Number of elements in vector: 1000000
+Minimum elements for one thread: 512
+Number of hardware threads: 2
+
+Create threads: 9869us
+Wait for finish threads: 253012us
+
+Pararel algorithm: 263126us
+
+Normal algorithm: 377836us
+
+ ----- end test ----
+
+Number of elements in vector: 1000000
+Minimum elements for one thread: 2000
+Number of hardware threads: 2
+
+Create threads: 15152us
+Wait for finish threads: 239182us
+
+Pararel algorithm: 254464us
+
+Normal algorithm: 375696us
+
+ ----- end test ----
+
+Number of elements in vector: 1000000
+Minimum elements for one thread: 2048
+Number of hardware threads: 2
+
+Create threads: 9916us
+Wait for finish threads: 269893us
+
+Pararel algorithm: 279944us
+
+Normal algorithm: 370722us
+
+ ----- end test ----
