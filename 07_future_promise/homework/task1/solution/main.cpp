@@ -6,7 +6,7 @@
 #include <libmail/randomize_results.h>
 
 std::string print_result(bool result) {
-    return result ? " - TRUE\n" : " - FAIL\n";
+    return result ? " - OK\n" : " - FAIL\n";
 }
 
 int main()
@@ -45,9 +45,4 @@ int main()
     for(auto& thread : threads) {
         thread.join();
     }
-
-    // for(auto dev : responsible_devs) {
-    //     bool result = libmail::send_mail(dev, message);
-    //     std::cout << "Sending mail to: " << dev << print_result(result);
-    // }
 }

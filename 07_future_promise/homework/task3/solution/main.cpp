@@ -6,7 +6,7 @@
 #include <libmail/randomize_results.h>
 
 std::string print_result(bool result) {
-    return result ? "TRUE" : "FAIL";
+    return result ? "OK" : "FAIL";
 }
 
 int main()
