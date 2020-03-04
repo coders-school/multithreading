@@ -202,7 +202,7 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
 | [Adam Mierzwiak](https://github.com/adamvm)         |   58 |           10 |    |    | 38 | 10 |    |    |    |    |    |    |    |       |      |
 | [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [Jakub Zych](https://github.com/jzych)              |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
+| [Jakub Zych](https://github.com/jzych)              |  104 |           20 |    |    | 38 | 11 | 20 |    |    |    | 15 |    |    |       |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |   94 |           20 |    |    | 38 | 11 | 20 |    |  5 |    |    |    |    |       |      |
 | [kawapa](https://github.com/kawapa)                 |   99 |           20 |    |    | 38 | 11 | 20 |    | 10 |    |    |    |    |       |      |
 | [Krzysiek](https://github.com/kdoroszko)            |   56 |           15 |    |    | 10 | 11 | 20 |    |    |    |    |    |    |       |      |
@@ -256,4 +256,3 @@ Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się w kwiet
 4. Jeśli uważasz, że odwalam dobrą robotę to [skrobnij parę słów na ten temat na FB](https://www.facebook.com/pg/szkola.coders.school/reviews/?ref=page_internal), niech się niesie w świat ;)
 5. Zachęcam też do [potwierdzenia moich umiejętności i wystawienia mi rekomendacji na LinkedInie](https://www.linkedin.com/in/lukaszziobron/). Mogę odwdzięczyć się tym samym :)
 6. [Zapisz się na newsletter](https://coders.school/#newsletter), jeśli chcesz otrzymywać informacje o przyszłych kursach.
-
