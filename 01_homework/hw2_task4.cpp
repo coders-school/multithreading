@@ -7,13 +7,9 @@
 #include <mutex>
 #include <array>
 
-#define LOG
-
 constexpr int dining_time = 10;
 constexpr int population = 5;
 constexpr int starvation_treshold = 50;
-
-std::mutex print_mutex;
 
 struct Fork
 {
@@ -28,6 +24,7 @@ struct Table
     std::array<int, population> ownership;
     std::array<int, population> starvation;
 
+    std::mutex print_mutex;
     std::mutex starvation_mutex;
 
     Table();
@@ -35,14 +32,6 @@ struct Table
     void print(bool lock, int id);
     bool check_neighbour_stavation(int id);
 };
-
-#ifdef LOG
-void log_print(int id, std::string_view text)
-{
-   std::lock_guard<std::mutex> cout_lock(print_mutex);
-   std::cout << static_cast<char>(id+65) << text << std::endl;
-}
-#endif
 
 std::string print_fork(int value) {
     if (value < 0) return "|  ";
@@ -72,16 +61,9 @@ void Table::print(bool lock, int id) {
 
     std::stringstream buff;
 
-#ifdef LOG
-    buff << "[" << id << "," << lock << "]: ";
-#endif
-
     for (int i = 0; i < population; i++) {
         buff << print_fork(ownership[i]);
         buff << static_cast<char>(i + 'A');
-#ifdef LOG
-        buff << check_neighbour_stavation(i) << "." << starvation[i];
-#endif
     }
     buff << print_fork(ownership[0]);
     buff << '\n';
@@ -124,25 +106,16 @@ void eat(int id, Table &table, Fork &fork_left, Fork &fork_right, std::mt19937 &
         std::lock_guard<std::mutex> lock(table.starvation_mutex);
         table.starvation[id] = 0;
     }
-#ifdef LOG
-    log_print(id, " started eating.");
-#endif
+
     std::uniform_int_distribution<> sleep_time{1, 10};
     std::this_thread::sleep_for(std::chrono::milliseconds(sleep_time(seed) * 200));
 
     table.print(false, id);
-#ifdef LOG
-    log_print(id, " finished eating.");
-#endif
 }
 
 void think(int id, std::mt19937 &seed) {
     std::uniform_int_distribution<> sleep_time{1, 10};
     std::this_thread::sleep_for(std::chrono::milliseconds(sleep_time(seed) * 100));
-
-#ifdef LOG
-    log_print(id, " is done thinking ");
-#endif
 }
 
 void philosopher(int id, Table &table, Fork &fork_left, Fork &fork_right) {
@@ -157,7 +130,7 @@ void philosopher(int id, Table &table, Fork &fork_left, Fork &fork_right) {
 int main(int argc, char *argv[]) {
     Table table;
     std::vector<std::thread> philosophers;
-    
+
     // Run philosophers threads
     for(int i = 0; i < population - 1; i++) {
         philosophers.emplace_back(philosopher,
