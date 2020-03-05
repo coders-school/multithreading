@@ -12,7 +12,7 @@ class PingPong
 {
 private:
     int repetitions_;
-    int index_ = 0;
+    std::atomic<int> index_ {0};
     int indexPings_ = 0;
     int indexPongs_ = 0;
     std::atomic<bool> continuePlay {true};
@@ -104,7 +104,8 @@ public:
             continuePlay = false;
             cv_.notify_all();
         }
-        exit(1);
+        
+        cv_.notify_all();
     }
 };
 
