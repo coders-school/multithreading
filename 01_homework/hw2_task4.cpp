@@ -7,7 +7,7 @@
 #include <mutex>
 #include <array>
 
-#undef LOG
+#define LOG
 
 constexpr int dining_time = 10;
 constexpr int population = 5;
@@ -27,6 +27,8 @@ struct Table
     std::array<Fork, population> forks;
     std::array<int, population> ownership;
     std::array<int, population> starvation;
+
+    std::mutex starvation_mutex;
 
     void print(bool lock, int id);
     bool check_neighbour_stavation(int id);
@@ -92,6 +94,7 @@ bool Table::check_neighbour_stavation(int id) {
     if(neighbour_right == population)
         neighbour_right = 0;
 
+    std::lock_guard<std::mutex> lock(starvation_mutex);
     if(starvation[neighbour_left] - starvation[id] > starvation_treshold)
         return false;
     if(starvation[neighbour_right] - starvation[id] > starvation_treshold)
@@ -107,8 +110,10 @@ void eat(int id, Table &table, Fork &fork_left, Fork &fork_right, std::mt19937 &
         if(table.check_neighbour_stavation(id)) {
             result = std::try_lock(fork_left.mutex, fork_right.mutex);
         }
-
-        table.starvation[id]++;
+        {
+            std::lock_guard<std::mutex> lock(table.starvation_mutex);
+            table.starvation[id]++;
+        }
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 
@@ -116,7 +121,10 @@ void eat(int id, Table &table, Fork &fork_left, Fork &fork_right, std::mt19937 &
     std::lock_guard<std::mutex> lock_right(fork_right.mutex, std::adopt_lock);
 
     table.print(true, id);
-    table.starvation[id] = 0;
+    {
+        std::lock_guard<std::mutex> lock(table.starvation_mutex);
+        table.starvation[id] = 0;
+    }
 #ifdef LOG
     log_print(id, " started eating.");
 #endif
