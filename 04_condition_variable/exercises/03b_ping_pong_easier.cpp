@@ -27,7 +27,7 @@ public:
             opponentsTurn_.wait(l, [&](){
                 return isPingTurn_;
             });
-            std::cout << "ping " <<reps <<std::endl;
+            std::cout << "ping " <<reps+1 <<std::endl;
             reps++;
             isPingTurn_ = false;
             l.unlock();
@@ -36,7 +36,7 @@ public:
         if (reps >= repetitions_)
         {
             // TOOD: only print message here
-            std::cout << "ping " <<reps <<std::endl;
+            std::cout << "Ping repetition limit." << std::endl;
         }
     }
 
@@ -47,9 +47,9 @@ public:
             unique_lock<mutex> l(m_);
             // TODO: wait to be used here + printing, reps incrementation, chainging turn to ping
             opponentsTurn_.wait(l, [&](){
-                return isPingTurn_;
+                return not isPingTurn_;
             });
-            std::cout << "pong " <<reps << std::endl;
+            std::cout << "pong " <<reps+1 << std::endl;
             reps++;
             isPingTurn_ = true;
             l.unlock();
@@ -58,7 +58,7 @@ public:
         if (reps >= repetitions_) {
             // TODO:  set play_ to false, display message, notify others to avoid deadlocks
             play_ = false;
-            std::cout << "End od program because of repetition limit." << std::endl;
+            std::cout << "Pong repetition limit. \nEnd of program" << std::endl;
             opponentsTurn_.notify_all();
         }
     }
@@ -66,6 +66,12 @@ public:
     void stop([[maybe_unused]] chrono::seconds timeout) {
         unique_lock<mutex> l(m_);
         // TODO: wait_for to be used here. Check for a return value and set play_ to false       
+       // auto timeStop = opponentsTurn_.wait_for(l, timeout,[&](){return not play_;});
+        if( not opponentsTurn_.wait_for(l, timeout,[&](){return not play_;})){
+            play_ = false;
+            std::cout << "End od program because of TIMEOUT." << std::endl;
+        }
+        opponentsTurn_.notify_all();
 
     }
 };
