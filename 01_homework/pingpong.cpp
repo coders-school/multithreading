@@ -36,7 +36,7 @@ class PingPong {
             ping_lock.lock();
             cv_step_.wait(ping_lock, ping_turn_check);
 
-            cout << text;
+            cout << text << " " << ping_reps << "\n";
             ping_turn_.store(not is_ping);
             ping_lock.unlock();
             cv_step_.notify_all();
@@ -61,11 +61,11 @@ public:
     {}
 
     void ping() {
-        pingponging("ping ", true);
+        pingponging("ping", true);
     }
 
     void pong() {
-        pingponging("pong\n", false);
+        pingponging("pong", false);
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
