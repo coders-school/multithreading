@@ -3,12 +3,15 @@ Number of elements in vector: 1000
 Minimum elements for one thread: 200
 Number of hardware threads: 2
 
-Create threads: 17673us
-Wait for finish threads: 188us
+pararelAccumulate() result: 500500
+std::accumulate() result: 500500
 
-Pararel algorithm: 18078us
+Create threads: 11065us
+Wait for finish threads: 0us
 
-Normal algorithm: 458us
+Pararel algorithm: 11332us
+
+Normal algorithm: 415us
 
  ----- end test ----
 
@@ -16,12 +19,15 @@ Number of elements in vector: 1000000
 Minimum elements for one thread: 200
 Number of hardware threads: 2
 
-Create threads: 16146us
-Wait for finish threads: 317617us
+pararelAccumulate() result: 1784293664
+std::accumulate() result: 1784293664
 
-Pararel algorithm: 333888us
+Create threads: 13221us
+Wait for finish threads: 0us
 
-Normal algorithm: 393250us
+Pararel algorithm: 242826us
+
+Normal algorithm: 356427us
 
  ----- end test ----
 
@@ -29,12 +35,15 @@ Number of elements in vector: 1000000
 Minimum elements for one thread: 256
 Number of hardware threads: 2
 
-Create threads: 14793us
-Wait for finish threads: 336343us
+pararelAccumulate() result: 1784293664
+std::accumulate() result: 1784293664
 
-Pararel algorithm: 351262us
+Create threads: 11588us
+Wait for finish threads: 0us
 
-Normal algorithm: 393014us
+Pararel algorithm: 238095us
+
+Normal algorithm: 348425us
 
  ----- end test ----
 
@@ -42,12 +51,15 @@ Number of elements in vector: 1000
 Minimum elements for one thread: 500
 Number of hardware threads: 2
 
-Create threads: 9198us
-Wait for finish threads: 126us
+pararelAccumulate() result: 500500
+std::accumulate() result: 500500
 
-Pararel algorithm: 9389us
+Create threads: 11220us
+Wait for finish threads: 0us
 
-Normal algorithm: 386us
+Pararel algorithm: 11402us
+
+Normal algorithm: 397us
 
  ----- end test ----
 
@@ -55,12 +67,15 @@ Number of elements in vector: 1000000
 Minimum elements for one thread: 500
 Number of hardware threads: 2
 
-Create threads: 9987us
-Wait for finish threads: 243707us
+pararelAccumulate() result: 1784293664
+std::accumulate() result: 1784293664
 
-Pararel algorithm: 253921us
+Create threads: 12438us
+Wait for finish threads: 0us
 
-Normal algorithm: 378383us
+Pararel algorithm: 236967us
+
+Normal algorithm: 337272us
 
  ----- end test ----
 
@@ -68,12 +83,15 @@ Number of elements in vector: 1000000
 Minimum elements for one thread: 512
 Number of hardware threads: 2
 
-Create threads: 9869us
-Wait for finish threads: 253012us
+pararelAccumulate() result: 1784293664
+std::accumulate() result: 1784293664
 
-Pararel algorithm: 263126us
+Create threads: 13076us
+Wait for finish threads: 0us
 
-Normal algorithm: 377836us
+Pararel algorithm: 232354us
+
+Normal algorithm: 344745us
 
  ----- end test ----
 
@@ -81,12 +99,15 @@ Number of elements in vector: 1000000
 Minimum elements for one thread: 2000
 Number of hardware threads: 2
 
-Create threads: 15152us
-Wait for finish threads: 239182us
+pararelAccumulate() result: 1784293664
+std::accumulate() result: 1784293664
 
-Pararel algorithm: 254464us
+Create threads: 8705us
+Wait for finish threads: 0us
 
-Normal algorithm: 375696us
+Pararel algorithm: 223151us
+
+Normal algorithm: 340171us
 
  ----- end test ----
 
@@ -94,11 +115,14 @@ Number of elements in vector: 1000000
 Minimum elements for one thread: 2048
 Number of hardware threads: 2
 
-Create threads: 9916us
-Wait for finish threads: 269893us
+pararelAccumulate() result: 1784293664
+std::accumulate() result: 1784293664
 
-Pararel algorithm: 279944us
+Create threads: 11291us
+Wait for finish threads: 0us
 
-Normal algorithm: 370722us
+Pararel algorithm: 240410us
+
+Normal algorithm: 333360us
 
  ----- end test ----

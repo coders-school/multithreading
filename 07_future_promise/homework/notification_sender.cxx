@@ -65,9 +65,6 @@ int main()
 		threads.push_back( std::thread( threadSendMail, strDev, "message", std::move(p) ) );
 	}
 
-	// join thread
-	std::for_each( std::begin( threads ), std::end( threads ), std::mem_fn( &std::thread::join ) );
-
 	// print results
 	for ( unsigned int i = 0; i < responsible_devs.size(); ++i )
 	{
@@ -90,6 +87,9 @@ int main()
 			std::cout << std::endl;
 		}
 	}
+
+	// join thread
+	std::for_each( std::begin( threads ), std::end( threads ), std::mem_fn( &std::thread::join ) );
 
 	stop = std::chrono::steady_clock::now();
 

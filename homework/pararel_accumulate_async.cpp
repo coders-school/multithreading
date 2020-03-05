@@ -28,36 +28,44 @@ T pararelAccumulate(IT first, IT last, T init, size_t minSizeForThread = minimum
 	size_t hardwareThread = std::thread::hardware_concurrency();
 
     if (hardwareThread == 0)
-        hardwareThread = 1;
+        hardwareThread = 2;
 
 	const size_t neededThreads = std::min(size / minSizeForThread, hardwareThread);
 	const size_t chunkSize = size / neededThreads;
-	std::vector<T> results(neededThreads);
-    std::vector<std::future<T>> futures(neededThreads);
+	// std::vector<T> results(neededThreads);
+	std::vector<std::future<T>> futures(neededThreads);
 
-    auto sumFunction = [](IT first, IT last)
-    {
-        return(std::accumulate(first, last, T{}));
-    };
+	auto sumFunction = [](IT first, IT last)
+	{
+		return(std::accumulate(first, last, T{}));
+	};
 
 	dt.start3 = std::chrono::steady_clock::now();
 	auto begin = first;
-	for (size_t i = 0; i < neededThreads; ++i) {
+	for (size_t i = 0; i < neededThreads; ++i) 
+	{
 		auto end = std::next(begin, chunkSize);
 
-        futures[i] = std::async(sumFunction, begin, end);
+		futures[i] = std::async(std::launch::async, sumFunction, begin, end);
 		begin = end;
 	}
 	dt.stop3 = std::chrono::steady_clock::now();
 
 	dt.start4 = std::chrono::steady_clock::now();
-    for( int i = 0; i < neededThreads; ++i )
-    {
-        results[i] = futures[i].get();
-    } 
+    // for( int i = 0; i < neededThreads; ++i )
+    // {
+    //    results[i] = futures[i].get();
+    // } 
 
 	dt.stop4 = std::chrono::steady_clock::now();
-	return std::accumulate(std::begin(results), std::end(results), init);
+	// return std::accumulate(std::begin(results), std::end(results), init);
+
+	auto feat_acc = []( T a, std::future<T>& b )
+	{
+		return std::move(a) + b.get();
+	};
+
+	return std::accumulate(std::begin(futures), std::end(futures), init, feat_acc);
 }
 
 void pararelAccumulate_test(int numberOfElements, int minSizeForThread)
@@ -75,13 +83,17 @@ void pararelAccumulate_test(int numberOfElements, int minSizeForThread)
 
 	std::generate(begin(vec), end(vec), [x{ 0 }]()mutable{ return ++x; });
 	auto start = std::chrono::steady_clock::now();
-	pararelAccumulate(std::begin(vec), std::end(vec), 0, minSizeForThread, dt);
+	auto res1 = pararelAccumulate(std::begin(vec), std::end(vec), 0, minSizeForThread, dt);
 	auto stop = std::chrono::steady_clock::now();
 
 	auto start2 = std::chrono::steady_clock::now();
-	std::accumulate(std::begin(vec), std::end(vec), 0);
+	auto res2 = std::accumulate(std::begin(vec), std::end(vec), 0);
 	auto stop2 = std::chrono::steady_clock::now();
 	
+	std::cout << std::endl;
+	std::cout << "pararelAccumulate() result: " << res1 << std::endl;
+	std::cout << "std::accumulate() result: " << res1 << std::endl;
+
 	std::cout << "\nCreate threads: "
 		<< std::chrono::duration_cast<std::chrono::microseconds>(dt.stop3 - dt.start3).count()
 		<< "us" << std::endl;
