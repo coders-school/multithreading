@@ -46,12 +46,20 @@ public:
         {
             unique_lock<mutex> l(m_);
             // TODO: wait to be used here + printing, reps incrementation, chainging turn to ping
+            opponentsTurn_.wait(l, [&](){
+                return isPingTurn_;
+            });
+            std::cout << "pong " <<reps << std::endl;
+            reps++;
+            isPingTurn_ = true;
+            l.unlock();
             this_thread::sleep_for(500ms);
         }
         if (reps >= repetitions_) {
             // TODO:  set play_ to false, display message, notify others to avoid deadlocks
             play_ = false;
-
+            std::cout << "End od program because of repetition limit." << std::endl;
+            opponentsTurn_.notify_all();
         }
     }
 
