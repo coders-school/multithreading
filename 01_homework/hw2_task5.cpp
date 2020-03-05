@@ -7,26 +7,32 @@
 
 constexpr int reps = 2000000;
 
-void stress_function(int a, int &b) {
+template<typename T>
+void stress_function(T a, T &b) {
     for(int i = 0; i < reps; i++) {
-        b = a^b;
+        b = a*b;
     }
 }
 
-struct AlignedInt {
-    alignas(64) int value[6];
+struct Int64 {
+    alignas(64) int value;
+
+    Int64 operator*(const Int64& rhs) {
+        value *= rhs.value;
+        return *this;
+    }
 };
 
 int main() {
     std::array<int, 66> data;
     std::iota(data.begin(), data.end(), 1);
 
-    AlignedInt a;
+    std::array<Int64,4> aligned_data;
 
     std::cout << "=========== False sharing ===========\n";
     auto start = std::chrono::high_resolution_clock::now();
-    std::thread t1(stress_function, data[0], std::ref(data[1]));
-    std::thread t2(stress_function, data[2], std::ref(data[3]));
+    std::thread t1(stress_function<int>, data[0], std::ref(data[1]));
+    std::thread t2(stress_function<int>, data[2], std::ref(data[3]));
     t1.join();
     t2.join();
     auto stop = std::chrono::high_resolution_clock::now();
@@ -35,8 +41,8 @@ int main() {
 
     std::cout << "====== Fixed sharing - spacing ======\n";
     start = std::chrono::high_resolution_clock::now();
-    std::thread t3(stress_function, data[1], std::ref(data[2]));
-    std::thread t4(stress_function, data[65], std::ref(data[66]));
+    std::thread t3(stress_function<int>, data[1], std::ref(data[2]));
+    std::thread t4(stress_function<int>, data[65], std::ref(data[66]));
     t3.join();
     t4.join();
     stop = std::chrono::high_resolution_clock::now();
@@ -45,8 +51,8 @@ int main() {
 
     std::cout << "====== Fixed sharing - alignas ======\n";
     start = std::chrono::high_resolution_clock::now();
-    std::thread t5(stress_function, a.value[0], std::ref(a.value[1]));
-    std::thread t6(stress_function, a.value[4], std::ref(a.value[5]));
+    std::thread t5(stress_function<Int64>, aligned_data[0], std::ref(aligned_data[1]));
+    std::thread t6(stress_function<Int64>, aligned_data[2], std::ref(aligned_data[3]));
     t5.join();
     t6.join();
     stop = std::chrono::high_resolution_clock::now();
@@ -55,8 +61,8 @@ int main() {
 
     std::cout << "=========== Sequentional ============\n";
     start = std::chrono::high_resolution_clock::now();
-    stress_function(data[1], std::ref(data[2]));
-    stress_function(data[3], std::ref(data[4]));
+    stress_function<int>(data[1], std::ref(data[2]));
+    stress_function<int>(data[3], std::ref(data[4]));
     stop = std::chrono::high_resolution_clock::now();
     duration = stop - start;
     std::cout << "Duration: " << duration.count() << '\n';
@@ -71,6 +77,5 @@ int main() {
  * za pomoca odpowiednich komend kompilatora (__declspec (align(64)) lub funkcji alignas(64))
  *
  *****************************************************************************/
-
     return 0;
 }
