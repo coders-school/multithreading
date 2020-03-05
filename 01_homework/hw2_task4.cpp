@@ -6,6 +6,7 @@
 #include <random>
 #include <mutex>
 #include <array>
+#include <atomic>
 
 constexpr int dining_time = 10;
 constexpr int population = 5;
@@ -18,14 +19,13 @@ struct Fork
 
 struct Table
 {
-    bool food = true;
+    std::atomic<bool> food = true;
 
     std::array<Fork, population> forks;
-    std::array<int, population> ownership;
-    std::array<int, population> starvation;
+    std::array<std::atomic<int>, population> ownership;
+    std::array<std::atomic<int>, population> starvation;
 
     std::mutex print_mutex;
-    std::mutex starvation_mutex;
 
     Table();
 
@@ -75,7 +75,6 @@ bool Table::check_neighbour_stavation(int id) {
     int neighbour_left = (id - 1) % population;
     int neighbour_right = (id + 1) % population;
 
-    std::lock_guard<std::mutex> lock(starvation_mutex);
     if(starvation[neighbour_left] - starvation[id] > starvation_treshold)
         return false;
     if(starvation[neighbour_right] - starvation[id] > starvation_treshold)
@@ -91,10 +90,7 @@ void eat(int id, Table &table, Fork &fork_left, Fork &fork_right, std::mt19937 &
         if(table.check_neighbour_stavation(id)) {
             result = std::try_lock(fork_left.mutex, fork_right.mutex);
         }
-        {
-            std::lock_guard<std::mutex> lock(table.starvation_mutex);
-            table.starvation[id]++;
-        }
+        table.starvation[id]++;
         std::this_thread::sleep_for(std::chrono::milliseconds(10));
     }
 
@@ -102,10 +98,7 @@ void eat(int id, Table &table, Fork &fork_left, Fork &fork_right, std::mt19937 &
     std::lock_guard<std::mutex> lock_right(fork_right.mutex, std::adopt_lock);
 
     table.print(true, id);
-    {
-        std::lock_guard<std::mutex> lock(table.starvation_mutex);
-        table.starvation[id] = 0;
-    }
+    table.starvation[id] = 0;
 
     std::uniform_int_distribution<> sleep_time{1, 10};
     std::this_thread::sleep_for(std::chrono::milliseconds(sleep_time(seed) * 200));
