@@ -24,11 +24,19 @@ public:
         {
             unique_lock<mutex> l(m_);
             // TODO: wait to be used here + printing, reps incrementation, chainging turn to pong
+            opponentsTurn_.wait(l, [&](){
+                return isPingTurn_;
+            });
+            std::cout << "ping " <<reps <<std::endl;
+            reps++;
+            isPingTurn_ = false;
+            l.unlock();
             this_thread::sleep_for(500ms);
         }
         if (reps >= repetitions_)
         {
             // TOOD: only print message here
+            std::cout << "ping " <<reps <<std::endl;
         }
     }
 
@@ -42,6 +50,8 @@ public:
         }
         if (reps >= repetitions_) {
             // TODO:  set play_ to false, display message, notify others to avoid deadlocks
+            play_ = false;
+
         }
     }
 
