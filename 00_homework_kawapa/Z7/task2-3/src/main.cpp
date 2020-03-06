@@ -7,8 +7,6 @@
 #include <thread>
 #include <vector>
 
-std::string status(bool b);
-
 int main()
 {
 	libmail::randomize_results();
@@ -31,7 +29,7 @@ int main()
 	{
 		try {
 			libmail::send_mail(dev, message);
-            promise.set_value(1);
+            promise.set_value(true);
         } catch(...) {
             promise.set_exception(std::current_exception());
         }
@@ -50,11 +48,11 @@ int main()
 		std::cout << "Sending mail to: " << responsible_devs[i] << " - ";
 
 		try {
-			std::cout << status(futures[i].get()) << std::endl;
-			threads[i].join();
+			std::cout << "OK" << std::endl;
+			threads[i].detach();
         } catch(std::exception & e) {
 			std::cout << e.what() << std::endl;
-			threads[i].join();
+			threads[i].detach();
         } 
 	}
 
@@ -63,12 +61,4 @@ int main()
     std::cout << "Execution time: " << difference.count() << " ms" << std::endl;
 	
 	return 0;
-}
-
-std::string status(bool b)
-{
-	if (b)
-		return "OK";
-	else
-		return "FAIL";
 }

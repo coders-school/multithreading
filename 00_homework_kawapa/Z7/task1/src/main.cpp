@@ -42,7 +42,7 @@ int main()
 	{
 		std::cout << "Sending mail to: " << responsible_devs[i] << " - "
 				  << status(futures[i].get()) << std::endl;
-		threads[i].join();
+		threads[i].detach();
 	}
 	
 	auto end = std::chrono::high_resolution_clock::now();
