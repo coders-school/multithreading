@@ -1,3 +1,5 @@
+#include <chrono>
+#include <exception>
 #include <future>
 #include <iostream>
 #include <libmail/send_mail.h>
@@ -27,7 +29,12 @@ int main()
 
 	auto function = [](std::string message, std::string dev, std::promise<bool> promise)
 	{
-		promise.set_value(libmail::send_mail(dev, message));
+		try {
+			libmail::send_mail(dev, message);
+            promise.set_value(1);
+        } catch(...) {
+            promise.set_exception(std::current_exception());
+        }
 	};
 
 	auto start = std::chrono::high_resolution_clock::now();
@@ -40,15 +47,21 @@ int main()
 	
 	for (size_t i = 0; i < howMany; i++)
 	{
-		std::cout << "Sending mail to: " << responsible_devs[i] << " - "
-				  << status(futures[i].get()) << std::endl;
-		threads[i].join();
+		std::cout << "Sending mail to: " << responsible_devs[i] << " - ";
+
+		try {
+			std::cout << status(futures[i].get()) << std::endl;
+			threads[i].join();
+        } catch(std::exception & e) {
+			std::cout << e.what() << std::endl;
+			threads[i].join();
+        } 
 	}
-	
-	auto end = std::chrono::high_resolution_clock::now();
+
+    auto end = std::chrono::high_resolution_clock::now();
 	std::chrono::duration<double, std::milli> difference = end - start;
     std::cout << "Execution time: " << difference.count() << " ms" << std::endl;
-
+	
 	return 0;
 }
 
