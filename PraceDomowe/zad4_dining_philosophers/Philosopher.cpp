@@ -1,15 +1,24 @@
 #include "Philosopher.hpp"
 
 Philosopher::Philosopher(std::string name, Fork& lFork, Fork& rFork):
-    philosopherName(name), leftFork(lFork), rightFork(rFork), philosopherThread(&Philosopher::dine, this) {}
+    philosopherName(name), leftFork(lFork), rightFork(rFork), philosopherThread(&Philosopher::dine, this), haveForks(false) {}
 
 Philosopher::~Philosopher(){
     philosopherThread.join();
 }
 
+std::string Philosopher::getPhilosopherName() const{
+    return philosopherName;
+}
+
+bool Philosopher::getHaveForks() const{
+    return haveForks;
+}
+
 void Philosopher::eat(){
     std::scoped_lock lockForks(leftFork.getMutex(), rightFork.getMutex());
 
+    haveForks = true;
     std::stringstream eatStart;
     eatStart << this->philosopherName << "start eating." << std::endl;
     std::cout << eatStart.rdbuf();
@@ -19,6 +28,7 @@ void Philosopher::eat(){
     std::stringstream eatStop;
     eatStop << this->philosopherName << "stop eating." << std::endl;
     std::cout << eatStop.rdbuf();
+    haveForks = false;
     }
 
 void Philosopher::think(){
