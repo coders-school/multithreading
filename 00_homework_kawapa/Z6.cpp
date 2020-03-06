@@ -55,7 +55,7 @@ public:
 
     void pong()
     {
-        while (index_ <= repetitions_)
+        while (index_ <= repetitions_ && continuePlay)
         {
             auto shouldIcontinuePong = [&](){ return indexPongs_ < indexPings_; };
             std::unique_lock<std::mutex> l(m_);
