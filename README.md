@@ -202,13 +202,13 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
 | [Adam Mierzwiak](https://github.com/adamvm)         |   78 |           10 |    |    | 38 | 10 | 20 |    |    |    |    |    |    |       |      |
 | [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [Jakub Zych](https://github.com/jzych)              |  186 |           40 |    |    | 38 | 11 | 20 | 16 |  5 | 20 | 15 | 16 |    |       |      |
+| [Jakub Zych](https://github.com/jzych)              |  189 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 16 |    |       |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |  114 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                 |  114 |           25 |    |    | 38 | 11 | 20 |    | 10 | 10 |    |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |  139 |           30 |    |    | 38 | 11 | 20 |    | 10 | 15 | 15 |    |    |       |      |
 | [Krzysiek](https://github.com/kdoroszko)            |   78 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |       |      |
 | [matijaz](https://github.com/matijaz)               |   68 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |       |      |
-| [mkijew](https://github.com/mkijew)                 |  193 |           40 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 15 |    |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |  107 |           20 |    |    | 38 | 11 | 20 |  8 | 10 |    |    |    |    |       |      |
+| [mkijew](https://github.com/mkijew)                 |  198 |           40 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |  112 |           25 |    |    | 38 | 11 | 20 |  8 | 10 |    |    |    |    |       |      |
 | [piotr.kowandy](https://github.com/PiotrKowandy)    |   93 |           20 |    |    | 38 | 11 | 20 |  4 |    |    |    |    |    |       |      |
 | [Szafirmag](https://github.com/WBigaj)              |   81 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 
@@ -256,3 +256,4 @@ Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się w kwiet
 4. Jeśli uważasz, że odwalam dobrą robotę to [skrobnij parę słów na ten temat na FB](https://www.facebook.com/pg/szkola.coders.school/reviews/?ref=page_internal), niech się niesie w świat ;)
 5. Zachęcam też do [potwierdzenia moich umiejętności i wystawienia mi rekomendacji na LinkedInie](https://www.linkedin.com/in/lukaszziobron/). Mogę odwdzięczyć się tym samym :)
 6. [Zapisz się na newsletter](https://coders.school/#newsletter), jeśli chcesz otrzymywać informacje o przyszłych kursach.
+
