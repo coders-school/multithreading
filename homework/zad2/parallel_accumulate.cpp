@@ -70,4 +70,16 @@ int main() {
 
     std::chrono::duration<float> duration2 = stop2 - start2;
     std::cout << "The duration of the STL accumulate with execution::par function: \t" << duration2.count() << "\n Result: " << result2 << '\n';
+
+//          RESULTS:
+//      4 concurrent threads are supported.
+//        Compare results from created function:                            1783293664
+//        with STL 1783293664
+//        The duration of the p_accumulate function created:                0.0069024
+//        Result: 1783293664
+//        The duration of the STL accumulate function:                      0.0101545
+//        Result: 1783293664
+//        The duration of the STL accumulate with execution::par function:  0.0201417
+//        Result: 1783293664
+
 }
