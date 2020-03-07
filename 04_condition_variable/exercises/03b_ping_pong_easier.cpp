@@ -30,25 +30,17 @@ public:
             
             if(repsPing_ < repetitions_){
                 unique_lock<mutex> l(m_);
-                // TODO: wait to be used here + printing, reps incrementation, chainging turn to pong
                 opponentsTurn_.wait(l, [&](){
                     return (isPingTurn_ and (repsPing_ == repsPong_));
                 });
-                std::stringstream print;
-                print << "ping " <<repsPong_+1 << std::endl;
-                std::cout << print.str();
-
+                printingFunction("ping", (repsPing_+1));
                 repsPing_++;
                 isPingTurn_ = false;
                 this_thread::sleep_for(500ms);
-
             }
 
-            else{
-                std::stringstream print;
-                print << "Ping repetition limit." << std::endl;
-                std::cout << print.str();
-            }
+            else
+                printingFunction("Ping repetition limit");
 
             opponentsTurn_.notify_all();
             this_thread::sleep_for(500ms);
@@ -63,25 +55,17 @@ public:
             }
             if(repsPong_ < repetitions_){
                 unique_lock<mutex> l(m_);
-                // TODO: wait to be used here + printing, reps incrementation, chainging turn to ping
                 opponentsTurn_.wait(l, [&](){
                     return ((not isPingTurn_) and(repsPong_ == repsPing_ -1));
                 });
 
-                std::stringstream print;
-                print << "pong " <<repsPong_+1 << std::endl;
-                std::cout << print.str();
-
+                printingFunction("pong", (repsPong_+1));
                 repsPong_++;
-                isPingTurn_ = true;
-                
+                isPingTurn_ = true;             
             }
 
             else{
-                std::stringstream print;
-                print << "Pong repetition limit. \nEnd of program." << std::endl;
-                std::cout << print.str();
-
+                printingFunction("Pong repetition limit.\nEnd of program");
                 play_ = false;
             }
 
@@ -92,19 +76,27 @@ public:
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
         unique_lock<mutex> l(m_);
-        // TODO: wait_for to be used here. Check for a return value and set play_ to false       
-       auto timeStoper = [&](){
+        auto timeStoper = [&](){
            return ((not play_) and (not isPingTurn_) and (repsPing_ != repsPong_));
        };
        
         if( not opponentsTurn_.wait_for(l, timeout, timeStoper)){
-            std::stringstream print;
-            print << "End od program because of TIMEOUT" << std::endl;
-            std::cout << print.str();
-            
+            printingFunction("End of program because of TIMEOUT ");
             play_ = false;
             opponentsTurn_.notify_all();
         }
+    }
+
+    void printingFunction (string first){
+        stringstream print;
+        print << first << endl;
+        cout << print.str();
+    }
+
+    void printingFunction (string first, int second){
+        stringstream print;
+        print << first << " " << second << endl;
+        cout << print.str();
     }
 };
 
