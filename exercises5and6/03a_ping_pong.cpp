@@ -1,4 +1,6 @@
+#include <atomic>
 #include <iostream>
+#include <sstream>
 #include <thread>
 #include <chrono>
 #include <mutex>
@@ -9,12 +11,12 @@ using namespace std;
 using namespace std::literals::chrono_literals;
 
 using lockMutex = std::unique_lock<std::mutex>;
+std::mutex guard_;
 
 class PingPong {
-    int repetitions_;
-    int counter_ = 0;
-    bool close_ = false;
-    std::mutex guard_;
+    atomic<int> repetitions_;
+    atomic<int> counter_ = 0;
+    atomic_bool close_ = false;
 
 public:
     PingPong(int repetitions)
@@ -26,11 +28,15 @@ public:
         {
             while(counter_%2 != 0) {};
             
+            std::stringstream ss;
+            ss << counter_  << " " << "ping" << std::endl;
+
             std::lock_guard<std::mutex> lock(guard_);
             if(close_) { break; };
-            std::cout << counter_ << " " << "ping" << std::endl;    
+            std::cout << ss.str();    
             ++counter_;
-        
+
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }while (!close_ and (counter_ < repetitions_*2 -1));
     }
 
@@ -39,28 +45,31 @@ public:
         {
             while(counter_%2 == 0) {};
 
+            std::stringstream ss;
+            ss << counter_  << " " << "pong" << std::endl;
+
             std::lock_guard<std::mutex> lock(guard_);
             if(counter_ > repetitions_*2) { break; }; 
-            std::cout << counter_ << " " << "pong" << std::endl;
+            std::cout << ss.str();
             ++counter_;
-        
+            
+        std::this_thread::sleep_for(std::chrono::milliseconds(50));
         }while (!close_ and (counter_ < repetitions_*2));
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
         auto start = std::chrono::system_clock::now();
+        
         do
         {
             std::this_thread::sleep_for(1s);
             auto current = std::chrono::duration_cast<std::chrono::seconds>(
                                 std::chrono::system_clock::now() - start).count();
+
             close_ = current > timeout.count();
 
         }while(!close_ and (counter_ < repetitions_*2));
 
-        
-        while (counter_%2 == 0){};
-        std::lock_guard<std::mutex> lock(guard_);
         counter_ %2 != 0 ? repetitions_ = counter_/2 + 1 : 0;
     }
 };
