@@ -6,6 +6,7 @@
 #include <vector>
 
 constexpr size_t n = 15;
+// number of philosophers and forks
 
 std::mutex forks[n];
 
@@ -42,18 +43,17 @@ struct Philosopher
         wait();
         print("has finished his meal");
         hungry_ = false; 
-    }   
+    }
 
     void contemplate()
     {
         wait();
         print("is contemplating");
-        wait();
     }
 
     void wait()
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(std::rand() % 2000));
+        std::this_thread::sleep_for(std::chrono::milliseconds(std::rand() % 3000));
     }
 
     void print(std::string str)
