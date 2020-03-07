@@ -1,17 +1,13 @@
-#include <atomic>
 #include <chrono>
 #include <iostream>
 #include <sstream>
-#include <shared_mutex>
+#include <mutex>
 #include <thread>
 #include <vector>
 
 using namespace std::chrono_literals;
 
-struct Fork
-{
-    mutable std::mutex m_;
-} forks[5];
+std::mutex forks[5];
 
 struct Philosopher
 {
@@ -29,9 +25,13 @@ struct Philosopher
     void eat()
     {
         std::stringstream ss;
+        std::unique_lock<std::mutex> l1(forks[forkIndexLeft_], std::defer_lock);
+        std::
+        std::unique_lock<std::mutex> l2(forks[forkIndexRight_], std::defer_lock);
+        std::lock(l1, l2);
+        
         ss << name_ << "is eating\n";
         std::cout << ss.str();
-        std::atomic<bool> hungry {true};
     }
 
     void contemplate()
@@ -39,7 +39,7 @@ struct Philosopher
         std::stringstream ss;
         ss << name_ << "is contemplating\n";
         std::cout << ss.str();
-        std::this_thread::sleep_for(std::chrono::milliseconds(std::rand() % 250));
+        std::this_thread::sleep_for(std::chrono::milliseconds(std::rand() % 3000));
     }
 
     Philosopher(const std::string &name, int left, int right)
