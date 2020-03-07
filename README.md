@@ -45,7 +45,6 @@ Napisz równoległą wersję algorytmu std::accumulate, który będzie współbi
 - join threads
 - accumulate results from the result vector
 - test on 1M elements and compare with standard std::accumulate
-- compare with std::par execution policy in std::accumulate from C++17 ;)
 - templatize algorithm on Iterator (depends on container) and type T sually int, double)
 
 <details><summary>Podpowiedź</summary>
@@ -59,6 +58,7 @@ Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams
 (20 punktów) Termin: 22.02.2020 23:59
 
 Napisz współbieżną wersję algorytmu std::count_if. Zmierz czas działania i napisz testy, pokazujące, że zwraca ona takie same wyniki, jak std::count_if.
+Porównaj go dodatkowo z std::count_if z przekazanym dodatkowym parametrem std::execution::par policy z C++17 ;)
 
 ### Zadanie 4
 
@@ -200,20 +200,17 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 
 |                                                     | SUMA | Punktualność | P1 | P2 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 | Z8 | Z9 | Testy | Inne |
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
-| [Adam](#)                                           |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [Adam Mierzwiak](https://github.com/adamvm)         |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [Cypher](https://github.com/ChopSeeGuy)             |   52 |              |    |    | 38 |    | 14 |    |    |    |    |    |    |       |      |
-| [Hikarina](https://github.com/OriaTori)             |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [jzych](https://github.com/jzych)                   |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [kamil waszkiewicz](https://github.com/darkassazi)  |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                 |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [Krzysiek](https://github.com/kdoroszko)            |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [matijaz](https://github.com/matijaz)               |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [mkijew](#)                                         |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [RyszardH](https://github.com/RyszardHalapacz)      |   38 |              |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [Szafirmag](#)                                      |    0 |              |    |    |    |    |    |    |    |    |    |    |    |       |      |
+| [Adam Mierzwiak](https://github.com/adamvm)         |   78 |           10 |    |    | 38 | 10 | 20 |    |    |    |    |    |    |       |      |
+| [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
+| [Jakub Zych](https://github.com/jzych)              |  189 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 16 |    |       |      |
+| [kamil waszkiewicz](https://github.com/darkassazi)  |  114 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |    |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |  139 |           30 |    |    | 38 | 11 | 20 |    | 10 | 15 | 15 |    |    |       |      |
+| [Krzysiek](https://github.com/kdoroszko)            |   78 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |       |      |
+| [matijaz](https://github.com/matijaz)               |   68 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |       |      |
+| [mkijew](https://github.com/mkijew)                 |  198 |           40 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |  112 |           25 |    |    | 38 | 11 | 20 |  8 | 10 |    |    |    |    |       |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |   93 |           20 |    |    | 38 | 11 | 20 |  4 |    |    |    |    |    |       |      |
+| [Szafirmag](https://github.com/WBigaj)              |   81 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 
 ### Punktacja
 
@@ -222,7 +219,7 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | Punktualność | 55                | 5 punktów za każde zadanie i projekt dostarczone przed wskazanym terminem |
 | P1           | 68                | Projekt 1 - Hardkorowi filozofowie |
 | P2           | 40                | Projekt 2 - Ray Tracing |
-| Z1           | 38                | Zadanie 1 - The Dragon Empire |
+| Z1           | 38                | Zadanie 1 - The Deadlock Empire |
 | Z2           | 11                | Zadanie 2 - współbieżny std::accumulate |
 | Z3           | 20                | Zadanie 3 - współbieżny std::count_if |
 | Z4           | 24                | Zadanie 4 - problem ucztujących filozofów |
@@ -245,7 +242,7 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 - 325 punktów - kurs online w Coders School za darmo<sup>*</sup> :)
 
 <sup>*</sup> <sub>wymaganymi dodatkowymi "kosztami" w przypadku zniżki lub darmowego kursu będzie:
-a) pay by tweet or share - udostępnienie informacji o kursie na swoich mediach społecznościowych,
+a) pay by tweet or share - udostępnienie informacji o kursie na swoich mediach społecznościowych oraz
 b) opinia o kursie z Wielowątkowości na Facebooku (lub LinkedInie w przypadku braku FB, ewentualnie po prostu mail z opinią i pozwoleniem na opublikowanie go na naszej stronie)
 Sorki, ale umiem w social media i liczę na to, że jakoś pomożecie mi dotrzeć do większej liczby zainteresowanych :)</sub>
 
@@ -259,3 +256,4 @@ Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się w kwiet
 4. Jeśli uważasz, że odwalam dobrą robotę to [skrobnij parę słów na ten temat na FB](https://www.facebook.com/pg/szkola.coders.school/reviews/?ref=page_internal), niech się niesie w świat ;)
 5. Zachęcam też do [potwierdzenia moich umiejętności i wystawienia mi rekomendacji na LinkedInie](https://www.linkedin.com/in/lukaszziobron/). Mogę odwdzięczyć się tym samym :)
 6. [Zapisz się na newsletter](https://coders.school/#newsletter), jeśli chcesz otrzymywać informacje o przyszłych kursach.
+
