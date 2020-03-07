@@ -19,8 +19,6 @@ struct Philosopher
 
     void dine()
     {
-        wait();
-
         while (hungry_)
         {
             contemplate();
