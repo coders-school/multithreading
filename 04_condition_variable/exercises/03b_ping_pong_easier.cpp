@@ -4,6 +4,7 @@
 #include <chrono>
 #include <condition_variable>
 #include <atomic>
+#include <sstream>
 using namespace std;
 
 class PingPong {
@@ -12,6 +13,8 @@ class PingPong {
     bool isPingTurn_ = true;
     int repetitions_;
     atomic<bool> play_{true};
+    int repsPing_ = 0;
+    int repsPong_ = 0;
 
 public:
     PingPong(int repetitions)
@@ -19,60 +22,89 @@ public:
     {}
 
     void ping() {
-        thread_local int reps = 0;
-        while (reps < repetitions_ and play_)
+        while (repsPing_ <= repetitions_ and play_)
         {
-            unique_lock<mutex> l(m_);
-            // TODO: wait to be used here + printing, reps incrementation, chainging turn to pong
-            opponentsTurn_.wait(l, [&](){
-                return isPingTurn_;
-            });
-            std::cout << "ping " <<reps+1 <<std::endl;
-            reps++;
-            isPingTurn_ = false;
-            l.unlock();
+            if(not play_){
+                break;
+            }
+            
+            if(repsPing_ < repetitions_){
+                unique_lock<mutex> l(m_);
+                // TODO: wait to be used here + printing, reps incrementation, chainging turn to pong
+                opponentsTurn_.wait(l, [&](){
+                    return (isPingTurn_ and (repsPing_ == repsPong_));
+                });
+                std::stringstream print;
+                print << "ping " <<repsPong_+1 << std::endl;
+                std::cout << print.str();
+
+                repsPing_++;
+                isPingTurn_ = false;
+                this_thread::sleep_for(500ms);
+
+            }
+
+            else{
+                std::stringstream print;
+                print << "Ping repetition limit." << std::endl;
+                std::cout << print.str();
+            }
+
+            opponentsTurn_.notify_all();
             this_thread::sleep_for(500ms);
-        }
-        if (reps >= repetitions_)
-        {
-            // TOOD: only print message here
-            std::cout << "Ping repetition limit." << std::endl;
         }
     }
 
     void pong() {
-        thread_local int reps = 0;
-        while (reps < repetitions_ and play_)
+        while (repsPong_ <= repetitions_ and play_)
         {
-            unique_lock<mutex> l(m_);
-            // TODO: wait to be used here + printing, reps incrementation, chainging turn to ping
-            opponentsTurn_.wait(l, [&](){
-                return not isPingTurn_;
-            });
-            std::cout << "pong " <<reps+1 << std::endl;
-            reps++;
-            isPingTurn_ = true;
-            l.unlock();
-            this_thread::sleep_for(500ms);
-        }
-        if (reps >= repetitions_) {
-            // TODO:  set play_ to false, display message, notify others to avoid deadlocks
-            play_ = false;
-            std::cout << "Pong repetition limit. \nEnd of program" << std::endl;
+            if(not play_){
+                break;
+            }
+            if(repsPong_ < repetitions_){
+                unique_lock<mutex> l(m_);
+                // TODO: wait to be used here + printing, reps incrementation, chainging turn to ping
+                opponentsTurn_.wait(l, [&](){
+                    return ((not isPingTurn_) and(repsPong_ == repsPing_ -1));
+                });
+
+                std::stringstream print;
+                print << "pong " <<repsPong_+1 << std::endl;
+                std::cout << print.str();
+
+                repsPong_++;
+                isPingTurn_ = true;
+                
+            }
+
+            else{
+                std::stringstream print;
+                print << "Pong repetition limit. \nEnd of program." << std::endl;
+                std::cout << print.str();
+
+                play_ = false;
+            }
+
             opponentsTurn_.notify_all();
+            this_thread::sleep_for(500ms);
         }
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
         unique_lock<mutex> l(m_);
         // TODO: wait_for to be used here. Check for a return value and set play_ to false       
-       // auto timeStop = opponentsTurn_.wait_for(l, timeout,[&](){return not play_;});
-        if( not opponentsTurn_.wait_for(l, timeout,[&](){return not play_;})){
+       auto timeStoper = [&](){
+           return ((not play_) and (not isPingTurn_) and (repsPing_ != repsPong_));
+       };
+       
+        if( not opponentsTurn_.wait_for(l, timeout, timeStoper)){
+            std::stringstream print;
+            print << "End od program because of TIMEOUT" << std::endl;
+            std::cout << print.str();
+            
             play_ = false;
-            std::cout << "End od program because of TIMEOUT." << std::endl;
+            opponentsTurn_.notify_all();
         }
-        opponentsTurn_.notify_all();
-
     }
 };
 
