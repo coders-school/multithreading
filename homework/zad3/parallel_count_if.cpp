@@ -4,7 +4,9 @@
 #include <numeric>
 #include <thread>
 #include <vector>
-
+#include <parallel/algorithm>
+#include <execution>
+#include <random>
 
 template<typename Iterator, typename Predicate, typename T>
 struct count_part
@@ -42,9 +44,15 @@ T p_count_if(Iterator first, Iterator last, Predicate p){
 }
 
 int main() {
-    std::vector<int> v{1,2,3,4,5,6,5,4,5,3,2,4,6,7,4,4,5,4,4};
+    std::mt19937 gen;
+    std::uniform_int_distribution<int> dis(0, 1000);
+    auto rand_num([=]() mutable { return dis(gen); });
+    std::vector<int> v(1'000'000);
+    std::generate(std::execution::par, begin(v), end(v), rand_num);
+
     unsigned int n = std::thread::hardware_concurrency();
     std::cout << n << " concurrent threads are supported.\n";
+
     auto start = std::chrono::high_resolution_clock::now();
     auto result = std::count_if(v.begin(), v.end(), [](auto numb){ return numb == 4;});
     auto stop = std::chrono::high_resolution_clock::now();
@@ -53,10 +61,24 @@ int main() {
     auto resultParallel = p_count_if<int>(v.begin(), v.end(), [](auto numb){ return numb == 4;});
     auto stop2 = std::chrono::high_resolution_clock::now();
 
+    auto start3 = std::chrono::high_resolution_clock::now();
+    auto resultParallel3 = __gnu_parallel::count_if(v.begin(), v.end(), [](auto numb){ return numb == 4;});
+    auto stop3 = std::chrono::high_resolution_clock::now();
+
+    auto start4 = std::chrono::high_resolution_clock::now();
+    auto result4 = std::count_if(std::execution::par, begin(v), end(v), [](int n){return (n == 4);}); // Występuje data race nie wiem dlaczego
+    auto stop4 = std::chrono::high_resolution_clock::now();
+
     std::cout << "\nParallel algorithm result: " << resultParallel << "\n : "
               << std::chrono::duration_cast<std::chrono::microseconds>(stop2- start2).count()
               << "us" << std::endl;
     std::cout << "\nSTL algorithm result: " << result << "\n : "
               << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count()
+              << "us" << std::endl;
+    std::cout << "\n gnu parallel algorithm result: " << resultParallel3 << "\n : "
+              << std::chrono::duration_cast<std::chrono::microseconds>(stop3 - start3).count()
+              << "us" << std::endl;
+    std::cout << "\n With execution parallel policy algorithm result: " << result4 << "\n : "
+              << std::chrono::duration_cast<std::chrono::microseconds>(stop4 - start4).count()
               << "us" << std::endl;
 }
