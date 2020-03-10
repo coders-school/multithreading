@@ -1,5 +1,5 @@
 #include <iostream>
-#include <deque>
+#include <array>
 #include <thread>
 #include <mutex>
 #include <string>
@@ -7,30 +7,40 @@
 #include <fstream>
 using namespace std;
 
-template <typename T>
+template <typename T, std::size_t N>
 class WaitQueue {
-    deque<T> queue_;
+    array<T, N> queue_;
     mutable mutex m_;
     condition_variable nonEmpty_;
+    condition_variable nonFull_;
+    size_t read {0};
+    size_t write {0};
+
     using Lock = unique_lock<mutex>;
 
 public:
     void push(const T & element) {
         Lock l(m_);
-        queue_.push_front(element);
+        auto isFull = [&]{ return (write + 1) % N != read; };
+        nonFull_.wait(l, isFull);
+        queue_[write] = element;
+        // write++ % N;
+        write = (write + 1) % N;
         nonEmpty_.notify_all();
     }
     T pop() {
         Lock l(m_);
-        auto hasData = [&]{ return not queue_.empty(); };
+        auto hasData = [&]{ return read != write; };
         nonEmpty_.wait(l, hasData);
-        auto top = queue_.back();
-        queue_.pop_back();
+        auto top = queue_[read];
+        // read++ % N;
+        read = (read + 1) % N;
+        nonFull_.notify_all();
         return top;
     }
 };
 
-using StringQueue = WaitQueue<string>;
+using StringQueue = WaitQueue<string, 5>;
 
 void saveToScreen(StringQueue & sq) {
     while (true) {
