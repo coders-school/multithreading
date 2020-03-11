@@ -15,14 +15,19 @@
 11. Testowanie programów współbieżnych ---┘
 
 [Ankieta oceniająca trenera - Mateusz Adamski](https://forms.gle/8Nidginm5wURfiFB6)
+[Ankieta oceniająca trenera - Łukasz Ziobroń](https://forms.gle/iRmdRgjzp14jdJpu7)
 
 ## Nagrania
 
-### Nagrania z poprzedniej edycji
+### Nagrania 2019
 
 - [30.03.2019 - Teoria wielowątkowości, wątki, współdzielenie danych](https://www.youtube.com/watch?v=Uz-98Ui0hH0)
 - [06.04-2019 - Współdzielenie danych, promise/future, atomic](https://www.youtube.com/watch?v=733jR38z4AQ)
 - [13.04.2019 - Zmienna warunku, jednokrotne wywołania, zadania asynchroniczne](https://www.youtube.com/watch?v=xq_riNS3yTM)
+
+### Nagrania 2020
+
+- [Playlista na YT - Wielowątkowość 2020](https://www.youtube.com/playlist?list=PLQqoaQUqs4DBSe46BysLQbJLGRujwcXDN)
 
 ## Prace domowe
 
@@ -200,16 +205,16 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 
 |                                                     | SUMA | Punktualność | P1 | P2 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 | Z8 | Z9 | Testy | Inne |
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
-| [Adam Mierzwiak](https://github.com/adamvm)         |   58 |           10 |    |    | 38 | 10 |    |    |    |    |    |    |    |       |      |
+| [Adam Mierzwiak](https://github.com/adamvm)         |   78 |           10 |    |    | 38 | 10 | 20 |    |    |    |    |    |    |       |      |
 | [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [Jakub Zych](https://github.com/jzych)              |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [kamil waszkiewicz](https://github.com/darkassazi)  |   94 |           20 |    |    | 38 | 11 | 20 |    |  5 |    |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                 |   99 |           20 |    |    | 38 | 11 | 20 |    | 10 |    |    |    |    |       |      |
-| [Krzysiek](https://github.com/kdoroszko)            |   56 |           15 |    |    | 10 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [matijaz](https://github.com/matijaz)               |   43 |            5 |    |    | 38 |    |    |    |    |    |    |    |    |       |      |
-| [mkijew](https://github.com/mkijew)                 |  153 |           30 |    |    | 38 | 11 | 20 | 24 | 10 | 20 |    |    |    |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |   79 |           10 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
+| [Jakub Zych](https://github.com/jzych)              |  189 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 16 |    |       |      |
+| [kamil waszkiewicz](https://github.com/darkassazi)  |  114 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |    |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |  139 |           30 |    |    | 38 | 11 | 20 |    | 10 | 15 | 15 |    |    |       |      |
+| [Krzysiek](https://github.com/kdoroszko)            |   78 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |       |      |
+| [matijaz](https://github.com/matijaz)               |   68 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |       |      |
+| [mkijew](https://github.com/mkijew)                 |  198 |           40 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |  112 |           25 |    |    | 38 | 11 | 20 |  8 | 10 |    |    |    |    |       |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |   93 |           20 |    |    | 38 | 11 | 20 |  4 |    |    |    |    |    |       |      |
 | [Szafirmag](https://github.com/WBigaj)              |   81 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 
 ### Punktacja
@@ -248,7 +253,7 @@ Sorki, ale umiem w social media i liczę na to, że jakoś pomożecie mi dotrze�
 
 ## Zakończenie
 
-Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się w kwietniu. Dokładną datę podam później.
+Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się 5 kwietnia 2020 o godz. 16:00 na ul. Sokolniczej 5/24. Po spotkaniu możemy wyjść na piwko.
 
 1. [Wypełnij ankietę zadowolenia z kursu](https://forms.gle/6gzPT8PU6cKAY7eg8)
 2. [Obserwuj Coders School na LinkedInie](https://www.linkedin.com/company/coders-school/)
