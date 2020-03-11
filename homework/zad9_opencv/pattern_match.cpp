@@ -2,6 +2,9 @@
 #include "opencv2/highgui.hpp"
 #include "opencv2/imgproc.hpp"
 #include <iostream>
+#include <mutex>
+#include <future>
+#include <thread>
 
 int main( int argc, char** argv )
 {
@@ -32,33 +35,50 @@ int main( int argc, char** argv )
     cv::Mat img_display;
     imgSource.copyTo( img_display );
 
-    cv::Mat result;
+    std::vector<std::future<int>> futures(patternsCnt);
+    std::mutex criticalSectionMutex;
 
     for( int i = 0; i < patternsCnt; ++i )
     {
-        // Create the result matrix
-        const int result_cols =  imgSource.cols - imgPatterns[i].cols + 1;
-        const int result_rows = imgSource.rows - imgPatterns[i].rows + 1;
+        auto matchFunction = [&criticalSectionMutex](const cv::Mat& source, const cv::Mat& pattern, cv::Mat& display)
+        {
+            cv::Mat result;
 
-        result.create( result_rows, result_cols, CV_32FC1 );
+            // Create the result matrix
+            const int result_cols =  source.cols - pattern.cols + 1;
+            const int result_rows = source.rows - pattern.rows + 1;
 
-        // match pattern and normalize
-        cv::matchTemplate(imgSource, imgPatterns[i], result, cv::TM_SQDIFF);
-        cv::normalize(result, result, 0, 1, cv::NORM_MINMAX, -1, cv::Mat());
+            result.create( result_rows, result_cols, CV_32FC1 );
 
-        // localize the best match
-        double minVal;
-        double maxVal;
-        cv::Point minLoc;
-        cv::Point maxLoc;
-        cv::Point matchLoc;
+            // match pattern and normalize
+            cv::matchTemplate(source, pattern, result, cv::TM_SQDIFF);
+            cv::normalize(result, result, 0, 1, cv::NORM_MINMAX, -1, cv::Mat());
 
-        cv::minMaxLoc( result, &minVal, &maxVal, &minLoc, &maxLoc, cv::Mat() );
-        matchLoc = minLoc;
+            // localize the best match
+            double minVal;
+            double maxVal;
+            cv::Point minLoc;
+            cv::Point maxLoc;
+            cv::Point matchLoc;
 
-        // show results
-        cv::rectangle( img_display, matchLoc, cv::Point( matchLoc.x + imgPatterns[i].cols , matchLoc.y + imgPatterns[0].rows ), cv::Scalar::all(0), 2, 8, 0 );
+            cv::minMaxLoc( result, &minVal, &maxVal, &minLoc, &maxLoc, cv::Mat() );
+            matchLoc = minLoc;
+
+            // "print" result
+            std::unique_lock<std::mutex> lock( criticalSectionMutex );
+            cv::rectangle( display,
+                matchLoc,
+                cv::Point( matchLoc.x + pattern.cols , matchLoc.y + pattern.rows ),
+                cv::Scalar::all(0), 2, 8, 0 );
+
+            return 0;
+        };
+
+        futures[i] = std::async(std::launch::async, matchFunction, imgSource, imgPatterns[i], std::ref(img_display));
     }
+
+    // wait for results
+    std::for_each(std::begin(futures), std::end(futures), std::mem_fn(&std::future<int>::get));
 
     cv::imshow( image_window, img_display );
 
