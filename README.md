@@ -15,14 +15,19 @@
 11. Testowanie programów współbieżnych ---┘
 
 [Ankieta oceniająca trenera - Mateusz Adamski](https://forms.gle/8Nidginm5wURfiFB6)
+[Ankieta oceniająca trenera - Łukasz Ziobroń](https://forms.gle/iRmdRgjzp14jdJpu7)
 
 ## Nagrania
 
-### Nagrania z poprzedniej edycji
+### Nagrania 2019
 
 - [30.03.2019 - Teoria wielowątkowości, wątki, współdzielenie danych](https://www.youtube.com/watch?v=Uz-98Ui0hH0)
 - [06.04-2019 - Współdzielenie danych, promise/future, atomic](https://www.youtube.com/watch?v=733jR38z4AQ)
 - [13.04.2019 - Zmienna warunku, jednokrotne wywołania, zadania asynchroniczne](https://www.youtube.com/watch?v=xq_riNS3yTM)
+
+### Nagrania 2020
+
+- [Playlista na YT - Wielowątkowość 2020](https://www.youtube.com/playlist?list=PLQqoaQUqs4DBSe46BysLQbJLGRujwcXDN)
 
 ## Prace domowe
 
@@ -248,7 +253,7 @@ Sorki, ale umiem w social media i liczę na to, że jakoś pomożecie mi dotrze�
 
 ## Zakończenie
 
-Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się w kwietniu. Dokładną datę podam później.
+Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się 5 kwietnia 2020 o godz. 16:00 na ul. Sokolniczej 5/24. Po spotkaniu możemy wyjść na piwko.
 
 1. [Wypełnij ankietę zadowolenia z kursu](https://forms.gle/6gzPT8PU6cKAY7eg8)
 2. [Obserwuj Coders School na LinkedInie](https://www.linkedin.com/company/coders-school/)
