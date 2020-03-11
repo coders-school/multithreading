@@ -3,8 +3,6 @@
 #include "opencv2/imgproc.hpp"
 #include <iostream>
 
-
-
 int main( int argc, char** argv )
 {
     if (argc < 3)
@@ -28,9 +26,7 @@ int main( int argc, char** argv )
 
     // create windows
     const char* image_window = "Source Image";
-    const char* result_window = "Result window";
     cv::namedWindow( image_window, cv::WINDOW_AUTOSIZE );
-    cv::namedWindow( result_window, cv::WINDOW_AUTOSIZE );
 
     // copy source image
     cv::Mat img_display;
@@ -62,12 +58,9 @@ int main( int argc, char** argv )
 
         // show results
         cv::rectangle( img_display, matchLoc, cv::Point( matchLoc.x + imgPatterns[i].cols , matchLoc.y + imgPatterns[0].rows ), cv::Scalar::all(0), 2, 8, 0 );
-        cv::rectangle( result, matchLoc, cv::Point( matchLoc.x + imgPatterns[i].cols , matchLoc.y + imgPatterns[0].rows ), cv::Scalar::all(0), 2, 8, 0 );
     }
 
-    cv::imshow( image_window, imgSource);
     cv::imshow( image_window, img_display );
-    cv::imshow( result_window, result );
 
     cv::waitKey(0);
     return EXIT_SUCCESS;
