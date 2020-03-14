@@ -36,22 +36,24 @@ T p_accumulate(IT first, IT last, T init)
     const size_t usedThreads = threadsInCPU != 0 ? threadsInCPU : 2;
     const size_t dataChunk = size / usedThreads;
 
-    std::vector<T> results(usedThreads);
+    std::vector<std::future<T>> futures(usedThreads);
     IT begin  = first;
 
-    for (size_t i = 0; i < (usedThreads - 1); i++)
+    for (size_t i = 0; i < (usedThreads); i++)
     {
         IT end = std::next(begin, dataChunk);
 
-        auto function = [&](){
-        results[i] = std::accumulate(begin, end, T{});
+        auto function = [](IT first, IT last){
+            return std::accumulate(first, last, T{});
         };
 
-        std::async(function);
+        futures[i] = std::async(std::launch::async, function, begin, end);
+
         begin = end;
     }
 
-    results[usedThreads - 1] = std::accumulate(begin, last, T{});
-    
-    return std::accumulate(std::begin(results), std::end(results), init);
+    for (auto &&i : futures)
+        init += i.get();
+
+    return init;
 }
