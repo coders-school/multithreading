@@ -1,3 +1,4 @@
+#include <atomic>
 #include <chrono>
 #include <iostream>
 #include <sstream>
@@ -15,11 +16,12 @@ struct Philosopher
     int id_;
     int forkIndexLeft_;
     int forkIndexRight_;
-    bool hungry_ = true;
+    int eated_ = 0;
+    std::vector<Philosopher> & v_;
 
     void dine()
     {
-        while (hungry_)
+        while (1)
         {
             contemplate();
             eat();
@@ -29,18 +31,17 @@ struct Philosopher
     void eat()
     {
         wait();
-        std::lock(forks[forkIndexLeft_], forks[forkIndexRight_]);
- 
-        std::lock_guard<std::mutex> mutex_l(forks[forkIndexLeft_], std::adopt_lock);
-        print("has just picked up the left fork");
+        if (eated_ <= v_[forkIndexLeft_].eated_ || eated_ <= v_[forkIndexRight_].eated_ ||
+            (eated_ == v_[forkIndexLeft_].eated_ && eated_ == v_[forkIndexRight_].eated_))
+        {
+        std::scoped_lock l(forks[forkIndexLeft_], forks[forkIndexRight_]);
+
+        print("has just picked up both forks and he starts eating");
 
         wait();
-        std::lock_guard<std::mutex> mutex_r(forks[forkIndexRight_], std::adopt_lock);
-        print("has just picked up the right fork and he starts eating");
-
-        wait();
-        print("has finished his meal");
-        hungry_ = false; 
+        print("has finished his meal", eated_);
+        eated_++;
+        }
     }
 
     void contemplate()
@@ -61,18 +62,29 @@ struct Philosopher
         std::cout << ss.str();
     }
 
-    Philosopher(int id, int left, int right)
-        : id_(id), forkIndexLeft_(left), forkIndexRight_(right) { }
+    void print(std::string str, int eated)
+    {
+        std::stringstream ss;
+        ss << "F" << id_ << " " << str << " " << eated_ << std::endl;
+        std::cout << ss.str();
+    }
+
+    friend bool canIeat(const Philosopher & obj1, const Philosopher & obj2, const Philosopher & obj3);
+
+    Philosopher(int id, int left, int right, std::vector<Philosopher> & philosophers)
+        : id_(id), forkIndexLeft_(left), forkIndexRight_(right), v_(philosophers) { }
+
 };
+
+    std::vector<Philosopher> philosophers;
 
 int main()
 {
     std::vector<std::thread> threads(n);
-    std::vector<Philosopher> philosophers;
 
     for (size_t i = 0; i < n - 1; i++)
-        philosophers.emplace_back(i, i, i+1);
-    philosophers.emplace_back(n - 1, n - 1, 0);
+        philosophers.emplace_back(i, i, i+1, philosophers);
+    philosophers.emplace_back(n - 1, n - 1, 0, philosophers);
 
     for (size_t i = 0; i < n; i++)
         threads[i] = std::thread(&Philosopher::dine, &philosophers[i]);
