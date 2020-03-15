@@ -24,9 +24,6 @@ public:
     void ping() {
         while (repsPing_ <= repetitions_ and play_)
         {
-            if(not play_){
-                break;
-            }
             
             if(repsPing_ < repetitions_){
                 unique_lock<mutex> l(m_);
@@ -39,8 +36,10 @@ public:
                 this_thread::sleep_for(500ms);
             }
 
-            else
+            else{
+                 unique_lock<mutex> l(m_);
                 printingFunction("Ping repetition limit");
+            }
 
             opponentsTurn_.notify_all();
             this_thread::sleep_for(500ms);
@@ -50,9 +49,6 @@ public:
     void pong() {
         while (repsPong_ <= repetitions_ and play_)
         {
-            if(not play_){
-                break;
-            }
             if(repsPong_ < repetitions_){
                 unique_lock<mutex> l(m_);
                 opponentsTurn_.wait(l, [&](){
@@ -65,8 +61,10 @@ public:
             }
 
             else{
+                unique_lock<mutex> l(m_);
                 printingFunction("Pong repetition limit.\nEnd of program");
                 play_ = false;
+                break;
             }
 
             opponentsTurn_.notify_all();
@@ -77,7 +75,7 @@ public:
     void stop([[maybe_unused]] chrono::seconds timeout) {
         unique_lock<mutex> l(m_);
         auto timeStoper = [&](){
-           return ((not play_) and (not isPingTurn_) and (repsPing_ != repsPong_));
+           return ((not play_));
        };
        
         if( not opponentsTurn_.wait_for(l, timeout, timeStoper)){
@@ -85,6 +83,7 @@ public:
             play_ = false;
             opponentsTurn_.notify_all();
         }
+
     }
 
     void printingFunction (string first){
