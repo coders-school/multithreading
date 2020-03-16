@@ -209,11 +209,11 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
 | [Jakub Zych](https://github.com/jzych)              |  189 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 16 |    |       |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |  114 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                 |  139 |           30 |    |    | 38 | 11 | 20 |    | 10 | 15 | 15 |    |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |  189 |           35 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 |    |       |      |
 | [Krzysiek](https://github.com/kdoroszko)            |   78 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |       |      |
 | [matijaz](https://github.com/matijaz)               |   68 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |       |      |
 | [mkijew](https://github.com/mkijew)                 |  198 |           40 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 |    |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |  112 |           25 |    |    | 38 | 11 | 20 |  8 | 10 |    |    |    |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |  133 |           30 |    |    | 38 | 11 | 20 |  8 | 10 | 16 |    |    |    |       |      |
 | [piotr.kowandy](https://github.com/PiotrKowandy)    |   93 |           20 |    |    | 38 | 11 | 20 |  4 |    |    |    |    |    |       |      |
 | [Szafirmag](https://github.com/WBigaj)              |   81 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 
