@@ -17,11 +17,10 @@ int main( int argc, char** argv )
 
     const int patternsCnt = argc - 2;
 
-    cv::Mat imgSource;
+    // load images
+    cv::Mat imgSource = cv::imread( argv[1], cv::IMREAD_COLOR );
     cv::Mat imgPatterns[patternsCnt];
 
-    // load images
-    imgSource = cv::imread( argv[1], cv::IMREAD_COLOR );
     for ( int i = 0; i < patternsCnt; ++i)
     {
         imgPatterns[i] = cv::imread( argv[i + 2], cv::IMREAD_COLOR );
@@ -35,12 +34,11 @@ int main( int argc, char** argv )
     cv::Mat img_display;
     imgSource.copyTo( img_display );
 
-    std::vector<std::future<int>> futures(patternsCnt);
-    std::mutex criticalSectionMutex;
+    std::vector<std::future<cv::Point>> futures(patternsCnt);
 
     for( int i = 0; i < patternsCnt; ++i )
     {
-        auto matchFunction = [&criticalSectionMutex](const cv::Mat& source, const cv::Mat& pattern, cv::Mat& display)
+        auto matchFunction = [](const cv::Mat& source, const cv::Mat& pattern)
         {
             cv::Mat result;
 
@@ -64,21 +62,26 @@ int main( int argc, char** argv )
             cv::minMaxLoc( result, &minVal, &maxVal, &minLoc, &maxLoc, cv::Mat() );
             matchLoc = minLoc;
 
-            // "print" result
-            std::unique_lock<std::mutex> lock( criticalSectionMutex );
-            cv::rectangle( display,
-                matchLoc,
-                cv::Point( matchLoc.x + pattern.cols , matchLoc.y + pattern.rows ),
-                cv::Scalar::all(0), 2, 8, 0 );
-
-            return 0;
+            return matchLoc;
         };
 
-        futures[i] = std::async(std::launch::async, matchFunction, imgSource, imgPatterns[i], std::ref(img_display));
+        futures[i] = std::async(std::launch::async, matchFunction, std::cref(imgSource), std::cref(imgPatterns[i]));
     }
 
     // wait for results
-    std::for_each(std::begin(futures), std::end(futures), std::mem_fn(&std::future<int>::get));
+    for ( int i = 0; i < patternsCnt; ++i )
+    {
+        const cv::Point& point = futures[i].get();
+
+        // "print" result
+        cv::rectangle( img_display,
+            point,
+            cv::Point( point.x + imgPatterns[i].cols, point.y + imgPatterns[i].rows ),
+            cv::Scalar::all( 0 ),
+            2,
+            8,
+            0 );
+    }
 
     cv::imshow( image_window, img_display );
 
