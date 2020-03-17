@@ -8,16 +8,21 @@
 
 using namespace std::chrono_literals;
 
-std::mutex mtx;
 
+class CFork{
+public:
+    mutable std::mutex mtx_fork_;
+};
+
+ 
 class CTable{
 
 public:
-    std::vector<bool> forks_pool;
+    std::vector<CFork*> forks_pool_;
 
     CTable(int number_of_forks){
-        for (size_t i=0; i< number_of_forks; i++){
-            forks_pool.push_back(false);
+        for (size_t i=0; i < number_of_forks; i++){
+            forks_pool_.push_back(new CFork());
         }
     }
 };
@@ -26,17 +31,13 @@ class CPhilosoph{
 
 public:
     std::string name_;
-    std::string output;
-    int number_;
-    CTable table_;
-    int left_fork_;
-    int right_fork_;
+    std::string output_;
+    CTable& table_;
+    CFork* left_fork_;
+    CFork* right_fork_;
+    int time=0;
 
-    std::chrono::high_resolution_clock::time_point start_of_live_, end_of_live_;
-    size_t time=0;
-
-    CPhilosoph(const CTable& table, std::string name, int number, int left_fork, int right_fork) : table_(table), name_(name), number_(number), left_fork_(left_fork), right_fork_(right_fork){
-        start_of_live_ = std::chrono::high_resolution_clock::now();
+    CPhilosoph( CTable& table, std::string name, CFork* left_fork, CFork* right_fork) : table_(table), name_(name), left_fork_(left_fork), right_fork_(right_fork){
     }
 
     ~CPhilosoph(){
@@ -44,61 +45,52 @@ public:
     }
 
     void eat(){
-        if (table_.forks_pool[left_fork_] == false or table_.forks_pool[right_fork_]){
-            std::lock_guard lg(mtx);
-            table_.forks_pool[left_fork_] = true;
-            table_.forks_pool[right_fork_] = true;
-            output = "Philosoph: " + name_ + " is eating...\n";
-            std::cout<<output;
-            std::this_thread::sleep_for(2s); 
-            table_.forks_pool[left_fork_] =false;
-            table_.forks_pool[right_fork_] = false;  
-        }
+        std::scoped_lock sl(left_fork_->mtx_fork_, right_fork_->mtx_fork_);
+        output_ = "Philosoph: " + name_ + " is eating...\n";
+        std::cout<<output_;
+        std::this_thread::sleep_for(2s); 
     }
 
     void think(){
-        output = "Philosoph: " + name_ + " is thinking...\n";
-        std::cout<<output;
+        output_ = "Philosoph: " + name_ + " is thinking...\n";
+        std::cout<<output_;
         std::this_thread::sleep_for(3s);
     }
 
     void party(){
-        end_of_live_ = std::chrono::high_resolution_clock::now();
-        auto time_of_live_ = std::chrono::duration_cast<std::chrono::milliseconds> (start_of_live_ - end_of_live_).count();
         while (time < 3){
             time++;
             think();
             eat();
         }
     }
-
 };
 
 
 int main(int argc, char* argv[]){
 
-    int numbers_of_philosophers = 5;
+    const int numbers_of_philosophers = 15;
     CTable table(numbers_of_philosophers);
     std::vector<std::thread> thread_pool(numbers_of_philosophers);
     std::vector<std::string> names_of_philosophers(numbers_of_philosophers);
 
-    names_of_philosophers[0]="Arystoteles";
-    names_of_philosophers[1]="Platon";
-    names_of_philosophers[2]="Sokrates";
-    names_of_philosophers[3]="Tales";
-    names_of_philosophers[4]="Nietzsche";
+    for (int i=0; i< numbers_of_philosophers; i++){
+        names_of_philosophers[i] = "Philo" + std::to_string(i);
+    }
 
     for (size_t i=0; i < numbers_of_philosophers; i++){
         if (i == 0){
-            thread_pool[i] = std::thread(&CPhilosoph::party, new CPhilosoph(table, names_of_philosophers[i], i+i, numbers_of_philosophers, i));
+            thread_pool[i] = std::thread(&CPhilosoph::party, new CPhilosoph(table, names_of_philosophers[i], table.forks_pool_[i], table.forks_pool_[numbers_of_philosophers-1]));
         }
         else{
-            thread_pool[i] = std::thread(&CPhilosoph::party, new CPhilosoph(table, names_of_philosophers[i], i+1, i-1, i));
+            thread_pool[i] = std::thread(&CPhilosoph::party, new CPhilosoph(table, names_of_philosophers[i], table.forks_pool_[i-1], table.forks_pool_[i]));
         }
     }
     for (auto&& th : thread_pool){
         th.join();
     }
-    
+
     return 0;
 }
+
+
