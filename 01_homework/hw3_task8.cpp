@@ -68,8 +68,8 @@ T future_accumulate(Iterator first, Iterator last, T init)
     auto hardware_threads = std::thread::hardware_concurrency() == 0 ? std::thread::hardware_concurrency() : 2;
     auto chunk_size = length / hardware_threads;
 
-    std::vector<T> acc_results(hardware_threads);
-    std::vector<std::future<T>> acc_futures(hardware_threads);
+    std::vector<T> acc_results(hardware_threads - 1);
+    std::vector<std::future<T>> acc_futures(hardware_threads - 1);
     auto acc_func = [](Iterator first, Iterator last, T init){
         return std::accumulate(first, last, T{});
     };
@@ -80,18 +80,25 @@ T future_accumulate(Iterator first, Iterator last, T init)
     {
         Iterator chunk_end = chunk_start;
         std::advance(chunk_end, chunk_size);
-        acc_futures[i] = std::async(acc_func, chunk_start, chunk_end, 0);
+        acc_futures[i] = std::async(std::launch::async,
+                                    acc_func,
+                                    chunk_start,
+                                    chunk_end,
+                                    T{});
         chunk_start = chunk_end;
     }
     // Run last thread
-    acc_futures[hardware_threads - 1] = std::async(acc_func, chunk_start, last, 0);
+    auto last_result = acc_func(chunk_start, last, T{});
 
     // Add up results and return
     auto sum_up = [](T a, std::future<T> &b){
         return std::move(a) + b.get();
     };
 
-    return std::accumulate(acc_futures.begin(), acc_futures.end(), init, sum_up);
+    return std::accumulate(acc_futures.begin(),
+                           acc_futures.end(),
+                           init + last_result,
+                           sum_up);
 }
 
 int main() {
