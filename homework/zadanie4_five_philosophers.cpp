@@ -29,7 +29,6 @@ public:
 
 class CPhilosoph{
 
-public:
     std::string name_;
     std::string output_;
     CTable& table_;
@@ -37,6 +36,7 @@ public:
     CFork* right_fork_;
     int time=0;
 
+public:
     CPhilosoph( CTable& table, std::string name, CFork* left_fork, CFork* right_fork) : table_(table), name_(name), left_fork_(left_fork), right_fork_(right_fork){
     }
 
@@ -69,7 +69,7 @@ public:
 
 int main(int argc, char* argv[]){
 
-    const int numbers_of_philosophers = 15;
+    const int numbers_of_philosophers = 3;
     CTable table(numbers_of_philosophers);
     std::vector<std::thread> thread_pool(numbers_of_philosophers);
     std::vector<std::string> names_of_philosophers(numbers_of_philosophers);
