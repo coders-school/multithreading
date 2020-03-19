@@ -10,6 +10,7 @@
 using namespace cv;
 
 constexpr size_t n = 4; // number of kernels
+std::array<cv::Scalar, n> colours {(255,0,0), (0, 255, 0), (0, 0, 255), (255, 255, 0)};
 
 void extractLines(Mat & inputOutput, const Mat & kernel);
 void prepare(const Mat &, Mat &, Mat &);
@@ -72,6 +73,10 @@ void extractLines(Mat & inputOutput, const Mat & kernel)
     erode(inputOutput, inputOutput, kernel, Point(-1, -1));
     dilate(inputOutput, inputOutput, kernel, Point(-1, -1));
     cvtColor(inputOutput, inputOutput, COLOR_GRAY2BGR);
+
+    Mat mask;
+    inRange(inputOutput, Scalar(255,255,255), Scalar(255,255,255), mask);
+    inputOutput.setTo(Scalar(rand() % 255, rand() % 255, rand() % 255), mask);
 }
 
 void prepare(const Mat & src, Mat & gray, Mat & bw)
