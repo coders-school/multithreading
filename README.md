@@ -15,6 +15,7 @@
 11. Testowanie programów współbieżnych ---┘
 
 [Ankieta oceniająca trenera - Mateusz Adamski](https://forms.gle/8Nidginm5wURfiFB6)
+
 [Ankieta oceniająca trenera - Łukasz Ziobroń](https://forms.gle/iRmdRgjzp14jdJpu7)
 
 ## Nagrania
@@ -141,7 +142,7 @@ Przerób algorytmy podane w dokumentacji na ich wielowątkowe wersje:
 
 2. [Wykrywanie linii](https://docs.opencv.org/master/dd/dd7/tutorial_morph_lines_detection.html).
 
-    Każdy wątek szuka linii pod innym kątem. Musisz stworzyć odpowiednie maski. Na koniec wyświetl na obrazku znalezione linie - każdy kąt innym kolorem. Możesz też dodać wyszukiwanie okręgów.
+    Każdy wątek szuka linii pod innym kątem (0, 30, 45, 60, 90, 120, 135, 150 stopni). Musisz stworzyć odpowiednie maski. Na koniec wyświetl na jednym obrazku znalezione linie - każdy kąt innym kolorem. Możesz też dodać wyszukiwanie okręgów.
 
 ---
 
@@ -207,14 +208,14 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
 | [Adam Mierzwiak](https://github.com/adamvm)         |   78 |           10 |    |    | 38 | 10 | 20 |    |    |    |    |    |    |       |      |
 | [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [Jakub Zych](https://github.com/jzych)              |  189 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 16 |    |       |      |
+| [Jakub Zych](https://github.com/jzych)              |  193 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 20 |    |       |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |  114 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |    |    |    |       |      |
-| [kawapa](https://github.com/kawapa)                 |  189 |           35 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 |    |       |      |
+| [kawapa](https://github.com/kawapa)                 |  207 |           35 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 | 18 |       |      |
 | [Krzysiek](https://github.com/kdoroszko)            |   78 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |       |      |
 | [matijaz](https://github.com/matijaz)               |   68 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |       |      |
-| [mkijew](https://github.com/mkijew)                 |  198 |           40 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 |    |       |      |
+| [mkijew](https://github.com/mkijew)                 |  230 |           45 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 | 27 |       |      |
 | [MonikaZ](https://github.com/MonikaZelechowska)     |  133 |           30 |    |    | 38 | 11 | 20 |  8 | 10 | 16 |    |    |    |       |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |   93 |           20 |    |    | 38 | 11 | 20 |  4 |    |    |    |    |    |       |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |  105 |           20 |    |    | 38 | 11 | 20 | 16 |    |    |    |    |    |       |      |
 | [Szafirmag](https://github.com/WBigaj)              |   81 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
 
 ### Punktacja
@@ -261,4 +262,3 @@ Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się 5 kwiet
 4. Jeśli uważasz, że odwalam dobrą robotę to [skrobnij parę słów na ten temat na FB](https://www.facebook.com/pg/szkola.coders.school/reviews/?ref=page_internal), niech się niesie w świat ;)
 5. Zachęcam też do [potwierdzenia moich umiejętności i wystawienia mi rekomendacji na LinkedInie](https://www.linkedin.com/in/lukaszziobron/). Mogę odwdzięczyć się tym samym :)
 6. [Zapisz się na newsletter](https://coders.school/#newsletter), jeśli chcesz otrzymywać informacje o przyszłych kursach.
-
