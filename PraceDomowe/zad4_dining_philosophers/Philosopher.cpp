@@ -29,18 +29,19 @@ void Philosopher::eat(){
     eatStop << this->philosopherName << "stop eating." << std::endl;
     std::cout << eatStop.rdbuf();
     haveForks = false;
-    }
+}
 
 void Philosopher::think(){
-        std::this_thread::sleep_for(std::chrono::milliseconds(100));
-        std::stringstream trinkString;
-        trinkString << this->philosopherName << "is thinking." << std::endl;
-        std::cout << trinkString.rdbuf();
+    std::this_thread::sleep_for(std::chrono::milliseconds(100));
+    std::stringstream trinkString;
+    trinkString << this->philosopherName << "is thinking." << std::endl;
+    std::cout << trinkString.rdbuf();
 
-    }
+}
 
 void Philosopher::dine(){
-    // dodac petle
+    for(std::size_t i = 0; i < numberOfIteration; ++i){
         think();
         eat();
     }
+}

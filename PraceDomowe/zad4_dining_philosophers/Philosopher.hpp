@@ -1,11 +1,12 @@
 #pragma once
 
+#include <chrono>
+#include <cstddef>
 #include <iostream>
 #include <mutex>
 #include <string>
 #include <sstream>
 #include <thread>
-#include <chrono>
 #include "Fork.hpp"
 
 class Philosopher{
@@ -15,6 +16,7 @@ private:
     Fork& rightFork;
     bool haveForks;
     std::thread philosopherThread;
+    static const int numberOfIteration = 20;
 
 public:
     Philosopher(std::string name, Fork& lFork, Fork& rFork);
