@@ -44,16 +44,17 @@ cv::Mat createMatLineAlpha( const cv::Size& size, int iAlpha )
     return mat;
 }
 
-auto lineMatchFunction = [](cv::Mat& bw_image, const cv::Size& size, int alpha)
+auto lineMatchFunction = [](const cv::Mat& bw_image, const cv::Size& size, int alpha)
 {
     // Create structure element for extracting lines through morphology operations
     cv::Mat imgStructure = createMatLineAlpha(size, alpha);
+    cv::Mat imgLocal = bw_image.clone();
 
     // Apply morphology operations
-    cv::erode(bw_image, bw_image, imgStructure, cv::Point(-1, -1));
-    cv::dilate(bw_image, bw_image, imgStructure, cv::Point(-1, -1));
+    cv::erode(imgLocal, imgLocal, imgStructure, cv::Point(-1, -1));
+    cv::dilate(imgLocal, imgLocal, imgStructure, cv::Point(-1, -1));
 
-    return bw_image;
+    return imgLocal.clone();
 };
 
 int main( int argc, char** argv )
@@ -91,7 +92,7 @@ int main( int argc, char** argv )
     // Show binary image
     show_wait_destroy("binary", bw);
 
-    // Create the images that will use to extract the horizontal and vertical lines
+    // Create the images that will use to extract the angle lines
     cv::Mat matAngle0  = bw.clone();
     cv::Mat matAngle30 = bw.clone();
     cv::Mat matAngle45 = bw.clone();
@@ -99,8 +100,6 @@ int main( int argc, char** argv )
     cv::Mat matAngle90 = bw.clone();
     cv::Mat matAngle135 = bw.clone();
     cv::Mat matAngle150 = bw.clone();
-
-    cv::waitKey(0);
 
     // Specify size on horizontal and vertical
     int horizontal_size_value = bw.cols / 30;
