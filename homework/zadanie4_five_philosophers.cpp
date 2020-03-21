@@ -90,8 +90,8 @@ public:
                 thread_pool_.emplace_back(std::thread(&CPhilosoph::party, philo_pointers_[i]));
             }
             else{
-                philo_pointers_.push_back(new CPhilosoph("Philo" + std::to_string(i), forks_pool_[i-1], forks_pool_[i]));
-                thread_pool_.push_back(std::thread(&CPhilosoph::party, philo_pointers_[i]));
+                philo_pointers_.emplace_back(new CPhilosoph("Philo" + std::to_string(i), forks_pool_[i-1], forks_pool_[i]));
+                thread_pool_.emplace_back(std::thread(&CPhilosoph::party, philo_pointers_[i]));
             }
         }
     }
