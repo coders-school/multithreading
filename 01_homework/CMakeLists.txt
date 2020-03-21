@@ -9,3 +9,7 @@ find_package( Threads REQUIRED )
 add_executable(hw4_task9a hw4_task9a.cpp)
 target_link_libraries(hw4_task9a pthread ${OpenCV_LIBS})
 target_compile_options(hw4_task9a PRIVATE -Wall -Werror -Wpedantic -Wextra)
+
+add_executable(hw4_task9b hw4_task9b.cpp)
+target_link_libraries(hw4_task9b pthread ${OpenCV_LIBS})
+target_compile_options(hw4_task9b PRIVATE -Wall -Werror -Wpedantic -Wextra)
