@@ -23,9 +23,13 @@ class CPhilosoph{
     CFork* right_fork_;
     int time=0;
     std::random_device rd;
+    int sleep_time_;
 
 public:
     CPhilosoph(std::string name, CFork* left_fork, CFork* right_fork) : name_(name), left_fork_(left_fork), right_fork_(right_fork){
+        std::mt19937 gen(rd());
+        std::uniform_int_distribution<> dis(1, 3);
+        sleep_time_ = dis(gen);
     }
 
     ~CPhilosoph(){
@@ -35,17 +39,13 @@ public:
         std::scoped_lock sl(left_fork_->mtx_fork_, right_fork_->mtx_fork_);
         output_ = "Philosoph: " + name_ + " is eating...\n";
         std::cout<<output_;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(1, 3);
-        std::this_thread::sleep_for(std::chrono::seconds(dis(gen)));
+        std::this_thread::sleep_for(std::chrono::seconds(sleep_time_));
     }
 
     void think(){
         output_ = "Philosoph: " + name_ + " is thinking...\n";
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<> dis(1, 3);
         std::cout<<output_;
-        std::this_thread::sleep_for(std::chrono::seconds(dis(gen)));
+        std::this_thread::sleep_for(std::chrono::seconds(sleep_time_));
     }
 
     void party(){
@@ -61,44 +61,39 @@ class CTable{
 
     int numbers_of_forks_;
     std::vector<std::thread> thread_pool_;
-    std::vector<std::string> names_of_philosophers_;
     std::vector<CPhilosoph*> philo_pointers_;
     std::vector<CFork*> forks_pool_;
 
 public:
     CTable(int number_of_forks) : numbers_of_forks_(number_of_forks){ 
         for (int i=0; i < numbers_of_forks_; i++){
-            forks_pool_.push_back(new CFork());
-            names_of_philosophers_.push_back("Philo" + std::to_string(i));
+            forks_pool_.emplace_back(new CFork());
         }
     }
 
     ~CTable(){
+        for (auto&& th : thread_pool_){
+            th.join();
+        }
         for (int i = 0; i < numbers_of_forks_; i++){
             delete forks_pool_[i];
             delete philo_pointers_[i];
         }
+        std::cout<< "\nParty is ended. Go home ;)\n\n";
     }
 
     void Start_party(){
+        std::cout<< "\nLet's party started!!!\n\n";
         for (size_t i=0; i < numbers_of_forks_; i++){
             if (i == 0){
-                philo_pointers_.push_back(new CPhilosoph(names_of_philosophers_[i], forks_pool_[i], forks_pool_[numbers_of_forks_-1]));
-                thread_pool_.push_back(std::thread(&CPhilosoph::party, philo_pointers_[i]));
+                philo_pointers_.emplace_back(new CPhilosoph("Philo" + std::to_string(i), forks_pool_[i], forks_pool_[numbers_of_forks_-1]));
+                thread_pool_.emplace_back(std::thread(&CPhilosoph::party, philo_pointers_[i]));
             }
             else{
-                philo_pointers_.push_back(new CPhilosoph(names_of_philosophers_[i], forks_pool_[i-1], forks_pool_[i]));
+                philo_pointers_.push_back(new CPhilosoph("Philo" + std::to_string(i), forks_pool_[i-1], forks_pool_[i]));
                 thread_pool_.push_back(std::thread(&CPhilosoph::party, philo_pointers_[i]));
             }
         }
-    }
-
-    void Stop_party(){
-        
-        for (auto&& th : thread_pool_){
-            th.join();
-        }
-        
     }
 };
 
@@ -106,12 +101,7 @@ int main(int argc, char* argv[]){
 
     const int numbers_of_philosophers = 3;
     CTable table(numbers_of_philosophers);
-
-    std::cout<< "\nLet's party started!!!\n\n";
     table.Start_party();
-
-    table.Stop_party();
-    std::cout<< "\nParty is ended. Go home ;)\n\n";
 
     return 0;
 }
