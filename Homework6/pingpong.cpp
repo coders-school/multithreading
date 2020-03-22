@@ -45,7 +45,7 @@ public:
         while (counter && !timerOut) {
             unique_lock<mutex> lock(ballLock);
             condition.wait_for(lock, clockTick);
-            if (status == PONG) {
+            if (status == PONG && !timerOut) {
                 cout << "pong " << turnNumber++ << endl;
                 this_thread::sleep_for(flightTime);
                 status = (--counter) ? PING : FINISH;
@@ -57,22 +57,18 @@ public:
 
     void stop(chrono::seconds timeout) {
         auto stopTime = chrono::steady_clock::now() + timeout;
-        while (true) {
-            unique_lock<mutex> lock(ballLock);
-            condition.wait_for(lock, clockTick);
-            {
-                if (chrono::steady_clock::now() > stopTime) {
-                    timerOut = true;
-                    condition.notify_all();
-                    cout << "Timeout\n";
-                    break;
-                }
-                if (status == FINISH) {
-                    cout << "End of the game\n";
-                    break;
-                }
+        unique_lock<mutex> lock(ballLock);
+        condition.wait_until(lock, stopTime, [&] { return status == FINISH; });
+        {
+            if (chrono::steady_clock::now() > stopTime) {
+                timerOut = true;
+                condition.notify_all();
+                cout << "Timeout\n";
             }
-            condition.notify_all();
+            if (status == FINISH) {
+                condition.notify_all();
+                cout << "End of the game\n";
+            }
         }
     }
 };
