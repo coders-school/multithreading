@@ -31,7 +31,7 @@ public:
     void ping() {
         while (counter && !timerOut) {
             unique_lock<mutex> lock(ballLock);
-            condition.wait_for(lock, clockTick);
+            condition.wait_for(lock, clockTick, [&]{return !timerOut;});
             if (status == PING && !timerOut) {
                 cout << "ping " << turnNumber << endl;
                 this_thread::sleep_for(flightTime);
@@ -44,7 +44,7 @@ public:
     void pong() {
         while (counter && !timerOut) {
             unique_lock<mutex> lock(ballLock);
-            condition.wait_for(lock, clockTick);
+            condition.wait_for(lock, clockTick, [&]{return !timerOut;});
             if (status == PONG && !timerOut) {
                 cout << "pong " << turnNumber++ << endl;
                 this_thread::sleep_for(flightTime);
