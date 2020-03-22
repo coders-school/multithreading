@@ -10,10 +10,9 @@
 using namespace cv;
 
 constexpr size_t n = 4; // number of kernels
-std::array<cv::Scalar, n> colours {(255,0,0), (0, 255, 0), (0, 0, 255), (255, 255, 0)};
 
-void extractLines(Mat & inputOutput, const Mat & kernel);
 void prepare(const Mat &, Mat &, Mat &);
+void extractLines(Mat & inputOutput, const Mat & kernel);
 void show_wait_destroy(const char* winname, cv::Mat img);
 
 int main(int argc, char** argv)
@@ -33,29 +32,22 @@ int main(int argc, char** argv)
 
     prepare(src, gray, bw);
     
-    std::array<const char*, n> directions {"horizontal", "vertical", "diagonalLeft", "diagonalRight"};
     std::vector<std::future<void>> futures(n);
 
     std::vector<cv::Mat> results(n);
     std::for_each(results.begin(), results.end(), [=](Mat & obj){ obj = bw.clone(); });
     
-    std::vector<cv::Mat> kernels;
-    kernels.reserve(n);
-
     int side = bw.rows / 30;
-    int arrayLeft[side * side] = {}; // matrix for left diagonal
-    int arrayRight[side * side] = {}; // matrix for right diagonal
 
-    for (size_t i = 0; i < side * side; i = i + side + 1)
-        arrayLeft[i] = 1;
-    
-    for (size_t i = side - 1; i < side * side; i = i + side - 1)
-        arrayRight[i] = 1;
+    std::vector<cv::Mat> kernels
+    {
+        {getStructuringElement(MORPH_RECT, Size((bw.cols / 30), 1))},
+        {getStructuringElement(MORPH_RECT, Size(1, (bw.rows / 30)))},
+        {Mat::eye(side, side, CV_8U)*1},
+        {Mat::eye(side, side, CV_8U)*1}
+    };
 
-    kernels.emplace_back(getStructuringElement(MORPH_RECT, Size((bw.cols / 30), 1)));
-    kernels.emplace_back(getStructuringElement(MORPH_RECT, Size(1, (bw.rows / 30))));
-    kernels.emplace_back(Mat(side, side, CV_8U, arrayLeft));
-    kernels.emplace_back(Mat(side, side, CV_8U, arrayRight));
+    cv::rotate(kernels[3], kernels[3], cv::ROTATE_90_CLOCKWISE);
 
     for (size_t i = 0; i < n; i++)
         futures[i] = std::async(std::launch::async, extractLines, std::ref(results[i]), std::cref(kernels[i]));
