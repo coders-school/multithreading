@@ -13,12 +13,12 @@ public:
 
     void ping() {
         for(int i = 0; i < repetitions_; ++i)
-            std::cout << "ping ";
+            std::cout << "ping" << i << ' ';
     }
 
     void pong() {
         for(int i = 0; i < repetitions_; ++i)
-            std::cout << "pong\n";
+            std::cout << "pong" << i << '\n';
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
