@@ -12,11 +12,11 @@ public:
     {}
 
     void ping() {
-        // TODO: implement me :)
+        std::cout << "ping ";
     }
 
     void pong() {
-        // TODO: implement me :)
+        std::cout << "pong\n";
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
