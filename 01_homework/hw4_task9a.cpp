@@ -38,7 +38,7 @@ int main(int argc, char** argv)
     }
 
     // Matchmaking function that results Point
-    auto matchingMethod = [](Mat& img, Mat& templ) {
+    auto matchingMethod = [](const Mat& img, const Mat& templ) {
         Mat result;
 
         int result_cols =  img.cols - templ.cols + 1;
@@ -84,15 +84,15 @@ int main(int argc, char** argv)
     for(int i = 0; i < no_of_templates; ++i) {
         results[i] = std::async(std::launch::async,
                                 matchingMethod,
-                                ref(source),
-                                ref(templates[i]));
+                                cref(source),
+                                cref(templates[i]));
     }
 
     // Collects result and draw rectangles around them
     for(int i = 0; i < no_of_templates; ++i) {
         vector<Point> r = results[i].get();
 
-        for(auto p : r) {
+        for(const auto & p : r) {
             rectangle(img_display,
                       p,
                       Point(p.x + templates[i].cols , p.y + templates[i].rows),
