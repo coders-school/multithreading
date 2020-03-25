@@ -206,17 +206,17 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 
 |                                                     | SUMA | Punktualność | P1 | P2 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 | Z8 | Z9 | Testy | Inne |
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
-| [Adam Mierzwiak](https://github.com/adamvm)         |   78 |           10 |    |    | 38 | 10 | 20 |    |    |    |    |    |    |       |      |
-| [Cypher](https://github.com/ChopSeeGuy)             |   84 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |       |      |
-| [Jakub Zych](https://github.com/jzych)              |  193 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 20 |    |       |      |
-| [kamil waszkiewicz](https://github.com/darkassazi)  |  134 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |  9 | 20 |    |       |      |
-| [kawapa](https://github.com/kawapa)                 |  226 |           40 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 | 32 |       |      |
-| [Krzysiek](https://github.com/kdoroszko)            |   78 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |       |      |
-| [matijaz](https://github.com/matijaz)               |   68 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |       |      |
+| [Adam Mierzwiak](https://github.com/adamvm)         |  122 |           10 |    |    | 38 | 10 | 20 |    |    | 20 |    |    |    |    24 |      |
+| [Cypher](https://github.com/ChopSeeGuy)             |  108 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |    24 |      |
+| [Jakub Zych](https://github.com/jzych)              |  229 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 20 | 15 |    21 |      |
+| [kamil waszkiewicz](https://github.com/darkassazi)  |  137 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |  9 | 20 |    |     3 |      |
+| [kawapa](https://github.com/kawapa)                 |  262 |           40 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 | 32 |    21 |   15 |
+| [Krzysiek](https://github.com/kdoroszko)            |   81 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |     3 |      |
+| [matijaz](https://github.com/matijaz)               |   74 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |     6 |      |
 | [mkijew](https://github.com/mkijew)                 |  230 |           45 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 | 27 |       |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |  133 |           30 |    |    | 38 | 11 | 20 |  8 | 10 | 16 |    |    |    |       |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |  157 |           30 |    |    | 38 | 11 | 20 |  8 | 10 | 16 |    |    |    |    24 |      |
 | [piotr.kowandy](https://github.com/PiotrKowandy)    |  113 |           20 |    |    | 38 | 11 | 20 | 24 |    |    |    |    |    |       |      |
-| [Szafirmag](https://github.com/WBigaj)              |   81 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |       |      |
+| [Szafirmag](https://github.com/WBigaj)              |   93 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |    12 |      |
 
 ### Punktacja
 
