@@ -13,10 +13,10 @@ struct Int{
 };
 
 template<typename T>
-void fill(T* array, int begin, int end, int value){
-    for (int i = begin; i < end; i++){
+void fill(T* array, int size, int begin, int gap, int value){
+    for (int i = begin; i < size; i+=gap){
         array->a = value;
-        array++;
+        array+=gap;
     }
 }
 
@@ -40,58 +40,58 @@ int main(){
     std::cout<< "\n---------------------------------------default size: \n\n";
 
     auto start = std::chrono::high_resolution_clock::now();
-    fill(array, 0, size, fill_it_up);
+    fill(array, size, 0, 1, fill_it_up);
     auto stop = std::chrono::high_resolution_clock::now();
-    std::cout<< "Time of function -> fill(array_without_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
+    std::cout<< "Time of fun -> fill(array_without_padding):          " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
 
     start = std::chrono::high_resolution_clock::now();
-    fill(array64, 0, size, fill_it_up);
-    stop = std::chrono::high_resolution_clock::now();
-    std::cout<< "Time of function -> fill(array_with_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
-
-    start = std::chrono::high_resolution_clock::now();
-    std::thread t([&](){fill(array, 0, size-1, fill_it_up);});
-    std::thread t1([&](){fill(array, size/2, size, fill_it_up);});
+    std::thread t([&](){fill(array, size, 0, 2, fill_it_up);});
+    std::thread t1([&](){fill(array, size, 1, 2, fill_it_up);});
     t.join();
     t1.join();
     stop = std::chrono::high_resolution_clock::now();
-    std::cout<< "Time of parallel function -> fill(array_without_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
+    std::cout<< "Time of parallel fun -> fill(array_without_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
 
     start = std::chrono::high_resolution_clock::now();
-    std::thread t3([&](){fill(array64, 0, size-1, fill_it_up);});
-    std::thread t4([&](){fill(array64, size/2, size, fill_it_up);});
+    fill(array64, size, 0, 1, fill_it_up);
+    stop = std::chrono::high_resolution_clock::now();
+    std::cout<< "Time of fun -> fill(array_with_padding):             " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
+
+    start = std::chrono::high_resolution_clock::now();
+    std::thread t3([&](){fill(array64, size, 0, 2, fill_it_up);});
+    std::thread t4([&](){fill(array64, size, 1, 2, fill_it_up);});
     t3.join();
     t4.join();
     stop = std::chrono::high_resolution_clock::now();
-    std::cout<< "Time of parallel function -> fill(array_with_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
+    std::cout<< "Time of parallel fun -> fill(array_with_padding):    " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
 
     std::cout<< "\n---------------------------------------small size: \n\n";
     
     start = std::chrono::high_resolution_clock::now();
-    fill(small_array, 0, small_size, fill_it_up);
+    fill(small_array, small_size, 0, 1, fill_it_up);
     stop = std::chrono::high_resolution_clock::now();
-    std::cout<< "Time of function -> fill(small_array_without_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
+    std::cout<< "Time of fun -> fill(small_array_without_padding):          " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
 
     start = std::chrono::high_resolution_clock::now();
-    fill(small_array64, 0, small_size, fill_it_up);
-    stop = std::chrono::high_resolution_clock::now();
-    std::cout<< "Time of function -> fill(small_array_with_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
-
-    start = std::chrono::high_resolution_clock::now();
-    std::thread t5([&](){fill(small_array, 0, small_size-1, fill_it_up);});
-    std::thread t6([&](){fill(small_array, small_size/2, small_size, fill_it_up);});
+    std::thread t5([&](){fill(small_array, small_size, 0, 2, fill_it_up);});
+    std::thread t6([&](){fill(small_array, small_size, 1, 2, fill_it_up);});
     t5.join();
     t6.join();
     stop = std::chrono::high_resolution_clock::now();
-    std::cout<< "Time of parallel function -> fill(small_array_without_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
+    std::cout<< "Time of parallel fun -> fill(small_array_without_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
 
     start = std::chrono::high_resolution_clock::now();
-    std::thread t7([&](){fill(small_array64, 0, small_size-1, fill_it_up);});
-    std::thread t8([&](){fill(small_array64, small_size/2, small_size, fill_it_up);});
+    fill(small_array64, small_size, 0, 1, fill_it_up);
+    stop = std::chrono::high_resolution_clock::now();
+    std::cout<< "Time of fun -> fill(small_array_with_padding):             " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
+
+    start = std::chrono::high_resolution_clock::now();
+    std::thread t7([&](){fill(small_array64, small_size, 0, 2, fill_it_up);});
+    std::thread t8([&](){fill(small_array64, small_size, 1, 2, fill_it_up);});
     t7.join();
     t8.join();
     stop = std::chrono::high_resolution_clock::now();
-    std::cout<< "Time of parallel function -> fill(small_array_with_padding): " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
+    std::cout<< "Time of parallel fun -> fill(small_array_with_padding):    " << std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() << "\n\n";
 
     return 0;
 }
@@ -105,28 +105,27 @@ Size of small_array64: 64000
 
 ---------------------------------------default size: 
 
-Time of function -> fill(array_without_padding): 841
+Time of fun -> fill(array_without_padding):          435
 
-Time of function -> fill(array_with_padding): 4482
+Time of parallel fun -> fill(array_without_padding): 528
 
-Time of parallel function -> fill(array_without_padding): 526
+Time of fun -> fill(array_with_padding):             2534
 
-Time of parallel function -> fill(array_with_padding): 1598
+Time of parallel fun -> fill(array_with_padding):    1313
 
 
 ---------------------------------------small size: 
 
-Time of function -> fill(small_array_without_padding): 14
+Time of fun -> fill(small_array_without_padding):          12
 
-Time of function -> fill(small_array_with_padding): 25
+Time of parallel fun -> fill(small_array_without_padding): 179
 
-Time of parallel function -> fill(small_array_without_padding): 114
+Time of fun -> fill(small_array_with_padding):             60
 
-Time of parallel function -> fill(small_array_with_padding): 81
+Time of parallel fun -> fill(small_array_with_padding):    89
 
 
 -----------
-
 
 Size of array:   400000
 Size of array64: 6400000
@@ -136,23 +135,24 @@ Size of small_array64: 64000
 
 ---------------------------------------default size: 
 
-Time of function -> fill(array_without_padding): 475
+Time of fun -> fill(array_without_padding):          347
 
-Time of function -> fill(array_with_padding): 2418
+Time of parallel fun -> fill(array_without_padding): 518
 
-Time of parallel function -> fill(array_without_padding): 476
+Time of fun -> fill(array_with_padding):             2538
 
-Time of parallel function -> fill(array_with_padding): 1429
+Time of parallel fun -> fill(array_with_padding):    1209
 
 
 ---------------------------------------small size: 
 
-Time of function -> fill(small_array_without_padding): 14
+Time of fun -> fill(small_array_without_padding):          11
 
-Time of function -> fill(small_array_with_padding): 32
+Time of parallel fun -> fill(small_array_without_padding): 140
 
-Time of parallel function -> fill(small_array_without_padding): 104
+Time of fun -> fill(small_array_with_padding):             36
 
-Time of parallel function -> fill(small_array_with_padding): 112
+Time of parallel fun -> fill(small_array_with_padding):    134
+
 
 */
