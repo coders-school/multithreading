@@ -1,10 +1,14 @@
-#include <iostream>
-#include <thread>
 #include <chrono>
+#include <iostream>
+#include <mutex>
+#include <sstream>
+#include <thread>
+
 using namespace std;
 
 class PingPong {
     int repetitions_;
+    std::mutex coutMutex;
 
 public:
     PingPong(int repetitions)
@@ -12,13 +16,23 @@ public:
     {}
 
     void ping() {
-        for(int i = 0; i < repetitions_; ++i)
-            std::cout << "ping" << i << ' ';
+        std::stringstream ss;
+
+        for(int i = 0; i < repetitions_; ++i) {
+            ss << "ping" << i << ' ';
+            lock_guard<mutex> lockCout(coutMutex);
+            std::cout << ss.rdbuf();
+        }
     }
 
     void pong() {
-        for(int i = 0; i < repetitions_; ++i)
-            std::cout << "pong" << i << '\n';
+        std::stringstream ss;
+
+        for(int i = 0; i < repetitions_; ++i) {
+            ss << "pong" << i << '\n';
+            lock_guard<mutex> lockCout(coutMutex);
+            std::cout << ss.rdbuf();
+        }
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
