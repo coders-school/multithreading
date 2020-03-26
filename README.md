@@ -208,7 +208,7 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
 | [Adam Mierzwiak](https://github.com/adamvm)         |  122 |           10 |    |    | 38 | 10 | 20 |    |    | 20 |    |    |    |    24 |      |
 | [Cypher](https://github.com/ChopSeeGuy)             |  108 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |    24 |      |
-| [Jakub Zych](https://github.com/jzych)              |  229 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 20 | 15 |    21 |      |
+| [Jakub Zych](https://github.com/jzych)              |  250 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 20 | 36 |    21 |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |  137 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |  9 | 20 |    |     3 |      |
 | [kawapa](https://github.com/kawapa)                 |  262 |           40 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 | 32 |    21 |   15 |
 | [Krzysiek](https://github.com/kdoroszko)            |   81 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |     3 |      |
