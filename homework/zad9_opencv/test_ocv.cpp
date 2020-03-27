@@ -62,6 +62,34 @@ cv::Mat createMatLineAlpha( const cv::Size& size, int iAlpha )
     return mat;
 }
 
+cv::Mat createMatLineAngle( const cv::Size& size, double angle )
+{
+    std::cout << "createMatLineAngle()" << std::endl;
+
+    cv::Mat src(size, CV_8U);
+    cv::Mat dst(size, CV_8U);
+
+    cv::Point origin( size.width / 2, size.height / 2 );
+
+    std::cout << "origin x " << origin.x << std::endl;
+    std::cout << "origin y " << origin.y << std::endl;
+
+    // draw line on src
+    cv::line( src,
+            cv::Point( 0, size.height / 2 ),
+            cv::Point( size.width - 1, size.height / 2 ),
+            1,
+            1
+            );
+    // cv::Mat line = cv::getStructuringElement(cv::MORPH_RECT, cv::Size(size.width, 1));
+
+    display_mat(src);
+
+    cv::Mat rot = cv::getRotationMatrix2D(origin, angle, 1.0 );
+    cv::warpAffine( src, dst, rot, size );
+    return dst;
+}
+
 int main( int argc, char** argv )
 {
     int horizontal_cols = 1024;
@@ -77,11 +105,21 @@ int main( int argc, char** argv )
     cv::Mat imgStructure2 = cv::getStructuringElement(cv::MORPH_CROSS, cv::Size(7, 7));
     display_mat(imgStructure2);
 
+    std::cout << "------------------------" << std::endl;
+
     cv::Mat imgLine = createMatLineAlpha( cv::Size(7, 7), 45 );
     display_mat(imgLine);
 
-    cv::Mat imgLine2 = createMatLineAlpha( cv::Size(21, 21), 135 );
+    cv::Mat imgLine2 = createMatLineAngle( cv::Size(7, 7), 45.0 );
     display_mat(imgLine2);
+
+    std::cout << "------------------------" << std::endl;
+
+    cv::Mat imgLine3 = createMatLineAlpha( cv::Size(21, 21), 135 );
+    display_mat(imgLine3);
+
+    cv::Mat imgLine4 = createMatLineAngle( cv::Size(7, 7), 45.0 );
+    display_mat(imgLine4);
 
     return 0;
 }

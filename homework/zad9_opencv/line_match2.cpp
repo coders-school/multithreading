@@ -7,7 +7,7 @@
 #include <future>
 #include <thread>
 
-void show_wait_destroy(const char* winname, cv::Mat img) {
+void show_wait_destroy(const char* winname, const cv::Mat& img) {
     cv::imshow(winname, img);
     cv::moveWindow(winname, 500, 0);
     cv::waitKey(0);
@@ -54,7 +54,7 @@ auto lineMatchFunction = [](const cv::Mat& bw_image, const cv::Size& size, int a
     cv::erode(imgLocal, imgLocal, imgStructure, cv::Point(-1, -1));
     cv::dilate(imgLocal, imgLocal, imgStructure, cv::Point(-1, -1));
 
-    return imgLocal.clone();
+    return imgLocal;
 };
 
 int main( int argc, char** argv )
@@ -93,67 +93,101 @@ int main( int argc, char** argv )
     show_wait_destroy("binary", bw);
 
     // Create the images that will use to extract the angle lines
-    cv::Mat matAngle0  = bw.clone();
-    cv::Mat matAngle30 = bw.clone();
-    cv::Mat matAngle45 = bw.clone();
-    cv::Mat matAngle60 = bw.clone();
-    cv::Mat matAngle90 = bw.clone();
-    cv::Mat matAngle135 = bw.clone();
-    cv::Mat matAngle150 = bw.clone();
+    int angles[] = { 0, 30, 45, 60, 90, 135, 150 };
+    const int angCnt = sizeof(angles) / sizeof(angles[0]);
+
+    // cv::Mat matAngle0  = bw.clone();
+    // cv::Mat matAngle30 = bw.clone();
+    // cv::Mat matAngle45 = bw.clone();
+    // cv::Mat matAngle60 = bw.clone();
+    // cv::Mat matAngle90 = bw.clone();
+    // cv::Mat matAngle135 = bw.clone();
+    // cv::Mat matAngle150 = bw.clone();
+
+    // clone black and white image
+    std::array< cv::Mat, angCnt > srcMatAngles;
+    for ( int i = 0; i < angCnt; ++i )
+    {
+        srcMatAngles[i] = bw.clone();
+    }
 
     // Specify size on horizontal and vertical
     int horizontal_size_value = bw.cols / 30;
     int vertical_size_value = bw.rows / 30;
     cv::Size matchSize(horizontal_size_value, vertical_size_value);
 
-    std::future<cv::Mat> result_ang0   = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle0),   std::cref(matchSize), 0);
-    std::future<cv::Mat> result_ang30  = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle30),  std::cref(matchSize), 30);
-    std::future<cv::Mat> result_ang45  = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle45),  std::cref(matchSize), 45);
-    std::future<cv::Mat> result_ang60  = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle60),  std::cref(matchSize), 60);
-    std::future<cv::Mat> result_ang90  = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle90),  std::cref(matchSize), 90);
-    std::future<cv::Mat> result_ang135 = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle135), std::cref(matchSize), 135);
-    std::future<cv::Mat> result_ang150 = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle150), std::cref(matchSize), 150);
+    // std::future<cv::Mat> result_ang0   = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle0),   std::cref(matchSize), 0);
+    // std::future<cv::Mat> result_ang30  = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle30),  std::cref(matchSize), 30);
+    // std::future<cv::Mat> result_ang45  = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle45),  std::cref(matchSize), 45);
+    // std::future<cv::Mat> result_ang60  = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle60),  std::cref(matchSize), 60);
+    // std::future<cv::Mat> result_ang90  = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle90),  std::cref(matchSize), 90);
+    // std::future<cv::Mat> result_ang135 = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle135), std::cref(matchSize), 135);
+    // std::future<cv::Mat> result_ang150 = std::async(std::launch::async, lineMatchFunction, std::ref(matAngle150), std::cref(matchSize), 150);
 
-    cv::Mat mat_result_ang0 = result_ang0.get();
-    cv::Mat mat_result_ang30 = result_ang30.get();
-    cv::Mat mat_result_ang45 = result_ang45.get();
-    cv::Mat mat_result_ang60 = result_ang60.get();
-    cv::Mat mat_result_ang90 = result_ang90.get();
-    cv::Mat mat_result_ang135 = result_ang135.get();
-    cv::Mat mat_result_ang150 = result_ang150.get();
+    // start lines finding ...
+    std::array< std::future<cv::Mat>, angCnt > futureResults;
+    for ( int i = 0; i < angCnt; ++i )
+    {
+        futureResults[i] = std::async( std::launch::async, lineMatchFunction, std::ref(srcMatAngles[i]), std::cref(matchSize), angles[i]);
+    }
 
-    // Show extracted lines at 0 degree
-    show_wait_destroy("Angle_0", mat_result_ang0);
+    // cv::Mat mat_result_ang0 = result_ang0.get();
+    // cv::Mat mat_result_ang30 = result_ang30.get();
+    // cv::Mat mat_result_ang45 = result_ang45.get();
+    // cv::Mat mat_result_ang60 = result_ang60.get();
+    // cv::Mat mat_result_ang90 = result_ang90.get();
+    // cv::Mat mat_result_ang135 = result_ang135.get();
+    // cv::Mat mat_result_ang150 = result_ang150.get();
 
-    // Show extracted lines at 30 degree
-    show_wait_destroy("Angle_30", mat_result_ang30);
+    // collect results
+    std::array< cv::Mat, angCnt > matResults;
+    for ( int i = 0; i < angCnt; ++i )
+    {
+        matResults[i] = futureResults[i].get();
+    }
 
-    // Show extracted lines at 45 degree
-    show_wait_destroy("Angle_45", mat_result_ang45);
+    // // Show extracted lines at 0 degree
+    // show_wait_destroy("Angle_0", mat_result_ang0);
 
-    // Show extracted lines at 60 degree
-    show_wait_destroy("Angle_60", mat_result_ang60);
+    // // Show extracted lines at 30 degree
+    // show_wait_destroy("Angle_30", mat_result_ang30);
 
-    // Show extracted lines at 90 degree
-    show_wait_destroy("Angle_90", mat_result_ang90);
+    // // Show extracted lines at 45 degree
+    // show_wait_destroy("Angle_45", mat_result_ang45);
 
-    // Show extracted lines at 135 degree
-    show_wait_destroy("Angle_135", mat_result_ang135);
+    // // Show extracted lines at 60 degree
+    // show_wait_destroy("Angle_60", mat_result_ang60);
 
-    // Show extracted lines at 150 degree
-    show_wait_destroy("Angle_150", mat_result_ang150);
+    // // Show extracted lines at 90 degree
+    // show_wait_destroy("Angle_90", mat_result_ang90);
 
-    // display results
+    // // Show extracted lines at 135 degree
+    // show_wait_destroy("Angle_135", mat_result_ang135);
+
+    // // Show extracted lines at 150 degree
+    // show_wait_destroy("Angle_150", mat_result_ang150);
+
+    // display partial results
+    for ( int i = 0; i < angCnt; ++i )
+    {
+        std::stringstream ss;
+        ss << "Angle_" <<  angles[i];
+        show_wait_destroy( ss.str().c_str(), matResults[i] );
+    }
+
+    assert( matResults.size() >= 7 );
+
+    // display results on one image
     cv::Mat display = src.clone();
-    display.setTo(cv::Scalar(0,0,255), mat_result_ang0);  // red
-    display.setTo(cv::Scalar(0,255,0), mat_result_ang30); // green
-    display.setTo(cv::Scalar(255,0,0), mat_result_ang45); // blue
+    display.setTo(cv::Scalar(0,0,255), matResults[0]); // red
+    display.setTo(cv::Scalar(0,255,0), matResults[1]); // green
+    display.setTo(cv::Scalar(255,0,0), matResults[2]); // blue
 
-    display.setTo(cv::Scalar(0,255,255), mat_result_ang60);  // yellow
-    display.setTo(cv::Scalar(255,255,0), mat_result_ang90);  // cyan
-    display.setTo(cv::Scalar(255,0,255), mat_result_ang135); // magenta
+    display.setTo(cv::Scalar(0,255,255), matResults[3]);  // yellow
+    display.setTo(cv::Scalar(255,255,0), matResults[4]);  // cyan
+    display.setTo(cv::Scalar(255,0,255), matResults[5]);  // magenta
 
-    display.setTo(cv::Scalar(128,128,255), mat_result_ang150); // pink
+    display.setTo(cv::Scalar(128,128,255), matResults[6]); // pink
 
     show_wait_destroy("result", display);
 
