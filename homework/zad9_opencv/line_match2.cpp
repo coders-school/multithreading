@@ -104,12 +104,12 @@ int main( int argc, char** argv )
     // cv::Mat matAngle135 = bw.clone();
     // cv::Mat matAngle150 = bw.clone();
 
-    // clone black and white image
-    std::array< cv::Mat, angCnt > srcMatAngles;
-    for ( int i = 0; i < angCnt; ++i )
-    {
-        srcMatAngles[i] = bw.clone();
-    }
+    // // clone black and white image
+    // std::array< cv::Mat, angCnt > srcMatAngles;
+    // for ( int i = 0; i < angCnt; ++i )
+    // {
+    //     srcMatAngles[i] = bw.clone();
+    // }
 
     // Specify size on horizontal and vertical
     int horizontal_size_value = bw.cols / 30;
@@ -128,7 +128,7 @@ int main( int argc, char** argv )
     std::array< std::future<cv::Mat>, angCnt > futureResults;
     for ( int i = 0; i < angCnt; ++i )
     {
-        futureResults[i] = std::async( std::launch::async, lineMatchFunction, std::ref(srcMatAngles[i]), std::cref(matchSize), angles[i]);
+        futureResults[i] = std::async( std::launch::async, lineMatchFunction, std::ref(bw), std::cref(matchSize), angles[i]);
     }
 
     // cv::Mat mat_result_ang0 = result_ang0.get();
@@ -185,7 +185,7 @@ int main( int argc, char** argv )
 
     display.setTo(cv::Scalar(0,255,255), matResults[3]);  // yellow
     display.setTo(cv::Scalar(255,255,0), matResults[4]);  // cyan
-    display.setTo(cv::Scalar(255,0,255), matResults[5]);  // magenta
+    display.setTo(cv::Scalar(255,0,255), matResults[5]); // magenta
 
     display.setTo(cv::Scalar(128,128,255), matResults[6]); // pink
 
