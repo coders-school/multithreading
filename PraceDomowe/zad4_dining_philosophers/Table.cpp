@@ -11,6 +11,9 @@ Table::Table(int number):
     std::string name = "F" + std::to_string(number);
     Philosopher lastPhilosopher  {name, forks[number-1], forks[0]};
     philosophers.emplace_back(std::move(lastPhilosopher));
+
+    for(auto& elem: philosophers)
+        elem.startThread();
 }
 
 void Table::showTable(){

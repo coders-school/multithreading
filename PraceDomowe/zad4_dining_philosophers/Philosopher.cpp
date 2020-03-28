@@ -1,10 +1,14 @@
 #include "Philosopher.hpp"
 
 Philosopher::Philosopher(std::string name, Fork& lFork, Fork& rFork):
-    philosopherName(name), leftFork(lFork), rightFork(rFork), philosopherThread(&Philosopher::dine, this), haveForks(false) {}
+    philosopherName(name), leftFork(lFork), rightFork(rFork), haveForks(false) {}
+
+Philosopher::Philosopher(Philosopher && other):
+    philosopherName(other.philosopherName), leftFork(other.leftFork), rightFork(other.rightFork), haveForks((other.haveForks).load()) {}
 
 Philosopher::~Philosopher(){
-    philosopherThread.join();
+    if(philosopherThread.joinable())
+        philosopherThread.join();
 }
 
 std::string Philosopher::getPhilosopherName() const{
@@ -20,13 +24,13 @@ void Philosopher::eat(){
 
     haveForks = true;
     std::stringstream eatStart;
-    eatStart << this->philosopherName << "start eating." << std::endl;
+    eatStart << this->philosopherName << " start eating." << std::endl;
     std::cout << eatStart.rdbuf();
 
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
 
     std::stringstream eatStop;
-    eatStop << this->philosopherName << "stop eating." << std::endl;
+    eatStop << this->philosopherName << " stop eating." << std::endl;
     std::cout << eatStop.rdbuf();
     haveForks = false;
 }
@@ -34,7 +38,7 @@ void Philosopher::eat(){
 void Philosopher::think(){
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     std::stringstream trinkString;
-    trinkString << this->philosopherName << "is thinking." << std::endl;
+    trinkString << this->philosopherName << " is thinking." << std::endl;
     std::cout << trinkString.rdbuf();
 
 }
@@ -44,4 +48,8 @@ void Philosopher::dine(){
         think();
         eat();
     }
+}
+
+void Philosopher::startThread(){
+    philosopherThread = std::thread {&Philosopher::dine, this};
 }

@@ -1,5 +1,6 @@
 #pragma once
 
+#include <atomic>
 #include <chrono>
 #include <cstddef>
 #include <iostream>
@@ -14,13 +15,13 @@ private:
     std::string philosopherName;
     Fork& leftFork;
     Fork& rightFork;
-    bool haveForks;
+    std::atomic<bool> haveForks;
     std::thread philosopherThread;
-    static const int numberOfIteration = 20;
+    static const int numberOfIteration = 10;
 
 public:
     Philosopher(std::string name, Fork& lFork, Fork& rFork);
-    Philosopher(Philosopher && other) = default;
+    Philosopher(Philosopher && other);
     ~Philosopher();
 
     std::string getPhilosopherName() const;
@@ -29,4 +30,5 @@ public:
     void eat();
     void think();
     void dine();
+    void startThread();
 };
