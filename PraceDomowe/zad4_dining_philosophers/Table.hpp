@@ -14,4 +14,5 @@ public:
     Table(int number);
 
     void showTable();
+    bool stopEating();
 };

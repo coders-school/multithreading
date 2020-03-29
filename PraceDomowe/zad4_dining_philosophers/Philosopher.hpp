@@ -17,7 +17,7 @@ private:
     Fork& rightFork;
     std::atomic<bool> haveForks;
     std::thread philosopherThread;
-    static const int numberOfIteration = 10;
+    static const int numberOfIteration = 6;
 
 public:
     Philosopher(std::string name, Fork& lFork, Fork& rFork);

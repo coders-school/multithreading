@@ -23,22 +23,14 @@ void Philosopher::eat(){
     std::scoped_lock lockForks(leftFork.getMutex(), rightFork.getMutex());
 
     haveForks = true;
-    std::stringstream eatStart;
-    eatStart << this->philosopherName << " start eating." << std::endl;
-    std::cout << eatStart.rdbuf();
-
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
-
-    std::stringstream eatStop;
-    eatStop << this->philosopherName << " stop eating." << std::endl;
-    std::cout << eatStop.rdbuf();
     haveForks = false;
 }
 
 void Philosopher::think(){
     std::this_thread::sleep_for(std::chrono::milliseconds(100));
     std::stringstream trinkString;
-    trinkString << this->philosopherName << " is thinking." << std::endl;
+    trinkString << "   " << this->philosopherName << " is thinking." << std::endl;
     std::cout << trinkString.rdbuf();
 
 }
