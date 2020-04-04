@@ -211,10 +211,10 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | [Jakub Zych](https://github.com/jzych)              |  250 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 20 | 36 |    21 |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |  137 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |  9 | 20 |    |     3 |      |
 | [kawapa](https://github.com/kawapa)                 |  270 |           40 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 | 32 |    24 |   20 |
-| [Krzysiek](https://github.com/kdoroszko)            |   81 |           25 |    |    | 10 | 11 | 20 |  8 |  4 |    |    |    |    |     3 |      |
+| [Krzysiek](https://github.com/kdoroszko)            |   93 |           25 |    |    | 10 | 11 | 20 | 20 |  4 |    |    |    |    |     3 |      |
 | [matijaz](https://github.com/matijaz)               |   74 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |     6 |      |
 | [mkijew](https://github.com/mkijew)                 |  263 |           45 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 | 36 |    24 |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |  157 |           30 |    |    | 38 | 11 | 20 |  8 | 10 | 16 |    |    |    |    24 |      |
+| [MonikaZ](https://github.com/MonikaZelechowska)     |  169 |           30 |    |    | 38 | 11 | 20 | 20 | 10 | 16 |    |    |    |    24 |      |
 | [piotr.kowandy](https://github.com/PiotrKowandy)    |  128 |           20 |    |    | 38 | 11 | 20 | 24 |    |    |    |    |    |    15 |      |
 | [Szafirmag](https://github.com/WBigaj)              |   93 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |    12 |      |
 
