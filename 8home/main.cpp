@@ -25,7 +25,6 @@ T t_accumulate (IT first, IT last, T init)
     const size_t neededThreads = std::min(distance/minSize, maxThreads);
     const size_t dataChunk = distance / neededThreads;
 
-    std::vector<T> results (neededThreads);
     std::vector<std::future<T>> v_future (neededThreads);
 
     auto begin = first;
@@ -40,14 +39,9 @@ T t_accumulate (IT first, IT last, T init)
         begin = end;
     }
 
-    results[neededThreads-1] = std::accumulate(begin, last, T{});
+    T mainThreadCounting = std::accumulate(begin, last, T{});
 
-    for(size_t i = 0; i < neededThreads - 1; ++i)
-    {
-        results[i] = v_future[i].get();
-    }
-
-    return std::accumulate(results.begin(), results.end(), init);
+    return std::accumulate(v_future.begin(), v_future.end()-1, init + mainThreadCounting, [](const auto &a,  auto &b){ return a + b.get(); });
 }
 
 void printTime (const decltype(std::chrono::high_resolution_clock::now()) &startStandard,
