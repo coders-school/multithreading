@@ -206,8 +206,8 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 
 |                                                     | SUMA | Punktualność | P1 | P2 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 | Z8 | Z9 | Testy | Inne |
 |-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
-| [Adam Mierzwiak](https://github.com/adamvm)         |  122 |           10 |    |    | 38 | 10 | 20 |    |    | 20 |    |    |    |    24 |      |
-| [Cypher](https://github.com/ChopSeeGuy)             |  108 |           15 |    |    | 38 | 11 | 20 |    |    |    |    |    |    |    24 |      |
+| [Adam Mierzwiak](https://github.com/adamvm)         |  146 |           10 |    |    | 38 | 10 | 20 | 24 |    | 20 |    |    |    |    24 |      |
+| [Cypher](https://github.com/ChopSeeGuy)             |  167 |           15 |    |    | 38 | 11 | 20 | 24 |  5 |    | 15 | 15 |    |    24 |      |
 | [Jakub Zych](https://github.com/jzych)              |  250 |           40 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 20 | 36 |    21 |      |
 | [kamil waszkiewicz](https://github.com/darkassazi)  |  137 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |  9 | 20 |    |     3 |      |
 | [kawapa](https://github.com/kawapa)                 |  270 |           40 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 | 32 |    24 |   20 |
@@ -215,7 +215,7 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | [matijaz](https://github.com/matijaz)               |   74 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |     6 |      |
 | [mkijew](https://github.com/mkijew)                 |  263 |           45 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 | 36 |    24 |      |
 | [MonikaZ](https://github.com/MonikaZelechowska)     |  169 |           30 |    |    | 38 | 11 | 20 | 20 | 10 | 16 |    |    |    |    24 |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |  128 |           20 |    |    | 38 | 11 | 20 | 24 |    |    |    |    |    |    15 |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |  138 |           20 |    |    | 38 | 11 | 20 | 24 | 10 |    |    |    |    |    15 |      |
 | [Szafirmag](https://github.com/WBigaj)              |   93 |           15 |    |    | 38 | 10 | 18 |    |    |    |    |    |    |    12 |      |
 
 ### Punktacja
