@@ -1,101 +1,59 @@
-#include <thread>
 #include <iostream>
-#include <ctime>
-#include <memory>
-#include <condition_variable>
-#include <mutex>
+#include <thread>
+#include <chrono>
+
+alignas(64)int a = 0;
+alignas(64)int b = 0;
+
+int c = 0;
+int d = 0;
  
-using std::cout;
-using std::endl;
- 
-const double M=8e8;
- 
-//Shared_Work holds the work need to be done
-//part1() and part2() separates the work half-and-half
-//n1 and n2 are data items
-//chunk[64] is the separation attempt.
-//we can also separate date with alignas() 
-class Shared_Work {
-public:
-    Shared_Work():n1(1),n2(1),flag1(0),flag2(0) {}
- 
-    void part1() {
-        for(; n1<M; n1+=n1%3);
-        flag1=1;
-        cond.notify_one();
-    }
- 
-    void part2() {
-        for(; n2<M; n2+=n2%3);
-        flag2=1;
-        cond.notify_one();
-    }
- 
-    long int result() {
-        std::unique_lock<std::mutex> lk(mt);
-        while(flag1==0||flag2==0)
-            cond.wait(lk);
-        return n1+n2;
-    }
- 
-private:
-    std::mutex mt;
-    std::condition_variable cond;
-    alignas(64) long int n1;
-    // char chuck[64];//cache line seperation
-    alignas(64) long int n2;
-    bool flag1;
-    bool flag2;
-};
- 
-//a template class for generating threads with different member functions
-//"action _fptr" will be instantiated by &Shared_Work::part1 and part2.
-template<class T>
-class Do_Work {
-public:
-    typedef void (T::*action)();
-    Do_Work(std::shared_ptr<Shared_Work>& x, action y):_p(x),_fptr(y) {}
-    void operator()() {
-        (*_p.*_fptr)();
-    }
-private:
-    std::shared_ptr<Shared_Work> _p;
-    action _fptr;
-};
- 
-//single thread work to do
-void one_thread() {
-    long int n1=1, n2=1;
-    for(; n1<M; n1+=n1%3);
-    for(; n2<M; n2+=n2%3);
-    cout<<n1+n2<<endl;
+
+void func1 ()
+{
+    for(; a < 9e8; ++a);
 }
- 
- 
- 
-time_t start, end;
-double diff;
- 
-int main(int argc, char* argv[]) {
- 
-    std::shared_ptr<Shared_Work> p(new Shared_Work);
-    Do_Work<Shared_Work> d1(p, &Shared_Work::part1);
-    Do_Work<Shared_Work> d2(p, &Shared_Work::part2);
- 
-    time(&start);
-    std::thread t1( d1 );
-    std::thread t2( d2 );
-    t1.detach();//release the ownership to C++ runtime library.
-    t2.detach();//release the ownership to C++ runtime library.
-    cout<<p->result()<<endl;
-    time(&end);
-    diff=difftime(end, start);
-    cout<<diff<<" seconds elapsed for 2 threads calculation."<<endl;
- 
-    time(&start);
-    one_thread();
-    time(&end);
-    diff=difftime(end, start);
-    cout<<diff<<" seconds elapsed for 1 thread calculation."<<endl;
- 
+
+void func2()
+{
+    for(; b < 9e8; ++b);
+}
+
+void func3 ()
+{
+    for(; c < 9e8; ++c);
+}
+
+void func4()
+{
+    for(; d < 9e8; ++d);
+}
+
+
+int main()
+{
+    auto now = std::chrono::steady_clock::now();
+    std::thread t1(func1);
+    std::thread t2(func2);
+
+
+    t1.join();
+    t2.join();
+    auto end = std::chrono::steady_clock::now();
+    auto result = std::chrono::duration_cast<std::chrono::milliseconds>(end-now).count();
+    std::cout << "Result without false sharing: " << result << std::endl;
+
+
+
+
+    auto now1 = std::chrono::steady_clock::now();
+    std::thread t3(func3);
+    std::thread t4(func4);
+
+
+    t3.join();
+    t4.join();
+    auto end1 = std::chrono::steady_clock::now();
+    auto result1 = std::chrono::duration_cast<std::chrono::milliseconds>(end1-now1).count();
+    std::cout << "Result with false sharing: " << result1 << std::endl;
 }
