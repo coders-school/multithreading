@@ -11,81 +11,99 @@
 #include <sstream>
 
 
+constexpr std::chrono::milliseconds waitTime = std::chrono::milliseconds(350);
 
-std::mutex m;
-std::condition_variable cv;
-bool canPingWrite {true};
-std::atomic<bool> gameOn {true};
-std::atomic<int> counter {0};
-
-void timer(const int &time)
+class PingPong
 {
-    while(gameOn)
-    {
-        std::this_thread::sleep_for(std::chrono::seconds(time));
-        gameOn = false;
-        std::cout << "Timeout ... " << std::endl;
-    }
-}
+    public:
+        std::mutex gameStateMutex;
+        std::mutex m;
+        std::condition_variable cv;
+        std::atomic<bool> gameOn {true};
+        std::atomic<int> counter {0};
+        bool canPingWrite {true};
+        int rebounds;
 
-void ping(const int &rebounds)
-{
-    while(counter < rebounds and gameOn)
-    {
-        std::unique_lock<std::mutex> lock(m);
-        cv.wait(lock, [&rebounds](){return canPingWrite;});
-        if(gameOn)
+        PingPong(const int &rebounds_) 
+                : rebounds(rebounds_) {};
+    
+        void timer(const std::chrono::seconds &gameTime)
         {
-            ++counter;
-            std::cout << counter << " Ping\n";
-            canPingWrite = false;
-        }
-        cv.notify_all();
-        std::this_thread::sleep_for(std::chrono::milliseconds(333));
-    }
-}
-
-void pong(const int &rebounds)
-{
-    while(gameOn and counter <= rebounds)
-    {
-        std::unique_lock<std::mutex> lock(m);
-        cv.wait(lock, [&](){return !canPingWrite;});
-
-        std::cout << counter << " Pong\n";
-        canPingWrite = true;
-
-        if(counter >= rebounds)
-        { 
-            gameOn = false;
-            std::cout << "Out of rebounds..." << std::endl;
+            auto stopAt = std::chrono::steady_clock::now() + gameTime;
+            std::unique_lock<std::mutex> lock(m);
+            cv.wait_until(lock, stopAt, [&]{ return !gameOn; });
+            if (std::chrono::steady_clock::now() >= stopAt)
+            {
+                gameOn = false;
+                cv.notify_all();
+                std::cout << "Timeout ...\n";
+            }
+            if (!gameOn)
+            {
+                cv.notify_all();
+            }
         }
 
-        cv.notify_all();
-        std::this_thread::sleep_for(std::chrono::milliseconds(333));
+        void ping()
+        {
+            while(counter < rebounds and gameOn)
+            {
+                std::unique_lock<std::mutex> lock(m);
+                cv.wait(lock, [&](){return canPingWrite;});
+                if(gameOn)
+                {
+                    std::cout << ++counter << " Ping\n";
+                    std::this_thread::sleep_for(waitTime);
+                    canPingWrite = false;
+                    cv.notify_all();
+                }
+            }
+        }
 
-    }
-}
+        void pong()
+        {
+            while(counter <= rebounds and gameOn)
+            {
+                std::unique_lock<std::mutex> lock(m);
+                cv.wait(lock, [&](){return !canPingWrite or !gameOn;});
+                
+                if(counter >= rebounds and gameOn)
+                { 
+                    gameOn = false;
+                    std::cout << counter << " Pong\n";
+                    std::cout << "Out of rebounds..." << std::endl;
+                }
+                else
+                {
+                    std::cout << counter << " Pong\n";
+                    std::this_thread::sleep_for(waitTime);
+                    canPingWrite = true;
+                }
 
+                cv.notify_all();
+            }
+        }
+};
 
 int main(int argc, char** argv)
 {
     if(argc != 3)
     {
-        std::cerr << "Wrong usage\n ./main <time> <rebounds>\n";
+        std::cerr << "Wrong usage\n ./main <time_seconds> <rebounds>\n";
         exit(0);
     }
 
 
-    int time = std::stoi(argv[1]);
+    std::chrono::seconds time =std::chrono::seconds(std::stoi(argv[1]));
     int rebounds = std::stoi(argv[2]); 
-    std::cout << "time : " << time << " rebounds " << rebounds << std::endl;
-    std::thread timerThread(timer, std::cref(time));
-    std::thread pingThread(ping, std::cref(rebounds));
-    std::thread pongThread(pong, std::cref(rebounds));
+    PingPong pp{rebounds};
+    std::cout << "time_seconds : " << std::chrono::duration_cast<std::chrono::seconds>(time).count() << "\nrebounds: " << rebounds << std::endl;
+    std::thread timerThread(&PingPong::timer, &pp, std::cref(time));
+    std::thread pingThread(&PingPong::ping, &pp);
+    std::thread pongThread(&PingPong::pong, &pp);
 
+    timerThread.join();
     pingThread.join();
     pongThread.join();
-    timerThread.detach();
     return 0;
 }
