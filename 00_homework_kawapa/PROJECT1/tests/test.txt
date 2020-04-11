@@ -1,0 +1,29 @@
+#define CATCH_CONFIG_MAIN
+#include "catch.hpp"
+
+TEST_CASE()
+{
+    REQUIRE_THAT(,);
+    CHECK_THAT();
+
+}
+
+
+jeżeli REQUIRE_THAT() zakończy się niepowodzeniem -> abort test 
+jeżeli CHECK_THAT() zakończy się niepowodzeniem -> test leci dalej ale zostanie zgłoszony failure
+
+CONTAINS();
+VectorContains();
+
+GENERATE(range(1,11));
+GENERATE(values<std::pair<std::string_view,size_t>>({
+    {"one", 3},
+    {"two", 3}
+}));
+
+SCENARIO
+GIVEN
+WHEN
+THEN
+
+CAPTURE

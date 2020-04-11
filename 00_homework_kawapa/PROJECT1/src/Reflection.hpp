@@ -10,7 +10,7 @@ struct Reflection
     std::string answer_;
     int result_;
     int64_t period_;
-    bool chosen_;
+    bool chosen_ {false};
 
-    Reflection(std::string, std::string, int, int64_t, bool);
+    Reflection(std::string , std::string, int, int64_t);
 };
