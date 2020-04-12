@@ -9,6 +9,8 @@ add_definitions(-Wno-unused-variable)
 add_definitions(-Wno-unused-parameter)
 add_definitions(-Wall -Werror -pedantic -Wextra)
 
+add_definitions(-fsanitize=thread)
+
 add_executable(Dinner philosophers.cpp)
-target_link_libraries(Dinner pthread -fsanitize=thread)
+target_link_libraries(Dinner pthread)
 
