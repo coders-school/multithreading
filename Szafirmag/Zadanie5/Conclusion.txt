@@ -1,0 +1,3 @@
+Conclusion: If concurrent threads works on different data,but in
+the same region of memory program will be slower. To avoid that
+we should try threads to work on local copy of elements they need.
