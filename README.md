@@ -215,8 +215,8 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
 | [matijaz](https://github.com/matijaz)               |   74 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |     6 |      |
 | [mkijew](https://github.com/mkijew)                 |  263 |           45 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 | 36 |    24 |      |
 | [MonikaZ](https://github.com/MonikaZelechowska)     |  169 |           30 |    |    | 38 | 11 | 20 | 20 | 10 | 16 |    |    |    |    24 |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |  138 |           20 |    |    | 38 | 11 | 20 | 24 | 10 |    |    |    |    |    15 |      |
-| [Szafirmag](https://github.com/WBigaj)              |  108 |           15 |    |    | 38 | 10 | 18 |    |  5 |    | 10 |    |    |    12 |      |
+| [piotr.kowandy](https://github.com/PiotrKowandy)    |  147 |           20 |    |    | 38 | 11 | 20 | 24 | 10 |    |    |    |    |    24 |      |
+| [Szafirmag](https://github.com/WBigaj)              |  120 |           15 |    |    | 38 | 10 | 18 |    |  5 |    | 10 |    |    |    24 |      |
 
 ### Punktacja
 
