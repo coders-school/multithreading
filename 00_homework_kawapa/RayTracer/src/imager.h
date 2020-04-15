@@ -1489,12 +1489,21 @@ namespace Imager
         // to increase O(N^2), so it is best to use a value between 1 
         // (fastest but most "jaggy") to 4 (16 times slower but results
         // in much smoother images).
-        void SaveImage(
-            const char *outPngFileName, 
-            size_t pixelsWide, 
-            size_t pixelsHigh, 
-            double zoom, 
-            size_t antiAliasFactor) const;
+        void processImage(
+            ImageBuffer & buffer,
+            size_t pixelsWideFrom,
+            size_t pixelsWideTo,
+            size_t pixelsHighFrom,
+            size_t pixelsHighTo,
+            const double & zoom,
+            const size_t antiAliasFactor);
+        
+        std::vector<unsigned char> prepareRGBABuffer(
+            ImageBuffer & buffer,
+            size_t pixelsWide,
+            size_t pixelsHigh,
+            const double & zoom,
+            const size_t antiAliasFactor);
 
         // By default, regions of space that are not
         // explicitly occupied by some object have

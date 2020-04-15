@@ -721,72 +721,42 @@ namespace Imager
     // to make smoother (less jagged) looking images.
     // Generally, antiAliasFactor should be between 1 (fastest, but jagged)
     // and 4 (16 times slower, but very smooth looking).
-    void Scene::SaveImage(
-        const char *outPngFileName, 
-        size_t pixelsWide, 
-        size_t pixelsHigh, 
-        double zoom, 
-        size_t antiAliasFactor) const
+    void Scene::processImage(
+        ImageBuffer & buffer,
+        size_t pixelsWideFrom,
+        size_t pixelsWideTo,
+        size_t pixelsHighFrom,
+        size_t pixelsHighTo,
+        const double & zoom,
+        const size_t antiAliasFactor)
     {
-        // Oversample the image using the anti-aliasing factor.
-        const size_t largePixelsWide = antiAliasFactor * pixelsWide;
-        const size_t largePixelsHigh = antiAliasFactor * pixelsHigh;
+        const size_t diffWide = pixelsWideTo - pixelsWideFrom;
+        const size_t diffHigh = pixelsHighTo - pixelsHighFrom;
+
+        const size_t largePixelsWide = antiAliasFactor * diffWide;
+        const size_t largePixelsHigh = antiAliasFactor * diffHigh;
         const size_t smallerDim = 
-            ((pixelsWide < pixelsHigh) ? pixelsWide : pixelsHigh);
+            ((diffWide < diffHigh) ? diffWide : diffHigh);
 
         const double largeZoom  = antiAliasFactor * zoom * smallerDim;
-        ImageBuffer buffer(largePixelsWide, largePixelsHigh, backgroundColor);
 
-        // The camera is located at the origin.
         Vector camera(0.0, 0.0, 0.0);
-
-        // The camera faces in the -z direction.
-        // This allows the +x direction to be to the right,
-        // and the +y direction to be upward.
         Vector direction(0.0, 0.0, -1.0);
 
         const Color fullIntensity(1.0, 1.0, 1.0);
 
-        // We keep a list of (i,j) screen coordinates for pixels
-        // we are not able to trace definitive rays for.
-        // Later we will come back and fix these pixels.
         PixelList ambiguousPixelList;
 
-        for (size_t i=0; i < largePixelsWide; ++i)
+        for (size_t i=pixelsWideFrom * antiAliasFactor; i < largePixelsWide; ++i)
         {
             direction.x = (i - largePixelsWide/2.0) / largeZoom;
-            for (size_t j=0; j < largePixelsHigh; ++j)
+            for (size_t j=pixelsHighFrom * antiAliasFactor; j < largePixelsHigh; ++j)
             {
                 direction.y = (largePixelsHigh/2.0 - j) / largeZoom;
-
-#if RAYTRACE_DEBUG_POINTS
-                {
-                    using namespace std;
-
-                    // Assume no active debug point unless we find one below.
-                    activeDebugPoint = NULL;    
-
-                    DebugPointList::const_iterator iter = debugPointList.begin();
-                    DebugPointList::const_iterator end  = debugPointList.end();
-                    for(; iter != end; ++iter)
-                    {
-                        if ((iter->iPixel == i) && (iter->jPixel == j))
-                        {
-                            cout << endl;
-                            cout << "Hit breakpoint at (";
-                            cout << i << ", " << j <<")" << endl;
-                            activeDebugPoint = &(*iter);
-                            break;
-                        }
-                    }
-                }
-#endif
 
                 PixelData& pixel = buffer.Pixel(i,j);
                 try
                 {
-                    // Trace a ray from the camera toward the given direction
-                    // to figure out what color to assign to this pixel.
                     pixel.color = TraceRay(
                         camera,
                         direction,
@@ -796,44 +766,29 @@ namespace Imager
                 }
                 catch (AmbiguousIntersectionException)
                 {
-                    // Getting here means that somewhere in the recursive 
-                    // code for tracing rays, there were multiple 
-                    // intersections that had minimum distance from a 
-                    // vantage point.  This can be really bad, 
-                    // for example causing a ray of light to reflect 
-                    // inward into a solid.
-
-                    // Mark the pixel as ambiguous, so that any other
-                    // ambiguous pixels nearby know not to use it.
                     pixel.isAmbiguous = true;
 
-                    // Keep a list of all ambiguous pixel coordinates
-                    // so that we can rapidly enumerate through them
-                    // in the disambiguation pass.
                     ambiguousPixelList.push_back(PixelCoordinates(i, j));
                 }
             }
         }
 
-#if RAYTRACE_DEBUG_POINTS
-        // Leave no chance of a dangling pointer into debug points.
-        activeDebugPoint = NULL;
-#endif
-
-        // Go back and "heal" ambiguous pixels as best we can.
         PixelList::const_iterator iter = ambiguousPixelList.begin();
         PixelList::const_iterator end  = ambiguousPixelList.end();
         for (; iter != end; ++iter)
         {
             const PixelCoordinates& p = *iter;
             ResolveAmbiguousPixel(buffer, p.i, p.j);
-        }
+        }       
+    }
 
-        // We want to scale the arbitrary range of
-        // color component values to the range 0..255
-        // allowed by PNG format.  We therefore find
-        // the maximum red, green, or blue value anywhere
-        // in the image.
+    std::vector<unsigned char> Scene::prepareRGBABuffer(
+        ImageBuffer & buffer,
+        size_t pixelsWide,
+        size_t pixelsHigh,
+        const double & zoom,
+        const size_t antiAliasFactor)
+    {
         const double max = buffer.MaxColorValue();
 
         // Downsample the image buffer to an integer array of RGBA 
@@ -873,21 +828,9 @@ namespace Imager
             }
         }
 
-        // Write the PNG file
-        const unsigned error = lodepng::encode(
-            outPngFileName, 
-            rgbaBuffer, 
-            pixelsWide, 
-            pixelsHigh);
-
-        // If there was an encoding error, throw an exception.
-        if (error != 0)
-        {
-            std::string message = "PNG encoder error: ";
-            message += lodepng_error_text(error);
-            throw ImagerException(message.c_str());
-        }
+        return rgbaBuffer;
     }
+
 
     // The following function searches through all solid objects
     // for the first solid (if any) that contains the given point.
