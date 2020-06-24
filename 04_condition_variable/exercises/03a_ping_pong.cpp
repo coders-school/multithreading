@@ -1,4 +1,5 @@
 #include <chrono>
+#include <cstdlib>
 #include <iostream>
 #include <mutex>
 #include <sstream>
@@ -8,7 +9,7 @@ using namespace std;
 
 class PingPong {
     int repetitions_;
-    std::mutex coutMutex;
+    mutex coutMutex_;
 
 public:
     PingPong(int repetitions)
@@ -16,27 +17,44 @@ public:
     {}
 
     void ping() {
-        std::stringstream ss;
+        stringstream ss;
 
         for(int i = 0; i < repetitions_; ++i) {
             ss << "ping" << i << ' ';
-            lock_guard<mutex> lockCout(coutMutex);
-            std::cout << ss.rdbuf();
+            lock_guard<mutex> lockCout(coutMutex_);
+            cout << ss.rdbuf();
         }
     }
 
     void pong() {
-        std::stringstream ss;
+        stringstream ss;
 
         for(int i = 0; i < repetitions_; ++i) {
             ss << "pong" << i << '\n';
-            lock_guard<mutex> lockCout(coutMutex);
-            std::cout << ss.rdbuf();
+            lock_guard<mutex> lockCout(coutMutex_);
+            cout << ss.rdbuf();
         }
+        
+        lock_guard<mutex> lockCout(coutMutex_);
+        ss << "Repetitions end!\n";
+        cout << ss.rdbuf();
+        exit(0);
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
-        // TODO: should stop execution after timeout
+        auto startCountTime = chrono::steady_clock::now();
+        
+        for(;;) {
+            auto currentTime = chrono::steady_clock::now();
+            
+            if(chrono::duration_cast<chrono::seconds>(currentTime - startCountTime)
+                >= timeout) {
+                lock_guard<mutex> lockCout(coutMutex_);
+                stringstream ss("Timeout!\n");
+                cout << ss.rdbuf();
+                exit(0);
+            }
+        }
     }
 };
 
