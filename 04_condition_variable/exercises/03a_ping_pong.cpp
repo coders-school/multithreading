@@ -9,20 +9,38 @@ using namespace std;
 
 class PingPong {
     int repetitions_;
-    mutex coutMutex_;
+    mutable mutex coutMutex_;
 
 public:
     PingPong(int repetitions)
         : repetitions_(repetitions)
     {}
+    
+    void safeCout(stringstream& ss) const {
+        lock_guard<mutex> lockCout(coutMutex_);
+        cout << ss.rdbuf();
+    }
+    
+    void safePongExit(stringstream& ss) {
+        lock_guard<mutex> lockCout(coutMutex_);
+        ss << "Repetitions end!\n";
+        cout << ss.rdbuf();
+        exit(0);
+    }
+    
+    void safeStopExit() const {
+        lock_guard<mutex> lockCout(coutMutex_);
+        stringstream ss("Timeout!\n");
+        cout << ss.rdbuf();
+        exit(0);
+    }
 
     void ping() {
         stringstream ss;
 
         for(int i = 0; i < repetitions_; ++i) {
             ss << "ping" << i << ' ';
-            lock_guard<mutex> lockCout(coutMutex_);
-            cout << ss.rdbuf();
+            safeCout(ss);
         }
     }
 
@@ -31,14 +49,10 @@ public:
 
         for(int i = 0; i < repetitions_; ++i) {
             ss << "pong" << i << '\n';
-            lock_guard<mutex> lockCout(coutMutex_);
-            cout << ss.rdbuf();
+            safeCout(ss);
         }
         
-        lock_guard<mutex> lockCout(coutMutex_);
-        ss << "Repetitions end!\n";
-        cout << ss.rdbuf();
-        exit(0);
+        safePongExit(ss);
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
@@ -49,10 +63,7 @@ public:
             
             if(chrono::duration_cast<chrono::seconds>(currentTime - startCountTime)
                 >= timeout) {
-                lock_guard<mutex> lockCout(coutMutex_);
-                stringstream ss("Timeout!\n");
-                cout << ss.rdbuf();
-                exit(0);
+                    safeStopExit();
             }
         }
     }
