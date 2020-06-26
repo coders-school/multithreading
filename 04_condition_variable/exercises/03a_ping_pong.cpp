@@ -1,4 +1,5 @@
 #include <chrono>
+#include <condition_variable>
 #include <cstdlib>
 #include <iostream>
 #include <mutex>
@@ -10,17 +11,14 @@ using namespace std;
 class PingPong {
     int repetitions_;
     mutable mutex coutMutex_;
+    condition_variable pingOrPong_;
+    bool pingTurn_;
 
 public:
     PingPong(int repetitions)
-        : repetitions_(repetitions)
+        : repetitions_(repetitions), pingTurn_(false)
     {}
-    
-    void safeCout(stringstream& ss) const {
-        lock_guard<mutex> lockCout(coutMutex_);
-        cout << ss.rdbuf();
-    }
-    
+
     void safePongExit(stringstream& ss) {
         lock_guard<mutex> lockCout(coutMutex_);
         ss << "Repetitions end!\n";
@@ -37,10 +35,19 @@ public:
 
     void ping() {
         stringstream ss;
+        
+        ss << "ping0 ";
+        cout << ss.rdbuf();
 
-        for(int i = 0; i < repetitions_; ++i) {
+        for(int i = 1; i < repetitions_; ++i) {
+            unique_lock<mutex> lockCout(coutMutex_);
+            pingOrPong_.wait(lockCout, [&]{return pingTurn_;});
+            
             ss << "ping" << i << ' ';
-            safeCout(ss);
+            cout << ss.rdbuf();
+            
+            pingTurn_ = false;
+            pingOrPong_.notify_all();
         }
     }
 
@@ -48,8 +55,14 @@ public:
         stringstream ss;
 
         for(int i = 0; i < repetitions_; ++i) {
+            unique_lock<mutex> lockCout(coutMutex_);
+            pingOrPong_.wait(lockCout, [&]{return !pingTurn_;});
+            
             ss << "pong" << i << '\n';
-            safeCout(ss);
+            cout << ss.rdbuf();
+            
+            pingTurn_ = true;
+            pingOrPong_.notify_all();
         }
         
         safePongExit(ss);
@@ -63,7 +76,7 @@ public:
             
             if(chrono::duration_cast<chrono::seconds>(currentTime - startCountTime)
                 >= timeout) {
-                    safeStopExit();
+                safeStopExit();
             }
         }
     }
