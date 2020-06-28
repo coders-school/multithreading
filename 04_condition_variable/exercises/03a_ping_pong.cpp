@@ -10,13 +10,14 @@ using namespace std;
 
 class PingPong {
     int repetitions_;
-    mutable mutex coutMutex_;
+    int repetitionsCounter_;
+    mutex coutMutex_;
     condition_variable pingOrPong_;
     bool pingTurn_;
 
 public:
     PingPong(int repetitions)
-        : repetitions_(repetitions), pingTurn_(false)
+        : repetitions_(repetitions), repetitionsCounter_(1), pingTurn_(false)
     {}
 
     void safePongExit(stringstream& ss) {
@@ -26,9 +27,16 @@ public:
         exit(0);
     }
     
-    void safeStopExit() const {
+    void safeStopExit() {
         lock_guard<mutex> lockCout(coutMutex_);
-        stringstream ss("Timeout!\n");
+        stringstream ss;
+        
+        if(pingTurn_ == false) {
+            ss << "pong" << repetitionsCounter_ - 1 << '\n';
+            cout << ss.rdbuf();
+        }
+
+        ss << "Timeout!\n";
         cout << ss.rdbuf();
         exit(0);
     }
@@ -39,11 +47,11 @@ public:
         ss << "ping0 ";
         cout << ss.rdbuf();
 
-        for(int i = 1; i < repetitions_; ++i) {
+        for(; repetitionsCounter_ < repetitions_; ++repetitionsCounter_) {
             unique_lock<mutex> lockCout(coutMutex_);
             pingOrPong_.wait(lockCout, [&]{return pingTurn_;});
             
-            ss << "ping" << i << ' ';
+            ss << "ping" << repetitionsCounter_ << ' ';
             cout << ss.rdbuf();
             
             pingTurn_ = false;
