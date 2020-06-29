@@ -17,7 +17,7 @@ class PingPong {
 
 public:
     PingPong(int repetitions)
-        : repetitions_(repetitions), repetitionsCounter_(1), pingTurn_(false)
+        : repetitions_(repetitions), repetitionsCounter_(0), pingTurn_(true)
     {}
 
     void safePongExit(stringstream& ss) {
@@ -43,9 +43,6 @@ public:
 
     void ping() {
         stringstream ss;
-        
-        ss << "ping0 ";
-        cout << ss.rdbuf();
 
         for(; repetitionsCounter_ < repetitions_; ++repetitionsCounter_) {
             unique_lock<mutex> lockCout(coutMutex_);
