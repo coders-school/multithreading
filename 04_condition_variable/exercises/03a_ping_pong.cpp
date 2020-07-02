@@ -17,15 +17,15 @@ class PingPong {
     condition_variable pingOrPong_;
     PingPongStatus whoseTurn_;
     
-    bool timeoutForPingPong() {return whoseTurn_ == TIMEOUT;}
+    bool timeoutForPingPong() const {return whoseTurn_ == TIMEOUT;}
     
     bool timeoutForStop(std::chrono::time_point<std::chrono::steady_clock>& current,
                         std::chrono::time_point<std::chrono::steady_clock>& start,
-                        chrono::seconds& timeout) {
+                        chrono::seconds& timeout) const {
         return chrono::duration_cast<chrono::seconds>(current - start) >= timeout;
     }
     
-    bool repetitionsEnd() {return whoseTurn_ == REPETITIONS_END;}
+    bool repetitionsEnd() const {return whoseTurn_ == REPETITIONS_END;}
     
     void safePongExit(stringstream& ss) {
         lock_guard<mutex> lockCout(coutMutex_);
