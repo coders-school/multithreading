@@ -16,12 +16,17 @@ class PingPong {
     mutex coutMutex_;
     condition_variable pingOrPong_;
     PingPongStatus whoseTurn_;
-
-public:
-    PingPong(int repetitions)
-        : repetitions_(repetitions), whoseTurn_(PING)
-    {}
-
+    
+    bool timeoutForPingPong() {return whoseTurn_ == TIMEOUT;}
+    
+    bool timeoutForStop(std::chrono::time_point<std::chrono::steady_clock>& current,
+                        std::chrono::time_point<std::chrono::steady_clock>& start,
+                        chrono::seconds& timeout) {
+        return chrono::duration_cast<chrono::seconds>(current - start) >= timeout;
+    }
+    
+    bool repetitionsEnd() {return whoseTurn_ == REPETITIONS_END;}
+    
     void safePongExit(stringstream& ss) {
         lock_guard<mutex> lockCout(coutMutex_);
         ss << "Repetitions end!\n";
@@ -40,56 +45,68 @@ public:
         whoseTurn_ = TIMEOUT;
         pingOrPong_.notify_all();
     }
+    
+    void safePrintPing(stringstream& ss, int& i) {
+        unique_lock<mutex> lockCout(coutMutex_);
+        pingOrPong_.wait(lockCout, [&]{return (whoseTurn_ == PING
+                                                || whoseTurn_ == TIMEOUT);});
+        if(timeoutForPingPong())
+            return;
+        
+        ss << "ping" << i << ' ';
+        cout << ss.rdbuf();
+        
+        whoseTurn_ = PONG;
+        pingOrPong_.notify_all();
+    }
+    
+    void safePrintPong(stringstream& ss, int& i) {
+        unique_lock<mutex> lockCout(coutMutex_);
+        pingOrPong_.wait(lockCout, [&]{return (whoseTurn_ == PONG
+                                                || whoseTurn_ == TIMEOUT);});
+        if(timeoutForPingPong())
+            return;
+        
+        ss << "pong" << i << '\n';
+        cout << ss.rdbuf();
+        
+        whoseTurn_ = PING;
+        pingOrPong_.notify_all();
+    }
+
+public:
+    PingPong(int repetitions)
+        : repetitions_(repetitions), whoseTurn_(PING)
+    {}
 
     void ping() {
         stringstream ss;
 
-        for(int i = 0; i < repetitions_; ++i) {
-            unique_lock<mutex> lockCout(coutMutex_);
-            pingOrPong_.wait(lockCout, [&]{return (whoseTurn_ == PING
-                                                    || whoseTurn_ == TIMEOUT);});
-            if(whoseTurn_ == TIMEOUT)
-                return;
-            
-            ss << "ping" << i << ' ';
-            cout << ss.rdbuf();
-            
-            whoseTurn_ = PONG;
-            pingOrPong_.notify_all();
-        }
+        for(int i = 0; i < repetitions_; ++i)
+            safePrintPing(ss, i);
     }
 
     void pong() {
         stringstream ss;
 
-        for(int i = 0; i < repetitions_; ++i) {
-            unique_lock<mutex> lockCout(coutMutex_);
-            pingOrPong_.wait(lockCout, [&]{return (whoseTurn_ == PONG
-                                                    || whoseTurn_ == TIMEOUT);});
-            if(whoseTurn_ == TIMEOUT)
-                return;
-            
-            ss << "pong" << i << '\n';
-            cout << ss.rdbuf();
-            
-            whoseTurn_ = PING;
-            pingOrPong_.notify_all();
-        }
+        for(int i = 0; i < repetitions_; ++i)
+            safePrintPong(ss, i);
         
-        safePongExit(ss);
+        if(timeoutForPingPong())
+            return;
+        else safePongExit(ss);
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
         auto startCountTime = chrono::steady_clock::now();
         
         for(;;) {
-            if(whoseTurn_ == REPETITIONS_END)
+            if(repetitionsEnd())
                 return;
             
             auto currentTime = chrono::steady_clock::now();
             
-            if(chrono::duration_cast<chrono::seconds>(currentTime - startCountTime)
-                >= timeout) {
+            if(timeoutForStop(currentTime, startCountTime, timeout)) {
                 safeStopExit();
                 return;
             }
