@@ -19,8 +19,8 @@ class PingPong {
     
     bool timeoutForPingPong() const {return whoseTurn_ == TIMEOUT;}
     
-    bool timeoutForStop(std::chrono::time_point<std::chrono::steady_clock>& current,
-                        std::chrono::time_point<std::chrono::steady_clock>& start,
+    bool timeoutForStop(chrono::time_point<chrono::steady_clock>& current,
+                        chrono::time_point<chrono::steady_clock>& start,
                         chrono::seconds& timeout) const {
         return chrono::duration_cast<chrono::seconds>(current - start) >= timeout;
     }
@@ -73,6 +73,15 @@ class PingPong {
         whoseTurn_ = PING;
         pingOrPong_.notify_all();
     }
+    
+    void safeCountTime(chrono::time_point<chrono::steady_clock>& startCountTime,
+                       chrono::seconds& timeout) {
+        unique_lock<mutex> lock_cout(coutMutex_);
+        pingOrPong_.wait(lock_cout, [&]{
+            auto currentTime = chrono::steady_clock::now();
+            return chrono::duration_cast<chrono::seconds>(currentTime - startCountTime) >= timeout || whoseTurn_ == REPETITIONS_END;
+            });
+    }
 
 public:
     PingPong(int repetitions)
@@ -100,17 +109,11 @@ public:
     void stop([[maybe_unused]] chrono::seconds timeout) {
         auto startCountTime = chrono::steady_clock::now();
         
-        for(;;) {
-            if(repetitionsEnd())
-                return;
-            
-            auto currentTime = chrono::steady_clock::now();
-            
-            if(timeoutForStop(currentTime, startCountTime, timeout)) {
-                safeStopExit();
-                return;
-            }
-        }
+        safeCountTime(startCountTime, timeout);
+
+        if(repetitionsEnd())
+            return;
+        else safeStopExit();
     }
 };
 
