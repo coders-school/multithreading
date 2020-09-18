@@ -1,6 +1,8 @@
 <!-- .slide: data-background="#111111" -->
 
-# Współdzielenie danych
+# Multithreading
+
+## Współdzielenie danych z ich modyfikacją
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -8,7 +10,7 @@
 
 ___
 
-## Współdzielenie danych z ich modyfikacją
+### Współdzielenie danych z ich modyfikacją
 
 * <!-- .element: class="fragment fade-in" --> Wyobraź sobie, że współdzielisz mieszkanie ze współlokatorami. Każde z was ma własny pokój, ale toaleta jest wspólna. Gdy ktoś w niej jest, musi zablokować drzwi. Jeśli chcecie skorzystać z toalety w tym samym czasie nie możecie tego zrobić. Długie oczekiwanie, aż inna osoba przestanie okupować toaletę jest frustrujące. Toaleta po skorzystaniu jest w innym stanie niż przed (mniej papieru, zużyta woda, ciekawsze zapachy…)
 * <!-- .element: class="fragment fade-in" --> Dokładnie tak samo jest ze współdzieleniem danych :)
