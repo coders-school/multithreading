@@ -20,7 +20,7 @@ ___
   * <!-- .element: class="fragment fade-in" --> <code>sleep_for(const chrono::duration<Rep, Period>& sleep_duration)</code> - wstrzymuje wykonanie bieżącego wątku na (przynajmniej) określony interwał czasu
   * <!-- .element: class="fragment fade-in" --> <code>sleep_until(const chrono::time_point<Clock, Duration>& sleep_time)</code> - blokuje wykonanie wątku przynajmniej do podanego jako parametr punktu czasu
   * <!-- .element: class="fragment fade-in" --> <code>yield()</code> - funkcja umożliwiające podjęcie próby wywłaszczenia bieżącego wątku i przydzielenia czasu procesora innemu wątkowi
-  * <!-- .element: class="fragment fade-in" --> <code>get_id()</code> - zwraca obiekt typu std::thread::id reprezentujący identyfikator bieżącego wątku
+  * <!-- .element: class="fragment fade-in" --> <code>get_id()</code> - zwraca obiekt typu <code>std::thread::id</code> reprezentujący identyfikator bieżącego wątku
 
 ___
 
@@ -46,6 +46,8 @@ int main()
     return 0;
 }
 ```
+
+Output:
 
 ```output
 $> g++ 01_hello.cpp –lpthread
@@ -75,6 +77,8 @@ int main()
     return 0;
 }
 ```
+
+Output:
 
 ```output
 $> g++ 02_hello_lambda.cpp –lpthread
@@ -128,9 +132,9 @@ int main()
 }
 ```
 
-* <!-- .element: class="fragment fade-in" --> Jak przekazać wynik obliczeń z powrotem do funkcji main()?
-  * <!-- .element: class="fragment fade-in" --> Nie da się poprzez return, wątki do tego nie służą
-  * <!-- .element: class="fragment fade-in" --> Można zapisać coś w globalnej zmiennej, ale to proszenie się problemy – synchronizacja
+* <!-- .element: class="fragment fade-in" --> Jak przekazać wynik obliczeń z powrotem do funkcji <code>main()</code>?
+  * <!-- .element: class="fragment fade-in" --> Nie da się poprzez <code>return</code>, wątki do tego nie służą
+  * <!-- .element: class="fragment fade-in" --> Można zapisać coś w globalnej zmiennej, ale to proszenie się o problemy – synchronizacja
   * <!-- .element: class="fragment fade-in" --> Właściwy sposób to przekazanie jako parametr referencję do zmiennej, którą zmodyfikujemy w wątku
 
 ___
@@ -183,7 +187,7 @@ int main()
 }
 ```
 
-* <!-- .element: class="fragment fade-in" --> <code>std::ref()</code> powoduje, że przekazujemy obiekt przez referencję
+Output:
 
 ```output
 $> g++ zadanie2.cpp –lpthread
@@ -191,6 +195,8 @@ $> ./a.out
 5
 15
 ```
+
+* <!-- .element: class="fragment fade-in" --> <code>std::ref()</code> powoduje, że przekazujemy obiekt przez referencję
 
 ___
 
@@ -257,6 +263,8 @@ int main() {
 }
 ```
 
+Output:
+
 ```output
 $> g++ zadanie3.cpp –lpthread
 $> ./a.out
@@ -264,9 +272,9 @@ Corolla 2015
 ```
 
 * <!-- .element: class="fragment fade-in" --> Dlaczego przy parametrze "Corolla" nie ma <code>std::ref()</code>?
-* <!-- .element: class="fragment fade-in" --> obiekty tymczasowe można podpiąć pod <code>const &</code>
-* <!-- .element: class="fragment fade-in" --> użycie <code>std::ref("Corolla")</code> da nam referencję do zmiennej tymczasowej (w tym przypadku jest to bezpieczne)
-* <!-- .element: class="fragment fade-in" --> istnieje niebezpieczeństwo przekazania wiszącej referencji (dangling reference)
+  * <!-- .element: class="fragment fade-in" --> obiekty tymczasowe można podpiąć pod <code>const &</code>
+  * <!-- .element: class="fragment fade-in" --> użycie <code>std::ref("Corolla")</code> da nam referencję do zmiennej tymczasowej (w tym przypadku jest to bezpieczne)
+  * <!-- .element: class="fragment fade-in" --> istnieje niebezpieczeństwo przekazania wiszącej referencji (dangling reference)
 
 ___
 
@@ -319,6 +327,8 @@ return 0;
 }
 ```
 
+Output:
+
 ```output
 $> g++ 03_join_empty_thread.cpp –lpthread
 $> ./a.out
@@ -356,6 +366,8 @@ int main() {
 }
 ```
 
+Output:
+
 ```output
 $> g++ 04a_join.cpp –lpthread
 $> ./a.out
@@ -383,6 +395,8 @@ int main() {
     return 0;
 }
 ```
+
+Output:
 
 ```output
 $> g++ 04b_detach.cpp –lpthread
@@ -415,6 +429,8 @@ int main() {
 }
 ```
 
+Output:
+
 ```output
 $> g++ 04c_join.cpp –lpthread
 $> ./a.out
@@ -443,6 +459,8 @@ int main() {
 }
 ```
 
+Output:
+
 ```output
 $> g++ 04d_detach.cpp –lpthread
 $> ./a.out
@@ -458,18 +476,22 @@ ___
 #include <thread>
 #include <iostream>
 using namespace std;
+
 void casualJob() {
-cout << "Doing something in casualJob" << endl;
+    cout << "Doing something in casualJob" << endl;
 }
+
 int main() {
-thread t([] {
-cout << "Thread job done" << endl;
-});
-// no join() or detach()
-casualJob();
-return 0;
+    thread t([] {
+        cout << "Thread job done" << endl;
+    });
+    // no join() or detach()
+    casualJob();
+    return 0;
 }
 ```
+
+Output:
 
 ```output
 $> g++ 05_no_join_no_detach.cpp –lpthread
@@ -484,19 +506,23 @@ Aborted (core dumped)
 #include <thread>
 #include <iostream>
 using namespace std;
+
 void casualJob() {
-cout << "Doing something in casualJob" << endl;
+    cout << "Doing something in casualJob" << endl;
 }
+
 int main() {
-thread t([] {
-cout << "Thread job done" << endl;
-});
-casualJob();
-t.join();
-t.detach();
-return 0;
+    thread t([] {
+        cout << "Thread job done" << endl;
+    });
+    casualJob();
+    t.join();
+    t.detach();
+    return 0;
 }
 ```
+
+Output:
 
 ```output
 $> g++ 05_join_and_detach.cpp –lpthread
@@ -697,7 +723,7 @@ int main() {
 
 * <!-- .element: class="fragment fade-in" --> Trzeba zapewnić, że wątek ma poprawny dostęp do zasobów z których korzysta w czasie swojego życia, czyli np. coś nie jest usuwane wcześniej. To nie powinno być zaskoczeniem, bo nawet w jednowątkowej aplikacji trzeba o to dbać, inaczej mamy Undefined Behavior (UB).
 * <!-- .element: class="fragment fade-in" --> Taki przypadek zachodzi, gdy wątek trzyma wskaźniki lub referencje do lokalnych obiektów i wątek ciągle żyje, gdy wychodzimy z lokalnej funkcji.
-* <!-- .element: class="fragment fade-in" --> Kopiowanie danych do wątku jest bezpieczne. Jeśli pracujesz na małych porcjach danych nie wymagających modyfikacji zawsze preferuj kopiowanie.
+* <!-- .element: class="fragment fade-in" --> Kopiowanie danych do wątku jest bezpieczne, jeśli pracujesz na małych porcjach danych nie wymagających modyfikacji. Zawsze preferuj kopiowanie.
 * <!-- .element: class="fragment fade-in" --> Zobacz <a href=https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#cp31-pass-small-amounts-of-data-between-threads-by-value-rather-than-by-reference-or-pointer>C++ Core Guidelines [CP.31]</a>
 
 ___
@@ -720,6 +746,8 @@ int main() {
     return 0;
 }
 ```
+
+Output:
 
 ```output
 $> g++ 09_exceptions_not_working.cpp –lpthread
@@ -761,6 +789,8 @@ int main()
     return 0;
 }
 ```
+
+Output:
 
 ```output
 $> g++ 10_exceptions_working.cpp –lpthread
@@ -811,11 +841,6 @@ int main() {
 }
 ```
 
-* <!-- .element: class="fragment fade-in" --> Napisz krótki program, w którym 20 wątków jest trzymane w wektorze.
-* <!-- .element: class="fragment fade-in" --> Każdy wątek ma za zadanie poczekać 1 sekundę, po czym wyświetlić swój numer, który przyjmuje jako parametr oraz znak nowej linii.
-* <!-- .element: class="fragment fade-in" --> Tworzenie wątków i ich przyłączanie powinno zostać zrealizowane w 2 oddzielnych pętlach
-* <!-- .element: class="fragment fade-in" --> Uruchom program kilka razy i zaobserwuj jakie daje wyniki
-
 ___
 
 ## Zadanie 5 – możliwe rezultaty
@@ -844,7 +869,7 @@ ___
 |18        |3         |17        |4         |
 
 * <!-- .element: class="fragment fade-in" --> Dlaczego tak się dzieje?
-* <!-- .element: class="fragment fade-in" --> Strumień wyjściowy cout jest tylko jeden. Jest on wspólnym zasobem współdzielonym między wątkami
+* <!-- .element: class="fragment fade-in" --> Strumień wyjściowy <code>cout</code> jest tylko jeden. Jest on wspólnym zasobem współdzielonym między wątkami
 * <!-- .element: class="fragment fade-in" --> Może dochodzić do przeplotów w trakcie dostępu do strumienia (jeden wątek zacznie coś wpisywać i nie skończy, a już drugi wejdzie mu w paradę i wpisze swój numer)
 * <!-- .element: class="fragment fade-in" --> Współdzielenie zasobów to typowy problem wielowątkowości
 * <!-- .element: class="fragment fade-in" --> Jak sobie z tym poradzić? To już temat na kolejną lekcję 🙂
