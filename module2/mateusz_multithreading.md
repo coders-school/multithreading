@@ -43,7 +43,7 @@ ___
 ## Kiedy nie stosować współbieżności?
 
 * Gdy zbyt wiele wątków może obniżyć wydajność zamiast ją zwiększyć (koszt uruchomienia wątku, koszt zasobów – każdy wątek zajmuje pamięć typowo 8MB.),
-* Gdy wzrost wydajności nie jest proporcjonalny do woźnego wysiłku i złożoności kodu (koszt utrzymania kodu jest równie istotny).
+* Gdy wzrost wydajności nie jest proporcjonalny do włożonego wysiłku i złożoności kodu (koszt utrzymania kodu jest równie istotny).
 <!-- Oryginalnie to brzmiało: Gdy wzrost wydajności nie jest proporcjonalny do woźnego wysiłku i złożoności kodu (koszt utrzymania kodu jest równie istotny)., zamieniłem "woźnego" na "włożonego", ale nie jestem pewien -->
 
 ___
