@@ -2,7 +2,7 @@
 
 # Multithreading
 
-## Wyścigi (race conditions)
+## Współdzielenie danych
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -40,7 +40,7 @@ int main() {
 
 <div>
 
-Co wyświetli się na ekranie?
+Co wyświetli się na ekranie?<!-- .element: class="fragment fade-in" -->
 
 ```bash
 $> g++ 01_threads_write.cpp -lpthread
@@ -61,7 +61,7 @@ $> ./a.out
 $> ./a.out
 2
 ```
-<!-- .element: style="transform: scale(.90); width: 106%; margin:-35px 0 0 -30px;" -->
+<!-- .element: class="fragment fade-in" style="transform: scale(.90); width: 106%; margin:-35px 0 0 -30px;" -->
 
 </div>
 
@@ -72,11 +72,11 @@ ___
 
 ### Wyścigi (race conditions)
 
-* Wyścigi generują niedeterministyczne (losowe) zachowania programu.
-* Wyścig = Niezdefiniowane zachowanie.
-* Niechciane skutki uboczne zazwyczaj nie występują podczas większości uruchomień danej procedury.
-* Problemy mogą występować rzadziej niż 1 na 1000 uruchomień.
-* Wyścigi niesamowicie trudno wykryć. Zazwyczaj jeśli procesor nie jest obciążony to wszystko działa jak należy. Im bardziej obciążony procesor, tym bardziej rośnie ryzyko innej kolejności dostępu do danych. Takie problemy trudno jest zreprodukować.
-* Problem wyścigów jest krytyczny czasowo i może być zupełnie niemożliwy do wychwycenia pod debuggerem. Debugger wpływa na czasy wykonywania poszczególnych instrukcji.
-* Znacznie łatwiej zapobiegać wyścigom, bo leczenie jest długotrwałe i kosztowne.
-* Thread Sanitizer (TSan) - data race detector.
+* <!-- .element: class="fragment fade-in" --> Wyścigi generują niedeterministyczne (losowe) zachowania programu.
+* <!-- .element: class="fragment fade-in" --> Wyścig = Niezdefiniowane zachowanie.
+* <!-- .element: class="fragment fade-in" --> Niechciane skutki uboczne zazwyczaj nie występują podczas większości uruchomień danej procedury.
+* <!-- .element: class="fragment fade-in" --> Problemy mogą występować rzadziej niż 1 na 1000 uruchomień.
+* <!-- .element: class="fragment fade-in" --> Wyścigi niesamowicie trudno wykryć. Zazwyczaj jeśli procesor nie jest obciążony to wszystko działa jak należy. Im bardziej obciążony procesor, tym bardziej rośnie ryzyko innej kolejności dostępu do danych. Takie problemy trudno jest zreprodukować.
+* <!-- .element: class="fragment fade-in" --> Problem wyścigów jest krytyczny czasowo i może być zupełnie niemożliwy do wychwycenia pod debuggerem. Debugger wpływa na czasy wykonywania poszczególnych instrukcji.
+* <!-- .element: class="fragment fade-in" --> Znacznie łatwiej zapobiegać wyścigom, bo leczenie jest długotrwałe i kosztowne.
+* <!-- .element: class="fragment fade-in" --> Thread Sanitizer (TSan) - data race detector.
