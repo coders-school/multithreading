@@ -131,7 +131,7 @@ bool operator<(const X & other) const {
 * <!-- .element: class="fragment fade-in" --> funkcja <code>std::lock()</code>
     * <!-- .element: class="fragment fade-in" --> gwarantuje zablokowanie wszystkich muteksów bez zakleszczenia niezależnie od kolejności ich pozyskiwania
     * <!-- .element: class="fragment fade-in" --> wymaga przekazania jako parametrów opóźnionych blokad <code>(defer_lock)</code> typu <code>std::unique_lock</code>
-    * <!-- .element: class="fragment fade-in" --> alternatywnie wymaga przekazania muteksów, a następnie utworzenia zablokowanych blokad <code>(adopt_lock)</code> typu <code>std::lock_guard
+    * <!-- .element: class="fragment fade-in" --> alternatywnie wymaga przekazania muteksów, a następnie utworzenia zablokowanych blokad <code>(adopt_lock)</code> typu <code>std::lock_guard</code>
     * <!-- .element: class="fragment fade-in" --> l1 i l2 nie blokują muteksów w konstruktorze, robi to funkcja <code>std::lock()</code>
 * <!-- .element: class="fragment fade-in" --> menadżer RAII <code>std::scoped_lock</code> (C++17)
     * <!-- .element: class="fragment fade-in" --> wymaga przekazania muteksów w konstruktorze, które blokuje tak samo jak funkcja <code>std::lock()</code>
