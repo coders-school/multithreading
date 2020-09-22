@@ -36,6 +36,6 @@
 
 ### [Zakleszczenie (`deadlock`)](module1/15_zakleszczenie.pl.md)
 
-### [Przykład: zakleszczenie w porównaniu](module1/16_przyklad-zakleszczenie-w-porownaniu.pl.md)
+### [Zadanie 4: zakleszczenie w porównaniu](module1/16_zadanie4.pl.md)
 
 ### [Współdzielenie danych - podsumowanie](module1/17_podsumowanie.pl.md)
