@@ -129,12 +129,12 @@ bool operator<(const X & other) const {
 <div>
 
 * <!-- .element: class="fragment fade-in" --> funkcja <code>std::lock()</code>
-    * <!-- .element: class="fragment fade-in" --> gwarantuje zablokowanie wszystkich muteksów bez zakleszczenia niezależnie od kolejności ich pozyskiwania
+    * <!-- .element: class="fragment fade-in" --> gwarantuje zablokowanie wszystkich mutexów bez zakleszczenia niezależnie od kolejności ich pozyskiwania
     * <!-- .element: class="fragment fade-in" --> wymaga przekazania jako parametrów opóźnionych blokad <code>(defer_lock)</code> typu <code>std::unique_lock</code>
-    * <!-- .element: class="fragment fade-in" --> alternatywnie wymaga przekazania muteksów, a następnie utworzenia zablokowanych blokad <code>(adopt_lock)</code> typu <code>std::lock_guard</code>
-    * <!-- .element: class="fragment fade-in" --> l1 i l2 nie blokują muteksów w konstruktorze, robi to funkcja <code>std::lock()</code>
+    * <!-- .element: class="fragment fade-in" --> alternatywnie wymaga przekazania mutexów, a następnie utworzenia zablokowanych blokad <code>(adopt_lock)</code> typu <code>std::lock_guard</code>
+    * <!-- .element: class="fragment fade-in" --> l1 i l2 nie blokują mutexów w konstruktorze, robi to funkcja <code>std::lock()</code>
 * <!-- .element: class="fragment fade-in" --> menadżer RAII <code>std::scoped_lock</code> (C++17)
-    * <!-- .element: class="fragment fade-in" --> wymaga przekazania muteksów w konstruktorze, które blokuje tak samo jak funkcja <code>std::lock()</code>
+    * <!-- .element: class="fragment fade-in" --> wymaga przekazania mutexów w konstruktorze, które blokuje tak samo jak funkcja <code>std::lock()</code>
     * <!-- .element: class="fragment fade-in" --> nie wymaga tworzenia dodatkowych obiektów blokad
 
 </div><!-- .element: style="font-size: .98em" -->
@@ -145,6 +145,6 @@ ___
 
 ### Zakleszczenie
 
-* <!-- .element: class="fragment fade-in" --> Może wystąpić gdy mamy 2 lub więcej muteksów blokowanych w różnych kolejnościach
-* <!-- .element: class="fragment fade-in" --> Blokuj najpierw muteksy wszędzie w tej samej kolejności, ale ręczna zmiana kolejności <code>lock_guard</code>'ów nie zawsze naprawi program (jak na przykładzie z operatorem <code><</code>)
-* <!-- .element: class="fragment fade-in" --> Używaj <code>std::scoped_lock</code> - blokady, która przyjmuje kilka muteksów i blokuje je zawsze w określonej (prawidłowej) kolejności
+* <!-- .element: class="fragment fade-in" --> Może wystąpić gdy mamy 2 lub więcej mutexów blokowanych w różnych kolejnościach
+* <!-- .element: class="fragment fade-in" --> Blokuj najpierw mutexy wszędzie w tej samej kolejności, ale ręczna zmiana kolejności <code>lock_guard</code>'ów nie zawsze naprawi program (jak na przykładzie z operatorem <code><</code>)
+* <!-- .element: class="fragment fade-in" --> Używaj <code>std::scoped_lock</code> - blokady, która przyjmuje kilka mutexów i blokuje je zawsze w określonej (prawidłowej) kolejności
