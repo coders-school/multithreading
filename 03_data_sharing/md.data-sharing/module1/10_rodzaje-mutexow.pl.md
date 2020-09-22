@@ -21,8 +21,8 @@ ___
         * <!-- .element: class="fragment fade-in" --> <code>bool try_lock_until(timeout_time)</code>
         * <!-- .element: class="fragment fade-in" --> <code>bool try_lock_for(timeout_duration)</code>
 * <!-- .element: class="fragment fade-in" --> <code>recursive_mutex</code>
-    * <!-- .element: class="fragment fade-in" --> Ten sam wątek może wielokrotnie pozyskać muteks poprzez wywołanie metody <code>lock()</code> lub <code>try_lock()</code>
-    * <!-- .element: class="fragment fade-in" --> Aby zwolnić muteks wątek musi odpowiednią ilość razy wywołać <code>unlock()</code>
+    * <!-- .element: class="fragment fade-in" --> Ten sam wątek może wielokrotnie pozyskać mutex poprzez wywołanie metody <code>lock()</code> lub <code>try_lock()</code>
+    * <!-- .element: class="fragment fade-in" --> Aby zwolnić mutex wątek musi odpowiednią ilość razy wywołać <code>unlock()</code>
 * <!-- .element: class="fragment fade-in" --> <code>recursive_timed_mutex</code>
     * <!-- .element: class="fragment fade-in" --> posiada własności <code>timed_mutex</code>
     * <!-- .element: class="fragment fade-in" --> posiada własności <code>recursive_mutex</code>

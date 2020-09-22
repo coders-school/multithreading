@@ -14,7 +14,7 @@ ___
 
 * <!-- .element: class="fragment fade-in" --> Mutex (Mutual Exclusion) - wzajemne wykluczanie
 * <!-- .element: class="fragment fade-in" --> Implementacja blokady
-* <!-- .element: class="fragment fade-in" --> <code>#include <mutex></code>
+* <!-- .element: class="fragment fade-in" --> <code>#include &lt;mutex&gt;</code>
 * <!-- .element: class="fragment fade-in" --> <code>std::mutex</code>
 * <!-- .element: class="fragment fade-in" --> Najważniejsze operacje:
     * <!-- .element: class="fragment fade-in" --> <code>void lock()</code> - zablokowanie mutexu. Operacja blokująca. Jeśli mutex jest zablokowany przez inny wątek to oczekujemy na odblokowanie.

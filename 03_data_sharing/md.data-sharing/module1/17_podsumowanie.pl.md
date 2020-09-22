@@ -21,7 +21,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> W małych programach mutexy można trzymać jako obiekty globalne, ale w większych powinny być trzymane w odpowiedniej klasie, której operacje mają być blokowane. Jeśli taka klasa ma kilka zasobów, które mogą być modyfikowane niezależnie, to należy mieć kilka mutexów (1 na każdy zasób). Trzeba uważać na zakleszczenie.
 * <!-- .element: class="fragment fade-in" --> Pomimo zablokowanych mutexów, jeśli używamy gdzieś wskaźników lub referencji do obiektów, które modyfikujemy w sekcji krytycznej, to cała ochrona jest na nic. Ochrona danych mutexami wymaga więc uważnego modelowania interfejsów.
 * <!-- .element: class="fragment fade-in" --> Zawsze używaj muteksów poprzez menadżery blokad (wrappery RAII)
-* <!-- .element: class="fragment fade-in" --> Używaj std::atomic<T> (zmiennych atomowych). Dają one wygodny sposób lekkiej synchronizacji danych bez użycia mutexów, ale o tym w kolejnej części
+* <!-- .element: class="fragment fade-in" --> Używaj <code>std::atomic<T></code> (zmiennych atomowych). Dają one wygodny sposób lekkiej synchronizacji danych bez użycia mutexów, ale o tym w kolejnej części
 
 </div>
 <!-- .element: style="font-size: .81em" -->
