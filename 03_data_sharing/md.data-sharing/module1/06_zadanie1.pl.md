@@ -16,8 +16,8 @@ ___
 
 <div>
 
-* <!-- .element: class="fragment fade-in" --> Skompiluj program threads_write.cpp</br>`g++ 01_threads_write.cpp -lpthread -g`
-* <!-- .element: class="fragment fade-in" --> Uruchom program pod debuggerem (gdb lub inny)</br>`gdb --tui ./a.out`
+* <!-- .element: class="fragment fade-in" --> Skompiluj program threads_write.cpp</br><code>g++ 01_threads_write.cpp -lpthread -g</code>
+* <!-- .element: class="fragment fade-in" --> Uruchom program pod debuggerem (gdb lub inny)</br><code>gdb --tui ./a.out</code>
 * <!-- .element: class="fragment fade-in" --> Spraw, aby na końcu programu w zmiennej x była wartość 2
 * <!-- .element: class="fragment fade-in" --> Spraw, aby na końcu programu w zmiennej x była wartość 3
 * <!-- .element: class="fragment fade-in" --> Przydatne komendy:
