@@ -18,27 +18,13 @@
 
 [Ankieta oceniająca trenera - Łukasz Ziobroń](https://forms.gle/iRmdRgjzp14jdJpu7)
 
-## Nagrania
-
-### Nagrania 2019
-
-- [30.03.2019 - Teoria wielowątkowości, wątki, współdzielenie danych](https://www.youtube.com/watch?v=Uz-98Ui0hH0)
-- [06.04-2019 - Współdzielenie danych, promise/future, atomic](https://www.youtube.com/watch?v=733jR38z4AQ)
-- [13.04.2019 - Zmienna warunku, jednokrotne wywołania, zadania asynchroniczne](https://www.youtube.com/watch?v=xq_riNS3yTM)
-
-### Nagrania 2020
-
-- [Playlista na YT - Wielowątkowość 2020](https://www.youtube.com/playlist?list=PLQqoaQUqs4DBSe46BysLQbJLGRujwcXDN)
-
 ## Prace domowe
 
 ### Zadanie 1
 
-- (2 punkty za poziom) Zagraj w [The Deadlock Empire](https://deadlockempire.github.io) i przejdź wszystkie poziomy :D Screenshot zaliczonych poziomów posłuży za dowód
+- Zagraj w [The Deadlock Empire](https://deadlockempire.github.io) i przejdź wszystkie poziomy :D Screenshot zaliczonych poziomów posłuży za dowód
 
 ### Zadanie 2
-
-(11 punktów, 1 za każdy podpunkt) Termin: 22.02.2020 23:59
 
 Napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera. Wyniki powinny zostać również zapisane w kontenerze.
 
@@ -61,14 +47,10 @@ Rozwiązanie znajdziesz w książce *C++ Concurrency in Action, Anthony Williams
 
 ### Zadanie 3
 
-(20 punktów) Termin: 22.02.2020 23:59
-
 Napisz współbieżną wersję algorytmu std::count_if. Zmierz czas działania i napisz testy, pokazujące, że zwraca ona takie same wyniki, jak std::count_if.
 Porównaj go dodatkowo z std::count_if z przekazanym dodatkowym parametrem std::execution::par policy z C++17 ;)
 
 ### Zadanie 4
-
-(24 punkty, 4 za każdy podpunkt) Termin: 29.02.2020 23:59
 
 Zaimplementuj problem ucztujących filozofów z użyciem wątków i mutexów.
 
@@ -89,8 +71,6 @@ https://mariusbancila.ro/blog/2017/01/20/dining-philosophers-in-c11-chandy-misra
 
 ### Zadanie 5
 
-(10 punktów) Termin: 29.02.2020 23:59
-
 - Poszukaj informacji na temat zjawiska nazywanego fałszywym współdzielenim (**false sharing**). Jest to bardzo niemiłe zjawisko, wynikające z architektury współczesnych komputerów, które znacząco spowalnia równoległe wykonywanie programów.
 - Napisz/przepisz/skopiuj sobie kawałek kodu, który ma ten problem i zmierz czas działania programu w zależności od wielkości danych wejściowych i liczby wątków
 - Napraw problem false sharingu i zmierz czas działania programu również przy różnej wielkości danych wejściowych i liczbie wątków
@@ -104,8 +84,6 @@ Możesz spróbować zaimplementować algorytm std::fill
 
 ### Zadanie 6
 
-(20 punktów, 4 za każdy zrealizowany podpunkt) Termin: 07.03.2020 23:59
-
 Zaimplementuj grę w ping-ponga (zadanie `03_ping_pong.cpp` z rozdziału o zmiennych warunku)
 
 - 1 wątek wypisuje "ping" oraz kolejny numer
@@ -118,19 +96,13 @@ Zaimplementuj grę w ping-ponga (zadanie `03_ping_pong.cpp` z rozdziału o zmien
 
 ### Zadanie 7
 
-(15 punktów, 3 za każde zadanie) Termin: 07.03.2020 23:59
-
 Rozwiąż zadania z użyciem `promise` i `future` od Ihora z katalogu [07_future_promise/homework](07_future_promise/homework)
 
 ### Zadanie 8
 
-(20 punktów) Termin: 07.03.2020 23:59
-
 Tak jak w zadaniu 2 - napisz równoległą wersję algorytmu std::accumulate, który będzie współbieżnie sumował fragmenty kontenera, ale użyj w tym celu zadań asynchronicznych
 
 ### Zadanie 9 - Przetwarzanie obrazów
-
-(36 punktów, 18 za każdy podpunkt) Termin: 21.03.2020 23:59
 
 Zainstaluj sobie bibliotekę OpenCV - [Instrukcja instalacji](https://docs.opencv.org/master/d7/d9f/tutorial_linux_install.html)
 
@@ -147,8 +119,6 @@ Przerób algorytmy podane w dokumentacji na ich wielowątkowe wersje:
 ---
 
 ## Projekt 1: Hardkorowi filozofowie
-
-(68 punktów, 4 za każde wymaganie) Termin: 21.03.2020 23:59
 
 Zaimplementuj trochę inną wersję [algorytmu ucztujących filozofów](https://pl.wikipedia.org/wiki/Problem_ucztujących_filozofów). Polecam pracę w grupie.
 
@@ -185,8 +155,6 @@ MEGA PODPOWIEDŹ: Pracuj w TDD i używaj Thread Sanitizera :)
 
 ## Projekt 2: Wielowątkowy raytracer
 
-(40 punktów) Termin: 21.03.2020 23:59
-
 [Czym jest ray tracing? - wideo na YT](https://www.youtube.com/watch?v=JdfV2sB-Qcw)
 Rozwiń [algorytm śledzenia promieni](https://pl.wikipedia.org/wiki/Śledzenie_promieni), implementując jego współbieżną wersję, która wygeneruje jakąś statyczną scenę i zapisze ją w jako obrazek (najlepiej użyj sceny chessboard).
 Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_code.html).
@@ -200,61 +168,7 @@ Możesz wykorzystać [ten kod](http://cosinekitty.com/raytrace/chapter05_cpp_cod
   - podział na prostokąty
 - Zbadaj szybkość przetwarzania w zależności od liczby współbieżnych zadań
 
-## Organizacja
-
-### Tabela wyników
-
-|                                                     | SUMA | Punktualność | P1 | P2 | Z1 | Z2 | Z3 | Z4 | Z5 | Z6 | Z7 | Z8 | Z9 | Testy | Inne |
-|-----------------------------------------------------|------|--------------|----|----|----|----|----|----|----|----|----|----|----|-------|------|
-| [Adam Mierzwiak](https://github.com/adamvm)         |  146 |           10 |    |    | 38 | 10 | 20 | 24 |    | 20 |    |    |    |    24 |      |
-| [Cypher](https://github.com/ChopSeeGuy)             |  210 |           15 |    |    | 38 | 11 | 20 | 24 |  5 | 20 | 15 | 20 | 18 |    24 |      |
-| [Jakub Zych](https://github.com/jzych)              |  255 |           40 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 | 36 |    21 |      |
-| [kamil waszkiewicz](https://github.com/darkassazi)  |  137 |           30 |    |    | 38 | 11 | 20 |    |  5 | 10 |  9 | 20 |    |     3 |      |
-| [kawapa](https://github.com/kawapa)                 |  270 |           40 |    |    | 38 | 11 | 20 | 20 | 10 | 20 | 15 | 20 | 32 |    24 |   20 |
-| [Krzysiek](https://github.com/kdoroszko)            |   93 |           25 |    |    | 10 | 11 | 20 | 20 |  4 |    |    |    |    |     3 |      |
-| [matijaz](https://github.com/matijaz)               |   74 |           10 |    |    | 38 |    |    |    |    | 20 |    |    |    |     6 |      |
-| [mkijew](https://github.com/mkijew)                 |  263 |           45 |    |    | 38 | 11 | 20 | 24 | 10 | 20 | 15 | 20 | 36 |    24 |      |
-| [MonikaZ](https://github.com/MonikaZelechowska)     |  169 |           30 |    |    | 38 | 11 | 20 | 20 | 10 | 16 |    |    |    |    24 |      |
-| [piotr.kowandy](https://github.com/PiotrKowandy)    |  147 |           20 |    |    | 38 | 11 | 20 | 24 | 10 |    |    |    |    |    24 |      |
-| [Szafirmag](https://github.com/WBigaj)              |  120 |           15 |    |    | 38 | 10 | 18 |    |  5 |    | 10 |    |    |    24 |      |
-
-### Punktacja
-
-| Kolumna      | Max. punktów      | Czynność |
-|--------------|-------------------|----------|
-| Punktualność | 55                | 5 punktów za każde zadanie i projekt dostarczone przed wskazanym terminem |
-| P1           | 68                | Projekt 1 - Hardkorowi filozofowie |
-| P2           | 40                | Projekt 2 - Ray Tracing |
-| Z1           | 38                | Zadanie 1 - The Deadlock Empire |
-| Z2           | 11                | Zadanie 2 - współbieżny std::accumulate |
-| Z3           | 20                | Zadanie 3 - współbieżny std::count_if |
-| Z4           | 24                | Zadanie 4 - problem ucztujących filozofów |
-| Z5           | 10                | Zadanie 5 - false sharing |
-| Z6           | 20                | Zadanie 6 - ping pong |
-| Z7           | 15                | Zadanie 7 - future i promise |
-| Z8           | 20                | Zadanie 8 - std::accumulate na zadaniach asynchronicznych|
-| Z9           | 36                | Zadanie 9 - przetwarzanie obrazów |
-| Testy        | 24                | 3 punkty za każdy rozwiązany test |
-| Inne         | ?                 | Inne nie przewidziane aktywności, np. zrobienie lub wrzucenie czegoś wartościowego, zrobienie Code Review innym osobom |
-| **RAZEM**    | 381 + ?           | |
-
-### Nagrody
-
-- 0 punktów - notes z długopisem
-- 60 punktów - zaślepka na kamerkę
-- 120 punktów - certyfikat na zakończenie kursu
-- 200 punktów - zniżka 50% na dowolny przyszły kurs w Coders School<sup>*</sup>
-- 260 punktów - książka Anthony Williams, C++ Concurrency in Action
-- 325 punktów - kurs online w Coders School za darmo<sup>*</sup> :)
-
-<sup>*</sup> <sub>wymaganymi dodatkowymi "kosztami" w przypadku zniżki lub darmowego kursu będzie:
-a) pay by tweet or share - udostępnienie informacji o kursie na swoich mediach społecznościowych oraz
-b) opinia o kursie z Wielowątkowości na Facebooku (lub LinkedInie w przypadku braku FB, ewentualnie po prostu mail z opinią i pozwoleniem na opublikowanie go na naszej stronie)
-Sorki, ale umiem w social media i liczę na to, że jakoś pomożecie mi dotrzeć do większej liczby zainteresowanych :)</sub>
-
 ## Zakończenie
-
-Spotkanie na zakończenie z rozdaniem dyplomów i nagród odbędzie się 5 kwietnia 2020 o godz. 16:00 na ul. Sokolniczej 5/24. Po spotkaniu możemy wyjść na piwko.
 
 1. [Wypełnij ankietę zadowolenia z kursu](https://forms.gle/6gzPT8PU6cKAY7eg8)
 2. [Obserwuj Coders School na LinkedInie](https://www.linkedin.com/company/coders-school/)
