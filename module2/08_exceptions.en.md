@@ -1,10 +1,10 @@
 <!-- .slide: data-background="#111111" -->
 
-# Wyjątki w wątkach
+# Exceptions in threads
 
 ___
 
-## Problem - wyjątki w wątkach
+## Problem - exceptions in threads
 
 ```cpp
 #include <thread>
@@ -35,7 +35,7 @@ Aborted (core dumped)
 ___
 <!-- .slide: style="font-size: 0.85em" -->
 
-## Problem - wyjątki w wątkach
+## Problem - exceptions in threads
 
 ```cpp
 int main() {
@@ -69,10 +69,10 @@ Thread exited with an exception: WTF
 
 ___
 
-## Problem - wyjątki w wątkach
+## Problem - exceptions in threads
 
-* <!-- .element: class="fragment fade-in" --> Nie można standardowo złapać wyjątków w innym wątku niż tym, który rzucił wyjątek
-* <!-- .element: class="fragment fade-in" --> Aby przechwycić wyjątek rzucony z innego wątku należy użyć wskaźnika na wyjątek <code>-std::exception_ptr</code>
-* <!-- .element: class="fragment fade-in" --> Wątek rzucający wyjątek powinien przypisać do wskaźnika na wyjątek obecny wyjątek za pomocą <code>std::current_exception()</code>
-* <!-- .element: class="fragment fade-in" --> Wątek, który chce złapać wyjątek powinien sprawdzić, czy <code>std::exception_ptr</code> został ustawiony i jeśli tak jest rzucić ten wyjątek ponownie poprzez <code>std::rethrow_exception()</code>
-* <!-- .element: class="fragment fade-in" --> Warto używać w wątkach funkcji <code>noexcept</code>, aby mieć pewność, że wyjątki nie będą rzucane
+* <!-- .element: class="fragment fade-in" --> You cannot normally catch exceptions on a thread other than the thread that raised the exception
+* <!-- .element: class="fragment fade-in" --> To catch an exception thrown from another thread, use the exception pointer <code>-std::exception_ptr</code>
+* <!-- .element: class="fragment fade-in" --> The thread throwing the exception should assign the current exception to the exception pointer <code>std::current_exception()</code>
+* <!-- .element: class="fragment fade-in" --> The thread that wants to catch an exception should check if <code>std::exception_ptr</code> has been set and if it is, throw that exception again with <code>std::rethrow_exception()</code>
+* <!-- .element: class="fragment fade-in" --> It is useful to use <code>noexcept</code> functions in threads to make sure no exceptions are thrown

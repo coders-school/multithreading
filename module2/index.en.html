@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>C++ Multithreading</title>
+
+        <meta name="description" content="C++11, C++14 and C++17 presentation">
+        <meta name="author" content="Lukasz Ziobron">
+
+        <link rel="stylesheet" href="../../css/reset.css">
+        <link rel="stylesheet" href="../../css/reveal.css">
+        <link rel="stylesheet" href="../../css/theme/coders.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../lib/css/monokai.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match(/print-pdf/gi) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+            document.getElementsByTagName('head')[0].appendChild(link);
+        </script>
+    </head>
+    <body>
+
+        <div class="reveal">
+            <div class="slides">
+                <section data-background="#111111">
+
+                    <h1>Multithreading #2</h1>
+                    <h2>Threads</h2>
+                    <a href="https://coders.school">
+                        <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
+                    </a>
+                    <h3>Łukasz Ziobroń</h3>
+                    <h3>Mateusz Adamski</h3>
+                    <h3>Bartosz Szurgot</h3>
+
+                </section>
+                <section data-markdown>
+                    <textarea data-template>
+
+                    ## Threads - Agenda
+
+                    * <!-- .element: class="fragment fade-in" --> intro
+                    * <!-- .element: class="fragment fade-in" --> concurrency
+                    * <!-- .element: class="fragment fade-in" --> <code>std::thread</code>
+                    * <!-- .element: class="fragment fade-in" --> passing arguments to threads
+                    * <!-- .element: class="fragment fade-in" --> <code>join()</code> or <code>detach()</code>?
+                    * <!-- .element: class="fragment fade-in" --> RAII
+                    * <!-- .element: class="fragment fade-in" --> copy elision (RVO)
+                    * <!-- .element: class="fragment fade-in" --> dangling reference
+                    * <!-- .element: class="fragment fade-in" --> exceptions in threads
+                    * <!-- .element: class="fragment fade-in" --> auxiliary functions
+                    * <!-- .element: class="fragment fade-in" --> threads in collections
+                    * <!-- .element: class="fragment fade-in" --> homework
+
+                    </textarea>
+                </section>
+
+                <section data-markdown="00_intro.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="01_concurrency.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="02_std_thread.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="03_passing_arguments.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="04_join_or_detach.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="05_raii.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="06_copy_elision.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="07_dangling_reference.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="08_exceptions.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="09_auxiliary_functions.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="10_threads_in_collections.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-markdown="11_homework.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+
+                <section data-background="../coders_school_logo.png" data-background-size="80%">
+                    <h1>Thank you 🙂</h1>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="../../js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                    width: 1200,
+                    height: 750,
+                    slideNumber: true,
+                    hash: true,
+                    pdfSeparateFragments: false,
+                    dependencies: [
+                            { src: '../../plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
+                            { src: '../../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                            { src: '../../plugin/markdown/marked.js' },
+                            { src: '../../plugin/markdown/markdown.js' },
+                            { src: '../../plugin/notes/notes.js', async: true }
+                    ]
+            });
+    </script>
+    </body>
+</html>

@@ -26,6 +26,6 @@ int main() {
 * <!-- .element: class="fragment fade-in" --> Kopiowanie wątku jest zabronione
 * <!-- .element: class="fragment fade-in" --> Zwracanie kopii z funkcji podlega zasadom copy elision – kompilator optymalizuje kod, poprzez wyrzucenie zbędnego kopiowania
 * <!-- .element: class="fragment fade-in" --> RVO (Return Value Optimization) to szczególny przypadek copy elision
-* <!-- .element: class="fragment fade-in" --> Jeśli zmienna lokalna utworzona w funkcji jest zwraca przez kopię nastąpi RVO
+* <!-- .element: class="fragment fade-in" --> Jeśli zmienna lokalna utworzona w funkcji jest zwracana przez kopię nastąpi RVO
 * <!-- .element: class="fragment fade-in" --> Zmienna zostanie od razu utworzona w odpowiednim miejscu na stosie, gdzie jest możliwy dostęp do niej z poziomu wyższej ramki stosu
 * <!-- .element: class="fragment fade-in" --> Dzięki RVO można zwracać wątki z funkcji poprzez kopię

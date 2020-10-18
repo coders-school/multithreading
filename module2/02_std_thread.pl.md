@@ -56,7 +56,7 @@ Hello 47082117789440 thread
 
 ___
 
-## Co przekazać do std::thread?
+## Co przekazać do `std::thread`?
 
 * <!-- .element: class="fragment fade-in" --> Funkcje
 * <!-- .element: class="fragment fade-in" --> Funktor (obiekt funkcyjny) – obiekt, który możemy wywołać tak jak funkcję (np. lambda)
@@ -65,7 +65,7 @@ ___
 
 ___
 
-## Co przekazać do std::thread?
+## Co przekazać do `std::thread`?
 
 <div class="multicolumn">
 <div class="col">
