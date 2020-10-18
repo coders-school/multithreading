@@ -8,7 +8,7 @@ ___
 
 * <!-- .element: class="fragment fade-in" --> Resource Acquisition Is Initialization
 * <!-- .element: class="fragment fade-in" --> C++ language idiom (pattern) that guarantees security of resource handling
-* <!-- .element: class="fragment fade-in" --> Acquiring the resource in the constructor
+* <!-- .element: class="fragment fade-in" --> Acquire the resource in the constructor
 * <!-- .element: class="fragment fade-in" --> Release the resource in the destructor
 * <!-- .element: class="fragment fade-in" --> Automatic release of the resource when an exception occurs, thanks to the stack unwinding mechanism
 * <!-- .element: class="fragment fade-in" --> Known classes implementing RAII:

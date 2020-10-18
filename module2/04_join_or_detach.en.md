@@ -223,6 +223,6 @@ ___
 * <!-- .element: class="fragment fade-in" --> Thread destructor does not join nor detach it (no RAII 😔)
 * <!-- .element: class="fragment fade-in" --> Failure to join or detach a thread will result in a <code>std::terminate()</code> call which quits the application
 * <!-- .element: class="fragment fade-in" --> Thread method <code>joinable()</code> returns <code>true</code> if you can do <code>join()</code>
-* <!-- .element: class="fragment fade-in" --> <code>join()</code> can only be done once and is excluded from <code>detach()</code>. Either one or the other should be used
-* <!-- .element: class="fragment fade-in" --> When we detach a thread, we usually do so immediately after creating it. After detaching, we can no longer refer to the thread using its variable
+* <!-- .element: class="fragment fade-in" --> <code>join()</code> can only be done once and is exclusive with <code>detach()</code>. Either one or the other should be used
+* <!-- .element: class="fragment fade-in" --> When we detach a thread, we usually do so immediately after creating it. After detaching, we can no longer refer to the thread using its name
 * <!-- .element: class="fragment fade-in" --> If we join a thread, we have to choose the right place to do it. <code>join()</code> is a blocking operation that waits for the thread to finish, so this is usually done at the end of the thread's starting function. If this function returns a thread, it can be joined even later.

@@ -75,7 +75,7 @@ int main()
 ```
 
 * <!-- .element: class="fragment fade-in" --> Create a thread and run <code>add10()</code> function on it, passing the number 5 to it
-* <!-- .element: class="fragment fade-in" --> Write the result on the screen
+* <!-- .element: class="fragment fade-in" --> Display the result on the screen in main thread
 
 ___
 
@@ -190,7 +190,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> Parameters are forwarded (copied or moved) to thread memory.
 * <!-- .element: class="fragment fade-in" --> Passing a reference is done by using <code>std::ref()</code>
 * <!-- .element: class="fragment fade-in" --> Passing a constant reference is done by using <code>std::cref()</code>
-* <!-- .element: class="fragment fade-in" --> A class method that starts in a thread as the first parameter takes hidden pointer to the object on which it is to be called.
+* <!-- .element: class="fragment fade-in" --> A class method that is called in a thread takes hidden pointer to the object on which it is to be called as the first parameter.
 
 ___
 
