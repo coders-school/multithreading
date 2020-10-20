@@ -3,15 +3,6 @@
 
 ___
 
-## C++ i obsługa wielowątkowości
-
-* <!-- .element: class="fragment fade-in" --> Standard C++11/14/17/20 – Wprowadzenie i rozwój bibliotek odpowiadających za obsługę wielowątkowości,
-* <!-- .element: class="fragment fade-in" --> Przed C++11 trzeba było korzystać z różnych bibliotek, lub ręcznie odwoływać się do interfejsów API udostępniających mechanizmy wielowątkowe,
-* <!-- .element: class="fragment fade-in" --> C++11 wprowadził również nowy model pamięci przystosowany do przetwarzania wielowątkowego na wielu platformach.
-* <!-- .element: class="fragment fade-in" --> Wprowadzono zarządzanie wątkami (ang. Thread), ochronę współdzielonych danych, synchronizacje operacji wykonywanych przez wątki, wykonywanie niskopoziomowych operacji atomowych itp.
-
-___
-
 ## Wątek – `std::thread`
 
 * <!-- .element: class="fragment fade-in" --> Wątek jest obiektem

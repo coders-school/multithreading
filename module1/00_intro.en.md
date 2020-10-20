@@ -1,8 +1,8 @@
-## Let's get to know each other
+## Something about you
 
-* Your name and programming experience
-* What you do not like in C++?
-* Your hobbies
+* On how many of my trainings have you already been?
+* How many cores does your machine have?
+* Which concurrent mechanisms have you already used?
 
 ___
 <!-- .slide: data-background="img/lukasz.jpg" -->

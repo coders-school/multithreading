@@ -12,10 +12,10 @@ ___
 * <!-- .element: class="fragment fade-in" --> Release the resource in the destructor
 * <!-- .element: class="fragment fade-in" --> Automatic release of the resource when an exception occurs, thanks to the stack unwinding mechanism
 * <!-- .element: class="fragment fade-in" --> Known classes implementing RAII:
-  * <!-- .element: class="fragment fade-in" --> <code>unique_ptr</code> - wrapper for the usual pointer
-  * <!-- .element: class="fragment fade-in" --> <code>shared_ptr</code> - wrapper for the usual pointer
-  * <!-- .element: class="fragment fade-in" --> <code>unique_lock</code> - wrapper on <code>mutex</code>
-  * <!-- .element: class="fragment fade-in" --> <code>fstream</code> - file wrapper
+  * <!-- .element: class="fragment fade-in" --> <code>unique_ptr</code> - wrapper for a raw pointer
+  * <!-- .element: class="fragment fade-in" --> <code>shared_ptr</code> - wrapper for a raw pointer
+  * <!-- .element: class="fragment fade-in" --> <code>unique_lock</code> - wrapper for a <code>mutex</code>
+  * <!-- .element: class="fragment fade-in" --> <code>fstream</code> - wrapper for a file
 * <!-- .element: class="fragment fade-in" --> <code>std::thread</code> does not implement RAII 😔
 * <!-- .element: class="fragment fade-in" --> <code>std::thread</code> has a copy operation disabled
 * <!-- .element: class="fragment fade-in" --> <code>std::thread</code> can be moved like <code>unique_ptr</code> (move semantics, <code>std::move</code>)
@@ -81,12 +81,18 @@ class scoped_thread {
     std::thread t_;
 public:
     explicit scoped_thread(std::thread t)
-        : t_(std::move(t))
+        : t_{std::move(t)}
     {
         if (not t_.joinable()) {
             throw std::logic_error("No thread");
         }
     }
+
+    template<typename ...Args>
+    explicit scoped_thread(Args&&... args)
+        : t_{ std::forward<Args>(args)... }
+    { }
+
     ~scoped_thread() {
         if (t_.joinable()) {
             t_.join();
@@ -100,6 +106,7 @@ public:
 
 void do_sth(int) {
     this_thread::sleep_for(1s);
+    cout << this_thread::get_id() << '\n';
 }
 
 void do_sth_unsafe_in_current_thread() {
@@ -109,11 +116,12 @@ void do_sth_unsafe_in_current_thread() {
 int main() {
     scoped_thread st(std::thread(do_sth, 42));
     // auto st2 = st; // copying not allowed
-    auto st3 = move(st);
+    [[maybe_unused]] auto st3 = move(st);
+    scoped_thread st4(do_sth, 42);
     try {
         do_sth_unsafe_in_current_thread();
     } catch (const exception & e) {
-        cout << e.what() << endl;
+        cout << e.what() << '\n';
     }
     return 0;
 } // thread is safely destroyed

@@ -1,8 +1,8 @@
 ## Poznajmy się lepiej
 
-* Twoje imię oraz doświadczenie w programowaniu
-* Czego nie lubisz w C++?
-* Twoje hobby
+* W ilu moich szkoleniach uczestniczyłaś/-eś?
+* Ile rdzeni ma twój komputer?
+* Jakich współbieżnych mechanizmów używałaś/-eś to tej pory?
 
 ___
 <!-- .slide: data-background="img/lukasz.jpg" -->

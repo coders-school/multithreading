@@ -4,17 +4,20 @@
 
 ___
 
-## Selection of the number of threads during implementation
+## How many threads should be created?
 
-* <!-- .element: class="fragment fade-in" --> Too many threads - the program runs slower,
-* <!-- .element: class="fragment fade-in" --> Too few threads - no use of potential,
-* <!-- .element: class="fragment fade-in" --> <code>std::thread::hardware_concurrency()</code> - returns the number of available concurrent threads. This function can return 0 if such information is not obtainable.
+* <!-- .element: class="fragment fade-in" --> Too many threads - the program runs slower
+* <!-- .element: class="fragment fade-in" --> Too few threads - no full use of available potential
+* <!-- .element: class="fragment fade-in" --> Use <code>std::thread::hardware_concurrency()</code>
+  * <!-- .element: class="fragment fade-in" --> Returns the number of available concurrent threads
+  * <!-- .element: class="fragment fade-in" --> May return 0 if such information is not obtainable
 
 ___
 
 ## Thread identification
 
-* <!-- .element: class="fragment fade-in" --> <code>std::this_thread::get_id()</code> - returns an object of <code>std::thread::id</code> type representing the id of the current thread
+* <!-- .element: class="fragment fade-in" --> <code>std::this_thread::get_id()</code>
+  * <!-- .element: class="fragment fade-in" --> Returns an object of <code>std::thread::id</code> type, representing the id of the current thread
 
 ```cpp
 std::thread::id master_thread;

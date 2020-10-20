@@ -1,5 +1,37 @@
 <!-- .slide: data-background="#111111" -->
 
+# Podsumowanie
+
+___
+
+## Czym jest współbieżność?
+
+* <!-- .element: class="fragment fade-in" --> Dwa procesy są współbieżne jeżeli jeden z nich rozpoczyna się przed zakończeniem drugiego
+
+<img class="plain fragment fade-in" data-src="img/01.png" src="img/01.png">
+
+* <!-- .element: class="fragment fade-in" --> Współbieżność polega na jednoczesnym wykonywaniu co najmniej dwóch czynności
+
+___
+
+## Kiedy stosować współbieżność?
+
+* <!-- .element: class="fragment fade-in" --> Podział zagadnień
+* <!-- .element: class="fragment fade-in" --> Wydajność:
+  * <!-- .element: class="fragment fade-in" --> Zrównoleglanie zadań (podział zadania na części),
+  * <!-- .element: class="fragment fade-in" --> Zrównoleglanie danych (wykonywanie tych samych zadań, na różnych fragmentach danych)
+
+___
+
+## Kiedy nie stosować współbieżności?
+
+* <!-- .element: class="fragment fade-in" --> Gdy zbyt wiele wątków może obniżyć wydajność zamiast ją zwiększyć (koszt uruchomienia wątku, koszt zasobów – każdy wątek zajmuje pamięć typowo 8MB),
+* <!-- .element: class="fragment fade-in" --> Gdy wzrost wydajności nie jest proporcjonalny do włożonego wysiłku i złożoności kodu (koszt utrzymania kodu jest równie istotny).
+<!-- Oryginalnie to brzmiało: Gdy wzrost wydajności nie jest proporcjonalny do woźnego wysiłku i złożoności kodu (koszt utrzymania kodu jest równie istotny)., zamieniłem "woźnego" na "włożonego", ale nie jestem pewien -->
+
+___
+<!-- .slide: data-background="#111111" -->
+
 # Zadania
 
 ___

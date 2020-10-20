@@ -3,9 +3,9 @@
 # Dangling reference
 
 ___
-<!-- .slide: style="font-size: 0.8em" -->
+<!-- .slide: style="font-size: 0.72em" -->
 
-## Problem - a dangling reference
+## Problem
 
 ```cpp
 #include <thread>
@@ -39,9 +39,9 @@ int main() {
 
 ___
 
-## Problem - a dangling reference
+## Dangling reference/pointer
 
 * <!-- .element: class="fragment fade-in" --> You have to ensure that the thread has correct access to the resources it uses during its lifetime, i.e. something is not deleted sooner. This should not be a surprise, because even in a single-threaded application you have to take care of it, otherwise we have Undefined Behavior (UB).
 * <!-- .element: class="fragment fade-in" --> This is the case when the thread is holding pointers or references to local objects and the thread is still alive when we exit the local function.
-* <!-- .element: class="fragment fade-in" --> Copying data to a thread is safe if you are working with small chunks of data that do not require modification. Always prefer copying.
+* <!-- .element: class="fragment fade-in" --> Copying data to a thread is safe. Always prefer copying.
 * <!-- .element: class="fragment fade-in" --> See <a href=https://github.com/isocpp/CppCoreGuidelines/blob/master/CppCoreGuidelines.md#cp31-pass-small-amounts-of-data-between-threads-by-value-rather-than-by-reference-or-pointer>C++ Core Guidelines [CP.31]</a>

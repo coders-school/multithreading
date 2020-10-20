@@ -3,15 +3,6 @@
 
 ___
 
-## C++ and multithreading support
-
-* <!-- .element: class="fragment fade-in" --> C++11/14/17/20 standard - Introduction and development of libraries responsible for handling multithreading,
-* <!-- .element: class="fragment fade-in" --> Before C++11, you had to use different libraries, or manually reference APIs that provide multi-threaded mechanisms,
-* <!-- .element: class="fragment fade-in" --> C++11 also introduced a new memory model suited to multi-threaded processing on multiple platforms.
-* <!-- .element: class="fragment fade-in" --> Introduced thread management, shared data protection, synchronization of operations performed by threads, performing low-level atomic operations, etc.
-
-___
-
 ## Thread - `std::thread`
 
 * <!-- .element: class="fragment fade-in" --> The thread is an object
@@ -59,12 +50,20 @@ ___
 
 ## What to pass to `std::thread`?
 
-* <!-- .element: class="fragment fade-in" --> Functions
-* <!-- .element: class="fragment fade-in" --> Functor (function object) - an object that can be called just like a function (e.g. lambda)
-* <!-- .element: class="fragment fade-in" --> A pointer to a function or a pointer to a member function
-* <!-- .element: class="fragment fade-in" --> The function object is <strong> copied</strong> to the memory area belonging to the newly created thread
+Any callable, like:
+<!-- .element: class="fragment fade-in" -->
+
+* <!-- .element: class="fragment fade-in" --> Function
+* <!-- .element: class="fragment fade-in" --> Functor (function object) - an object with <code>operator()</code>
+* <!-- .element: class="fragment fade-in" --> Lambda expression
+* <!-- .element: class="fragment fade-in" --> <code>std::function</code>
+* <!-- .element: class="fragment fade-in" --> Pointer to a function or pointer to a member function
+
+The callable is <strong>copied</strong> to the memory area belonging to the newly created thread
+<!-- .element: class="fragment fade-in" -->
 
 ___
+<!-- .slide: style="font-size: 0.9em" -->
 
 ## What to pass to `std::thread`?
 
@@ -74,23 +73,24 @@ ___
 ```cpp
 struct Bar {
     void operator()() {
-        std::cout << "Hello world";
+        std::cout << "Hello world\n";
     }
 }
 
 void foo() {
-    std::cout << "Hello world";
+    std::cout << "Hello world\n";
 }
 
 int main() {
-    std::thread t1([]() {
-        "Hello world"
-    });
-
-    std::thread t2(foo);
-
+    std::thread t1(foo);
     Bar bar;
-    std::thread t3(bar);
+    std::thread t2(bar);
+    std::thread t3([]() {
+        std::cout << "Hello world\n";
+    });
+    t1.join();
+    t2.join();
+    t3.join();
 }
 ```
 
@@ -106,11 +106,11 @@ class Bar {
 public:
     void foo() {
         std::cout << "Hello world\n";
-    };
+    }
 };
 
 int main() {
-    std::thread t(*foo);
+    std::thread t(&foo);
     t.join();
 
     class Bar bar;

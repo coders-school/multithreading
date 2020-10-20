@@ -106,7 +106,7 @@ $> ./a.out
 * <!-- .element: class="fragment fade-in" --> <code>std::ref()</code> causes the object to be passed by reference
 
 ___
-<!-- .slide: style="font-size: 0.8em" -->
+<!-- .slide: style="font-size: 0.78em" -->
 ## Exercise 3: passing a class method
 
 ```cpp
@@ -130,13 +130,13 @@ public:
 
 int main() {
     Car toyota;
-    // set year to 2015, model to "Corolla" in a thread
+    // set year to 2015, model to "Corolla" in a new thread
     toyota.print();
     return 0;
 }
 ```
 
-* <!-- .element: class="fragment fade-in" --> Create a thread and run <code>setData()</code> method on it, which will set the toyota object year of production to 2015 and the model to "Corolla"
+* <!-- .element: class="fragment fade-in" --> Create a thread and run <code>setData()</code> method on it, which will set year of production to 2015 and the model to "Corolla" on the toyota object.
 
 ___
 <!-- .slide: style="font-size: 0.85em" -->
@@ -185,12 +185,12 @@ ___
 
 ## Passing parameters
 
-* <!-- .element: class="fragment fade-in" --> The constructor of the thread as the first parameter gets any callable object - lambda, function, functor. Callable is copied into thread memory.
-* <!-- .element: class="fragment fade-in" --> Successive parameters of the thread's constructor are passed to the function (lambdas)
-* <!-- .element: class="fragment fade-in" --> Parameters are forwarded (copied or moved) to thread memory.
+* <!-- .element: class="fragment fade-in" --> The constructor of the thread as the first parameter gets any callable object - lambda, function, function pointer, functor. Callable is copied into thread memory.
+* <!-- .element: class="fragment fade-in" --> Successive parameters of the thread's constructor are passed to the callable
+* <!-- .element: class="fragment fade-in" --> Parameters are forwarded (copied or moved) to thread memory
 * <!-- .element: class="fragment fade-in" --> Passing a reference is done by using <code>std::ref()</code>
 * <!-- .element: class="fragment fade-in" --> Passing a constant reference is done by using <code>std::cref()</code>
-* <!-- .element: class="fragment fade-in" --> A class method that is called in a thread takes hidden pointer to the object on which it is to be called as the first parameter.
+* <!-- .element: class="fragment fade-in" --> A class method that is called in a thread takes a hidden pointer to the object on which it is to be called as the first parameter.
 
 ___
 
@@ -213,7 +213,7 @@ struct SomeClass {
 };
 SomeClass someObject;
 // someObject.method(1, 2, field) – class method
-std::thread t3(&SomeClass::method, someObject, 1, 2, std::ref(field));
+std::thread t3(&SomeClass::method, &someObject, 1, 2, std::ref(field));
 ```
 
 ___
@@ -234,13 +234,17 @@ void oops(int arg)
 ```
 <!-- .element: class="fragment fade-in" -->
 
+The implicit conversion takes place in a thread, so the object that is being converted may no longer exist.
+<!-- .element: class="fragment fade-in" -->
+
 ___
 
 ## Traps when passing arguments
 
 * <!-- .element: class="fragment fade-in" --> Pay attention to the passed arguments
-  * <!-- .element: class="fragment fade-in" --> If the variable is a pointer/reference, its lifespan should be longer than lifespan of the thread that operates on it.
-  * <!-- .element: class="fragment fade-in" --> If there is a risk of implicit conversion, it's best to pass the converted argument straight away.
+  * <!-- .element: class="fragment fade-in" --> If the variable is a pointer/reference, its lifespan should be longer than lifespan of the thread that operates on it
+  * <!-- .element: class="fragment fade-in" --> If there is a risk of implicit conversion, it's best to pass the converted argument straight away
+* <!-- .element: class="fragment fade-in" --> Solution - explicit conversion takes place in a current thread
 
 ```cpp
 void f(int i, std::string const& s);

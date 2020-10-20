@@ -5,20 +5,22 @@ ___
 
 ## Czym jest współbieżność?
 
-* <!-- .element: class="fragment fade-in" --> Dwa procesy są współbieżne jeżeli jeden z nich rozpoczyna się przed zakończeniem drugiego.
+* <!-- .element: class="fragment fade-in" --> Dwa procesy są współbieżne jeżeli jeden z nich rozpoczyna się przed zakończeniem drugiego
 
 <img class="plain fragment fade-in" data-src="img/01.png" src="img/01.png">
 
-* <!-- .element: class="fragment fade-in" --> Współbieżność polega na jednoczesnym wykonywaniu co najmniej dwóch czynności.
+* <!-- .element: class="fragment fade-in" --> Współbieżność polega na jednoczesnym wykonywaniu co najmniej dwóch czynności
 
 ___
 
 ## Współbieżność w systemach komputerowych
 
-* <!-- .element: class="fragment fade-in" --> „Symulacja” współbieżności w systemach jednoprocesorowych przy wykorzystaniu mechanizmu przełączania zadań (ang. Task switching),
-* <!-- .element: class="fragment fade-in" --> Komputery/serwery wieloprocesorowe/wielordzeniowe obsługujące wiele aplikacji jednocześnie.
+* <!-- .element: class="fragment fade-in" --> Komputery wieloprocesorowe/wielordzeniowe obsługujące wiele aplikacji jednocześnie
+* <!-- .element: class="fragment fade-in" --> Symulacja współbieżności w systemach jednoprocesorowych przy wykorzystaniu mechanizmu przełączania zadań (ang. Task switching)
 
 <img class="plain fragment fade-in" data-src="img/02.png" src="img/02.png" alt="'Concurency in action', Anthony Williams 2019" title="'Concurency in action', Anthony Williams 2019">
+
+Note: Show `top`
 
 ___
 
@@ -36,24 +38,7 @@ ___
 
 ___
 
-## Kiedy stosować współbieżność?
-
-* <!-- .element: class="fragment fade-in" --> Podział zagadnień (np. odtwarzacz Blu-ray),
-* <!-- .element: class="fragment fade-in" --> Wydajność:
-  * <!-- .element: class="fragment fade-in" --> Zrównoleglanie zadań (podział zadania na części),
-  * <!-- .element: class="fragment fade-in" --> Zrównoleglanie danych (wykonywanie tych samych zadań, na różnych fragmentach danych)
-
-___
-
-## Kiedy nie stosować współbieżności?
-
-* <!-- .element: class="fragment fade-in" --> Gdy zbyt wiele wątków może obniżyć wydajność zamiast ją zwiększyć (koszt uruchomienia wątku, koszt zasobów – każdy wątek zajmuje pamięć typowo 8MB),
-* <!-- .element: class="fragment fade-in" --> Gdy wzrost wydajności nie jest proporcjonalny do włożonego wysiłku i złożoności kodu (koszt utrzymania kodu jest równie istotny).
-<!-- Oryginalnie to brzmiało: Gdy wzrost wydajności nie jest proporcjonalny do woźnego wysiłku i złożoności kodu (koszt utrzymania kodu jest równie istotny)., zamieniłem "woźnego" na "włożonego", ale nie jestem pewien -->
-
-___
-
-## Proces oraz wątek
+## Proces
 
 * <!-- .element: class="fragment fade-in" --> Proces służy do organizowania wykonywania programu. W skład jednego programu wchodzi jeden lub więcej procesów. Zatem proces jest to cały kontekst niezbędny do wykonania programu.
 * <!-- .element: class="fragment fade-in" --> Zmianie w wyniku wykonywania procesu ulega między innymi segment danych, segment stosu, stan rejestrów procesora.
@@ -63,7 +48,7 @@ ___
 
 ___
 
-## Proces oraz wątek
+## Wątek
 
 * <!-- .element: class="fragment fade-in" --> Wątki tego samego procesu współdzielą większość przestrzeni adresowej (segment kodu i danych, otwarte pliki Itp.).
 * <!-- .element: class="fragment fade-in" --> Przełączanie kontekstu wątku jest stosunkowo szybkie i nie obciążające systemu operacyjnego.
