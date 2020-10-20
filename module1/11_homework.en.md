@@ -1,38 +1,3 @@
-<!-- .slide: style="font-size: 0.8em" -->
-
-## Template functions in threads
-
-```cpp
-#include <iostream>
-#include <thread>
-#include <chrono>
-using namespace std::chrono_literals;
-
-template <typename Time>
-void daemon(int number, Time time) {
-    for (int i = 0 ; i < number; ++i) {
-        std::cout << "Hi I'm thread with id: " << std::this_thread::get_id()
-                  << " Number: " << number << '\n';
-        std::this_thread::sleep_for(time);
-    }
-}
-
-int main() {
-    std::thread t1(daemon<decltype(1s)>, 20, 1s);
-    std::thread t2(daemon<decltype(1500ms)>, 15, 1500ms);
-    std::thread t3(daemon<decltype(2700ms)>, 10, 2700ms);
-
-    t1.detach();
-    t2.detach();
-    t3.detach();
-
-    daemon(4, 7s);
-    return 0;
-}
-```
-<!-- .element: class="fragment fade-in" -->
-
-___
 <!-- .slide: data-background="#111111" -->
 
 # Summary
