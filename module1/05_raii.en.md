@@ -47,7 +47,8 @@ void do_sth_unsafe_in_current_thread() {
 int main() {
     scoped_thread st(std::thread(do_sth, 42));
     // auto st2 = st; // copying not allowed
-    auto st3 = move(st);
+    [[maybe_unused]] auto st3 = move(st);
+    scoped_thread st4(do_sth, 42);
     try {
         do_sth_unsafe_in_current_thread();
     } catch (const exception & e) {
