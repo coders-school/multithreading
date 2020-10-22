@@ -26,15 +26,12 @@ ___
 
 ## Modele współbieżności
 
-* <!-- .element: class="fragment fade-in" --> Współbieżność z wieloma procesami:
-  * <!-- .element: class="fragment fade-in" --> Osobne procesy (komunikacja przez sygnały, pliki, potoki, gniazda itd.),
-  * <!-- .element: class="fragment fade-in" --> Osobna przestrzeń pamięci, bezpieczeństwo przetwarzania wielowątkowego,
-  * <!-- .element: class="fragment fade-in" --> Długi i skomplikowany proces uruchamiania nowego procesu.
-* <!-- .element: class="fragment fade-in" --> Współbieżność z wieloma wątkami:
-  * <!-- .element: class="fragment fade-in" --> Uruchamianie wielu wątków w obrębie jednego procesu, które współdzielą pamięć (współdzielona przestrzeń adresowa),
-  * <!-- .element: class="fragment fade-in" --> Należy samemu zagwarantować bezpieczeństwo dostępu do współdzielonej pamięci,
-  * <!-- .element: class="fragment fade-in" --> Uruchomienie wątku jest szybsze niż uruchomienie nowego procesu,
-  * <!-- .element: class="fragment fade-in" --> Prostsze i szybsze metody komunikowania się pomiędzy wątkami w obrębie procesu
+| &nbsp;        | Wątki                                                                              | Procesy                                                                                                |
+| :------------ | :----------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------- |
+| Stos         | Oddzielne <!-- .element: class="fragment fade-in" --> | Oddzielne <!-- .element: class="fragment fade-in" --> |
+| Sterta          | Wspólna <!-- .element: class="fragment fade-in" -->   | Oddzielne <!-- .element: class="fragment fade-in" --> |
+| Tworzenie      | Szybkie <!-- .element: class="fragment fade-in" -->     | Wolne <!-- .element: class="fragment fade-in" --> |
+| Komunikacja | Szybka (sterta) - wskaźniki, struktury danych  <!-- .element: class="fragment fade-in" --> | Wolniejsza (IPC) - gniazdka, pliki, sygnały, strumienie, pamięć współdzielona <!-- .element: class="fragment fade-in" --> |
 
 ___
 
