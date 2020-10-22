@@ -12,14 +12,16 @@ public:
         model_name = model;
     }
     void print() {
-        cout << model_name << " " << production_year << endl; 
+        cout << model_name << " " << production_year << endl;
     }
 };
 
 int main() {
     Car toyota;
+    thread t(&Car::setData, &toyota, 2015, "Corolla");
+    t.join();
+    // std::thread{[&](){toyota.setData(2015, "Corolla");}}.join();
     // set year to 2015, model to "Corolla" in a thread
     toyota.print();
     return 0;
 }
-
