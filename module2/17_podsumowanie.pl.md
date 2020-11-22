@@ -1,22 +1,17 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## Współdzielenie danych
-
-### Podsumowanie
+# Podsumowanie
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
 </a>
 
 ___
+<!-- .slide: style="font-size: .81em" -->
 
 ### Podsumowanie
 
-<div>
-
-* <!-- .element: class="fragment fade-in" --> Współdzielenie danych tylko do odczytu (read-only) jest bezpieczne i nie wymaga stosowania blokad. Słówko const oznacza bezpieczeństwo danych (read-only).
+* <!-- .element: class="fragment fade-in" --> Współdzielenie danych tylko do odczytu (read-only) jest bezpieczne i nie wymaga stosowania blokad. Słówko <code>const</code> gwarantuje bezpieczeństwo danych (read-only).
 * <!-- .element: class="fragment fade-in" --> Gdy jakiś wątek zablokuje mutex, to każdy inny wątek chcący go zablokować musi poczekać na odblokowanie. Blokowanie zbyt dużych sekcji krytycznych jest błędem.
 * <!-- .element: class="fragment fade-in" --> Problem zakleszczenia (deadlock) występuje, kiedy 2 mutexy (lub więcej) są blokowane przez wątki w różnych kolejnościach albo mamy 1 mutex, który nie zostanie odblokowany np. z powodu wyjątku i program nie przejdzie do funkcji unlock().
 * <!-- .element: class="fragment fade-in" --> Mutexy znacznie spowalniają wykonywanie programu, ale zabezpieczają dane, jeśli są użyte w poprawny sposób.
@@ -25,8 +20,6 @@ ___
 * <!-- .element: class="fragment fade-in" --> Zawsze używaj muteksów poprzez menadżery blokad (wrappery RAII)
 * <!-- .element: class="fragment fade-in" --> Używaj <code>std::atomic<T></code> (zmiennych atomowych). Dają one wygodny sposób lekkiej synchronizacji danych bez użycia mutexów, ale o tym w kolejnej części
 
-</div>
-<!-- .element: style="font-size: .81em" -->
 ___
 
 ### Praca domowa
