@@ -16,7 +16,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> <code>std::mutex</code>
 * <!-- .element: class="fragment fade-in" --> Najważniejsze operacje:
   * <!-- .element: class="fragment fade-in" --> <code>void lock()</code> - zablokowanie mutexu. Operacja blokująca. Jeśli mutex jest zablokowany przez inny wątek to oczekujemy na odblokowanie.
-  * <!-- .element: class="fragment fade-in" --> <code>void unlock()</code> - Odblokowanie mutexu.
+  * <!-- .element: class="fragment fade-in" --> <code>void unlock()</code> - odblokowanie mutexu.
   * <!-- .element: class="fragment fade-in" --> <code>bool try_lock()</code> - zablokowanie mutexu. Operacja nieblokująca. Jeśli mutex jest już zablokowany przez inny wątek to kontynuuje dalsze wykonanie wątku. Zwraca true, jeśli udało się zablokować mutex
 
 ___
@@ -168,7 +168,7 @@ int main() {
     mutex m;
     vector<thread> threads;
     for (int i = 0; i < 20; i++) {
-        threads.emplace_back(thread(do_work, i ,ref(m)));
+        threads.emplace_back(thread(do_work, i, ref(m)));
     }
     for (auto && t : threads) {
         t.join();

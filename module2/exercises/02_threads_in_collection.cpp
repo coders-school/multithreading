@@ -4,6 +4,8 @@
 #include <iostream>
 using namespace std;
 
+// Secure your code so that each thread can safely enter its full text into the stream.
+
 void do_work(int id) {
     this_thread::sleep_for(100ms);
     cout << "Thread [" << id << "]: " << "Job done!" << endl;
