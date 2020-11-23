@@ -14,12 +14,12 @@ ___
 
 <div>
 
-* <!-- .element: class="fragment fade-in" --> <code>lock_guard<Mutex></code>
+* <!-- .element: class="fragment fade-in" --> <code>lock_guard&lt;Mutex></code>
   * <!-- .element: class="fragment fade-in" --> najprostszy, główny wybór
   * <!-- .element: class="fragment fade-in" --> konstruktor wywołuje <code>lock()</code> na mutexie
   * <!-- .element: class="fragment fade-in" --> destruktor woła <code>unlock()</code>
   * <!-- .element: class="fragment fade-in" --> jest niekopiowalny
-* <!-- .element: class="fragment fade-in" --> <code>unique_lock<Mutex></code>
+* <!-- .element: class="fragment fade-in" --> <code>unique_lock&lt;Mutex></code>
   * <!-- .element: class="fragment fade-in" --> opóźnione blokowanie
   * <!-- .element: class="fragment fade-in" --> próby zablokowania ograniczone czasowo
   * <!-- .element: class="fragment fade-in" --> blokowanie rekursywne
@@ -33,12 +33,12 @@ ___
 
 <div>
 
-* <!-- .element: class="fragment fade-in" --> <code>shared_lock<SharedMutex></code>
+* <!-- .element: class="fragment fade-in" --> <code>shared_lock&lt;SharedMutex></code>
   * <!-- .element: class="fragment fade-in" --> menadżer współdzielonych blokad do odczytu zmiennych
   * <!-- .element: class="fragment fade-in" --> kilka wątków może współdzielić blokadę <code>SharedMutex</code>
   * <!-- .element: class="fragment fade-in" --> inny wątek może pozyskać blokadę <code>SharedMutex</code> na wyłączność za pomocą menadżera <code>unique_lock</code>
   * <!-- .element: class="fragment fade-in" --> te same własności co <code>unique_lock</code>
-* <!-- .element: class="fragment fade-in" --> <code>scoped_lock<Mutexes…></code>
+* <!-- .element: class="fragment fade-in" --> <code>scoped_lock&lt;Mutexes...></code>
   * <!-- .element: class="fragment fade-in" --> blokuje kilka mutexów
   * <!-- .element: class="fragment fade-in" --> zapobiega zakleszczeniom (deadlock)
   * <!-- .element: class="fragment fade-in" --> konstruktor blokuje wszystkie mutexy w bezpiecznej kolejności, unikając blokad
@@ -211,15 +211,15 @@ ___
 
 ### Zadanie 3: problemy w zaproponowanym rozwiązaniu
 
-* <!-- .element: class="fragment fade-in" --> czy vector <code>numbers</code> zawsze będzie wypełniony zanim czytelnicy go odczytają?
-  * <!-- .element: class="fragment fade-in" --> najpierw robimy pisarzy
-  * <!-- .element: class="fragment fade-in" --> najpierw join jest na pisarzach
-  * <!-- .element: class="fragment fade-in" --> ale to niczego nie gwarantuje
-  * <!-- .element: class="fragment fade-in" --> użycie <code>at()</code> spowoduje rzucenie wyjątku. Jak chcemy go obsługiwać?
-  * <!-- .element: class="fragment fade-in" --> można zarezerwować pamięć w wektorze wcześniej, ale jakie ma być domyślne zachowanie?
-  * <!-- .element: class="fragment fade-in" --> nie ma jednoznacznej odpowiedzi, trzeba przyjąć jakąś konwencję lub...
-  * <!-- .element: class="fragment fade-in" --> można użyć synchronizowanej kolejki (o tym na innej lekcji)
-* <!-- .element: class="fragment fade-in" --> nie potrzeba blokować <code>cout</code>, gdy zrobimy tam jedną operację <<
-  * <!-- .element: class="fragment fade-in" --> przy odpowiednim zaprojektowaniu programu nie musimy w ogóle stosować blokad (lock-free programming), ale jest to absolutna wiedza ekspercka
-  * <!-- .element: class="fragment fade-in" --> zyskujemy na wydajności, ale tracimy na elastyczności programu
-  * <!-- .element: class="fragment fade-in" --> jakakolwiek zmiana kodu lock-free musi być poprzedzona rzetelnym code-review wielu ekspertów
+* <!-- .element: class="fragment fade-in" --> Czy vector <code>numbers</code> zawsze będzie wypełniony zanim czytelnicy go odczytają?
+  * <!-- .element: class="fragment fade-in" --> Najpierw tworzymy pisarzy
+  * <!-- .element: class="fragment fade-in" --> <code>join()</code> jest najpierw wołany na pisarzach
+  * <!-- .element: class="fragment fade-in" --> Ale to niczego nie gwarantuje
+  * <!-- .element: class="fragment fade-in" --> Użycie <code>at()</code> spowoduje rzucenie wyjątku. Jak chcemy go obsługiwać?
+  * <!-- .element: class="fragment fade-in" --> Można zarezerwować pamięć w wektorze wcześniej, ale jakie ma być domyślne zachowanie?
+  * <!-- .element: class="fragment fade-in" --> Nie ma jednoznacznej odpowiedzi, trzeba przyjąć jakąś konwencję lub...
+  * <!-- .element: class="fragment fade-in" --> Można użyć synchronizowanej kolejki (o tym na innej lekcji)
+* <!-- .element: class="fragment fade-in" --> Nie potrzeba blokować <code>cout</code>, gdy zrobimy tam jedną operację <<
+  * <!-- .element: class="fragment fade-in" --> Przy odpowiednim zaprojektowaniu programu nie musimy w ogóle stosować blokad (lock-free programming), ale jest to absolutna wiedza ekspercka
+  * <!-- .element: class="fragment fade-in" --> Zyskujemy na wydajności, ale tracimy na elastyczności programu
+  * <!-- .element: class="fragment fade-in" --> Jakakolwiek zmiana kodu lock-free musi być poprzedzona rzetelnym code-review wielu ekspertów

@@ -130,7 +130,7 @@ ___
 
 ___
 
-### Exercise: synchronization
+### Task: synchronization
 
 #### `exercises/05_synchronization.cpp`
 

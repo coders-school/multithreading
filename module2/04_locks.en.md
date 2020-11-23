@@ -14,36 +14,36 @@ ___
 
 <div>
 
-* <!-- .element: class="fragment fade-in" --> <code>lock_guard<Mutex></code>
-  * <!-- .element: class="fragment fade-in" --> the simplest, main choice
+* <!-- .element: class="fragment fade-in" --> <code>lock_guard&lt;Mutex></code>
+  * <!-- .element: class="fragment fade-in" --> the simplest one, primary choice
   * <!-- .element: class="fragment fade-in" --> constructor calls <code>lock()</code> on the mutex
-  * <!-- .element: class="fragment fade-in" --> the destructor is calling <code>unlock()</code>
-  * <!-- .element: class="fragment fade-in" --> it is not copyable
-* <!-- .element: class="fragment fade-in" --> <code>unique_lock<Mutex></code>
+  * <!-- .element: class="fragment fade-in" --> the destructor calls <code>unlock()</code>
+  * <!-- .element: class="fragment fade-in" --> non-copyable
+* <!-- .element: class="fragment fade-in" --> <code>unique_lock&lt;Mutex></code>
   * <!-- .element: class="fragment fade-in" --> delayed blocking
   * <!-- .element: class="fragment fade-in" --> time-limited locking attempts
-  * <!-- .element: class="fragment fade-in" --> recursive blocking
-  * <!-- .element: class="fragment fade-in" --> making non-blocking attempts to obtain a blockade <code>(try_lock)</code>
-  * <!-- .element: class="fragment fade-in" --> the use of <code>timed_mutex</code>
-  * <!-- .element: class="fragment fade-in" --> using condition variables
-  * <!-- .element: class="fragment fade-in" --> it is not copyable
-  * <!-- .element: class="fragment fade-in" --> is portable (move)
+  * <!-- .element: class="fragment fade-in" --> recursive locking
+  * <!-- .element: class="fragment fade-in" --> making non-blocking attempts to obtain a lock - <code>try_lock()</code>
+  * <!-- .element: class="fragment fade-in" --> cooperation with <code>timed_mutex</code>
+  * <!-- .element: class="fragment fade-in" --> cooperation with condition variables
+  * <!-- .element: class="fragment fade-in" --> non-copyable
+  * <!-- .element: class="fragment fade-in" --> movable
 
 </div>
 
 <div>
 
-* <!-- .element: class="fragment fade-in" --> <code>shared_lock<SharedMutex></code>
+* <!-- .element: class="fragment fade-in" --> <code>shared_lock&lt;SharedMutex></code>
   * <!-- .element: class="fragment fade-in" --> shared lock manager for reading variables
-  * <!-- .element: class="fragment fade-in" --> several threads can share a lock <code>SharedMutex</code>
-  * <!-- .element: class="fragment fade-in" --> another thread may acquire the lock <code>SharedMutex</code> exclusively through the manager <code>unique_lock</code>
-  * <!-- .element: class="fragment fade-in" --> same properties as <code>unique_lock</code>
-* <!-- .element: class="fragment fade-in" --> <code>scoped_lock<Mutexes…></code>
-  * <!-- .element: class="fragment fade-in" --> blocks several mutexes
+  * <!-- .element: class="fragment fade-in" --> several threads can share a lock on <code>SharedMutex</code>
+  * <!-- .element: class="fragment fade-in" --> another thread may acquire an exclusive lock on <code>SharedMutex</code> through the <code>unique_lock</code>
+  * <!-- .element: class="fragment fade-in" --> the same properties as <code>unique_lock</code>
+* <!-- .element: class="fragment fade-in" --> <code>scoped_lock&lt;Mutexes...></code>
+  * <!-- .element: class="fragment fade-in" --> locks multiple mutexes
   * <!-- .element: class="fragment fade-in" --> prevents deadlock
-  * <!-- .element: class="fragment fade-in" --> the constructor locks all mutexes in a safe order, avoiding locks
-  * <!-- .element: class="fragment fade-in" --> the destructor unlocks them in reverse order
-  * <!-- .element: class="fragment fade-in" --> it is not copyable
+  * <!-- .element: class="fragment fade-in" --> the constructor locks all mutexes in a safe order
+  * <!-- .element: class="fragment fade-in" --> the destructor unlocks them in reversed order
+  * <!-- .element: class="fragment fade-in" --> non-copyable
 
 </div>
 
@@ -53,7 +53,7 @@ ___
 
 <div style="display: flex;">
 
-<div style="font-size: 0.85em; width: 100%">
+<div style="font-size: 0.8em; width: 100%">
 
 ```c++
 #include <vector>
@@ -112,7 +112,7 @@ int main() {
 
 * <!-- .element: class="fragment fade-in" --> Use shared and / or regular locks
 * <!-- .element: class="fragment fade-in" --> Use the appropriate lock managers
-* <!-- .element: class="fragment fade-in" --> Compile in C ++ 17 and with Tsan
+* <!-- .element: class="fragment fade-in" --> Compile with TSan
 
 ```bash
 $> g++ 03_shared_mutex.cpp -lpthread \
@@ -157,7 +157,7 @@ int getNextValue() {
 }
 void read(int index) {
     for(int i = 0; i < 10; i++) {
-        shared_lock<shared_mutex> lock(numbersMtx);
+        shared_lock<shared_mutex> lock{numbersMtx};
         int value = numbers[index];
         lock.unlock();
         lock_guard<mutex> coutLock(coutMtx);
@@ -211,15 +211,15 @@ ___
 
 ### Task 3: problems in the proposed solution
 
-* <!-- .element: class="fragment fade-in" --> or vector <code>numbers</code> will it always be filled in before readers read it?
-  * <!-- .element: class="fragment fade-in" --> first we do writers
-  * <!-- .element: class="fragment fade-in" --> join first is on writers
-  * <!-- .element: class="fragment fade-in" --> but that doesn't guarantee anything
-  * <!-- .element: class="fragment fade-in" --> use <code>at()</code> will throw an exception. How do we want to operate it?
-  * <!-- .element: class="fragment fade-in" --> you can reserve memory in the vector in advance, but what is the default behavior?
-  * <!-- .element: class="fragment fade-in" --> there is no unequivocal answer, you have to accept some convention or ...
-  * <!-- .element: class="fragment fade-in" --> you can use a synchronized queue (about this in another lesson)
-* <!-- .element: class="fragment fade-in" --> no need to block <code>cout</code>when we do one operation there <<
-  * <!-- .element: class="fragment fade-in" --> with the proper design of the program, we do not have to use lock-free programming at all, but it is absolute expert knowledge
-  * <!-- .element: class="fragment fade-in" --> we gain in efficiency, but we lose in program flexibility
-  * <!-- .element: class="fragment fade-in" --> any change of the lock-free code must be preceded by a reliable code-review of many experts
+* <!-- .element: class="fragment fade-in" --> Is vector <code>numbers</code> always filled in before readers read it?
+  * <!-- .element: class="fragment fade-in" --> First, we create writers
+  * <!-- .element: class="fragment fade-in" --> <code>join()</code> is called on writers first
+  * <!-- .element: class="fragment fade-in" --> But that doesn't guarantee anything
+  * <!-- .element: class="fragment fade-in" --> Use of <code>at()</code> will throw an exception. How do we want to handle it?
+  * <!-- .element: class="fragment fade-in" --> You can reserve memory in the vector in advance, but what is the default behavior?
+  * <!-- .element: class="fragment fade-in" --> There is no unambiguous answer, you have to accept some convention or ...
+  * <!-- .element: class="fragment fade-in" --> You can use a synchronized queue (covered in another training)
+* <!-- .element: class="fragment fade-in" --> No need to lock <code>cout</code> if there is a single << operation
+  * <!-- .element: class="fragment fade-in" --> With the proper design, we do not have to use locks at all (so-called lock-free programming), but it is absolute expert knowledge
+  * <!-- .element: class="fragment fade-in" --> We gain in efficiency, but we lose in program flexibility
+  * <!-- .element: class="fragment fade-in" --> Any change of the lock-free code must be preceded by a reliable code-review of many experts

@@ -3,9 +3,13 @@
 #include <thread>
 using namespace std;
 
+// Use shared and / or regular locks
+// Use the appropriate lock managers
+// Compile with TSan
+
 vector<int> numbers = {};
 
-int getNextValue() { 
+int getNextValue() {
     static int i = 0;
     return i+=10;
 }
