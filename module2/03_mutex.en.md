@@ -8,7 +8,7 @@
 
 ___
 
-## Mutex - avoiding races
+## Mutex
 
 * <!-- .element: class="fragment fade-in" --> Mutex (Mutual Exclusion) - mutual exclusion
 * <!-- .element: class="fragment fade-in" --> Lock implementation

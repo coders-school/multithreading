@@ -74,7 +74,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> Race = Undefined behavior.
 * <!-- .element: class="fragment fade-in" --> Unwanted side effects usually do not occur during most runs of the application.
 * <!-- .element: class="fragment fade-in" --> Problems may occur less than 1 in 1000 runs.
-* <!-- .element: class="fragment fade-in" --> Races is incredibly hard to spot. Usually, when the CPU is not under load, everything works as it should. The more loaded the CPU, the more the risk of a different order of data access increases. Such problems are difficult to reproduce.
+* <!-- .element: class="fragment fade-in" --> Races are incredibly hard to spot. Usually, when the CPU is not under load, everything works as it should. The more loaded the CPU, the more the risk of a different order of data access increases. Such problems are difficult to reproduce.
 * <!-- .element: class="fragment fade-in" --> The data race problem is time-critical and can be completely impossible to catch under the debugger. The debugger affects the execution times of individual instructions.
 * <!-- .element: class="fragment fade-in" --> It is much easier to prevent races. The treatment is time-consuming and expensive.
 * <!-- .element: class="fragment fade-in" --> Thread Sanitizer (TSan) - data race detector.
@@ -98,20 +98,20 @@ ___
 
 * <!-- .element: class="fragment fade-in" --> Compile threads_write.cpp </br><code>g++ 01_threads_write.cpp -lpthread -g</code>
 * <!-- .element: class="fragment fade-in" --> Run the program under the debugger (gdb or other) </br><code>gdb --tui ./a.out</code>
-* <!-- .element: class="fragment fade-in" --> Make x have the value 2 at the end of the program
-* <!-- .element: class="fragment fade-in" --> Make x have the value 3 at the end of the program
+* <!-- .element: class="fragment fade-in" --> Make <code>x</code> have the value 2 at the end of the program
+* <!-- .element: class="fragment fade-in" --> Make <code>x</code> have the value 3 at the end of the program
 * <!-- .element: class="fragment fade-in" --> Useful commands:
   * <!-- .element: class="fragment fade-in" --> <code>b 5</code> - sets the breakpoint on the fifth line
-  * <!-- .element: class="fragment fade-in" --> <code>watch x</code> - observing changes in variable x (the debugger will stop when it is modified)
-  * <!-- .element: class="fragment fade-in" --> <code>c</code> - continuing debugging
+  * <!-- .element: class="fragment fade-in" --> <code>watch x</code> - observe changes of the variable x (the debugger will stop when it is modified)
+  * <!-- .element: class="fragment fade-in" --> <code>c</code> - continue debugging
   * <!-- .element: class="fragment fade-in" --> <code>info threads</code> - thread information
   * <!-- .element: class="fragment fade-in" --> <code>thread 3</code> - switch to thread 3
   * <!-- .element: class="fragment fade-in" --> <code>n</code> - next instruction
   * <!-- .element: class="fragment fade-in" --> <code>fin</code> - execute everything until the end of the current function
-  * <!-- .element: class="fragment fade-in" --> <code>up</code> - transition to the higher stack frame
-  * <!-- .element: class="fragment fade-in" --> <code>down</code> - transition to the lower stack frame
-  * <!-- .element: class="fragment fade-in" --> <code>del br</code> - removing all breakpoints
-  * <!-- .element: class="fragment fade-in" --> <code>CTRL + L</code> - view refresh
+  * <!-- .element: class="fragment fade-in" --> <code>up</code> - go up to the upper stack frame
+  * <!-- .element: class="fragment fade-in" --> <code>down</code> - go down to the lower stack frame
+  * <!-- .element: class="fragment fade-in" --> <code>del br</code> - remove all breakpoints
+  * <!-- .element: class="fragment fade-in" --> <code>CTRL + L</code> - refresh view
 
 </div><!-- .element: style="margin: 0 10px" -->
 

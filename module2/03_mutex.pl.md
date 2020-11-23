@@ -8,7 +8,7 @@
 
 ___
 
-## Mutex - unikanie wyścigów
+## Mutex
 
 * <!-- .element: class="fragment fade-in" --> Mutex (Mutual Exclusion) - wzajemne wykluczanie
 * <!-- .element: class="fragment fade-in" --> Implementacja blokady
