@@ -3,6 +3,8 @@
 #include <iostream>
 using namespace std;
 
+// TODO: Get rid of possible deadlock
+
 class X {
     mutable mutex mtx_;
     int value_ = 0;

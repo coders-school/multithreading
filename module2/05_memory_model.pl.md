@@ -10,9 +10,9 @@ ___
 
 ## Model pamięci
 
-* <!-- .element: class="fragment fade-in" --> Najmniejsza jednostka – 1 bajt
+* <!-- .element: class="fragment fade-in" --> Najmniejsza jednostka pamięci to 1 bajt
 * <!-- .element: class="fragment fade-in" --> Każdy bajt ma unikalny adres w pamięci
-* <!-- .element: class="fragment fade-in" --> Synchronizacja nie jest potrzebna jeśli zapisujemy coś wielowątkowo do różnych obszarów pamięci
+* <!-- .element: class="fragment fade-in" --> Synchronizacja nie jest potrzebna jeśli zapisujemy coś współbieżnie do różnych obszarów pamięci
 
   ```cpp
   vector<int> v{10};
@@ -20,7 +20,7 @@ ___
   thread t2([&]{ v[1] = 15; });
   ```
 
-* <!-- .element: class="fragment fade-in" --> Synchronizacja jest potrzebna jeśli zapisujemy coś wielowątkowo do tych samych obszarów pamięci
+* <!-- .element: class="fragment fade-in" --> Synchronizacja jest potrzebna jeśli zapisujemy coś współbieżnie do tych samych obszarów pamięci
 * <!-- .element: class="fragment fade-in" --> Synchronizacja jest potrzebna jeśli co najmniej jeden wątek zapisuje a inne odczytują ten sam obszar pamięci
 * <!-- .element: class="fragment fade-in" --> Brak synchronizacji gdy jest wymagana == wyścig == niezdefiniowane zachowanie
 * <!-- .element: class="fragment fade-in" --> <code>const</code> implikuje bezpieczeństwo wielowątkowe, bo gwarantuje tylko odczyt
@@ -52,8 +52,7 @@ ___
 ```cpp
 vector<int> v(10, 0);
 for (int = 0; i < 10; i++)
-   thread t([&]{ v[i] = i;
-});
+   thread t([&]{ v[i] = i; });
 ```
 
 * <!-- .element: class="fragment fade-in" --> Nie, pomimo tej samej struktury obszary pamięci w których zapisujemy dane są rozłączne
@@ -65,13 +64,12 @@ ___
 ```cpp
 vector<int> v;
 for (int = 0; i < 10; i++)
-    thread t([&]{ v.emplace_back(i);
-});
+    thread t([&]{ v.emplace_back(i); });
 ```
 
 * <!-- .element: class="fragment fade-in" --> TAK
-* <!-- .element: class="fragment fade-in" --> Podczas wrzucania nowego obiektu trzeba inkrementować iterator <code>end()</code> – możliwy wyścig
-* <!-- .element: class="fragment fade-in" --> Podczas wrzucania nowego obiektu może dojść do realokacji wektora. Niektóre wątki mogą mieć iteratory na nieaktualną pozycję wektora.
+* <!-- .element: class="fragment fade-in" --> Podczas dodawania nowego obiektu trzeba inkrementować iterator <code>end()</code> – możliwy wyścig
+* <!-- .element: class="fragment fade-in" --> Podczas dodawania nowego obiektu może dojść do realokacji wektora. Niektóre wątki mogą mieć iteratory na nieaktualną pozycję wektora.
 
 ___
 
@@ -127,5 +125,17 @@ ___
   * <code>operator T()</code> – odczytuje wartość ze zmiennej atomowej
   * <code>load()</code> – odczytuje wartość ze zmiennej atomowej, dodatkowo można podać <code>std::memory_order</code>
 
-`std::atomic<T>` będzie poruszony na oddzielnym szkoleniu
+`std::atomic<T>` będzie poruszony dokładniej na oddzielnym szkoleniu
 <!-- .element: class="fragment fade-in" -->
+
+___
+
+### Zadanie: synchronization
+
+#### `exercises/05_synchronization.cpp`
+
+* Użyj właściwych mechanizmów synchronizacji
+  * `std::mutex` + locks
+  * `std::atomic`
+* Wybierz właściwe miejsca na blokowanie
+* Unikaj niepotrzebnego blokowania
