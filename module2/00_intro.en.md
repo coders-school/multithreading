@@ -1,7 +1,7 @@
-## Let's get to know each other better
+## Let's get to know each other
 
 * Have you been to thread training?
-* One of the most interesting things about the pre-bag with Cpp Core Guidelines?
+* One of the most interesting things from Cpp Core Guidelines pre-work?
 
 ___
 <!-- .slide: data-background="img/lukasz.jpg" -->
@@ -11,12 +11,12 @@ ___
 
 ### Experience not only in programming
 
-* Trainer and DevOps at Coders School
-* C ++ and Python developer at Nokia and Credit Suisse
-* Team leader and trainer at Nokia
-* Scrum Master in Nokia and Credit Suisse
-* Code Reviewer in Nokia
-* Web developer (HTML, PHP, CSS) in StarCraft Area
+* Trainer and DevOps @ Coders School
+* C ++ and Python developer @ Nokia and Credit Suisse
+* Team leader and trainer @ Nokia
+* Scrum Master @ Nokia & Credit Suisse
+* Code Reviewer @ Nokia
+* Web developer (HTML, PHP, CSS) @ StarCraft Area
 
 </div>
 
@@ -24,9 +24,9 @@ ___
 
 ### Experience as a trainer
 
-* C ++ courses at the Coders School
-* Practical Aspects of Software Engineering at Wrocław University of Science and Technology and the University of Wrocław
-* Nokia Academy in Nokia
+* C ++ courses @ Coders School
+* Practical Aspects of Software Engineering @ PWr & UWr
+* Nokia Academy
 * Internal corporate training
 
 </div>
@@ -35,8 +35,8 @@ ___
 
 ### Experience in public speaking
 
-* Code :: dive conference
-* Code :: dive community
+* code::dive conference
+* code::dive community
 * Polish Academic Championship in Team Programming
 
 </div>
@@ -50,7 +50,7 @@ ___
 * Photography
 * Archery
 * Andragogy
-* Marketing (new :))
+* Marketing 🆕
 
 </div>
 
@@ -60,5 +60,5 @@ ___
 
 * <!-- .element: class="fragment fade-in" --> 🎰 The Vegas rule
 * <!-- .element: class="fragment fade-in" --> 🗣 Discussion, not lecture
-* <!-- .element: class="fragment fade-in" --> ☕️ Additional breaks on request
+* <!-- .element: class="fragment fade-in" --> ☕️ Additional breaks on demand
 * <!-- .element: class="fragment fade-in" --> ⌚️ Punctuality

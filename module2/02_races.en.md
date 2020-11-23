@@ -72,11 +72,11 @@ ___
 
 * <!-- .element: class="fragment fade-in" --> Races generate nondeterministic (random) program behavior.
 * <!-- .element: class="fragment fade-in" --> Race = Undefined behavior.
-* <!-- .element: class="fragment fade-in" --> Unwanted side effects usually do not occur during most runs of the procedure.
-* <!-- .element: class="fragment fade-in" --> Problems may occur less than 1 in 1,000 runs.
-* <!-- .element: class="fragment fade-in" --> Racing is incredibly hard to spot. Usually, when the CPU is not under load, everything works as it should. The more loaded the CPU, the more the risk of a different order of data access increases. Such problems are difficult to reproduce.
-* <!-- .element: class="fragment fade-in" --> The racing problem is time-critical and can be completely impossible to catch under the debugger. The debugger affects the execution times of individual statements.
-* <!-- .element: class="fragment fade-in" --> It is much easier to prevent races because treatment is time-consuming and expensive.
+* <!-- .element: class="fragment fade-in" --> Unwanted side effects usually do not occur during most runs of the application.
+* <!-- .element: class="fragment fade-in" --> Problems may occur less than 1 in 1000 runs.
+* <!-- .element: class="fragment fade-in" --> Races is incredibly hard to spot. Usually, when the CPU is not under load, everything works as it should. The more loaded the CPU, the more the risk of a different order of data access increases. Such problems are difficult to reproduce.
+* <!-- .element: class="fragment fade-in" --> The data race problem is time-critical and can be completely impossible to catch under the debugger. The debugger affects the execution times of individual instructions.
+* <!-- .element: class="fragment fade-in" --> It is much easier to prevent races. The treatment is time-consuming and expensive.
 * <!-- .element: class="fragment fade-in" --> Thread Sanitizer (TSan) - data race detector.
 
 ___
@@ -84,12 +84,12 @@ ___
 ## Thread sanitizer
 
 ```bash
-$> g++ 01_threads_write.cpp -lpthread -fsanitize=thread -O2 -g
+$> g++ examples/01_threads_write.cpp -lpthread -fsanitize=thread -O2 -g
 $> ./a.out
 ```
 
 ___
-
+<!-- .element: style="font-size: .9em" -->
 ### Purpose: reproduction of races under the debugger
 
 <div style="display: flex;">
@@ -113,7 +113,7 @@ ___
   * <!-- .element: class="fragment fade-in" --> <code>del br</code> - removing all breakpoints
   * <!-- .element: class="fragment fade-in" --> <code>CTRL + L</code> - view refresh
 
-</div><!-- .element: style="font-size: .9em; margin: 0 10px" -->
+</div><!-- .element: style="margin: 0 10px" -->
 
 <div>
 
@@ -133,6 +133,6 @@ One of the possible sequences:
 * <!-- .element: class="fragment fade-in" --> <code>p x</code>
   * <!-- .element: class="fragment fade-in" --> <code>$ = 3</code>
 
-</div><!-- .element: class="fragment fade-in" style="font-size: .9em; background-color: #252627; padding: 20px" -->
+</div><!-- .element: class="fragment fade-in" style="background-color: #252627; padding: 20px" -->
 
 </div>

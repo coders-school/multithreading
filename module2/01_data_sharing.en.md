@@ -17,41 +17,41 @@ ___
 
 ## Data sharing with their modification
 
-* <!-- .element: class="fragment fade-in" --> Imagine you are sharing an apartment with your roommates. Each of you has your own room, but the toilet is shared. When someone is in it, they have to lock the door. If you want to use the toilet at the same time, you can't do it. Waiting for a long time for another person to stop occupying the toilet is frustrating. After use, the toilet is in a different condition than before (less paper, used water, more interesting smells ...)
+* <!-- .element: class="fragment fade-in" --> Imagine you are sharing an apartment with your flatmates. Each of you has your own room, but the toilet is shared. When someone is in it, they have to lock the door. If you want to use the toilet at the same time, you can't do it. Waiting for a long time for another person to stop occupying the toilet is frustrating. After use, the toilet is in a different state than before (less paper, used water, more interesting smells ...)
 * <!-- .element: class="fragment fade-in" --> Exactly the same is with data sharing :)
-  * <!-- .element: class="fragment fade-in" --> Threads = you and the roommate
+  * <!-- .element: class="fragment fade-in" --> Threads = you and flatmates
   * <!-- .element: class="fragment fade-in" --> Resource (Data) = Toilet (Paper, Water)
   * <!-- .element: class="fragment fade-in" --> Mutex = door lock
 * <!-- .element: class="fragment fade-in" --> Data modification (toilet use) = problem - synchronization required
-* <!-- .element: class="fragment fade-in" --> What if there was no door with a lock to the toilet? Someone could drain the water during its use or pick up the last sheet of toilet paper.
+* <!-- .element: class="fragment fade-in" --> What if there was no door with a lock to the toilet? Someone could flush the toilet during its use or pick up the last sheet of toilet paper.
 
 ___
 
 ## Example: removing a node from a bidirectional list
 
-1. <!-- .element: class="fragment fade-in" --> Find the N node to be deleted
-2. <!-- .element: class="fragment fade-in" --> Set the pointer <code>NEXT</code> at node N-1 to N + 1
-3. <!-- .element: class="fragment fade-in" --> Set the pointer <code>PREV</code> at node N + 1 to N-1
+1. <!-- .element: class="fragment fade-in" --> Find the node to be deleted (node N)
+2. <!-- .element: class="fragment fade-in" --> Set the pointer <code>NEXT</code> at node N-1 to N+1
+3. <!-- .element: class="fragment fade-in" --> Set the pointer <code>PREV</code> at node N+1 to N-1
 4. <!-- .element: class="fragment fade-in" --> Delete node N
 
-Between steps 2 and 3, the indicators are set incorrectly, not uniformly
+The pointers are not consistent between steps 2 and 3.
 <!-- .element: class="fragment fade-in" -->
 
 ___
 <!-- .slide: data-transition="fade-out" -->
-### Find the N node to be deleted
+### Find the node to be deleted
 
 <img src="img/1.png" style="padding-top:58px;padding-bottom:58px;" class="plain">
 
 ___
 <!-- .slide: data-transition="fade" -->
-### Set the pointer <code>NEXT</code> at node N-1 to N + 1
+### Set the pointer <code>NEXT</code> at node N-1 to N+1
 
 <img src="img/2.png" style="padding-bottom:58px;" class="plain">
 
 ___
 <!-- .slide: data-transition="fade" -->
-### Set the pointer <code>PREV</code> at node N + 1 to N-1
+### Set the pointer <code>PREV</code> at node N+1 to N-1
 
 <img src="img/3.png">
 
@@ -65,11 +65,11 @@ ___
 
 ## Example: removing a node from a bidirectional list
 
-* <!-- .element: class="fragment fade-in" --> Removing a node from the list consists of several steps and modifying several nodes
+* <!-- .element: class="fragment fade-in" --> Removing a node from the list consists of several steps
 * <!-- .element: class="fragment fade-in" --> What if another thread iterates through the list while removing the N node?
 * <!-- .element: class="fragment fade-in" --> What if another thread starts removing node N + 1 while node N is being removed?
-* <!-- .element: class="fragment fade-in" --> This phenomenon is called race conditions
+* <!-- .element: class="fragment fade-in" --> This phenomenon is called <span class="fragment highlight-green">race conditions</span>
 * <!-- .element: class="fragment fade-in" --> Race conditions typically occur when two or more separate pieces of data need to be modified, such as the pointers in the list example
 
-Data races are a slightly different phenomenon - they occur when two or more threads modify the same (one) memory area without synchronization
+<span class="fragment highlight-green">Data races</span> are a slightly different phenomenon - they occur when two or more threads modify the same (one) memory area without synchronization
 <!-- .element: class="fragment fade-in" -->

@@ -130,7 +130,7 @@ Cycle in lock order graph: M6
 
 ___
 
-### Solutions: Deadlock versus
+### Solutions: Deadlock in comparison
 
 <div style="display: flex;">
 
@@ -171,7 +171,7 @@ bool operator<(const X & other) const {
 
 ___
 
-### Solutions: Deadlock versus
+### Solutions: Deadlock in comparison
 
 <div style="display: flex;">
 

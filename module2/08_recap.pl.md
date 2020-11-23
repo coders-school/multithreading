@@ -12,7 +12,7 @@ ___
 ### Podsumowanie
 
 * <!-- .element: class="fragment fade-in" --> Współdzielenie danych tylko do odczytu (read-only) jest bezpieczne i nie wymaga stosowania blokad. Słówko <code>const</code> gwarantuje bezpieczeństwo danych (read-only).
-* <!-- .element: class="fragment fade-in" --> Gdy jakiś wątek zablokuje mutex, to każdy inny wątek chcący go zablokować musi poczekać na odblokowanie. Blokowanie zbyt dużych sekcji krytycznych jest błędem.
+* <!-- .element: class="fragment fade-in" --> Gdy mutex zostanie zablokowany w wątku, to każdy inny wątek chcący go zablokować musi poczekać na odblokowanie. Blokowanie zbyt dużych sekcji krytycznych jest błędem.
 * <!-- .element: class="fragment fade-in" --> Problem zakleszczenia (deadlock) występuje, kiedy 2 mutexy (lub więcej) są blokowane przez wątki w różnych kolejnościach albo mamy 1 mutex, który nie zostanie odblokowany np. z powodu wyjątku i program nie przejdzie do funkcji unlock().
 * <!-- .element: class="fragment fade-in" --> Mutexy znacznie spowalniają wykonywanie programu, ale zabezpieczają dane, jeśli są użyte w poprawny sposób.
 * <!-- .element: class="fragment fade-in" --> W małych programach mutexy można trzymać jako obiekty globalne, ale w większych powinny być trzymane w odpowiedniej klasie, której operacje mają być blokowane. Jeśli taka klasa ma kilka zasobów, które mogą być modyfikowane niezależnie, to należy mieć kilka mutexów (1 na każdy zasób). Trzeba uważać na zakleszczenie.
