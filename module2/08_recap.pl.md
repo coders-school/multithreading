@@ -22,6 +22,14 @@ ___
 
 ___
 
+### Post-work
+
+* Game - [The Deadlock Empire](https://deadlockempire.github.io)
+* [Post-test](https://forms.gle/fXYA14PZaGKX5k1x5)
+* [Ocena szkolenia](https://forms.gle/ADXRttpAaZgW8KwM6)
+
+___
+
 ### Praca domowa
 
 * <!-- .element: class="fragment fade-in" --> Zaimplementuj problem ucztujących filozofów z użyciem wątków i mutexów.
@@ -30,7 +38,7 @@ ___
   * <!-- .element: class="fragment fade-in" --> Postaraj się o wizualizację problemu
   * <!-- .element: class="fragment fade-in" --> Strzeż się zakleszczeń
   * <!-- .element: class="fragment fade-in" --> Pobaw się liczbą filozofów i zobacz czy zmienia się zachowanie programu
-  * <!-- .element: class="fragment fade-in" --> Zadanie dodatkowe: Strzeż się zagłodzenia (starvation). Jest to sytuacja w której przynajmniej 1 wątek z powodu implementacji lub swojego niższego priorytetu nigdy nie dostanie wszystkich wymaganych zasobów. Doimplementuj w tym celu pewien mechanizm, który zapobiegnie zagłodzeniu.
+  * <!-- .element: class="fragment fade-in" --> Zadanie dodatkowe: Strzeż się zagłodzenia (starvation). Jest to sytuacja w której przynajmniej 1 wątek z powodu implementacji lub swojego niższego priorytetu nigdy nie dostanie wszystkich wymaganych zasobów. Zaimplementuj w tym celu pewien mechanizm, który zapobiegnie zagłodzeniu.
 
 ___
 

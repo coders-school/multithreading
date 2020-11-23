@@ -4,7 +4,8 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_definitions(-Wno-unused-variable)
-add_definitions(-Wall -Werror -pedantic -Wextra)
+add_definitions(-Wall -Werror -pedantic -Wextra -fsanitize=thread)
+add_link_options(-fsanitize=thread)
 
 file(GLOB SOURCES *.cpp)
 
@@ -13,4 +14,3 @@ foreach(FILE ${SOURCES})
     add_executable(${BINNAME} ${FILE})
     target_link_libraries(${BINNAME} pthread)
 endforeach(FILE)
-
