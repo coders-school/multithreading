@@ -44,14 +44,15 @@ int main() {
 | ----------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
 | x1 < x2 <!-- .element: class="fragment fade-in" -->                                 | x2 < x1 <!-- .element: class="fragment fade-in" -->                                   |
 | x1: mtx_.lock() by ownGuard <!-- .element: class="fragment fade-in" -->             | x2: mtx_.lock() by ownGuard <!-- .element: class="fragment fade-in" -->               |
-| x2: mtx_.lock() by otherGuard - waiting <!-- .element: class="fragment fade-in" --> | x1: mtx_.lock() by otherGuard - waiting() <!-- .element: class="fragment fade-in" --> |
+| x2: mtx_.lock() by otherGuard - waiting <!-- .element: class="fragment fade-in" --> | x1: mtx_.lock() by otherGuard - waiting <!-- .element: class="fragment fade-in" --> |
 
 </div>
 
 ### DEADLOCK
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> Zakleszczenie występuje losowo przy niektórych uruchomieniach
+Zakleszczenie występuje losowo przy niektórych uruchomieniach
+<!-- .element: class="fragment fade-in" -->
 
 </div>
 
@@ -111,7 +112,7 @@ int main() {
 <div>
 
 * <!-- .element: class="fragment fade-in" --> Zakleszczenie występuje losowo przy niektórych uruchomieniach
-* <!-- .element: class="fragment fade-in" --> Użyj <cod>std::scoped_lock</code> do rozwiązania problemu zakleszczenia
+* <!-- .element: class="fragment fade-in" --> Użyj <code>std::scoped_lock</code> do rozwiązania problemu zakleszczenia
 
 ```bash
 $> g++ 04_deadlock.cpp –lpthread -fsanitize=thread
@@ -160,7 +161,8 @@ bool operator<(const X & other) const {
 
 <div>
 
-### `std::scoped_lock` (C++17)
+#### `std::scoped_lock` (C++17)
+<!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> wymaga przekazania mutexów w konstruktorze, które od razu próbuje zablokować
 * <!-- .element: class="fragment fade-in" --> nie wymaga tworzenia dodatkowych obiektów blokad
@@ -206,11 +208,12 @@ bool operator<(const X & other) const {
 <div style="width: 40%; font-size: 0.8em">
 
 #### `std::lock()`
+<!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> gwarantuje zablokowanie wszystkich mutexów bez zakleszczenia niezależnie od kolejności ich pozyskiwania
 * <!-- .element: class="fragment fade-in" --> wymaga przekazania jako parametrów opóźnionych blokad <code>(defer_lock)</code> typu <code>std::unique_lock</code>
 * <!-- .element: class="fragment fade-in" --> alternatywnie wymaga przekazania mutexów, a następnie utworzenia zablokowanych blokad <code>(adopt_lock)</code> typu <code>std::lock_guard</code>
-* <!-- .element: class="fragment fade-in" --> l1 i l2 nie blokują mutexów w konstruktorze, robi to funkcja <code>std::lock()</code>
+* <!-- .element: class="fragment fade-in" --> l1 i l2 nie blokują mutexów w konstruktorach, robi to funkcja <code>std::lock()</code>
 
 </div>
 

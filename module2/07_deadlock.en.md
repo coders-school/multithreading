@@ -33,7 +33,7 @@ int main() {
     return 0;
 }
 ```
-<!-- .element: style="width: 90%; font-size: .45em;" -->
+<!-- .element: style="width: 90%; font-size: .4em;" -->
 </div>
 
 <div>
@@ -41,17 +41,18 @@ int main() {
 <div class="fragment fade-in" style="font-size: 0.55em">
 
 | t1 thread | t2 thread |
-| -------------------------------------------------- --------------------------------- | -------------------------------------------------- ----------------------------------- |
-| x1 <x2 <!-- .element: class="fragment fade-in" -->                                 | x2 <x1 <!-- .element: class="fragment fade-in" -->                                   |
-| x1: mtx_.lock () by ownGuard <!-- .element: class="fragment fade-in" -->             | x2: mtx_.lock () by ownGuard <!-- .element: class="fragment fade-in" -->               |
-| x2: mtx_.lock () by otherGuard - waiting <!-- .element: class="fragment fade-in" --> | x1: mtx_.lock () by otherGuard - waiting () <!-- .element: class="fragment fade-in" --> |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------- ------------------------------------- |
+| `x1 < x2` <!-- .element: class="fragment fade-in" -->                               | `x2 < x1` <!-- .element: class="fragment fade-in" -->                                   |
+| x1: mtx_.lock() by ownGuard <!-- .element: class="fragment fade-in" -->             | x2: mtx_.lock() by ownGuard <!-- .element: class="fragment fade-in" -->          |
+| x2: mtx_.lock() by otherGuard - waiting <!-- .element: class="fragment fade-in" --> | x1: mtx_.lock() by otherGuard - waiting <!-- .element: class="fragment fade-in" --> |
 
 </div>
 
 ### DEADLOCK
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> The deadlock occurs randomly on some starts
+The deadlock occurs randomly on some executions
+<!-- .element: class="fragment fade-in" -->
 
 </div>
 
@@ -65,7 +66,7 @@ ___
 
 <div style="background-color: rgba(139, 53, 54, .85); margin: 400px 0 0 650px; padding: 0px 10px;">
 
-A situation where at least two different threads are waiting for each other, so neither can end
+A situation where at least two different threads are waiting for each other, so neither can proceed
 
 </div>
 
@@ -110,8 +111,8 @@ int main() {
 
 <div>
 
-* <!-- .element: class="fragment fade-in" --> The deadlock occurs randomly on some starts
-* <!-- .element: class="fragment fade-in" --> Use <cod> std :: scoped_lock </code> to troubleshoot the deadlock
+* <!-- .element: class="fragment fade-in" --> The deadlock occurs randomly on some executions
+* <!-- .element: class="fragment fade-in" --> Use <code>std::scoped_lock</code> to fix the deadlock
 
 ```bash
 $> g++ 04_deadlock.cpp –lpthread -fsanitize=thread
@@ -160,9 +161,10 @@ bool operator<(const X & other) const {
 
 <div>
 
-### `std::scoped_lock` (C ++ 17)
+#### `std::scoped_lock` (C ++ 17)
+<!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> requires passing mutexes in the constructor, which it tries to block immediately
+* <!-- .element: class="fragment fade-in" --> requires passing mutexes in the constructor, which it tries to lock immediately
 * <!-- .element: class="fragment fade-in" --> does not require creating additional lock objects
 
 </div><!-- .element: style="font-size: .98em" -->
@@ -206,11 +208,12 @@ bool operator<(const X & other) const {
 <div style="width: 40%; font-size: 0.8em">
 
 #### `std::lock()`
+<!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> guarantees that all mutexes will be blocked without jamming, regardless of the order in which they are obtained
-* <!-- .element: class="fragment fade-in" --> requires that delayed locks be passed as parameters <code>(defer_lock)</code> type <code>std::unique_lock</code>
-* <!-- .element: class="fragment fade-in" --> alternatively it requires passing mutexes and then creating locked locks <code>(adopt_lock)</code> type <code>std::lock_guard</code>
-* <!-- .element: class="fragment fade-in" --> l1 and l2 do not block mutexes in the constructor, the function does <code>std::lock()</code>
+* <!-- .element: class="fragment fade-in" --> guarantees that all mutexes will be blocked without deadlock, regardless of the order in which they are obtained
+* <!-- .element: class="fragment fade-in" --> requires that delayed locks are passed as parameters - <code>std::unique_lock</code> with <code>defer_lock</code>
+* <!-- .element: class="fragment fade-in" --> alternatively it requires passing mutexes and then creating locked locks <code>std::lock_guard</code> with <code>adopt_lock</code>
+* <!-- .element: class="fragment fade-in" --> l1 and l2 do not block mutexes in constructors, the <code>std::lock()</code> function does block
 
 </div>
 
@@ -220,6 +223,6 @@ ___
 
 ### Deadlock
 
-* <!-- .element: class="fragment fade-in" --> It can occur when we have 2 or more mutexes blocked in different orders
-* <!-- .element: class="fragment fade-in" --> Block mutexes everywhere in the same order first, but reorder manually <code>lock_guard</code>'that will not always fix the program (as in the example with the operator <code><</code>)
-* <!-- .element: class="fragment fade-in" --> Use <code>std::scoped_lock</code> - a lock that accepts several mutexes and always locks them in a certain (correct) order
+* <!-- .element: class="fragment fade-in" --> Can occur when we have 2 or more mutexes blocked in different orders
+* <!-- .element: class="fragment fade-in" --> Block mutexes everywhere in the same order, but manual reordering does not always fix the problem (as in the example with the <code>operator<</code>)
+* <!-- .element: class="fragment fade-in" --> Use <code>std::scoped_lock</code> - a lock that takes multiple mutexes and always locks them in a certain (correct) order
