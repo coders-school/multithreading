@@ -26,10 +26,11 @@ ___
 * <!-- .element: class="fragment fade-in" --> Blokuj zawsze gdy to konieczne
 * <!-- .element: class="fragment fade-in" --> Unikaj blokowania gdzie tylko się da
 * <!-- .element: class="fragment fade-in" --> Czas trwania blokady powinien być jak najkrótszy
-  * <!-- .element: class="fragment fade-in" --> Jeśli danych do modyfikacji jest dużo i nie są one ułożone obok siebie w pamięci, to czas trwania blokady mutexu będzie bardzo długi, aby wszystkie dane zdążyły się pobrać do pamięci cache.
-  * <!-- .element: class="fragment fade-in" --> Operacje I/O (wejścia/wyjścia) takie jak odczyty i zapisy plików, pobieranie danych przez sieć to długo lub ogólnie wywołanie funkcji systemowej to długo trwające procesy
+* <!-- .element: class="fragment fade-in" --> Jeśli danych do modyfikacji jest dużo i nie są one ułożone obok siebie w pamięci, to czas trwania blokady mutexu będzie bardzo długi, aby wszystkie dane zdążyły się pobrać do pamięci cache.
+* <!-- .element: class="fragment fade-in" --> Operacje I/O (wejścia/wyjścia) takie jak odczyty i zapisy plików, pobieranie danych przez sieć lub ogólnie wywołanie funkcji systemowych to długo trwające procesy
 
 ___
+<!-- .slide: data-background="img/mm_peanut.jpg" data-background-opacity="0.2" -->
 
 ## Gdzie blokować?
 
