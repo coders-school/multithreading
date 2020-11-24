@@ -15,7 +15,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> Synchronizacja nie jest potrzebna jeśli zapisujemy coś współbieżnie do różnych obszarów pamięci
 
   ```cpp
-  vector<int> v{10};
+  vector<int> v(10);
   thread t1([&]{ v[0] = 5; });
   thread t2([&]{ v[1] = 15; });
   ```
@@ -55,7 +55,18 @@ for (int = 0; i < 10; i++)
    thread t([&]{ v[i] = i; });
 ```
 
-* <!-- .element: class="fragment fade-in" --> Nie, pomimo tej samej struktury obszary pamięci w których zapisujemy dane są rozłączne
+* <!-- .element: class="fragment fade-in" --> TAK
+* <!-- .element: class="fragment fade-in" --> Jest wyścig na zmiennej <code>i</code>
+* <!-- .element: class="fragment fade-in" --> Ale vector jest wolny od wyścigów
+* <!-- .element: class="fragment fade-in" --> Pomimo tej samej struktury obszary pamięci w których zapisujemy dane są rozłączne
+* <!-- .element: class="fragment fade-in" --> Poprawna wersja niewymagająca synchronizacji:
+
+```cpp
+vector<int> v(10, 0);
+for (int = 0; i < 10; i++)
+   thread t([&]{ v[i] = i; });
+```
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
@@ -114,7 +125,7 @@ ___
 
 ## Typ `std::atomic<T>`
 
-* <!-- .element: class="fragment fade-in" --> <code>#include <atomic></code>
+* <!-- .element: class="fragment fade-in" --> <code>#include &lt;atomic></code>
 * <!-- .element: class="fragment fade-in" --> <code>std::atomic</code>
 * <!-- .element: class="fragment fade-in" --> Lekka synchronizacja
 * <!-- .element: class="fragment fade-in" --> Pozwala na prostą arytmetykę i operacje bitowe: ++, --, +=, -=, &=, |=, ^=

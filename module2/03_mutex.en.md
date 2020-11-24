@@ -35,7 +35,7 @@ ___
 
 using namespace std;
 
-void do_work(ind id) {
+void do_work(int id) {
     this_thread::sleep_for(100ms);
     cout << "Thread [" << id << "]: "
          << "Job done!" << endl;

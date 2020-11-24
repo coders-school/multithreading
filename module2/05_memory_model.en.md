@@ -15,7 +15,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> Synchronization is not needed if you are writing something concurrently to different areas of memory
 
   ```cpp
-  vector<int> v{10};
+  vector<int> v(10);
   thread t1([&]{ v[0] = 5; });
   thread t2([&]{ v[1] = 15; });
   ```
@@ -55,7 +55,18 @@ for (int = 0; i < 10; i++)
    thread t([&]{ v[i] = i; });
 ```
 
-* <!-- .element: class="fragment fade-in" --> No, despite the same structure, the memory areas in which we save data are disjoint
+* <!-- .element: class="fragment fade-in" --> YES
+* <!-- .element: class="fragment fade-in" --> There is a race on variable <code>i</code>
+* <!-- .element: class="fragment fade-in" --> But the vector access is race free
+* <!-- .element: class="fragment fade-in" --> Despite the same structure, the memory areas in which we save data are disjoint
+* <!-- .element: class="fragment fade-in" --> Proper version that do not require synchronization:
+
+```cpp
+vector<int> v(10, 0);
+for (int = 0; i < 10; i++)
+   thread t([&, i]{ v[i] = i; });
+```
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
@@ -114,7 +125,7 @@ ___
 
 ## Type `std::atomic<T>`
 
-* <!-- .element: class="fragment fade-in" --> <code>#include <atomic></code>
+* <!-- .element: class="fragment fade-in" --> <code>#include &lt;atomic></code>
 * <!-- .element: class="fragment fade-in" --> <code>std::atomic</code>
 * <!-- .element: class="fragment fade-in" --> Light synchronization
 * <!-- .element: class="fragment fade-in" --> Allows simple arithmetic and bitwise operations: ++, -, + =, - =, & =, | =, ^ =

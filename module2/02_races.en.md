@@ -90,7 +90,7 @@ $> ./a.out
 
 ___
 <!-- .element: style="font-size: .9em" -->
-### Purpose: reproduction of races under the debugger
+### Task: reproduction of races under a debugger
 
 <div style="display: flex;">
 
