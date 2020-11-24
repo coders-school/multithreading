@@ -14,7 +14,7 @@ decltype(start3) start4;
 decltype(start4) stop4;
 
 template <typename IT, typename T>
-T pararelAccumulate(IT first, IT last, T init) {
+T parallelAccumulate(IT first, IT last, T init) {
 	const size_t size = std::distance(first, last);
 	if (size < minimumSize)
 		return std::accumulate(first, last, init);
@@ -48,15 +48,15 @@ int main() {
 	std::vector<int> vec(1'000);
 	std::generate(begin(vec), end(vec), [x{ 0 }]()mutable{ return ++x; });
 	auto start = std::chrono::steady_clock::now();
-	pararelAccumulate(std::begin(vec), std::end(vec), 0);
+	parallelAccumulate(std::begin(vec), std::end(vec), 0);
 	auto stop = std::chrono::steady_clock::now();
 
 	auto start2 = std::chrono::steady_clock::now();
 	std::accumulate(std::begin(vec), std::end(vec), 0);
 	auto stop2 = std::chrono::steady_clock::now();
-	
-	std::cout << "\nPararel algorithm: " 
-		<< std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count() 
+
+	std::cout << "\nPararel algorithm: "
+		<< std::chrono::duration_cast<std::chrono::microseconds>(stop - start).count()
 		<< "us" << std::endl;
 	std::cout << "Create threads: "
 		<< std::chrono::duration_cast<std::chrono::microseconds>(stop3 - start3).count()
@@ -65,9 +65,8 @@ int main() {
 		<< std::chrono::duration_cast<std::chrono::microseconds>(stop4 - start4).count()
 		<< "us" << std::endl;
 	std::cout << "\nNormal algorithm: "
-		<< std::chrono::duration_cast<std::chrono::microseconds>(stop2 - start2).count() 
+		<< std::chrono::duration_cast<std::chrono::microseconds>(stop2 - start2).count()
 		<< "us" << std::endl;
 
 	return 0;
 }
-
