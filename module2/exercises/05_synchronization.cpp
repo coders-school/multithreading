@@ -1,9 +1,9 @@
 // use store() /  load()
-#include <vector>
 #include <atomic>
+#include <iostream>
 #include <mutex>
 #include <thread>
-#include <iostream>
+#include <vector>
 using namespace std;
 
 // * Use proper synchronization mechanisms
@@ -13,33 +13,41 @@ using namespace std;
 // * Avoid unnecessary locking
 
 vector<int> generateContainer() {
-    vector<int> input = {2, 4, 6, 8, 10, 1, 3, 5, 7, 9};
+    const vector<int> input = {2, 4, 6, 8, 10, 1, 3, 5, 7, 9};
     vector<int> output;
     vector<thread> threads;
+    mutex m;
     for (auto i = 0u; i < input.size(); i++) {
-        threads.emplace_back([&]{ output.push_back(input[i]); });
+        threads.emplace_back([&, i] {
+            lock_guard l{m};
+            output.push_back(input[i]);
+        });
     }
-    for (auto && t : threads) {
+    for (auto&& t : threads) {
         t.join();
     }
     return output;
 }
 
 vector<int> generateOtherContainer() {
-    int start = 5;
-    bool add = true;
+    atomic<int> start = 5;
+    atomic<int> add = 1;
     vector<int> output;
     vector<thread> threads;
+    mutex m;
     for (int i = 0; i < 10; i++) {
-        threads.emplace_back([&]{
-            if (add)
-                output.push_back(start+=i);
-            else
-                output.push_back(start-=i);
-            add = !add;
+        threads.emplace_back([&, i] {
+            if (add % 2) {
+                lock_guard l{m};
+                output.push_back(start += i);
+            } else {
+                lock_guard l{m};
+                output.push_back(start -= i);
+            }
+            add++;
         });
     }
-    for (auto && t : threads) {
+    for (auto&& t : threads) {
         t.join();
     }
     return output;
@@ -48,15 +56,15 @@ vector<int> generateOtherContainer() {
 void powerContainer(vector<int>& input) {
     vector<thread> threads;
     for (auto i = 0u; i < input.size(); i++) {
-        threads.emplace_back([&]{ input[i]*=input[i]; });
+        threads.emplace_back([&, i] { input[i] *= input[i]; });
     }
-    for (auto && t : threads) {
+    for (auto&& t : threads) {
         t.join();
     }
 }
 
 void printContainer(const vector<int>& c) {
-    for (const auto & value : c)
+    for (const auto& value : c)
         cout << value << " ";
     cout << endl;
 }

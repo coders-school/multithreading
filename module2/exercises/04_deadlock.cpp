@@ -13,8 +13,7 @@ public:
     explicit X(int v) : value_(v) {}
 
     bool operator<(const X & other) const {
-        lock_guard<mutex> ownGuard(mtx_);
-        lock_guard<mutex> otherGuard(other.mtx_);
+        std::scoped_lock bothLock(mtx_, other.mtx_);
         return value_ < other.value_;
     }
 };
