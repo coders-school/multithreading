@@ -4,7 +4,7 @@
 
 ## `std::promise`/`std::future` in C++
 
-### Examples and Exercises
+### Przykłady i ćwiczenia
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -12,7 +12,7 @@
 
 ___
 
-### Package this function #1
+### Opakuj tę funkcję #1
 
 ```c++
 std::future<int> get_number_async() {
@@ -30,7 +30,7 @@ std::future<int> get_number_async() {
 ___
 <!-- .slide: style="font-size: .85em" -->
 
-### Package this function #2
+### Opakuj tę funkcję #2
 
 ```c++
 int get_number() {
