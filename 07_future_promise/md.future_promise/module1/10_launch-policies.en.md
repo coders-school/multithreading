@@ -18,7 +18,7 @@ ___
 #### `async(std::launch policy, Function&& f, Args&&... args);` <!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> <code>std::launch::async</code> - asynchronous call on a separate system thread
-* <!-- .element: class="fragment fade-in" --> <code>std::launch::differed</code> - lazily executes the function <code>f</code> the first time it is called on the object <code>future</code> metod <code>get()</code> or <code>wait()</code>. Execution is synchronous, which means the caller waits for the function <code>f</code> to complete. If <code>get()</code> or <code>wait()</code> will not be called function <code>f</code> will not execute
+* <!-- .element: class="fragment fade-in" --> <code>std::launch::differed</code> - lazily executes the function <code>f</code> the first time method <code>get()</code> or <code>wait()</code> is called on the object <code>future</code> . Execution is synchronous, which means the caller waits for the function <code>f</code> to complete. If <code>get()</code> or <code>wait()</code> will not be called function <code>f</code> will not execute
 
 #### `async(Function&& f, Args&&... args);` <!-- .element: class="fragment fade-in" -->
 

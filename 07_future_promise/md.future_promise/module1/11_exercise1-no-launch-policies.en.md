@@ -46,7 +46,7 @@ int main() {
 
 * <!-- .element: class="fragment fade-in" --> Undefined Behavior?
 * <!-- .element: class="fragment fade-in" --> If scheduler choose <code>std::launch::async</code> then everything is fine
-* <!-- .element: class="fragment fade-in" --> If it choose <code>std::launch::deferred</code> than <code>future_status</code> will never get <code>ready</code> value which gives us infinite loop
+* <!-- .element: class="fragment fade-in" --> If it choose <code>std::launch::deferred</code> then <code>future_status</code> will never get <code>ready</code> value which gives us infinite loop
 * <!-- .element: class="fragment fade-in" --> The selected policy may depend on the current system load
 * <!-- .element: class="fragment fade-in" --> Fix this code so that the program will always exit. Do it without specifying a policy.
 
@@ -110,7 +110,7 @@ int main() {
   * <!-- .element: class="fragment fade-in" --> <code>future_status::deferred</code>
   * <!-- .element: class="fragment fade-in" --> <code>future_status::ready</code>
   * <!-- .element: class="fragment fade-in" --> <code>future_status::timeout</code>
-* <!-- .element: class="fragment fade-in" --> We do not want to wait for <code>wait_for()</code> so if for time 0 it returns <code>deferred</code>, and not <code>timeout</code> then the execution is deferred and will until <code>get()</code> or <code>wait()</code> gets called
+* <!-- .element: class="fragment fade-in" --> We do not want to wait for <code>wait_for()</code> so if for time 0 it returns <code>deferred</code>, and not <code>timeout</code> then the execution is deferred and it will wait until <code>get()</code> or <code>wait()</code> gets called
 * <!-- .element: class="fragment fade-in" --> <a href=https://en.cppreference.com/w/cpp/thread/future/wait_for>cppreference.com</a>
 
 ```bash

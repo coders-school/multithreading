@@ -43,7 +43,7 @@ int main() {
   * <!-- .element: class="fragment fade-in" --> x
   * <!-- .element: class="fragment fade-in" --> y
   * <!-- .element: class="fragment fade-in" --> z
-  * <!-- .element: class="fragment fade-in" --> It depends (on wath?)
+  * <!-- .element: class="fragment fade-in" --> It depends (on what?)
 
 </div> <!-- .element: class="fragment fade-in" -->
 
@@ -87,7 +87,7 @@ z
   * <!-- .element: class="fragment fade-in" --> x
   * <!-- .element: class="fragment fade-in" --> y
   * <!-- .element: class="fragment fade-in" --> z
-  * <!-- .element: class="fragment fade-in" --> It depends (on wath?)
+  * <!-- .element: class="fragment fade-in" --> It depends (on what?)
 * <!-- .element: class="fragment fade-in" --> Answer:
   * <!-- .element: class="fragment fade-in" --> z
 * <!-- .element: class="fragment fade-in" --> Explanation:
