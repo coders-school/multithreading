@@ -51,7 +51,7 @@ int main() {
 
 ___
 
-### Odpowiedź
+### Answer
 
 <div style="display: flex;">
 

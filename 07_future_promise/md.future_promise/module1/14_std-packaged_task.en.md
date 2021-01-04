@@ -77,7 +77,7 @@ $> ./07_packaged_task
 
 ___
 
-### Przydatne linki
+### Useful links
 
 * <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/thread/async">std::async on cppreference.com</a>
 * <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/thread/packaged_task">std::packaged_task on cppreference.com</a>
