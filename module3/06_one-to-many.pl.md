@@ -24,9 +24,9 @@ ___
 std::shared_future<int> sfuture = promise.get_future().share();
 ```
 <!-- .element: class="fragment fade-in" -->
-* <!-- .element: class="fragment fade-in" --> umożliwia wielokrotne <span style="color:#AD5758;">pozyskiwanie wartości</span>
-* <!-- .element: class="fragment fade-in" --> pozwala na <span style="color:#AD5758;">kopiowanie</span> i <span style="color:#AD5758;">przenoszenie</span>
-* <!-- .element: class="fragment fade-in" --> każdy wątek powinien mieć <span style="color:#AD5758;">własny</span> obiekt <code>shared_future</code>
+* <!-- .element: class="fragment fade-in" --> umożliwia wielokrotne <span style="color:#cf802a;">pozyskiwanie wartości</span>
+* <!-- .element: class="fragment fade-in" --> pozwala na <span style="color:#cf802a;">kopiowanie</span> i <span style="color:#cf802a;">przenoszenie</span>
+* <!-- .element: class="fragment fade-in" --> każdy wątek powinien mieć <span style="color:#cf802a;">własny</span> obiekt <code>shared_future</code>
 
 <div style="background-color: #8B3536; padding: 3px 22px;">
 

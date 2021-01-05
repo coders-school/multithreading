@@ -43,9 +43,9 @@ t.join();
 </div>
 <div style="width: 41%;">
 
-* <!-- .element: class="fragment fade-in" --> <code>std::promise</code>/<code>std::future</code> używane są, by stworzyć <span style="color:#AD5758;">jednokierunkowy kanał komunikacji</span>
-* <!-- .element: class="fragment fade-in" --> <code>std::promise</code> ma za zadanie <span style="color:#AD5758;">ustawić wartość</span>
-* <!-- .element: class="fragment fade-in" --> Zadaniem <code>std::future</code> natomiast, jest <span style="color:#AD5758;">pozyskanie wartości</span>
+* <!-- .element: class="fragment fade-in" --> <code>std::promise</code>/<code>std::future</code> używane są, by stworzyć <span style="color:#cf802a;">jednokierunkowy kanał komunikacji</span>
+* <!-- .element: class="fragment fade-in" --> <code>std::promise</code> ma za zadanie <span style="color:#cf802a;">ustawić wartość</span>
+* <!-- .element: class="fragment fade-in" --> Zadaniem <code>std::future</code> natomiast, jest <span style="color:#cf802a;">pozyskanie wartości</span>
 </div>
 
 </div>

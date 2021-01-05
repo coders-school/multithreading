@@ -1,16 +1,17 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
+# One way communication
 
-## `std::promise`/`std::future` in C++
+## `std::promise`
 
-### How `std::promise`/`std::future` works
+## `std::future`
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
 </a>
 
 ___
+<!-- TODO: Update to 4.1.0 and use auto-animate -->
 
 ### How `std::promise`/`std::future` works
 
@@ -24,13 +25,9 @@ ___
 
 ### Basic `std::promise`/`std::future` usage
 
-<div style="display:flex;">
-
-<div style="width: 59%;">
-
 ```c++
 std::promise<int> promise;
-std::future<int> future = promise.get_future();
+std::future<int> future = promise.get_future();     // connected pair
 auto function = [] (std::promise<int> promise) {
     // ...
     promise.set_value(10);
@@ -40,18 +37,8 @@ std::cout << future.get() << std::endl;
 t.join();
 ```
 <!-- .element: class="fragment fade-in" -->
-</div>
-<div style="width: 41%;">
 
-* <!-- .element: class="fragment fade-in" --> <code>std::promise</code>/<code>std::future</code> are used to create <span style="color:#AD5758;">one-way communication channel</span>
-* <!-- .element: class="fragment fade-in" --> <code>std::promise</code> is used for <span style="color:#AD5758;">setting value</span>
-* <!-- .element: class="fragment fade-in" --> <code>std::future</code> is used for <span style="color:#AD5758;">getting value</span>
-</div>
-
-</div>
-
-<div style="background-color: #8B3536; padding: 3px 22px;">
-
-<code>std::promise</code>/<code>std::future</code> can be used only once
-
-</div> <!-- .element: class="fragment fade-in" -->
+* <!-- .element: class="fragment fade-in" --> <code>std::promise</code>/<code>std::future</code> pair is used to create <span style="color:#cf802a;">one-way communication channel</span>
+* <!-- .element: class="fragment fade-in" --> <code>std::promise</code> is used for <span style="color:#cf802a;">setting value</span>
+* <!-- .element: class="fragment fade-in" --> <code>std::future</code> is used for <span style="color:#cf802a;">getting value</span>
+* <!-- .element: class="fragment fade-in" --> <code>std::promise</code>/<code>std::future</code> pair can be used only once

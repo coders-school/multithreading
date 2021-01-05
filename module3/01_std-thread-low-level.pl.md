@@ -14,6 +14,6 @@ ___
 
 ### `std::thread` jest mechanizmem bardzo "niskopoziomowym"
 
-* <!-- .element: class="fragment fade-in" --> W jaki sposób <span style="color:#AD5758">zwrócić</span> z niego cokolwiek?
-* <!-- .element: class="fragment fade-in" --> Jak przekazać <span style="color:#AD5758">wyjątek</span>?
-* <!-- .element: class="fragment fade-in" --> Powinien być manualnie <span style="color:#AD5758">łączony</span>/<span style="color:#AD5758">rozłączany</span>
+* <!-- .element: class="fragment fade-in" --> W jaki sposób <span style="color:#cf802a">zwrócić</span> z niego cokolwiek?
+* <!-- .element: class="fragment fade-in" --> Jak przekazać <span style="color:#cf802a">wyjątek</span>?
+* <!-- .element: class="fragment fade-in" --> Powinien być manualnie <span style="color:#cf802a">łączony</span>/<span style="color:#cf802a">rozłączany</span>

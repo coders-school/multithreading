@@ -1,10 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## `std::promise`/`std::future` in C++
-
-### More about `std::promise`
+# More about `std::promise` and `std::future`
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -12,14 +8,14 @@
 
 ___
 
-### More about `std::promise`
+## More about `std::promise`
 
 ```c++
 std::thread t(function, std::move(promise));
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> <code>std::promise</code>/<code>std::future</code> can be only moved
+* <!-- .element: class="fragment fade-in" --> <code>std::promise</code> and <code>std::future</code> can be moved only
 
 ```c++
 std::future<int> future = promise.get_future();
@@ -33,20 +29,14 @@ ___
 
 ### How to "set"?
 
-<div style="display:flex;">
-
-<div style="width: 35%;">
-
 * <!-- .element: class="fragment fade-in" --> set value
 
 ```c++
 promise.set_value(10);
 ```
  <!-- .element: class="fragment fade-in" -->
-</div>
-<div style="width: 65%;">
 
-* <!-- .element: class="fragment fade-in" --> <code>std::promise</code>/<code>std::future</code> are used to create <span style="color:#AD5758;">one-way communication channel</span>
+* <!-- .element: class="fragment fade-in" --> set exception
 
 ```c++
 promise.set_exception(std::make_exception_ptr(e));
@@ -55,14 +45,11 @@ promise.set_exception(std::make_exception_ptr(e));
 ```c++
 try {
     // ...
-} catch {
-    promise.set_ecxeption(std::current_exception());
+} catch(...) {
+    promise.set_exception(std::current_exception());
 }
 ```
 <!-- .element: class="fragment fade-in" -->
-</div>
-
-</div>
 
 <div style="background-color: #8B3536; padding: 3px 22px;">
 
@@ -74,29 +61,21 @@ ___
 
 ### More about `std::future`
 
-##### `future.valid();` <!-- .element: class="fragment fade-in" -->
-
-* <!-- .element: class="fragment fade-in" --> checks if the future can be <span style="color:#AD5758;">used</span>
-
-##### `future.wait;` <!-- .element: class="fragment fade-in" -->
-
-* <!-- .element: class="fragment fade-in" --> <span style="color:#AD5758;">waits</span> for the result to become available
-
-<div style="background-color: #8B3536; padding: 3px 22px;">
-
-do not use "invalid" future
-
-</div> <!-- .element: class="fragment fade-in" -->
+* <!-- .element: class="fragment fade-in" --> <code>future.valid()</code>
+  * <!-- .element: class="fragment fade-in" --> Checks if the future can be used
+  * <!-- .element: class="fragment fade-in" --> Using invalid future cause Undefined Behavior
+* <!-- .element: class="fragment fade-in" --> <code>future.wait()</code>
+  * <!-- .element: class="fragment fade-in" --> waits for the result to become available
 
 ___
 
 ### How to "get"?
 
-##### `future.get();` <!-- .element: class="fragment fade-in" -->
+##### `future.get()` <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> <span style="color:#AD5758;">waits</span> for the results to become available and <span style="color:#AD5758;">returns</span> the result
-* <!-- .element: class="fragment fade-in" --> will automatically <span style="color:#AD5758;">throw</span> stored exception
-* <!-- .element: class="fragment fade-in" --> will <span style="color:#AD5758;">invalidate</span> the future
+* <!-- .element: class="fragment fade-in" --> <span style="color:#cf802a;">waits</span> for the results to become available and <span style="color:#cf802a;">returns</span> the result
+* <!-- .element: class="fragment fade-in" --> will automatically <span style="color:#cf802a;">throw</span> stored exception
+* <!-- .element: class="fragment fade-in" --> will <span style="color:#cf802a;">invalidate</span> the future
 
 <div style="background-color: #8B3536; padding: 3px 22px;">
 

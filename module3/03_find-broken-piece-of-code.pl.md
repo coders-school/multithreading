@@ -11,7 +11,7 @@
 </a>
 
 ___
-
+<!-- .slide: data-transition="fade" -->
 ### Znajdź niepoprawny fragment kodu
 
 <div class="fragment fade-in" style="display: flex; transform: scale(0.8); margin-bottom: -50px;">
@@ -103,6 +103,7 @@ ___
 </div>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Znajdź niepoprawny fragment kodu
 
@@ -195,6 +196,7 @@ ___
 </div>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Znajdź niepoprawny fragment kodu
 
@@ -287,6 +289,7 @@ ___
 </div>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Znajdź niepoprawny fragment kodu
 
@@ -379,6 +382,7 @@ ___
 </div>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Znajdź niepoprawny fragment kodu
 

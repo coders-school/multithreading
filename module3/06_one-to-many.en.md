@@ -24,9 +24,9 @@ ___
 std::shared_future<int> sfuture = promise.get_future().share();
 ```
 <!-- .element: class="fragment fade-in" -->
-* <!-- .element: class="fragment fade-in" --> allows multiple <span style="color:#AD5758;">getting</span>
-* <!-- .element: class="fragment fade-in" --> <span style="color:#AD5758;">copyable</span> and <span style="color:#AD5758;">movable</span>
-* <!-- .element: class="fragment fade-in" --> each thread should have its <span style="color:#AD5758;">own</span> shared_future object
+* <!-- .element: class="fragment fade-in" --> allows multiple <span style="color:#cf802a;">getting</span>
+* <!-- .element: class="fragment fade-in" --> <span style="color:#cf802a;">copyable</span> and <span style="color:#cf802a;">movable</span>
+* <!-- .element: class="fragment fade-in" --> each thread should have its <span style="color:#cf802a;">own</span> shared_future object
 
 <div style="background-color: #8B3536; padding: 3px 22px;">
 

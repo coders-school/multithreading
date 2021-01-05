@@ -1,16 +1,13 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## `std::promise`/`std::future` in C++
-
-### Find broken piece of code
+# Quiz
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
 </a>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Find broken piece of code
 
@@ -103,6 +100,7 @@ ___
 </div>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Find broken piece of code
 
@@ -195,6 +193,7 @@ ___
 </div>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Find broken piece of code
 
@@ -287,6 +286,7 @@ ___
 </div>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Find broken piece of code
 
@@ -379,6 +379,7 @@ ___
 </div>
 
 ___
+<!-- .slide: data-transition="fade" -->
 
 ### Find broken piece of code
 
