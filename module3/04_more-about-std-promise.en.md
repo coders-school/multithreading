@@ -34,7 +34,7 @@ ___
 ```c++
 promise.set_value(10);
 ```
- <!-- .element: class="fragment fade-in" -->
+<!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> set exception
 

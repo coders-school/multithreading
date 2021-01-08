@@ -22,6 +22,7 @@ ___
 ">
 
 ___
+<!-- .slide: id="promise-future-example" -->
 
 ### Basic `std::promise`/`std::future` usage
 

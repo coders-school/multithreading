@@ -74,3 +74,7 @@ ___
   * <!-- .element: class="fragment fade-in" --> synchronization (blocking <code>get()</code> and <code>wait()</code> on <code>std::future</code>)
   * <!-- .element: class="fragment fade-in" --> scheduler - automatic queuing of tasks performed by implementing the standard library
   * <!-- .element: class="fragment fade-in" --> ability to manually select the type of launch (immediate, asynchronous <code>async</code>, synchronous <code>differed</code>)
+
+___
+
+Note: Unfortunately, std::async is not perfect. For example, it doesn’t use a thread pool, which means that it may fail due to resource exhaustion, rather than queuing up your tasks to be executed later. However, even if you cannot use std::async, you should prefer to write your own future-returning factory function, rather than using raw promises.

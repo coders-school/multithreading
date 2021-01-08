@@ -1,10 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## `std::promise`/`std::future` in C++
-
-### One-to-many connection
+# One-to-many connection
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -12,13 +8,13 @@
 
 ___
 
-### One-to-many connection
+## One-to-many connection
 
 <img data-src="img/one-to-many.png" alt="One-to-many connection scheme" class="plain">
 
 ___
 
-### One-to-many connection
+## `std::shared_future<T>`
 
 ```c++
 std::shared_future<int> sfuture = promise.get_future().share();

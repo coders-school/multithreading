@@ -77,6 +77,12 @@ $> ./07_packaged_task
 
 ___
 
+Your code is high-level if you use only std::async and std::future object.
+
+Raw std::thread, std::promise or std::packaged_task objects means that it uses lower abstraction level, which is more complicated to understand.
+
+___
+
 ### Useful links
 
 * <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/thread/async">std::async on cppreference.com</a>
