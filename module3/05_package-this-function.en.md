@@ -104,3 +104,12 @@ ___
 
 It has more to do with templates rather than multithreading, so this is your homework.
 <!-- .element: class="fragment fade-in" -->
+
+## Homework
+<!-- .element: class="fragment fade-in" -->
+
+Modify the <code>schedule()</code> function, so it can take a function of any type, and behave similarly to <code>std::async()</code>
+<!-- .element: class="fragment fade-in" -->
+
+Take an examples from: <a href="https://en.cppreference.com/w/cpp/thread/async"> cppreference</a>
+<!-- .element: class="fragment fade-in" -->

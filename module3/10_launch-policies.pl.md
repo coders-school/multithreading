@@ -18,11 +18,11 @@ ___
 #### `async(std::launch policy, Function&& f, Args&&... args);` <!-- .element: class="fragment fade-in" -->
 
 * <!-- .element: class="fragment fade-in" --> <code>std::launch::async</code> - wywołanie asynchroniczne w osobnym wątku systemowym
-* <!-- .element: class="fragment fade-in" --> <code>std::launch::differed</code> - leniwie wykonuje funkcję <code>f</code> w momencie pierwszego wywołania na obiekcie <code>future</code> metod <code>get()</code> lub <code>wait()</code>. Wykonanie jest synchroniczne, czyli wywołujący czeka na zakończenie funkcji <code>f</code>. Jeśli <code>get()</code> lub <code>wait()</code> nie zostaną zawołane funkcja <code>f</code> nie wykona się
+* <!-- .element: class="fragment fade-in" --> <code>std::launch::deferred</code> - leniwie wykonuje funkcję <code>f</code> w momencie pierwszego wywołania na obiekcie <code>future</code> metod <code>get()</code> lub <code>wait()</code>. Wykonanie jest synchroniczne, czyli wywołujący czeka na zakończenie funkcji <code>f</code>. Jeśli <code>get()</code> lub <code>wait()</code> nie zostaną zawołane funkcja <code>f</code> nie wykona się
 
 #### `async(Function&& f, Args&&... args);` <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> Brak polityki - zachowuje się tak samo jak <code>async(std::launch::async | std::launch::differed, f, args...)</code>. Implikacje:
+* <!-- .element: class="fragment fade-in" --> Brak polityki - zachowuje się tak samo jak <code>async(std::launch::async | std::launch::deferred, f, args...)</code>. Implikacje:
   * <!-- .element: class="fragment fade-in" --> nie wiadomo, czy <code>f</code> zostanie wykonane współbieżnie
   * <!-- .element: class="fragment fade-in" --> nie wiadomo czy <code>f</code> wykona się w innym, czy w tym samym wątku, który wywołuje <code>get()</code> lub <code>wait()</code> na <code>future</code>
   * <!-- .element: class="fragment fade-in" --> nie można przewidzieć czy <code>f</code> w ogóle się wykona, bo mogą istnieć ścieżki w kodzie, gdzie <code>get()</code> lub <code>wait()</code> nie zostaną zawołane (np. z powodu wyjątków)

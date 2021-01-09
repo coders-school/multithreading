@@ -51,7 +51,7 @@ void async_approach () {
 * <!-- .element: class="fragment fade-in" --> Zwraca odpowiednie <code>std::future<T></code>
 * <!-- .element: class="fragment fade-in" --> Obsługuje wyjątki poprzez <code>std::promise</code>/<code>std::future</code>
 * <!-- .element: class="fragment fade-in" --> Automatycznie tworzy wyjątki jeśli potrzeba
-* <!-- .element: class="fragment fade-in" --> Można wybrać rodzaj zachowania poprzez parametr <code>policy</code> (<code>async</code>, <code>differed</code>)
+* <!-- .element: class="fragment fade-in" --> Można wybrać rodzaj zachowania poprzez parametr <code>policy</code> (<code>async</code>, <code>deferred</code>)
 
 ```bash
 $> ./02_async
@@ -73,4 +73,4 @@ ___
   * <!-- .element: class="fragment fade-in" --> obsługa wyjątków
   * <!-- .element: class="fragment fade-in" --> synchronizacja (blokujące <code>get()</code> i <code>wait()</code> na <code>std::future</code>)
   * <!-- .element: class="fragment fade-in" --> scheduler - automatyczne kolejkowanie zadań realizowane poprzez implementację biblioteki standardowej
-  * <!-- .element: class="fragment fade-in" --> możliwość manualnego wybrania rodzaju odpalenia (natychmiastowe, asynchroniczne <code>async</code>, synchroniczne <code>differed</code>)
+  * <!-- .element: class="fragment fade-in" --> możliwość manualnego wybrania rodzaju odpalenia (natychmiastowe, asynchroniczne <code>async</code>, synchroniczne <code>deferred</code>)

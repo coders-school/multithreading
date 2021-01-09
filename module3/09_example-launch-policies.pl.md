@@ -46,7 +46,7 @@ int main () {
   cout << "f2 spawned\n";
 
   auto f3 = async(
-    launch::differed, [] {
+    launch::deferred, [] {
       cout << "f3 started\n";
 ```
 
@@ -77,7 +77,7 @@ int main () {
   };
   for (const auto & item : numbers)
     cout << item << '\n';
-  
+
   return 0;
 }
 ```

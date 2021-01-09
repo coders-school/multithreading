@@ -12,6 +12,8 @@ ___
 
 <img data-src="img/one-to-many.png" alt="One-to-many connection scheme" class="plain">
 
+<!-- TODO: Animate -->
+
 ___
 
 ## `std::shared_future<T>`
