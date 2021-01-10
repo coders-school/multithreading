@@ -29,8 +29,8 @@ void remotePackagedTask() {
 
     std::cout << "before task execution\n";
     std::thread t(std::move(task), 2, 9);
-    std::cout << "after task execution\n";
     t.detach();
+    std::cout << "after task execution\n";
     std::cout << "getting result:\t" << result.get() << '\n';
 }
 
