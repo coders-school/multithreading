@@ -46,20 +46,12 @@
 
                         ## Agenda
 
-                        1. <!-- .element: class="fragment fade-in" --> <code>std::thread</code> is a very "low-level" mechanism
-                        2. <!-- .element: class="fragment fade-in" --> How <code>std::promise</code>/<code>std::future</code> works
-                        3. <!-- .element: class="fragment fade-in" --> Find broken piece of code
-                        4. <!-- .element: class="fragment fade-in" --> More about <code>std::promise</code>
-                        5. <!-- .element: class="fragment fade-in" --> Examples and Exercises
-                        6. <!-- .element: class="fragment fade-in" --> One-to-many connection
-                        7. <!-- .element: class="fragment fade-in" --> Homework for volunteers: generalisation of a <code>schedule</code> function
-                        8. <!-- .element: class="fragment fade-in" --> <code>std::async</code>
-                        9. <!-- .element: class="fragment fade-in" --> Launch policies example
-                        10. <!-- .element: class="fragment fade-in" --> Launch policies
-                        11. <!-- .element: class="fragment fade-in" --> Exercise 1: no launch policies problem
-                        12. <!-- .element: class="fragment fade-in" --> No policies = Undefined Behavior
-                        13. <!-- .element: class="fragment fade-in" --> The riddle
-                        14. <!-- .element: class="fragment fade-in" --> <code>std::packaged_task</code>
+                        1. <!-- .element: class="fragment fade-in" --> problems with <code>std::thread</code>
+                        2. <!-- .element: class="fragment fade-in" --> <code>std::promise</code> and <code>std::future</code>
+                        3. <!-- .element: class="fragment fade-in" --> <code>std::shared_future</code>
+                        4. <!-- .element: class="fragment fade-in" --> <code>std::async</code>
+                        5. <!-- .element: class="fragment fade-in" --> Launch policies
+                        6. <!-- .element: class="fragment fade-in" --> <code>std::packaged_task</code>
                         </textarea>
                     </section>
                 </section>
@@ -78,6 +70,10 @@
 
                     You can change the port by using npm start -- --port=8001.
                 -->
+                <section data-markdown="00_intro.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
                 <section data-markdown="01_thread-drawbacks.en.md"
                          data-separator-vertical="^___"
                          data-separator-notes="^Note:">

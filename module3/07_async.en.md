@@ -22,7 +22,9 @@ void promise_future_approach() {
   t.detach();
   std::cout << future.get() << std::endl;
 }
+```
 
+```cpp
 void async_approach () {
   auto function = [] () {
     // ...
@@ -57,7 +59,7 @@ $> ./02_async
 
 ___
 
-### `std::async`
+## `std::async`
 
 * <!-- .element: class="fragment fade-in" --> <code>std::async</code> is a high-level solution (finally!) that automatically manages asynchronous calls with basic synchronization mechanisms
 * <!-- .element: class="fragment fade-in" --> The most convenient form of launching tasks:
@@ -69,100 +71,104 @@ ___
 
 ___
 
-## Launch policies - example
+## Exercise
 
-<div style="display: flex;">
+### `exercises/03_exceptions.cpp`
 
-<div style="width: 45%; font-size: .9em;">
+Simplify the code by using async instead of threads.
 
-```c++
-#include <chrono>
-#include <future>
+```cpp
+#include <thread>
 #include <iostream>
-#include <vector>
+#include <string>
+#include <random>
 using namespace std;
 
+std::random_device rd;
+
 int main() {
-    auto f1 = async([]{
-        cout << "f1 started\n";
-        this_thread::sleep_for(1s);
-        return 42;
-    });
-    cout << "f1 spawned\n";
+    std::exception_ptr thread_exception = nullptr;
+    std::string result;
 
-    auto f2 = async(launch::async, []{
-        cout << "f2 started\n";
-        this_thread::sleep_for(1s);
-        return 2 * 42;
-    });
-    cout << "f2 spawned\n";
+    auto task = [](std::exception_ptr & te, std::string & result) {
+        try {
+            std::mt19937 gen(rd());
+            std::bernoulli_distribution d(0.5);
+            if (d(gen)) {
+                throw std::runtime_error("WTF");
+            } else {
+                result = "success";
+            }
+        } catch (...) {
+            te = std::current_exception();
+        }
+    };
 
-    auto f3 = async(launch::deferred, []{
-        cout << "f3 started\n";
-        this_thread::sleep_for(1s);
-        return 3 * 42;
-    });
-    cout << "f3 spawned\n";
+    std::thread t(task, std::ref(thread_exception), std::ref(result));
 
-    cout << "Getting f1 result\n";
-    auto v1 = f1.get();
-    cout << "Got f1 result\n";
+    std::cout << "Some heave task on main thread\n";
+    std::this_thread::sleep_for(1s);
 
-    cout << "Getting f2 result\n";
-    auto v2 = f2.get();
-    cout << "Got f2 result\n";
+    t.join();
 
-    cout << "Getting f3 result\n";
-    auto v3 = f3.get();
-    cout << "Got f3 result\n";
-
-    vector<int> numbers = {v1, v2, v3};
-    for (const auto& item : numbers)
-        cout << item << '\n';
-
+    if (thread_exception) {
+        try {
+            std::rethrow_exception(thread_exception);
+        } catch (const std::exception & ex) {
+            std::cout << "Task exited with an exception: "
+            << ex.what() << "\n";
+        }
+    } else {
+        std::cout << "Task exited normally with result: " << result << '\n';
+    }
     return 0;
 }
 ```
-<!-- .element: class="fragment fade-in" style="font-size: .5em;" -->
+<!-- .element: style="font-size: 0.4em" -->
 
-</div>
+___
 
-<div style="width: 55%; padding: 20px; font-size: .85em;">
+## Solution
 
-* <!-- .element: class="fragment fade-in" --> Launch examples/04_async_policies
-* <!-- .element: class="fragment fade-in" --> Look at the source code
-* <!-- .element: class="fragment fade-in" --> Launch examples/05_async_ids
-* <!-- .element: class="fragment fade-in" --> Experiment with launch policies settings
-* <!-- .element: class="fragment fade-in" --> Observe how do programs work
-* <!-- .element: class="fragment fade-in" --> Draw conclusions :)
+```cpp
+#include <iostream>
+#include <string>
+#include <random>
+#include <future>
+using namespace std;
 
-```bash
-$> ./04_async_policies
-f1 spawned
-f1 started
-f2 spawned
-f3 spawned
-Getting f1 result
-f2 started
-Got f1 result
-Getting f2 result
-Got f2 result
-Getting f3 result
-f3 started
-Got f3 result
-42
-84
-126
+std::random_device rd;
+
+int main() {
+    auto task = []() {
+        std::mt19937 gen(rd());
+        std::bernoulli_distribution d(0.5);
+        if (d(gen)) {
+            throw std::runtime_error{"WTF"};
+        } else {
+            return "success";
+        }
+    };
+
+    auto result = std::async(std::launch::async, task);
+
+    std::cout << "Some heave task on main thread\n";
+    std::this_thread::sleep_for(1s);
+
+    try {
+        auto value = result.get();
+        std::cout << "Task exited normally with result: " << value << '\n';
+    } catch (const std::exception & ex) {
+        std::cout << "Task exited with an exception: " << ex.what() << "\n";
+    }
+    return 0;
+}
 ```
-<!-- .element: class="fragment fade-in" style="font-size: 0.5em;" -->
-</div>
-
-<div>
+<!-- .element: class="fragment fade-in" style="font-size: 0.4em" -->
 
 ___
 
 ## Drawbacks of `async`
 
-It doesn’t use a thread pool.
-
 It may fail due to resource exhaustion, rather than queuing up tasks to be executed later.
+It does not use a thread pool to reschedule a failed task.

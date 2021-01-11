@@ -7,7 +7,9 @@
 
 ___
 
-## Task #1
+## Exercise
+
+### `exercises/01_get_number_async.cpp`
 
 Implement `get_number_async()` function. It should call `get_number()` asynchronously on another thread and return `std::future` which will hold the result.
 
@@ -22,7 +24,7 @@ int main() {
 }
 ```
 
-### [Example in slide 3.3](#/promise-future-example)
+### [Example on slide 3.3](#/promise-future-example)
 
 ___
 
@@ -45,7 +47,9 @@ std::future<int> get_number_async() {
 ___
 <!-- .slide: style="font-size: .85em" -->
 
-## Task 2
+## Exercise
+
+### `exercises/02_schedule.cpp`
 
 Implement a `schedule()` function. It should be able to take a function like `get_number()` as a parameter and call it asynchronously on another thread. It should return `std::future` which will hold the result.
 
@@ -60,7 +64,7 @@ int main() {
 }
 ```
 
-Test it on a below function
+Does it work on the below function? 🧐
 <!-- .element: class="fragment fade-in" -->
 
 ```cpp

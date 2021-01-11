@@ -26,7 +26,7 @@ std::future<int> future = promise.get_future();
 * <!-- .element: class="fragment fade-in" --> second call will throw
 
 ___
-
+<!-- .slide: style="font-size: 0.9em" -->
 ### How to "set"?
 
 * <!-- .element: class="fragment fade-in" --> set value
@@ -53,7 +53,9 @@ try {
 
 <div style="background-color: #8B3536; padding: 3px 22px;">
 
-<code>std::promise</code> can be "set" only once
+`std::promise` can be "set" only once.
+
+`std::future_errc::promise_already_satisfied` exception is thrown when it is set multiple times.
 
 </div> <!-- .element: class="fragment fade-in" -->
 
@@ -79,6 +81,8 @@ ___
 
 <div style="background-color: #8B3536; padding: 3px 22px;">
 
-`std::future` can be "get" only once
+`std::future` can be "get" only once.
+
+`std::future_errc::future_already_retrieved` exception is thrown when it is get multiple times.
 
 </div> <!-- .element: class="fragment fade-in" -->

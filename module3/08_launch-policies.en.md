@@ -7,6 +7,99 @@
 </a>
 
 ___
+
+## Launch policies - example
+
+<div style="display: flex;">
+
+<div style="width: 45%; font-size: .9em;">
+
+```c++
+#include <chrono>
+#include <future>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    auto f1 = async([]{
+        cout << "f1 started\n";
+        this_thread::sleep_for(1s);
+        return 42;
+    });
+    cout << "f1 spawned\n";
+
+    auto f2 = async(launch::async, []{
+        cout << "f2 started\n";
+        this_thread::sleep_for(1s);
+        return 2 * 42;
+    });
+    cout << "f2 spawned\n";
+
+    auto f3 = async(launch::deferred, []{
+        cout << "f3 started\n";
+        this_thread::sleep_for(1s);
+        return 3 * 42;
+    });
+    cout << "f3 spawned\n";
+
+    cout << "Getting f1 result\n";
+    auto v1 = f1.get();
+    cout << "Got f1 result\n";
+
+    cout << "Getting f2 result\n";
+    auto v2 = f2.get();
+    cout << "Got f2 result\n";
+
+    cout << "Getting f3 result\n";
+    auto v3 = f3.get();
+    cout << "Got f3 result\n";
+
+    vector<int> numbers = {v1, v2, v3};
+    for (const auto& item : numbers)
+        cout << item << '\n';
+
+    return 0;
+}
+```
+<!-- .element: class="fragment fade-in" style="font-size: .5em;" -->
+
+</div>
+
+<div style="width: 55%; padding: 20px; font-size: .85em;">
+
+* <!-- .element: class="fragment fade-in" --> Launch examples/04_async_policies
+* <!-- .element: class="fragment fade-in" --> Look at the source code
+* <!-- .element: class="fragment fade-in" --> Launch examples/05_async_ids
+* <!-- .element: class="fragment fade-in" --> Experiment with launch policies settings
+* <!-- .element: class="fragment fade-in" --> Observe how do programs work
+* <!-- .element: class="fragment fade-in" --> Draw conclusions :)
+
+```bash
+$> ./04_async_policies
+f1 spawned
+f1 started
+f2 spawned
+f3 spawned
+Getting f1 result
+f2 started
+Got f1 result
+Getting f2 result
+Got f2 result
+Getting f3 result
+f3 started
+Got f3 result
+42
+84
+126
+```
+<!-- .element: class="fragment fade-in" style="font-size: 0.5em;" -->
+</div>
+
+<div>
+
+___
+
 <!-- .slide: style="font-size: .90em" -->
 
 ## Launch policies
@@ -25,15 +118,17 @@ async(std::launch policy, Function&& f, Args&&... args);
   * <!-- .element: class="fragment fade-in" --> Asynchronous execution or lazy evaluation (up to the implementation)
   * <!-- .element: class="fragment fade-in" --> It is not known whether the <code>f</code> will be executed concurrently
   * <!-- .element: class="fragment fade-in" --> It is not known whether the <code>f</code> will be executed on another thread or on the same thread that calls <code>get()</code> or <code>wait()</code> on <code>future</code>
-  * <!-- .element: class="fragment fade-in" --> It is impossible to predict whether the <code>f</code> will execute at all, because there may be paths in the code where <code>get()</code> or <code>wait()</code> will not be called (e.g. due to exceptions)
+  * <!-- .element: class="fragment fade-in" --> It is impossible to predict whether the <code>f</code> will be executed at all, because there may be paths in the code where <code>get()</code> or <code>wait()</code> will not be called (eg. due to exceptions)
 * <!-- .element: class="fragment fade-in" --> Neither <code>launch::async</code> or <code>launch::deferred</code>
   * <!-- .element: class="fragment fade-in" --> Undefined Behavior
 * <!-- .element: class="fragment fade-in" --> There are also additional, implementation defined policies allowed
 
 ___
-<!-- .slide: style="transform: scale(.9)" -->
+<!-- .slide: style="font-size: 0.9em" -->
 
-### Exercise: no launch policies problem
+## Exercise: no launch policy problem
+
+### `exercises/04_async_never_called.cpp`
 
 <div style="display: flex;">
 
@@ -84,13 +179,13 @@ Waiting...
 Finally...
 ```
 <!-- .element: class="fragment fade-in" style="font-size: .6em" -->
-</div> <!-- .element: class="fragment fade-in" -->
+</div>
 
 <div>
 
 ___
 <!-- .slide: style="transform: scale(.9)" -->
-### Exercise: solution
+## Solution
 
 <div style="display: flex;">
 

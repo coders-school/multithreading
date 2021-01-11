@@ -1,4 +1,4 @@
-## Let's get to know each other
+## Something about you
 
 * One of the most interesting things from Cpp Core Guidelines pre-work?
 * Do you prefer threads or async?
@@ -62,3 +62,37 @@ ___
 * <!-- .element: class="fragment fade-in" --> 🗣 Discussion, not lecture
 * <!-- .element: class="fragment fade-in" --> ☕️ Additional breaks on demand
 * <!-- .element: class="fragment fade-in" --> ⌚️ Punctuality
+
+___
+<!-- .slide: style="font-size: 0.7em" -->
+
+## Pre-test
+
+```cpp
+#include <future>
+#include <iostream>
+
+int main() {
+    int x = 0;
+    auto f = std::async(std::launch::deferred, [&x]{
+        x = 1;
+    });
+
+    x = 2;
+    f.get();
+    x = 3;
+    std::cout << x;
+    return 0;
+}
+```
+
+1. the type of f is <code>promise&lt;int&gt;</code>
+2. the type of f is <code>future&lt;void&gt;</code>
+3. running <code>async()</code> without a launch policy may cause an undefined behavior
+4. this program always prints 3
+5. <code>x = 2</code> assignment cause a data race
+6. if async was run with <code>std::launch::async</code>, there would be a data race
+7. <code>x = 3</code> assignment is safe, because it happens after synchronization with async task
+8. <code>future&lt;void&gt;</code> may be used to synchronize tasks
+
+Note: 2, 3, 4, 6, 7, 8

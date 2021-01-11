@@ -8,7 +8,7 @@
 
 ___
 
-## `std::thread` is a "low-level" mechanism
+## `std::thread` is a low-level mechanism
 
 * <!-- .element: class="fragment fade-in" --> How to <span style="color:#cf802a">return</span> something from it?
   * <!-- .element: class="fragment fade-in" --> Pass variable by reference (use <code>std::ref</code>)
