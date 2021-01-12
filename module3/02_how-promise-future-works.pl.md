@@ -14,7 +14,7 @@ ___
 
 ### Jak działa `std::promise`/`std::future`
 
-<img data-src="img/how_promise_future_works.gif" class="plain" style="
+<img src="img/how_promise_future_works.gif" class="plain" style="
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -29,14 +29,14 @@ ___
 <div style="width: 59%;">
 
 ```c++
-std::promise<int> promise;
-std::future<int> future = promise.get_future();
-auto function = [] (std::promise<int> promise) {
+std::promise<int> prom;
+std::future<int> fut = prom.get_future();
+auto function = [] (std::promise<int> prom) {
     // ...
-    promise.set_value(10);
+    prom.set_value(10);
 };
-std::thread t(function, std::move(promise));
-std::cout << future.get() << std::endl;
+std::thread t(function, std::move(prom));
+std::cout << fut.get() << std::endl;
 t.join();
 ```
 <!-- .element: class="fragment fade-in" -->
@@ -46,6 +46,7 @@ t.join();
 * <!-- .element: class="fragment fade-in" --> <code>std::promise</code>/<code>std::future</code> używane są, by stworzyć <span style="color:#cf802a;">jednokierunkowy kanał komunikacji</span>
 * <!-- .element: class="fragment fade-in" --> <code>std::promise</code> ma za zadanie <span style="color:#cf802a;">ustawić wartość</span>
 * <!-- .element: class="fragment fade-in" --> Zadaniem <code>std::future</code> natomiast, jest <span style="color:#cf802a;">pozyskanie wartości</span>
+
 </div>
 
 </div>

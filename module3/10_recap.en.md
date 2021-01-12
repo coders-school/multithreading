@@ -45,7 +45,7 @@ int main() {
 
 1. <!-- .element: class="fragment highlight-red" --> the type of f is <code>promise&lt;int&gt;</code>
 1. <!-- .element: class="fragment highlight-green" --> the type of f is <code>future&lt;void&gt;</code>
-1. <!-- .element: class="fragment highlight-green" --> running <code>async()</code> without a launch policy may cause an undefined behavior
+1. <!-- .element: class="fragment highlight-green" --> <code>async()</code> without a launch policy may never be called
 1. <!-- .element: class="fragment highlight-green" --> this program always prints 3
 1. <!-- .element: class="fragment highlight-red" -->  <code>x = 2</code> assignment cause a data race
 1. <!-- .element: class="fragment highlight-green" --> if async was run with <code>std::launch::async</code>, there would be a data race

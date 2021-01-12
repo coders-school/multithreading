@@ -10,7 +10,7 @@ ___
 
 ## One-to-many connection
 
-<img data-src="img/one-to-many.png" alt="One-to-many connection scheme" class="plain" style="width: 90%">
+<img src="img/one-to-many.png" alt="One-to-many connection scheme" class="plain" style="width: 90%">
 
 <!-- TODO: Animate -->
 
