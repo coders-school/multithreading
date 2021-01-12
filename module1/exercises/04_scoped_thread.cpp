@@ -18,16 +18,15 @@ void do_sth_unsafe_in_current_thread() {
     throw runtime_error("Whoa!");
 }
 
-int main() {
+int main() try {
     // TODO: Uncomment
     // scoped_thread st(std::thread(do_sth, 42));
     // // auto st2 = st; // copying not allowed
     // [[maybe_unused]] auto st3 = move(st);
     // scoped_thread st4(do_sth, 42);
-    try {
-        do_sth_unsafe_in_current_thread();
-    } catch (const exception & e) {
-        cout << e.what() << endl;
-    }
+    do_sth_unsafe_in_current_thread();
     return 0;
+} catch (const exception & e) {
+    cout << e.what() << endl;
+    return -1;
 } // thread is safely destroyed

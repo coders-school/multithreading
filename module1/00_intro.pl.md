@@ -38,7 +38,7 @@ ___
 
 * Konferencja code::dive
 * Społeczność code::dive
-* Akademickie Mistrzostwa w Programowaniu Zespołowym
+* Akademickie Mistrzostwa Polski w Programowaniu Zespołowym
 
 </div>
 

@@ -281,6 +281,7 @@ void daemon(int number, Time time) {
 
 int main() {
     std::thread t1(daemon<decltype(1s)>, 20, 1s);
+    // equivalent of std::thread t1(daemon<std::chrono::second>, 20, 1s);
     std::thread t2(daemon<decltype(1500ms)>, 15, 1500ms);
     std::thread t3(daemon<decltype(2700ms)>, 10, 2700ms);
 

@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Multithreading - Coders School</title>
+
+        <meta name="description" content="OOP">
+        <meta name="author" content="Mateusz Adamski & Łukasz Ziobroń">
+
+        <link rel="stylesheet" href="../../css/reset.css">
+        <link rel="stylesheet" href="../../css/reveal.css">
+        <link rel="stylesheet" href="../../css/theme/coders.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../lib/css/monokai.css">
+
+        <!-- Printing and PDF exports -->
+        <script>
+            var link = document.createElement( 'link' );
+            link.rel = 'stylesheet';
+            link.type = 'text/css';
+            link.href = window.location.search.match( /print-pdf/gi ) ? '../../css/print/pdf.css' : '../../css/print/paper.css';
+            document.getElementsByTagName( 'head' )[0].appendChild( link );
+        </script>
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="#111111">
+
+                        <h1>Multithreading</h1>
+                        <h2>Data sharing</h2>
+                        <a href="https://coders.school">
+                            <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
+                        </a>
+                        <h3>Bartosz Szurgot</h3>
+                        <h3>Łukasz Ziobroń</h3>
+
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                        <!-- .slide: style="font-size: .8em;" -->
+
+                        ## Agenda
+
+                        1. <!-- .element: class="fragment fade-in" --> Data sharing for reading
+                        1. <!-- .element: class="fragment fade-in" --> Data sharing for writing
+                        1. <!-- .element: class="fragment fade-in" --> Data races
+                        1. <!-- .element: class="fragment fade-in" --> Thread sanitizer
+                        1. <!-- .element: class="fragment fade-in" --> <code>mutex</code>
+                        1. <!-- .element: class="fragment fade-in" --> Types of mutexes
+                        1. <!-- .element: class="fragment fade-in" --> <code>shared_mutex</code>
+                        1. <!-- .element: class="fragment fade-in" --> locks (RAII wrappers)
+                        1. <!-- .element: class="fragment fade-in" --> Memory model
+                        1. <!-- .element: class="fragment fade-in" --> <code>std::atomic</code>
+                        1. <!-- .element: class="fragment fade-in" --> Good practices
+                        1. <!-- .element: class="fragment fade-in" --> Deadlock
+
+                        </textarea>
+                    </section>
+                    <section>
+                        https://github.com/coders-school/multithreading/tree/master/module2
+                    </section>
+                </section>
+                <!--
+                    Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
+                    For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
+
+                    Usage:
+                    Install dependencies
+
+                    $ npm install
+                    Serve the presentation and monitor source files for changes
+
+                    $ npm start
+                    Open http://localhost:8000 to view your presentation
+
+                    You can change the port by using npm start -- --port=8001.
+                -->
+                <section data-markdown="00_intro.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="01_data_sharing.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="02_races.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="03_mutex.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="04_locks.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="05_memory_model.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="06_good_practices.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="07_deadlock.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="08_recap.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-background="#111111">
+
+                    <h1>Coders School</h1>
+                    <img width="400" data-src="../logo.png" alt="Coders School" class="plain">
+
+                </section>
+            </div>
+        </div>
+
+        <script src="../../js/reveal.js"></script>
+
+        <script>
+            // More info about config & dependencies:
+            // - https://github.com/hakimel/reveal.js#configuration
+            // - https://github.com/hakimel/reveal.js#dependencies
+            Reveal.initialize({
+                width: 1200,
+                height: 750,
+                slideNumber: true,
+                hash: true,
+                pdfSeparateFragments: false,
+                dependencies: [
+                    { src: '../../plugin/externalcode/externalcode.js', condition: function() { return !!document.querySelector( '[data-code]' ); } },
+                    { src: '../../plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: '../../plugin/markdown/marked.js' },
+                    { src: '../../plugin/markdown/markdown.js' },
+                    { src: '../../plugin/notes/notes.js', async: true }
+                ]
+            });
+        </script>
+    </body>
+</html>

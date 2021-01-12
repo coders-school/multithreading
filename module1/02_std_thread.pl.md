@@ -103,8 +103,8 @@ int main() {
     std::thread t(*foo);
     t.join();
 
-    class Bar bar;
-    std::thread t1(&Bar::foo, bar);
+    Bar bar;
+    std::thread t1(&Bar::foo, &bar);
     t1.join();
     return 0;
 }
