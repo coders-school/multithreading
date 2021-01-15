@@ -44,22 +44,22 @@ public:
 
 <div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: .9em;">
 
-* <!-- .element: class="fragment fade-in" --> W pliku `01_threadsafe_queue.cpp` znajduje się wybrakowana implementacja kolejki FIFO
-* <!-- .element: class="fragment fade-in" --> Napraw wątek `textProducer`, aby generował prawidłowe napisy:
+* <!-- .element: class="fragment fade-in" --> W pliku <code>01_threadsafe_queue.cpp</code> znajduje się wybrakowana implementacja kolejki FIFO
+* <!-- .element: class="fragment fade-in" --> Napraw wątek <code>textProducer</code>, aby generował prawidłowe napisy:
   * <!-- .element: class="fragment fade-in" --> This is random text number 0
   * <!-- .element: class="fragment fade-in" --> This is random text number 1
   * <!-- .element: class="fragment fade-in" --> …
   * <!-- .element: class="fragment fade-in" --> This is random text number n
-* <!-- .element: class="fragment fade-in" --> Zabezpiecz operacje na kolejce przed dostępem z wielu wątków (make it thread-safe ☺)
+* <!-- .element: class="fragment fade-in" --> Zabezpiecz operacje na kolejce przed dostępem z wielu wątków (make it thread-safe 🙂)
 * <!-- .element: class="fragment fade-in" --> Jaki problem widzisz?
 
 </div> <!-- .element: class="fragment fade-in" -->
 
-<div>
+</div>
 
 ___
 
-### Zadanie 1 – rozwiązanie: naprawione wyświetlanie tekstu
+#### Zadanie 1 – rozwiązanie: naprawione wyświetlanie tekstu
 
 <div style="display: flex;">
 
@@ -84,18 +84,18 @@ void produceText(StringQueue & sq, int number) {
 
 <div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: .9em;">
 
-* <!-- .element: class="fragment fade-in" --> W pliku `01_threadsafe_queue.cpp` znajduje się wybrakowana implementacja kolejki FIFO
-* <!-- .element: class="fragment fade-in" --> Napraw wątek `textProducer`, aby generował prawidłowe napisy:
+* <!-- .element: class="fragment fade-in" --> W pliku <code>01_threadsafe_queue.cpp</code> znajduje się wybrakowana implementacja kolejki FIFO
+* <!-- .element: class="fragment fade-in" --> Napraw wątek <code>textProducer</code>, aby generował prawidłowe napisy:
   * <!-- .element: class="fragment fade-in" --> This is random text number 0
   * <!-- .element: class="fragment fade-in" --> This is random text number 1
   * <!-- .element: class="fragment fade-in" --> …
   * <!-- .element: class="fragment fade-in" --> This is random text number n
-* <!-- .element: class="fragment fade-in" --> Zabezpiecz operacje na kolejce przed dostępem z wielu wątków (make it thread-safe ☺)
+* <!-- .element: class="fragment fade-in" --> Zabezpiecz operacje na kolejce przed dostępem z wielu wątków (make it thread-safe 🙂)
 * <!-- .element: class="fragment fade-in" --> Jaki problem widzisz?
 
 </div> <!-- .element: class="fragment fade-in" -->
 
-<div>
+</div>
 
 ___
 
@@ -133,26 +133,26 @@ public:
 <!-- .element: class="fragment fade-in" -->
 </div>
 
-<div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: .9em;">
+<div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: 1em;">
 
-* <!-- .element: class="fragment fade-in" --> W pliku `01_threadsafe_queue.cpp` znajduje się wybrakowana implementacja kolejki FIFO
-* <!-- .element: class="fragment fade-in" --> Napraw wątek `textProducer`, aby generował prawidłowe napisy:
+* <!-- .element: class="fragment fade-in" --> W pliku <code>01_threadsafe_queue.cpp</code> znajduje się wybrakowana implementacja kolejki FIFO
+* <!-- .element: class="fragment fade-in" --> Napraw wątek <code>textProducer</code>, aby generował prawidłowe napisy:
   * <!-- .element: class="fragment fade-in" --> This is random text number 0
   * <!-- .element: class="fragment fade-in" --> This is random text number 1
   * <!-- .element: class="fragment fade-in" --> …
   * <!-- .element: class="fragment fade-in" --> This is random text number n
-* <!-- .element: class="fragment fade-in" --> Zabezpiecz operacje na kolejce przed dostępem z wielu wątków (make it thread-safe ☺)
+* <!-- .element: class="fragment fade-in" --> Zabezpiecz operacje na kolejce przed dostępem z wielu wątków (make it thread-safe 🙂)
 * <!-- .element: class="fragment fade-in" --> Jaki problem widzisz?
 
 </div> <!-- .element: class="fragment fade-in" -->
 
-<div>
+</div>
 
 ___
 
 ### Problem – grzanie CPU i efekt cieplarniany
 
-<img data-src="../efekt_cieplarniany.jpg" alt="efekt cieplarniany" class="plain">
+<img data-src="img/efekt_cieplarniany.jpg" alt="efekt cieplarniany" class="plain">
 
 ___
 
@@ -182,20 +182,21 @@ void saveToFile(StringQueue & sq) {
 
 </div> <!-- .element: class="fragment fade-in" -->
 
-<div>
+</div>
 
-<img data-src="../aktywne_czekanie.png" alt="aktywne_czekanie" class="plain">
+<img data-src="img/aktywne_czekanie.png" alt="aktywne_czekanie" class="plain">
+<!-- .element: class="fragment fade-in" -->
 
 ___
 
 ### Zmienna warunku (condition variable)
 
-* <!-- .element: class="fragment fade-in" --> `#include <condition_variable>`
-* <!-- .element: class="fragment fade-in" --> `std::condition_variable`
+* <!-- .element: class="fragment fade-in" --> <code>#include <condition_variable></code>
+* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code>
 * <!-- .element: class="fragment fade-in" --> Najważniejsze operacje
-  * <!-- .element: class="fragment fade-in" --> `wait()` – oczekuje na zmianę - blokuje obecny wątek dopóki nie zostanie on wybudzony
-  * <!-- .element: class="fragment fade-in" --> `notify_one()` – wybudza jeden z wątków oczekujących na zmianę. Nie mamy kontroli nad tym, który z wątków zostanie powiadomiony.
-  * <!-- .element: class="fragment fade-in" --> `notify_all()` – wybudza wszystkie wątki czekające na zmianę. Wątki te mogą konkurować o zasoby.
+  * <!-- .element: class="fragment fade-in" --> <code>wait()</code> – oczekuje na zmianę - blokuje obecny wątek dopóki nie zostanie on wybudzony
+  * <!-- .element: class="fragment fade-in" --> <code>notify_one()</code> – wybudza jeden z wątków oczekujących na zmianę. Nie mamy kontroli nad tym, który z wątków zostanie powiadomiony.
+  * <!-- .element: class="fragment fade-in" --> <code>notify_all()</code> – wybudza wszystkie wątki czekające na zmianę. Wątki te mogą konkurować o zasoby.
 
 ___
 
@@ -234,11 +235,11 @@ public:
 
 <div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: .9em;">
 
-* <!-- .element: class="fragment fade-in" --> Popraw kod z pliku `02_wait_queue.cpp` tak, aby używał zmiennej warunkowej zamiast aktywnego czekania
+* <!-- .element: class="fragment fade-in" --> Popraw kod z pliku <code>02_wait_queue.cpp</code> tak, aby używał zmiennej warunkowej zamiast aktywnego czekania
 
 </div> <!-- .element: class="fragment fade-in" -->
 
-<div>
+</div>
 
 ___
 
@@ -246,11 +247,10 @@ ___
 
 <div style="display: flex;">
 
-<div style="width: 50%; font-size: .9em;">
+<div style="width: 50%; font-size: .8em;">
 
 ```c++
 // includes
-
 template <typename T>
 class WaitQueue {
     deque<T> queue_;
@@ -277,7 +277,7 @@ public:
 <!-- .element: class="fragment fade-in" -->
 </div>
 
-<div style="width: 50%; font-size: .9em;">
+<div style="width: 50%; font-size: .8em;">
 
 ```c++
 using StringQueue = WaitQueue<string>;
@@ -307,25 +307,25 @@ int main() {
 
 </div> <!-- .element: class="fragment fade-in" -->
 
-<div>
+</div>
 
 ___
 
-### Zmienne warunku uszczęśliwiają foczki ☺
+### Zmienne warunku uszczęśliwiają foczki 🙂
 
-<img data-src="../foczka.jpg" alt="foczka" class="plain">
+<img data-src="img/foczka.jpg" alt="foczka" class="plain">
 
 ___
 
 ### Zmienna warunku - szczegóły
 
-* <!-- .element: class="fragment fade-in" --> `std::condition_variable` działa tylko z wyłącznymi blokadami (`unique_lock`)
-* <!-- .element: class="fragment fade-in" --> `std::condition_variable_any` działa z każdym rodzajem blokad (`shared_lock`)
+* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code> działa tylko z wyłącznymi blokadami (<code>unique_lock</code>)
+* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable_any</code> działa z każdym rodzajem blokad (<code>shared_lock</code>)
 * <!-- .element: class="fragment fade-in" --> Są niekopiowalne
-* <!-- .element: class="fragment fade-in" --> Metoda `wait()` przyjmuje blokadę oraz opcjonalnie predykat, dzięki któremu zostaną wybudzone tylko te wątki, dla których warunek jest spełniony
+* <!-- .element: class="fragment fade-in" --> Metoda <code>wait()</code> przyjmuje blokadę oraz opcjonalnie predykat, dzięki któremu zostaną wybudzone tylko te wątki, dla których warunek jest spełniony
 * <!-- .element: class="fragment fade-in" --> Wszystkie wątki, które czekają na zmiennej warunku muszą mieć zablokowany ten sam mutex. W przeciwnym wypadku jest niezdefiniowane zachowanie.
-* <!-- .element: class="fragment fade-in" --> Metody `wait_for()` i `wait_until()` przyjmują jeszcze odpowiednio punkt w czasie lub okres czasu do którego wątki będą czekać na wybudzenie. Po upływie tego czasu wątki zostaną wybudzone.
-* <!-- .element: class="fragment fade-in" --> Jeśli na zmiennej warunku czeka kilka wątków i każdy ma inny predykat, to użycie `notify_one()` może spowodować zakleszczenie. Wybudzony może zostać wątek, dla którego warunek nie został spełniony i jeśli żaden inny wątek nie zawoła `nofity_one()` lub `notify_all()` to wszystkie będą czekać.
+* <!-- .element: class="fragment fade-in" --> Metody <code>wait_for()</code> i <code>wait_until()</code> przyjmują jeszcze odpowiednio punkt w czasie lub okres czasu do którego wątki będą czekać na wybudzenie. Po upływie tego czasu wątki zostaną wybudzone.
+* <!-- .element: class="fragment fade-in" --> Jeśli na zmiennej warunku czeka kilka wątków i każdy ma inny predykat, to użycie <code>notify_one()</code> może spowodować zakleszczenie. Wybudzony może zostać wątek, dla którego warunek nie został spełniony i jeśli żaden inny wątek nie zawoła <code>nofity_one()</code> lub <code>notify_all()</code> to wszystkie będą czekać.
 
 ___
 
@@ -343,10 +343,9 @@ ___
   * <!-- .element: class="fragment fade-in" --> liczba odbić
   * <!-- .element: class="fragment fade-in" --> limit czasowy (w sekundach)
 
-<!-- .element: class="fragment fade-in" -->
 </div>
 
-<div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: .9em;">
+<div style="width: 40%; font-size: .9em;">
 
 ```bash
 $> g++ 03_ping_pong.cpp -lpthread
@@ -368,7 +367,7 @@ Timeout
 
 </div> <!-- .element: class="fragment fade-in" -->
 
-<div>
+</div>
 
 ___
 
@@ -376,11 +375,11 @@ ___
 
 Jeśli utkniesz:
 
-* <!-- .element: class="fragment fade-in" --> Potrzebujesz mutexu i zmiennej warunkowej w klasie `PingPong`
-* <!-- .element: class="fragment fade-in" --> Czekaj na zmiennej warunku za pomocą `wait_for()` w funkcji `stop()`
+* <!-- .element: class="fragment fade-in" --> Potrzebujesz mutexu i zmiennej warunkowej w klasie <code>PingPong</code>
+* <!-- .element: class="fragment fade-in" --> Czekaj na zmiennej warunku za pomocą <code>wait_for()</code> w funkcji <code>stop()</code>
 * <!-- .element: class="fragment fade-in" --> Sprawdzaj liczbę powtórzeń w wątkach ping i pong
-* <!-- .element: class="fragment fade-in" --> Użyj dodatkowej zmiennej `bool`, która powie wszystkim wątkom, aby się zakończyły. gdy nastąpią wymagane warunki. Użyj tutaj typu `atomic<bool>` (o nim później ☺)
-* <!-- .element: class="fragment fade-in" --> Wątki ping i pong powinny za pomocą `wait()` sprawdzać warunek, czy to ich kolej na działanie. Użyj dodatkowej zmiennej `bool`, która zostanie użyta w predykacie przekazanym do `wait()`.
+* <!-- .element: class="fragment fade-in" --> Użyj dodatkowej zmiennej <code>bool</code>, która powie wszystkim wątkom, aby się zakończyły. gdy nastąpią wymagane warunki. Użyj tutaj typu <code>atomic<bool></code> (o nim później 🙂)
+* <!-- .element: class="fragment fade-in" --> Wątki ping i pong powinny za pomocą <code>wait()</code> sprawdzać warunek, czy to ich kolej na działanie. Użyj dodatkowej zmiennej <code>bool</code>, która zostanie użyta w predykacie przekazanym do <code>wait()</code>.
 * <!-- .element: class="fragment fade-in" --> Wątek pong powinien zakończyć program po osiągnięciu limitu odbić
 
 ___
@@ -389,8 +388,8 @@ ___
 
 * <!-- .element: class="fragment fade-in" --> Fałszywe przebudzenie (spurious wakeup)
   * <!-- .element: class="fragment fade-in" --> Wątek czekający na zmiennej warunku cyklicznie co pewien okres czasu wybudza się i sprawcza czy nie przyszła notyfikacja
-  * <!-- .element: class="fragment fade-in" --> W celu oczekiwania na zmiennej warunku wymagana co najmniej blokada `unique_lock`, gdyż podczas uśpienia wątek ją odblokowuje, a gdy wybudza się, aby sprawdzić notyfikację blokuje ją ponownie na chwilę, po czym znów ją odblokowuje i śpi dalej
-  * <!-- .element: class="fragment fade-in" --> Predykat dodany do funkcji `wait()` zapobiega fałszywym przebudzeniom, gdyż dodaje dodatkowy warunek, który musi być spełniony, aby wątek się wybudził
+  * <!-- .element: class="fragment fade-in" --> W celu oczekiwania na zmiennej warunku wymagana co najmniej blokada <code>unique_lock</code>, gdyż podczas uśpienia wątek ją odblokowuje, a gdy wybudza się, aby sprawdzić notyfikację blokuje ją ponownie na chwilę, po czym znów ją odblokowuje i śpi dalej
+  * <!-- .element: class="fragment fade-in" --> Predykat dodany do funkcji <code>wait()</code> zapobiega fałszywym przebudzeniom, gdyż dodaje dodatkowy warunek, który musi być spełniony, aby wątek się wybudził
 * <!-- .element: class="fragment fade-in" --> Utracona notyfikacja (lost wakeup)
   * <!-- .element: class="fragment fade-in" --> Jeśli notyfikacja została wysłana zanim wątek oczekiwał na zmiennej, to jest ona utracona i nie wybudzi ona wątku
   * <!-- .element: class="fragment fade-in" --> Problem można obejść, gdy pojawi się fałszywe przebudzenie.
