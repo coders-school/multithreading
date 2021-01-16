@@ -32,7 +32,7 @@
                     <section data-background="#111111">
 
                         <h1>Multithreading</h1>
-                        <h2><code>std::promise</code>/<code>std::future</code> in C++</h2>
+                        <h2>Zmienne warunku, zmienne atomowe oraz jednokrotne wywołanie w C++</h2>
                         <a href="https://coders.school">
                             <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
                         </a>
@@ -46,32 +46,14 @@
 
                         ## Agenda
 
-                        1. <!-- .element: class="fragment fade-in" --> Zadanie 1: kolejka FIFO
-                        2. <!-- .element: class="fragment fade-in" --> Problem – grzanie CPU
-                        3. <!-- .element: class="fragment fade-in" --> Aktywne czekanie
-                        4. <!-- .element: class="fragment fade-in" --> Zmienna warunku (condition variable)
-                        5. <!-- .element: class="fragment fade-in" --> Zadanie 2: kolejka FIFO przyjazna Arktyce
-                        6. <!-- .element: class="fragment fade-in" --> Zmienna warunku – szczegóły
-                        7. <!-- .element: class="fragment fade-in" --> Zadanie domowe: ping-pong
-                        8. <!-- .element: class="fragment fade-in" --> Zmienna warunku - zagrożenia
-                        9. <!-- .element: class="fragment fade-in" --> Model pamięci C++
-                        10. <!-- .element: class="fragment fade-in" --> Model pamięci C++ - kiedy synchronizować?
-                        11. <!-- .element: class="fragment fade-in" --> Model pamięci C++ - jak synchronizować?
-                        12. <!-- .element: class="fragment fade-in" --> Przykład: jak zatrzymać zapętlony wątek?
-                        13. <!-- .element: class="fragment fade-in" --> Zwykłe zmienne vs zmienne atomowe
-                        14. <!-- .element: class="fragment fade-in" --> Zmienne atomowe
-                        15. <!-- .element: class="fragment fade-in" --> Zadanie: synchronizacja danych
-                        16. <!-- .element: class="fragment fade-in" --> std::memory_order
-                        17. <!-- .element: class="fragment fade-in" --> Sequential consistency i optymalizacje kompilatora
-                        18. <!-- .element: class="fragment fade-in" --> Zmienna atomowa – podsumowanie
-                        19. <!-- .element: class="fragment fade-in" --> call_once
-                        20. <!-- .element: class="fragment fade-in" --> once_flag
-                        21. <!-- .element: class="fragment fade-in" --> Zasada działania call_once
-                        22. <!-- .element: class="fragment fade-in" --> Zadanie 1: gonitwa
-                        23. <!-- .element: class="fragment fade-in" --> Zadanie 2: wykluczające się wywołania
-                        24. <!-- .element: class="fragment fade-in" --> Przykład: thread-safe Singleton
-                        25. <!-- .element: class="fragment fade-in" --> Zadanie 3: wyjątki w call_once
-                        26. <!-- .element: class="fragment fade-in" --> Wyjątki w call_once – bug w implementacji biblioteki standardowej
+                        1. <!-- .element: class="fragment fade-in" --> Aktywne czekanie
+                        2. <!-- .element: class="fragment fade-in" --> Zmienna warunku (condition variable)
+                        3. <!-- .element: class="fragment fade-in" --> Model pamięci C++
+                        4. <!-- .element: class="fragment fade-in" --> Przykład: Jak zatrzymać zapętlony wątek?
+                        5. <!-- .element: class="fragment fade-in" --> Zmienne atomowe
+                        6. <!-- .element: class="fragment fade-in" --> call_once
+                        7. <!-- .element: class="fragment fade-in" --> Przykład: singletony wątkowo-bezpieczne
+                        8. <!-- .element: class="fragment fade-in" --> Wyjątki w call_once
 
                         </textarea>
                     </section>
@@ -91,15 +73,39 @@
 
                     You can change the port by using npm start -- --port=8001.
                 -->                
-                <section data-markdown="01_condition_variable.pl.md"
+                <section data-markdown="00_intro.pl.md"
                          data-separator-vertical="^___"
                          data-separator-notes="^Note:">
                 </section>
-                <section data-markdown="02_atomic.pl.md"
+                <section data-markdown="01_busy_waiting.pl.md"
                          data-separator-vertical="^___"
                          data-separator-notes="^Note:">
                 </section>
-                <section data-markdown="03_call_once.pl.md"
+                <section data-markdown="02_condition_variable.pl.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="03_memory_model.pl.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="04_looped_thread.pl.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="05_atomic_variables.pl.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="06_call_once.pl.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="07_thread_safe_singleton.pl.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="08_call_once_exceptions.pl.md"
                          data-separator-vertical="^___"
                          data-separator-notes="^Note:">
                 </section>
