@@ -7,8 +7,16 @@ int get_number()
 
 std::future<int> get_number_async()
 {
-    // TODO: Your implementation goes here
-    return std::future<int>{};
+    std::promise<int> p;
+    auto f = p.get_future();
+
+    auto task = [](std::promise<int> p){
+        p.set_value(get_number());
+    };
+    std::thread t{task, std::move(p)};
+    t.detach();
+
+    return f;
 }
 
 int main()
@@ -16,4 +24,3 @@ int main()
     auto future = get_number_async();
     return future.get();
 }
-
