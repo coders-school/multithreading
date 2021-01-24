@@ -1,6 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Zmienne atomowe
+# Atomic variables
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -8,39 +8,39 @@
 
 ___
 
-## Zwykłe zmienne vs zmienne atomowe
+## Ordinary variables vs Atomic variables
 
-Zwykłe zmienne
+Ordinary variables
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> jednoczesny zapis i odczyt == niezdefiniowane zachowanie
-* <!-- .element: class="fragment fade-in" --> potrzeba blokowania muteksami w przypadku modyfikacji
+* <!-- .element: class="fragment fade-in" --> simultaneous write and read == undefined behavior
+* <!-- .element: class="fragment fade-in" --> need to block with mutexes in case of modification
 
-Zmienne atomowe
+Atomic variables
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> jednoczesny zapis i odczyt == zdefiniowane zachowanie
-* <!-- .element: class="fragment fade-in" --> brak dodatkowych mechanizmów blokowania
+* <!-- .element: class="fragment fade-in" --> simultaneous write and read == defined behavior
+* <!-- .element: class="fragment fade-in" --> no additional locking mechanisms
 
 ___
 
-## Zmienne atomowe
+## Atomic variables
 
 * <!-- .element: class="fragment fade-in" --> <code>#include &lt;atomic&gt;</code>
 * <!-- .element: class="fragment fade-in" --> <code>std::atomic</code>
-* <!-- .element: class="fragment fade-in" --> Lekka synchronizacja
-* <!-- .element: class="fragment fade-in" --> Pozwala na prostą arytmetykę i operacje bitowe: ++, --, +=, -=, &=, |=, ^=
-* <!-- .element: class="fragment fade-in" --> Typowo: liczby, wskaźniki
-* <!-- .element: class="fragment fade-in" --> Najważniejsze operacje:
-  * <!-- .element: class="fragment fade-in" --> <code>store()</code> - zapisuje wartość w zmiennej atomowej, dodatkowo można podać <code>std::memory_order</code>
-  * <!-- .element: class="fragment fade-in" --> <code>operator=()</code> - zapisuje wartość w zmiennej atomowej
-  * <!-- .element: class="fragment fade-in" --> <code>load()</code> – odczytuje wartość ze zmiennej atomowej, dodatkowo można podać <code>std::memory_order</code>
-  * <!-- .element: class="fragment fade-in" --> <code>operator T()</code> – odczytuje wartość ze zmiennej atomowej
+* <!-- .element: class="fragment fade-in" --> Light synchronization
+* <!-- .element: class="fragment fade-in" --> Allows simple arithmetic and bitwise operations: ++, --, +=, -=, &=, |=, ^=
+* <!-- .element: class="fragment fade-in" --> Typically: numbers, pointers
+* <!-- .element: class="fragment fade-in" --> The most important operations:
+  * <!-- .element: class="fragment fade-in" --> <code>store()</code> - saves a value in an atomic variable, you can also specify <code>std::memory_order</code>
+  * <!-- .element: class="fragment fade-in" --> <code>operator=()</code> - saves a value in an atomic variable
+  * <!-- .element: class="fragment fade-in" --> <code>load()</code> - reads a value from an atomic variable, you can also specify <code>std::memory_order</code>
+  * <!-- .element: class="fragment fade-in" --> <code>operator T()</code> - reads value from an atomic variable
 
 ___
 <!-- .slide: style="font-size: .75em" -->
 
-## Zadanie: synchronizacja danych
+## Exercise: data synchronization
 
 <div style="display: flex;">
 
@@ -112,20 +112,20 @@ $> ./a.out
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> Użyj właściwych mechanizmów synchronizacji
+* <!-- .element: class="fragment fade-in" --> Use the correct synchronization mechanisms
 
 ___
 <!-- .slide: style="font-size: .9em" -->
 
-## Rozwiązanie - synchronizacja danych
+## Solution - data synchronization
 
-* <!-- .element: class="fragment fade-in" --> operacje wstawiania na vector powinny być synchronizowane za pomocą mutexu
-* <!-- .element: class="fragment fade-in" --> wstawianie wątków do vectora threads jest wykonywane sekwencyjnie w pętli – nie trzeba tego synchronizować
-* <!-- .element: class="fragment fade-in" --> gdy każdy wątek pisze do innego elementu vectora synchronizacja nie jest potrzebna
-* <!-- .element: class="fragment fade-in" --> proste typy powinny być opakowane w typ <code>atomic</code>
+* <!-- .element: class="fragment fade-in" --> vector insertions should be synchronized using a mutex
+* <!-- .element: class="fragment fade-in" --> inserting threads into <code>threads</code> vector is performed sequentially in a loop - no need to synchronize it
+* <!-- .element: class="fragment fade-in" --> when each thread writes to a different element of vector, synchronization is not needed
+* <!-- .element: class="fragment fade-in" --> simple types should be wrapped in a <code>atomic</code> type
   * <!-- .element: class="fragment fade-in" --> <code>bool add</code>
   * <!-- .element: class="fragment fade-in" --> <code>int start</code>
-  * <!-- .element: class="fragment fade-in" --> funkcje lambda powinny być wyciągnięte przed pętle
+  * <!-- .element: class="fragment fade-in" --> lambda functions should be pulled out from loops
 
 ```bash
 $> g++ 01_synchronization.cpp -Wall -Wextra -Werror -pedantic -lpthread -fsanitize=thread –O3

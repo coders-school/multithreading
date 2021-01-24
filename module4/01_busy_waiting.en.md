@@ -1,6 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Aktywne czekanie
+# Busy waiting
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -8,7 +8,7 @@
 
 ___
 
-## Zadanie: kolejka FIFO
+## Exercise: FIFO queue
 
 <div style="display: flex;">
 
@@ -40,14 +40,14 @@ public:
 
 <div style="width: 40%; padding: 20px; font-size: .9em;">
 
-* <!-- .element: class="fragment fade-in" --> W pliku <code>01_threadsafe_queue.cpp</code> znajduje się wybrakowana implementacja kolejki FIFO
-* <!-- .element: class="fragment fade-in" --> Napraw wątek <code>textProducer</code>, aby generował prawidłowe napisy:
+* <!-- .element: class="fragment fade-in" --> In the file <code>01_threadsafe_queue.cpp</code> there is a missing FIFO queue implementation
+* <!-- .element: class="fragment fade-in" --> Fix the <code>textProducer</code> thread to generate correct strings:
   * <!-- .element: class="fragment fade-in" --> This is random text number 0
   * <!-- .element: class="fragment fade-in" --> This is random text number 1
   * <!-- .element: class="fragment fade-in" --> …
   * <!-- .element: class="fragment fade-in" --> This is random text number n
-* <!-- .element: class="fragment fade-in" --> Zabezpiecz operacje na kolejce przed dostępem z wielu wątków (make it thread-safe 🙂)
-* <!-- .element: class="fragment fade-in" --> Jaki problem widzisz?
+  * <!-- .element: class="fragment fade-in" --> Prevent queue operations from being accessed by multiple threads (make it thread-safe 🙂)
+  * <!-- .element: class="fragment fade-in" --> What problem do you see?
 
 </div>
 
@@ -55,7 +55,7 @@ public:
 
 ___
 
-## Zadanie – rozwiązanie: naprawione wyświetlanie tekstu
+## Exercise - solution
 
 ```c++
 void produceText(StringQueue & sq, int number) {
@@ -76,7 +76,7 @@ void produceText(StringQueue & sq, int number) {
 ___
 <!-- .slide: style="font-size: .9em" -->
 
-## Zadanie – rozwiązanie: threadsafe queue
+## Exercise - solution: thread safe queue
 
 ```c++
 template <typename T>
@@ -107,13 +107,13 @@ public:
 
 ___
 
-## Problem – grzanie CPU i efekt cieplarniany
+## Problem - CPU heating and the greenhouse effect
 
 <img data-src="img/efekt_cieplarniany.jpg" alt="efekt cieplarniany" class="plain">
 
 ___
 
-## Aktywne czekanie
+## Busy waiting
 
 ```c++
 void saveToFile(StringQueue & sq) {
@@ -126,9 +126,9 @@ void saveToFile(StringQueue & sq) {
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> Aktywne czekanie (busy waiting) to stan, w którym wątek ciągle sprawdza, czy został spełniony pewien warunek
-* <!-- .element: class="fragment fade-in" --> Inna nazwa tego problemu to wirująca blokada (spinlock)
-* <!-- .element: class="fragment fade-in" --> Problem rozwiązuje zmienna warunku (condition variable)
+* <!-- .element: class="fragment fade-in" --> Busy waiting is a state in which the thread is constantly checking if a certain condition has been met
+* <!-- .element: class="fragment fade-in" --> Another name for this problem is spinlock
+* <!-- .element: class="fragment fade-in" --> The problem is solved by the condition variable
 
 <img data-src="img/aktywne_czekanie.png" alt="aktywne_czekanie" class="plain">
 <!-- .element: class="fragment fade-in" -->

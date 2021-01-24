@@ -103,7 +103,7 @@ thread t2([&]{
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> <code>std::atomic<T></code> – to teraz poznamy
+* <!-- .element: class="fragment fade-in" --> <code>std::atomic&lt;T&gt;</code> – to teraz poznamy
 
 ```cpp
 atomic<int> a = 0;

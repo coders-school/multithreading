@@ -20,7 +20,7 @@ ___
 ___
 <!-- .slide: style="font-size: .9em" -->
 
-## Zadanie: kolejka FIFO przyjazna Arktyce 🦭
+## Zadanie: kolejka FIFO przyjazna Arktyce
 
 Popraw kod z pliku `02_wait_queue.cpp` tak, aby używał zmiennej warunkowej zamiast aktywnego czekania:
 <!-- .element: class="fragment fade-in" -->
@@ -187,7 +187,7 @@ Jeśli utkniesz:
 * <!-- .element: class="fragment fade-in" --> Potrzebujesz mutexu i zmiennej warunkowej w klasie <code>PingPong</code>
 * <!-- .element: class="fragment fade-in" --> Czekaj na zmiennej warunku za pomocą <code>wait_for()</code> w funkcji <code>stop()</code>
 * <!-- .element: class="fragment fade-in" --> Sprawdzaj liczbę powtórzeń w wątkach ping i pong
-* <!-- .element: class="fragment fade-in" --> Użyj dodatkowej zmiennej <code>bool</code>, która powie wszystkim wątkom, aby się zakończyły. gdy nastąpią wymagane warunki. Użyj tutaj typu <code>atomic<bool></code> (o nim później 🙂)
+* <!-- .element: class="fragment fade-in" --> Użyj dodatkowej zmiennej <code>bool</code>, która powie wszystkim wątkom, aby się zakończyły, gdy nastąpią wymagane warunki. Użyj tutaj typu <code>atomic<bool></code> (o nim później 🙂)
 * <!-- .element: class="fragment fade-in" --> Wątki ping i pong powinny za pomocą <code>wait()</code> sprawdzać warunek, czy to ich kolej na działanie. Użyj dodatkowej zmiennej <code>bool</code>, która zostanie użyta w predykacie przekazanym do <code>wait()</code>.
 * <!-- .element: class="fragment fade-in" --> Wątek pong powinien zakończyć program po osiągnięciu limitu odbić
 
@@ -196,7 +196,7 @@ ___
 ## Zmienna warunku - zagrożenia
 
 * <!-- .element: class="fragment fade-in" --> Fałszywe przebudzenie (spurious wakeup)
-  * <!-- .element: class="fragment fade-in" --> Wątek czekający na zmiennej warunku cyklicznie co pewien okres czasu wybudza się i sprawcza czy nie przyszła notyfikacja
+  * <!-- .element: class="fragment fade-in" --> Wątek czekający na zmiennej warunku cyklicznie co pewien okres czasu wybudza się i sprawdza czy nie przyszła notyfikacja
   * <!-- .element: class="fragment fade-in" --> W celu oczekiwania na zmiennej warunku wymagana co najmniej blokada <code>unique_lock</code>, gdyż podczas uśpienia wątek ją odblokowuje, a gdy wybudza się, aby sprawdzić notyfikację blokuje ją ponownie na chwilę, po czym znów ją odblokowuje i śpi dalej
   * <!-- .element: class="fragment fade-in" --> Predykat dodany do funkcji <code>wait()</code> zapobiega fałszywym przebudzeniom, gdyż dodaje dodatkowy warunek, który musi być spełniony, aby wątek się wybudził
 * <!-- .element: class="fragment fade-in" --> Utracona notyfikacja (lost wakeup)
