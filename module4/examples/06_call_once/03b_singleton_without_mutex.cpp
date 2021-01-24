@@ -10,7 +10,7 @@ class Singleton {
     
 public:
     // Is this thread safe?
-    // Yes, it is. Static initializatio is thread safe from C++11
+    // Yes, it is. Static initialization is thread-safe from C++11
     static Singleton& getInstance()
     {
         if (!instance_)
