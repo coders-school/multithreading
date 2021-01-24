@@ -20,6 +20,8 @@ js/reveal.min.js
 
 # Builds, test, IDE
 build/
+lBuild/
+linuxBuild/
 .vscode/
 googletest/
 
