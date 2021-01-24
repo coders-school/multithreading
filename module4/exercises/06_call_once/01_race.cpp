@@ -19,7 +19,8 @@ public:
         stringstream msg;
         msg << "Called " << __FUNCTION__ << "(" << id << "). Chasing time: " << sleepDuration << "ms\n";
         cout << msg.str(); // single operation on stream is atomic
-        
+        this_thread::sleep_for(chrono::milliseconds(sleepDuration)
+
         // TODO: set me as a winner, but don't let others overwrite this!
     }
       

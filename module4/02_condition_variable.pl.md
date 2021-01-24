@@ -23,7 +23,7 @@ ___
 
 ___
 
-### Zadanie 2: kolejka FIFO przyjazna Arktyce
+## Zadanie: kolejka FIFO przyjazna Arktyce 🦭
 
 <div style="display: flex;">
 
@@ -144,7 +144,7 @@ ___
 
 * <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code> działa tylko z wyłącznymi blokadami (<code>unique_lock</code>)
 * <!-- .element: class="fragment fade-in" --> <code>std::condition_variable_any</code> działa z każdym rodzajem blokad (<code>shared_lock</code>)
-* <!-- .element: class="fragment fade-in" --> Są niekopiowalne
+* <!-- .element: class="fragment fade-in" --> Są niekopiowalne, więc najczęściej są polami klas, aby uniknąć ich przekazywania
 * <!-- .element: class="fragment fade-in" --> Metoda <code>wait()</code> przyjmuje blokadę oraz opcjonalnie predykat, dzięki któremu zostaną wybudzone tylko te wątki, dla których warunek jest spełniony
 * <!-- .element: class="fragment fade-in" --> Wszystkie wątki, które czekają na zmiennej warunku muszą mieć zablokowany ten sam mutex. W przeciwnym wypadku jest niezdefiniowane zachowanie.
 * <!-- .element: class="fragment fade-in" --> Metody <code>wait_for()</code> i <code>wait_until()</code> przyjmują jeszcze odpowiednio punkt w czasie lub okres czasu do którego wątki będą czekać na wybudzenie. Po upływie tego czasu wątki zostaną wybudzone.
