@@ -9,7 +9,7 @@
 ___
 <!-- .slide: style="font-size: .83em" -->
 
-## Zadanie 3: wyjątki w call_once
+## Zadanie: wyjątki w call_once
 
 <div style="display: flex;">
 
@@ -72,7 +72,7 @@ Aborted (core dumped)
 ___
 <!-- .slide: style="font-size: .85em" -->
 
-## Zadanie 3 - rozwiązanie
+## Zadanie - rozwiązanie
 
 <div style="display: flex;">
 
