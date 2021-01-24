@@ -1,10 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## Moduł 4
-
-### Model pamięci C++
+# Model pamięci C++
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -12,7 +8,7 @@
 
 ___
 
-### Model pamięci C++
+## Model pamięci C++
 
 * <!-- .element: class="fragment fade-in" --> Najmniejsza jednostka – 1 bajt
 * <!-- .element: class="fragment fade-in" --> Każdy bajt ma unikalny adres w pamięci
@@ -33,9 +29,9 @@ thread t2([&]{ v[1] = 15; });
 
 ___
 
-### Model pamięci C++ - kiedy synchronizować?
+## Model pamięci C++ - kiedy synchronizować?
 
-#### Czy tutaj potrzebna jest synchronizacja?
+### Czy tutaj potrzebna jest synchronizacja?
 <!-- .element: class="fragment fade-in" -->
 
 ```cpp
@@ -53,9 +49,9 @@ thread t2([&]{ obj.b = 4; });
 
 ___
 
-### Model pamięci C++ - kiedy synchronizować?
+## Model pamięci C++ - kiedy synchronizować?
 
-#### Czy tutaj potrzebna jest synchronizacja?
+### Czy tutaj potrzebna jest synchronizacja?
 <!-- .element: class="fragment fade-in" -->
 
 ```cpp
@@ -69,9 +65,9 @@ for (int = 0; i < 10; i++)
 
 ___
 
-### Model pamięci C++ - kiedy synchronizować?
+## Model pamięci C++ - kiedy synchronizować?
 
-#### Czy tutaj potrzebna jest synchronizacja?
+### Czy tutaj potrzebna jest synchronizacja?
 <!-- .element: class="fragment fade-in" -->
 
 ```cpp
@@ -86,8 +82,9 @@ for (int = 0; i < 10; i++)
 * <!-- .element: class="fragment fade-in" --> Podczas wrzucania nowego obiektu może dojść do realokacji wektora. Niektóre wątki mogą mieć iteratory na nieaktualną pozycję wektora.
 
 ___
+<!-- .slide: style="font-size: .95em" -->
 
-### Model pamięci C++ - jak synchronizować?
+## Model pamięci C++ - jak synchronizować?
 
 * <!-- .element: class="fragment fade-in" --> Jak zsynchronizać zapisy / zapis + odczyt?
 * <!-- .element: class="fragment fade-in" --> <code>std::mutex</code> – to już znacie

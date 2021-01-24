@@ -1,10 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## Moduł 4
-
-### Zmienna warunku
+# Zmienna warunku
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -12,9 +8,9 @@
 
 ___
 
-### Zmienna warunku (condition variable)
+## Zmienna warunku (`std::condition variable`)
 
-* <!-- .element: class="fragment fade-in" --> <code>#include <condition_variable></code>
+* <!-- .element: class="fragment fade-in" --> <code>#include &lt;condition_variable&gt;</code>
 * <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code>
 * <!-- .element: class="fragment fade-in" --> Najważniejsze operacje
   * <!-- .element: class="fragment fade-in" --> <code>wait()</code> – oczekuje na zmianę - blokuje obecny wątek dopóki nie zostanie on wybudzony
@@ -22,12 +18,12 @@ ___
   * <!-- .element: class="fragment fade-in" --> <code>notify_all()</code> – wybudza wszystkie wątki czekające na zmianę. Wątki te mogą konkurować o zasoby.
 
 ___
+<!-- .slide: style="font-size: .9em" -->
 
-### Zadanie 2: kolejka FIFO przyjazna Arktyce
+## Zadanie 2: kolejka FIFO przyjazna Arktyce
 
-<div style="display: flex;">
-
-<div style="width: 60%; font-size: .9em;">
+Popraw kod z pliku `02_wait_queue.cpp` tak, aby używał zmiennej warunkowej zamiast aktywnego czekania:
+<!-- .element: class="fragment fade-in" -->
 
 ```c++
 template <typename T>
@@ -35,7 +31,6 @@ class WaitQueue {
     deque<T> queue_;
     mutable mutex m_;
     using Lock = lock_guard<mutex>;
-
 public:
     void push(const T & element) {
         Lock l(m_);
@@ -54,19 +49,10 @@ public:
 };
 ```
 <!-- .element: class="fragment fade-in" -->
-</div>
-
-<div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: .9em;">
-
-* <!-- .element: class="fragment fade-in" --> Popraw kod z pliku <code>02_wait_queue.cpp</code> tak, aby używał zmiennej warunkowej zamiast aktywnego czekania
-
-</div> <!-- .element: class="fragment fade-in" -->
-
-</div>
 
 ___
 
-### Zadanie 2 - rozwiązanie
+## Zadanie - rozwiązanie
 
 <div style="display: flex;">
 
@@ -134,13 +120,13 @@ int main() {
 
 ___
 
-### Zmienne warunku uszczęśliwiają foczki 🙂
+## Zmienne warunku uszczęśliwiają foczki 🙂
 
 <img data-src="img/foczka.jpg" alt="foczka" class="plain">
 
 ___
 
-### Zmienna warunku - szczegóły
+## Zmienna warunku - szczegóły
 
 * <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code> działa tylko z wyłącznymi blokadami (<code>unique_lock</code>)
 * <!-- .element: class="fragment fade-in" --> <code>std::condition_variable_any</code> działa z każdym rodzajem blokad (<code>shared_lock</code>)
@@ -152,7 +138,7 @@ ___
 
 ___
 
-### Zadanie domowe: ping-pong
+## Zadanie domowe: ping-pong
 
 <div style="display: flex;">
 
@@ -194,7 +180,7 @@ Timeout
 
 ___
 
-### Wskazówki
+## Wskazówki
 
 Jeśli utkniesz:
 
@@ -207,7 +193,7 @@ Jeśli utkniesz:
 
 ___
 
-### Zmienna warunku - zagrożenia
+## Zmienna warunku - zagrożenia
 
 * <!-- .element: class="fragment fade-in" --> Fałszywe przebudzenie (spurious wakeup)
   * <!-- .element: class="fragment fade-in" --> Wątek czekający na zmiennej warunku cyklicznie co pewien okres czasu wybudza się i sprawcza czy nie przyszła notyfikacja
@@ -219,3 +205,12 @@ ___
   * <!-- .element: class="fragment fade-in" --> Jeśli wątek oczekiwał na zmiennej warunku z predykatem, to predykat musi być spełniony, inaczej fałszywe przebudzenie nie nastąpi
 * <!-- .element: class="fragment fade-in" --> <a href="https://www.modernescpp.com/index.php/condition-variables">Spurious wakeup and lost wakeup - article on modernescpp.com</a>
 * <!-- .element: class="fragment fade-in" --> <a href="https://www.modernescpp.com/index.php/thread-synchronization-with-condition-variables-or-tasks">Condition variables vs tasks - article on modernescpp.com</a>
+
+___
+
+## Podsumowanie
+
+* <!-- .element: class="fragment fade-in" --> Zmienne warunku służą do wielokrotnej sychronizacji wątków. Mechanizm future i promise służy do jednokrotnej synchronizacji.
+* <!-- .element: class="fragment fade-in" --> Zmienne warunku używa się znacznie trudniej. Jest dużo detali, przed którymi trzeba się zabezpieczyć.
+* <!-- .element: class="fragment fade-in" --> Zmienne warunku nie obsługują przekazywania wyjątków. Mechanizm future/promise na to pozwala.
+* <!-- .element: class="fragment fade-in" --> Ogólna rada - gdy tylko możliwe używaj future/promise (lepiej: async/future). Tylko jeśli wymagana jest wielokrotna synchronizacja używaj condition_variable.

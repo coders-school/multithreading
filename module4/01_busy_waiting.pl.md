@@ -1,10 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## Moduł 4
-
-### Aktywne czekanie
+# Aktywne czekanie
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -12,7 +8,7 @@
 
 ___
 
-### Zadanie 1: kolejka FIFO
+## Zadanie: kolejka FIFO
 
 <div style="display: flex;">
 
@@ -42,7 +38,7 @@ public:
 <!-- .element: class="fragment fade-in" -->
 </div>
 
-<div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: .9em;">
+<div style="width: 40%; padding: 20px; font-size: .9em;">
 
 * <!-- .element: class="fragment fade-in" --> W pliku <code>01_threadsafe_queue.cpp</code> znajduje się wybrakowana implementacja kolejki FIFO
 * <!-- .element: class="fragment fade-in" --> Napraw wątek <code>textProducer</code>, aby generował prawidłowe napisy:
@@ -53,13 +49,13 @@ public:
 * <!-- .element: class="fragment fade-in" --> Zabezpiecz operacje na kolejce przed dostępem z wielu wątków (make it thread-safe 🙂)
 * <!-- .element: class="fragment fade-in" --> Jaki problem widzisz?
 
-</div> <!-- .element: class="fragment fade-in" -->
+</div>
 
 </div>
 
 ___
 
-#### Zadanie 1 – rozwiązanie: naprawione wyświetlanie tekstu
+## Zadanie – rozwiązanie: naprawione wyświetlanie tekstu
 
 ```c++
 void produceText(StringQueue & sq, int number) {
@@ -75,11 +71,12 @@ void produceText(StringQueue & sq, int number) {
 }
 
 ```
+<!-- .element: class="fragment fade-in" -->
 
 ___
 <!-- .slide: style="font-size: .9em" -->
 
-### Zadanie 1 – rozwiązanie: threadsafe queue
+## Zadanie – rozwiązanie: threadsafe queue
 
 ```c++
 template <typename T>
@@ -110,17 +107,13 @@ public:
 
 ___
 
-### Problem – grzanie CPU i efekt cieplarniany
+## Problem – grzanie CPU i efekt cieplarniany
 
 <img data-src="img/efekt_cieplarniany.jpg" alt="efekt cieplarniany" class="plain">
 
 ___
 
 ### Aktywne czekanie
-
-<div style="display: flex;">
-
-<div style="width: 60%; font-size: .9em;">
 
 ```c++
 void saveToFile(StringQueue & sq) {
@@ -132,17 +125,10 @@ void saveToFile(StringQueue & sq) {
 }
 ```
 <!-- .element: class="fragment fade-in" -->
-</div>
-
-<div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: .9em;">
 
 * <!-- .element: class="fragment fade-in" --> Aktywne czekanie (busy waiting) to stan, w którym wątek ciągle sprawdza, czy został spełniony pewien warunek
 * <!-- .element: class="fragment fade-in" --> Inna nazwa tego problemu to wirująca blokada (spinlock)
 * <!-- .element: class="fragment fade-in" --> Problem rozwiązuje zmienna warunku (condition variable)
-
-</div> <!-- .element: class="fragment fade-in" -->
-
-</div>
 
 <img data-src="img/aktywne_czekanie.png" alt="aktywne_czekanie" class="plain">
 <!-- .element: class="fragment fade-in" -->

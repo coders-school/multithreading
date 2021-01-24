@@ -1,10 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## Moduł 4
-
-### Wyjątki w call_once
+# Wyjątki w call_once
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -13,7 +9,7 @@
 ___
 <!-- .slide: style="font-size: .83em" -->
 
-### Zadanie 3: wyjątki w call_once
+## Zadanie 3: wyjątki w call_once
 
 <div style="display: flex;">
 
@@ -49,13 +45,13 @@ class X {
 
 <div style="width: 44%;">
 
-<div style="background-color: #8B3536; padding: 5px 10px;">
+<div style="padding: 20px;">
 
 * <!-- .element: class="fragment fade-in" --> Spróbuj naprawić problem z rzucaniem wyjątków w call_once
 * <!-- .element: class="fragment fade-in" --> Wg <a href="https://en.cppreference.com/w/cpp/thread/call_once">cppreference.com</a>:
   * <!-- .element: class="fragment fade-in" --> <i>If that invocation throws an exception, it is propagated to the caller of call_once, and the flag is not flipped so that another call will be attempted (such call to call_once is known as exceptional)</i>
 
-</div> <!-- .element: class="fragment fade-in" -->
+</div>
 
 ```bash
 $> g++ 03_exceptional_exclusive_calls.cpp
@@ -76,7 +72,7 @@ Aborted (core dumped)
 ___
 <!-- .slide: style="font-size: .85em" -->
 
-### Zadanie 3 - rozwiązanie
+## Zadanie 3 - rozwiązanie
 
 <div style="display: flex;">
 
@@ -111,7 +107,7 @@ class X {
 
 <div style="width: 43%;">
 
-<div style="background-color: #8B3536; padding: 5px 10px;">
+<div style="padding: 20px;">
 
 * <!-- .element: class="fragment fade-in" --> Spróbuj naprawić problem z rzucaniem wyjątków w call_once
 * <!-- .element: class="fragment fade-in" --> Wg <a href="https://en.cppreference.com/w/cpp/thread/call_once">cppreference.com</a>:
@@ -119,7 +115,7 @@ class X {
 
 * <!-- .element: class="fragment fade-in" -->  <b>NIE DA SIĘ! (Przynajmniej u mnie 🙂)</b>
 
-</div> <!-- .element: class="fragment fade-in" -->
+</div>
 
 ```bash
 $> g++ 03_exceptional_exclusive_calls.cpp
@@ -138,7 +134,7 @@ initializeOne
 ___
 <!-- .slide: style="color: #555" -->
 
-### Wyjątki w call_once – bug w implementacji biblioteki standardowej
+## Wyjątki w call_once – bug w implementacji biblioteki standardowej
 
 * Jeśli once_flag jest w stanie "wywołana", call_once natychmiast zwraca - return (passive call)
 * <!-- .element: style="color: #fff" --> Jeśli once_flag jest w stanie "nie wywołana", call_once wykonuje przekazaną funkcję, przekazując do niej dalsze argumenty (active call)
@@ -150,7 +146,7 @@ ___
 ___
 <!-- .slide: style="color: #bbb" -->
 
-### Przydatne linki
+## Przydatne linki
 
 * <!-- .element: class="fragment fade-in" --> <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2393.html">C++ Atomic Types and Operations (C++ Standard)</a>
 * <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/language/memory_model">C++ Memory model on cppreference.com</a>

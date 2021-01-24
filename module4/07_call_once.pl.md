@@ -1,10 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## Moduł 4
-
-### Jednokrotne wywołania
+# Jednokrotne wywołania
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -13,7 +9,7 @@
 ___
 <!-- .slide: style="font-size: .9em" -->
 
-### call_once
+## call_once
 
 <div style="display: flex;">
 
@@ -45,16 +41,16 @@ int main() {
 <!-- .element: class="fragment fade-in" -->
 </div>
 
-<div style="width: 40%; background-color: #8B3536; padding: 5px 10px;">
+<div style="width: 40%; padding: 20px;">
 
-* <!-- .element: class="fragment fade-in" --> <code>#include <mutex></code>
+* <!-- .element: class="fragment fade-in" --> <code>#include &lt;mutex&gt;</code>
 * <!-- .element: class="fragment fade-in" --> <code>std::call_once</code>
 * <!-- .element: class="fragment fade-in" --> Opakowuje funkcję, która zostanie wykonana tylko raz
 * <!-- .element: class="fragment fade-in" --> Gwarantuje jednokrotne wywołanie nawet w przypadku jej współbieżnego wywołania przez kilka wątków
 * <!-- .element: class="fragment fade-in" --> Wywołuje przekazaną funkcję w swoim wątku (nie tworzy nowego)
 * <!-- .element: class="fragment fade-in" --> Potrzebuje flagi <code>std::once_flag</code>
 
-</div> <!-- .element: class="fragment fade-in" -->
+</div>
 
 </div>
 
@@ -68,7 +64,7 @@ Called once!
 ___
 <!-- .slide: style="font-size: .9em" -->
 
-### once_flag
+## once_flag
 
 <div style="display: flex;">
 
@@ -101,16 +97,16 @@ int main() {
 <!-- .element: class="fragment fade-in" -->
 </div>
 
-<div style="width: 40%; background-color: #8B3536; padding: 5px 10px; font-size: 1em;">
+<div style="width: 40%; padding: 20px;">
 
-* <!-- .element: class="fragment fade-in" --> <code>#include <mutex></code>
+* <!-- .element: class="fragment fade-in" --> <code>#include &lt;mutex&gt;</code>
 * <!-- .element: class="fragment fade-in" --> <code>std::once_flag</code>
 * <!-- .element: class="fragment fade-in" --> Pomocnicza struktura do użytku z <code>std::call_once</code>
 * <!-- .element: class="fragment fade-in" --> Brak kopiowania i przenoszenia
 * <!-- .element: class="fragment fade-in" --> Zawiera informację, czy funkcja z jej użyciem została już wywołana
 * <!-- .element: class="fragment fade-in" --> Konstruktor ustawia stan na niewywołany
 
-</div> <!-- .element: class="fragment fade-in" -->
+</div>
 
 </div>
 
@@ -123,7 +119,7 @@ Called once!
 
 ___
 
-### Zasada działania `call_once`
+## Zasada działania `call_once`
 
 * <!-- .element: class="fragment fade-in" --> Jeśli <code>once_flag</code> jest w stanie "wywołana", <code>call_once</code> natychmiast zwraca - return (passive call)
 * <!-- .element: class="fragment fade-in" --> Jeśli <code>once_flag</code> jest w stanie "nie wywołana", <code>call_once</code> wykonuje przekazaną funkcję, przekazując do niej dalsze argumenty (active call)
@@ -135,7 +131,7 @@ ___
 ___
 <!-- .slide: style="font-size: .85em" -->
 
-### Zadanie 1: gonitwa
+## Zadanie: gonitwa
 
 <div style="display: flex;">
 
@@ -159,13 +155,13 @@ void setWinner() {
 <!-- .element: class="fragment fade-in" -->
 </div>
 
-<div style="width: 40%; background-color: #8B3536; padding: 5px 10px;">
+<div style="width: 40%; padding: 20px;">
 
 * <!-- .element: class="fragment fade-in" --> 10 zawodników (wątków) ściga się o w zawodach o milion $
 * <!-- .element: class="fragment fade-in" --> Tylko pierwszy zawodnik zdobywa nagrodę, reszta nie dostanie nic
 * <!-- .element: class="fragment fade-in" --> Zaimplementuj funkcję <code>setWinner()</code> tak, aby zwycięski wątek ustawił siebie jako zwycięzcę i nie pozwolił na nadpisanie innym tej wartości
 
-</div> <!-- .element: class="fragment fade-in" -->
+</div>
 
 </div>
 
@@ -185,7 +181,7 @@ And the winner is... 139887531521792
 
 ___
 
-### Zadanie 1 - rozwiązanie
+## Zadanie - rozwiązanie
 
 ```c++
 void setWinner() {
@@ -213,7 +209,7 @@ call_once(once, [&]{
 ___
 <!-- .slide: style="font-size: .88em" -->
 
-### Zadanie 2: wykluczające się wywołania
+## Zadanie: wykluczające się wywołania
 
 <div style="display: flex;">
 
@@ -249,12 +245,12 @@ public:
 
 <div style="width: 40%;">
 
-<div style="background-color: #8B3536; padding: 5px 10px;">
+<div style="padding: 20px;">
 
 * <!-- .element: class="fragment fade-in" --> Dopisz odpowiednie jednokrotne wywołania oraz komunikaty, aby na wyjściu pojawiło się to co poniżej
 * <!-- .element: class="fragment fade-in" --> Nie modyfikuj konstruktora 😉
 
-</div> <!-- .element: class="fragment fade-in" -->
+</div>
 
 ```bash
 $> g++ 02_exclusive_calls.cpp
@@ -280,7 +276,7 @@ Call once initializeOne
 ___
 <!-- .slide: style="font-size: .88em" -->
 
-### Zadanie 2 - rozwiązanie
+## Zadanie - rozwiązanie
 
 ```c++
 class X {

@@ -1,10 +1,6 @@
 <!-- .slide: data-background="#111111" -->
 
-# Multithreading
-
-## Moduł 4
-
-### Zapętlony wątek
+# Zapętlony wątek
 
 <a href="https://coders.school">
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
@@ -13,7 +9,7 @@
 ___
 <!-- .slide: style="font-size: .85em" -->
 
-### Przykład: jak zatrzymać zapętlony wątek?
+## Przykład: jak zatrzymać zapętlony wątek?
 
 <div style="display: flex;">
 
@@ -38,17 +34,6 @@ int main() {
 ```
 <!-- .element: class="fragment fade-in" -->
 
-```bash
-$> g++ 01_stop.cpp -lpthread -fsanitize=thread
-$> ./a.out
-WARNING: ThreadSanitizer: data race (pid=10179)
-...
-$> g++ 01_stop.cpp -lpthread -fsanitize=thread -03
-$> ./a.out
-deadlock
-```
-<!-- .element: class="fragment fade-in" -->
-
 </div>
 
 <div>
@@ -60,9 +45,20 @@ deadlock
 
 </div>
 
+```bash
+$> g++ 01_stop.cpp -lpthread -fsanitize=thread
+$> ./a.out
+WARNING: ThreadSanitizer: data race (pid=10179)
+...
+$> g++ 01_stop.cpp -lpthread -fsanitize=thread -03
+$> ./a.out
+deadlock
+```
+<!-- .element: class="fragment fade-in" -->
+
 ___
 
-### Przykład: jak zatrzymać zapętlony wątek?
+## Przykład: jak zatrzymać zapętlony wątek?
 
 * <!-- .element: class="fragment fade-in" --> Zapis wykonywany w kilku krokach
 * <!-- .element: class="fragment fade-in" --> Optymalizacje kompilatora
@@ -99,6 +95,17 @@ int main() {
 ```
 <!-- .element: class="fragment fade-in" -->
 
+</div>
+
+<div>
+
+<img data-src="img/fail.jpg" alt="fail" class="plain">
+<!-- .element: class="fragment fade-in" -->
+
+</div>
+
+</div>
+
 ```bash
 $> g++ 01b_volatile.cpp -lpthread -fsanitize=thread
 $> ./a.out
@@ -111,20 +118,9 @@ WARNING: ThreadSanitizer: data race (pid=10179)
 ```
 <!-- .element: class="fragment fade-in" -->
 
-</div>
-
-<div>
-
-<img data-src="img/fail.jpg" alt="fail" class="plain">
-<!-- .element: class="fragment fade-in" -->
-
-</div>
-
-</div>
-
 ___
 
-### Przykład: jak zatrzymać zapętlony wątek – volatile?
+## Przykład: jak zatrzymać zapętlony wątek – volatile?
 
 * <!-- .element: class="fragment fade-in" --> Zapis wykonywany w kilku krokach
 * <!-- .element: class="fragment fade-in" --> <strike>Optymalizacje kompilatora</strike>
@@ -139,7 +135,7 @@ ___
 ___
 <!-- .slide: style="font-size: .95em" -->
 
-### Przykład: jak zatrzymać zapętlony wątek – zmienna z mutexem?
+## Przykład: jak zatrzymać zapętlony wątek – zmienna z mutexem?
 
 <div style="display: flex;">
 
@@ -213,7 +209,7 @@ ___
 ___
 <!-- .slide: style="font-size: .95em" -->
 
-### Przykład: jak zatrzymać zapętlony wątek – zmienna atomowa
+## Przykład: jak zatrzymać zapętlony wątek – zmienna atomowa
 
 ```c++
 #include <thread>
@@ -243,7 +239,7 @@ $> ./a.out
 
 ___
 
-### Przykład: jak zatrzymać zapętlony wątek – zmienna atomowa
+## Przykład: jak zatrzymać zapętlony wątek – zmienna atomowa
 
 * <!-- .element: class="fragment fade-in" --> Poprawne!
 * <!-- .element: class="fragment fade-in" --> Lekkie
