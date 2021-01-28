@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <title>Multithreading - Coders School</title>
+
+        <meta name="description" content="OOP">
+        <meta name="author" content="Mateusz Adamski & Łukasz Ziobroń">
+        
+        <link rel="stylesheet" href="../../dist/reset.css">
+        <link rel="stylesheet" href="../../dist/reveal.css">
+        <link rel="stylesheet" href="../../dist/theme/coders.css" id="theme">
+
+        <!-- Theme used for syntax highlighting of code -->
+        <link rel="stylesheet" href="../../plugin/highlight/monokai.css">
+
+    </head>
+    <body>
+        <div class="reveal">
+            <div class="slides">
+                <section>
+                    <section data-background="#111111">
+
+                        <h1>Multithreading</h1>
+                        <h2>Condition variables</h2>
+                        <h2>Atomic variables</h2>
+                        <h2>Call once</h2>
+                        <a href="https://coders.school">
+                            <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
+                        </a>
+                        <h3>Bartosz Szurgot</h3>
+                        <h3>Łukasz Ziobroń</h3>
+
+                    </section>
+                    <section data-markdown>
+                        <textarea data-template>
+                        <!-- .slide: style="font-size: .7em;" -->
+
+                        ## Agenda
+
+                        1. <!-- .element: class="fragment fade-in" --> Busy waiting
+                        2. <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code>
+                        3. <!-- .element: class="fragment fade-in" --> Memory model
+                        4. <!-- .element: class="fragment fade-in" --> Example: how to stop a looped thread?
+                        5. <!-- .element: class="fragment fade-in" --> Atomic variables
+                        6. <!-- .element: class="fragment fade-in" --> <code>std::memory_order</code>
+                        7. <!-- .element: class="fragment fade-in" --> <code>std::call_once</code>
+                        8. <!-- .element: class="fragment fade-in" --> Example: thread-safe singletons
+                        9. <!-- .element: class="fragment fade-in" --> <code>std::call_once</code> exceptions
+
+                        </textarea>
+                    </section>
+                </section>
+                <!--
+                    Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
+                    For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
+                    
+                    Usage:
+                    Install dependencies
+
+                    $ npm install
+                    Serve the presentation and monitor source files for changes
+
+                    $ npm start
+                    Open http://localhost:8000 to view your presentation
+
+                    You can change the port by using npm start -- --port=8001.
+                -->                
+                <section data-markdown="00_intro.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="01_busy_waiting.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="02_condition_variable.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="03_memory_model.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="04_looped_thread.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="05_atomic_variables.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="06_memory_order.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="07_call_once.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="08_thread_safe_singleton.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-markdown="09_call_once_exceptions.en.md"
+                         data-separator-vertical="^___"
+                         data-separator-notes="^Note:">
+                </section>
+                <section data-background="#111111">
+
+                    <h1>Coders School</h1>
+                    <img width="400" data-src="../logo.png" alt="Coders School" class="plain">
+
+                </section>
+            </div>
+        </div>
+
+        <script src="../../dist/reveal.js"></script>
+        <script src="../../plugin/notes/notes.js"></script>
+        <script src="../../plugin/markdown/markdown.js"></script>
+        <script src="../../plugin/highlight/highlight.js"></script>
+
+        <script>
+            Reveal.initialize({
+                    width: 1200,
+                    height: 750,
+                    slideNumber: true,
+                    hash: true,
+                    pdfSeparateFragments: false,
+                    plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
+            });
+        </script>
+    </body>
+</html>
