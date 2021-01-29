@@ -15,7 +15,7 @@ ___
 
 <div style="width: 70%;">
 
-```c++
+```cpp []
 #include <thread>
 using namespace std;
 
@@ -67,7 +67,7 @@ ___
 
 <div style="width: 70%;">
 
-```c++
+```cpp []
 #include <thread>
 using namespace std;
 
@@ -120,7 +120,7 @@ ___
 
 <div style="width: 50%;">
 
-```c++
+```cpp []
 #include <thread>
 #include <mutex>
 
@@ -182,7 +182,7 @@ ___
 
 <div style="width: 50%;">
 
-```c++
+```cpp []
 #include <thread>
 #include <atomic>
 using namespace std;

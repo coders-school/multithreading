@@ -14,7 +14,7 @@ ___
 
 <div style="width: 50%; font-size: .9em;">
 
-```c++
+```cpp []
 template <typename T>
 class ThreadsafeQueue {
     deque<T> queue_;
@@ -59,7 +59,7 @@ ___
 ## produceText - problem
 <!-- .element: data-id="title" -->
 
-```c++
+```cpp []
 void produceText(StringQueue & sq, int number) {
     for (int i = 0; i < number; i++)
         sq.push("This is random text number " + i);
@@ -73,7 +73,7 @@ ___
 ## produceText - solution
 <!-- .element: data-id="title" -->
 
-```cpp
+```cpp []
 void produceText(StringQueue & sq, int number) {
     for (int i = 0; i < number; i++)
         sq.push("This is random text number " + to_string(i));
@@ -87,7 +87,7 @@ ___
 
 ## Solution: thread-safe queue
 
-```c++
+```cpp []
 template <typename T>
 class ThreadsafeQueue {
     deque<T> queue_;
@@ -126,7 +126,7 @@ ___
 
 ## Spinlock
 
-```c++
+```cpp []
 void saveToFile(StringQueue & sq) {
     ofstream file("/tmp/sth.txt");
     while (file) {

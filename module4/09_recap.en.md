@@ -31,7 +31,7 @@ ___
 
 ## Pre-test answers
 
-```cpp
+```cpp []
 #include <future>
 #include <iostream>
 

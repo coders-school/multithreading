@@ -15,7 +15,7 @@ ___
 
 <div style="width: 60%; font-size: .85em;">
 
-```c++
+```cpp []
 #include <iostream>
 #include <thread>
 #include <mutex>
@@ -70,7 +70,7 @@ ___
 
 <div style="width: 60%; font-size: .8em;">
 
-```c++
+```cpp []
 #include <iostream>
 #include <thread>
 #include <mutex>
@@ -137,7 +137,7 @@ ___
 
 <div style="width: 60%;">
 
-```c++
+```cpp []
 void setWinner() {
     auto id = this_thread::get_id();
     auto sleepDuration = dist(rng);
@@ -184,7 +184,7 @@ ___
 
 ## Exercise - solution
 
-```c++
+```cpp []
 void setWinner() {
     auto id = this_thread::get_id();
     auto sleepDuration = dist(rng);
@@ -216,7 +216,7 @@ ___
 
 <div style="width: 60%;">
 
-```c++
+```cpp []
 class X {
     vector<double> values;
 
@@ -279,7 +279,7 @@ ___
 
 ## Exercise - solution
 
-```c++
+```cpp []
 class X {
     once_flag once;
     vector<double> values;

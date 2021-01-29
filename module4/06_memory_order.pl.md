@@ -25,7 +25,7 @@ ___
 
 <div style="width: 33%; font-size: .9em;">
 
-```c++
+```cpp []
 // INPUT:
 int foo(int a)
 {
@@ -46,7 +46,7 @@ int foo(int a)
 
 <div style="width: 33%; font-size: .9em;">
 
-```c++
+```cpp []
 // OPT1:
 int foo(int a)
 {
@@ -66,7 +66,7 @@ int foo(int a)
 
 <div style="width: 33%; font-size: .9em;">
 
-```c++
+```cpp []
 // OPT2:
 int foo(int a)
 {

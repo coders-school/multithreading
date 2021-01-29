@@ -6,12 +6,12 @@
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
 </a>
 
-___ 
+___
 <!-- .slide: style="font-size: .85em" -->
 
 ## Example: thread-safe singleton
 
-```c++
+```cpp []
 class Singleton {
     static std::unique_ptr<Singleton> instance_;
     Singleton() = default;
@@ -37,7 +37,7 @@ ___
 
 ## Example: thread-safe singleton
 
-```c++
+```cpp []
 class Singleton {
     static std::unique_ptr<Singleton> instance_;
     static std::once_flag flag_;
@@ -61,7 +61,7 @@ ___
 
 ## Example: thread-safe singleton
 
-```c++
+```cpp []
 class Singleton {
     Singleton() = default;
 

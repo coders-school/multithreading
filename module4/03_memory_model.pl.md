@@ -14,7 +14,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> Każdy bajt ma unikalny adres w pamięci
 * <!-- .element: class="fragment fade-in" --> Synchronizacja nie jest potrzebna jeśli zapisujemy coś wielowątkowo do różnych obszarów pamięci
 
-```cpp
+```cpp []
 vector<int> v{10};
 thread t1([&]{ v[0] = 5; });
 thread t2([&]{ v[1] = 15; });
@@ -34,7 +34,7 @@ ___
 ### Czy tutaj potrzebna jest synchronizacja?
 <!-- .element: class="fragment fade-in" -->
 
-```cpp
+```cpp []
 struct S {
     char a;
     int b;
@@ -54,7 +54,7 @@ ___
 ### Czy tutaj potrzebna jest synchronizacja?
 <!-- .element: class="fragment fade-in" -->
 
-```cpp
+```cpp []
 vector<int> v(10, 0);
 for (int = 0; i < 10; i++)
     thread t([&]{ v[i] = i; });
@@ -70,7 +70,7 @@ ___
 ### Czy tutaj potrzebna jest synchronizacja?
 <!-- .element: class="fragment fade-in" -->
 
-```cpp
+```cpp []
 vector<int> v;
 for (int = 0; i < 10; i++)
     thread t([&]{ v.emplace_back(i); });
@@ -89,7 +89,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> Jak zsynchronizać zapisy / zapis + odczyt?
 * <!-- .element: class="fragment fade-in" --> <code>std::mutex</code> – to już znacie
 
-```cpp
+```cpp []
 int a = 0;
 mutex m;
 thread t1([&]{
@@ -105,7 +105,7 @@ thread t2([&]{
 
 * <!-- .element: class="fragment fade-in" --> <code>std::atomic&lt;T&gt;</code> – to teraz poznamy
 
-```cpp
+```cpp []
 atomic<int> a = 0;
 thread t1([&]{ a = 1; });
 thread t2([&]{ a = 2; });

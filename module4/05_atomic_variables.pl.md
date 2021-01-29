@@ -46,7 +46,7 @@ ___
 
 <div style="width: 50%; font-size: .9em;">
 
-```c++
+```cpp []
 vector<int> generateContainer() {
     vector<int> input =
         {2, 4, 6, 8, 10, 1, 3, 5, 7, 9};
@@ -76,7 +76,7 @@ vector<int> generateOtherContainer() {
 
 <div style="width: 50%; font-size: .9em;">
 
-```c++
+```cpp []
                 output.push_back(start+=i);
             else
                 output.push_back(start-=i);

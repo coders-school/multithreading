@@ -15,7 +15,7 @@ ___
 
 <div style="width: 56%;">
 
-```c++
+```cpp []
 class X {
     once_flag once;
     vector<double> values;
@@ -78,11 +78,11 @@ ___
 
 <div style="width: 57%;">
 
-```c++
+```cpp []
 class X {
     once_flag once;
     vector<double> values;
-    
+
     void initializeOne() {
         cout << __FUNCTION__ << '\n';
         call_once(once, [&]{
@@ -90,9 +90,9 @@ class X {
             values = {1.0};
         });
     }
-    
+
     // ...
-    
+
     void initializePierdyliard() try {
         cout << __FUNCTION__ << '\n';
         call_once(once, [&]{

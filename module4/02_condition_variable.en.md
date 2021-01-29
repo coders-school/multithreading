@@ -25,7 +25,7 @@ ___
 Correct the code from `exercises/02_wait_queue.cpp` file. A condition variable should be used instead of busy waiting.
 
 
-```c++
+```cpp []
 template <typename T>
 class WaitQueue {
     deque<T> queue_;
@@ -57,7 +57,7 @@ ___
 
 <div style="width: 50%; font-size: .8em;">
 
-```c++
+```cpp
 // includes
 template <typename T>
 class WaitQueue {
@@ -87,7 +87,7 @@ public:
 
 <div style="width: 50%; font-size: .8em;">
 
-```c++
+```cpp
 using StringQueue = WaitQueue<string>;
 
 void provideData(StringQueue & sq) {
@@ -123,39 +123,3 @@ ___
 ## Seals are happy 🦭
 
 ### Thanks condvar!
-
-___
-
-## Condition variable - details
-
-* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code> works only with exclusive locks (<code>unique_lock</code>)
-* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable_any</code> works with any type of lock (eg. <code>shared_lock</code>)
-* <!-- .element: class="fragment fade-in" --> They are non-copyable, but movable
-* <!-- .element: class="fragment fade-in" --> The <code>wait()</code> method takes a lock and optionally a predicate, so only threads for which the condition is met will be woken up
-* <!-- .element: class="fragment fade-in" --> All threads waiting on the condition variable must have the same mutex locked. Otherwise, the behavior is undefined.
-* <!-- .element: class="fragment fade-in" --> The <code>wait_for()</code> and <code>wait_until()</code> methods take respectively a period of time or a point in time, until which the threads wait to wake up. After that, the threads will wake up.
-* <!-- .element: class="fragment fade-in" --> If several threads are waiting on the condition variable and each has a different predicate, using <code>notify_one()</code> may cause a deadlock. A thread for which the condition has not been met may wake up, and if no other thread calls <code>notify_one()</code> or <code>notify_all()</code> they all will be waiting.
-
-___
-
-## Condition variable - threats
-
-* <!-- .element: class="fragment fade-in" --> Spurious wakeup
-  * <!-- .element: class="fragment fade-in" --> The thread waiting for a variable condition cyclically wakes up from time to time and checks whether notification has come or not
-  * <!-- .element: class="fragment fade-in" --> At least a <code>unique_lock</code> is required to wait on a condition variable because when sleeping, the thread unlocks it, and when it wakes up to check the notification, it locks it again for a while, then unlocks it again and continues to sleep
-  * <!-- .element: class="fragment fade-in" --> Predicate added to the <code>wait()</code> function prevents false awakenings as it adds an additional condition that must be met for the thread to wake up
-* <!-- .element: class="fragment fade-in" --> Lost wakeup
-  * <!-- .element: class="fragment fade-in" --> If the notification was sent before the thread waited for the variable, it is lost and will not wake the thread
-  * <!-- .element: class="fragment fade-in" --> A workaround can be done when a false wakeup occurs
-  * <!-- .element: class="fragment fade-in" --> If the thread was waiting on a condition variable with a predicate, then the predicate must be true, otherwise no false wake will occur
-* <!-- .element: class="fragment fade-in" --> <a href="https://www.modernescpp.com/index.php/condition-variables">Spurious wakeup and lost wakeup - article on modernescpp.com</a>
-* <!-- .element: class="fragment fade-in" --> <a href="https://www.modernescpp.com/index.php/thread-synchronization-with-condition-variables-or-tasks">Condition variables vs tasks - article on modernescpp.com</a>
-
-___
-
-## Summary
-
-* <!-- .element: class="fragment fade-in" --> Condition variables are used to sychronize threads multiple times. The future/promise mechanism is for one-time synchronization.
-* <!-- .element: class="fragment fade-in" --> Condition variables are more difficult to use. There are many details that you need to be aware of.
-* <!-- .element: class="fragment fade-in" --> Condition variables do not support exception forwarding. The future/promise mechanism allows it.
-* <!-- .element: class="fragment fade-in" --> General advice - use future/promise whenever possible (better: async/future). Only use condition_variable if multiple synchronization is required.

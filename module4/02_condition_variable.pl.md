@@ -25,7 +25,7 @@ ___
 Popraw kod z pliku `02_wait_queue.cpp` tak, aby używał zmiennej warunkowej zamiast aktywnego czekania:
 <!-- .element: class="fragment fade-in" -->
 
-```c++
+```cpp []
 template <typename T>
 class WaitQueue {
     deque<T> queue_;
@@ -58,7 +58,7 @@ ___
 
 <div style="width: 50%; font-size: .8em;">
 
-```c++
+```cpp []
 // includes
 template <typename T>
 class WaitQueue {
@@ -88,7 +88,7 @@ public:
 
 <div style="width: 50%; font-size: .8em;">
 
-```c++
+```cpp []
 using StringQueue = WaitQueue<string>;
 
 void provideData(StringQueue & sq) {
@@ -196,9 +196,11 @@ ___
 ## Zmienna warunku - zagrożenia
 
 * <!-- .element: class="fragment fade-in" --> Fałszywe przebudzenie (spurious wakeup)
-  * <!-- .element: class="fragment fade-in" --> Wątek czekający na zmiennej warunku cyklicznie co pewien okres czasu wybudza się i sprawdza czy nie przyszła notyfikacja
-  * <!-- .element: class="fragment fade-in" --> W celu oczekiwania na zmiennej warunku wymagana co najmniej blokada <code>unique_lock</code>, gdyż podczas uśpienia wątek ją odblokowuje, a gdy wybudza się, aby sprawdzić notyfikację blokuje ją ponownie na chwilę, po czym znów ją odblokowuje i śpi dalej
-  * <!-- .element: class="fragment fade-in" --> Predykat dodany do funkcji <code>wait()</code> zapobiega fałszywym przebudzeniom, gdyż dodaje dodatkowy warunek, który musi być spełniony, aby wątek się wybudził
+  * <!-- .element: class="fragment fade-in" --> Wątek czekający na zmiennej warunku cyklicznie co pewien okres czasu wybudza się
+  * <!-- .element: class="fragment fade-in" --> W celu oczekiwania na zmiennej warunku wymagana jest blokada <code>unique_lock</code>. Podczas uśpienia wątek ją odblokowuje, a gdy wybudza się, blokuje ją ponownie.
+  * <!-- .element: class="fragment fade-in" --> Predykat dodany do funkcji <code>wait()</code> powoduje, że fałszywe przebudzenia nie są groźne
+    * <!-- .element: class="fragment fade-in" --> Tylko gdy warunek jest spełniony, wątek będzie kontynuował swoją pracę
+    * <!-- .element: class="fragment fade-in" --> Jeśli warunek nie jest spełniony, to wątek zwalnia blokadę i ponownie zostaje uśpiony
 * <!-- .element: class="fragment fade-in" --> Utracona notyfikacja (lost wakeup)
   * <!-- .element: class="fragment fade-in" --> Jeśli notyfikacja została wysłana zanim wątek oczekiwał na zmiennej, to jest ona utracona i nie wybudzi ona wątku
   * <!-- .element: class="fragment fade-in" --> Problem można obejść, gdy pojawi się fałszywe przebudzenie.

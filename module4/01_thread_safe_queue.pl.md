@@ -14,7 +14,7 @@ ___
 
 <div style="width: 60%; font-size: .9em;">
 
-```c++
+```cpp []
 template <typename T>
 class ThreadsafeQueue {
     deque<T> queue_;
@@ -57,7 +57,7 @@ ___
 
 ## Zadanie – rozwiązanie: naprawione wyświetlanie tekstu
 
-```c++
+```cpp []
 void produceText(StringQueue & sq, int number) {
     for (int i = 0; i < number; i++)
         sq.push("This is random text number "
@@ -78,7 +78,7 @@ ___
 
 ## Zadanie – rozwiązanie: threadsafe queue
 
-```c++
+```cpp []
 template <typename T>
 class ThreadsafeQueue {
     deque<T> queue_;
@@ -115,7 +115,7 @@ ___
 
 ## Aktywne czekanie
 
-```c++
+```cpp []
 void saveToFile(StringQueue & sq) {
     ofstream file("/tmp/sth.txt");
     while (file) {

@@ -15,7 +15,7 @@ ___
 
 <div style="width: 70%;">
 
-```c++
+```cpp []
 #include <thread>
 using namespace std;
 
@@ -76,7 +76,7 @@ ___
 
 <div style="width: 70%;">
 
-```c++
+```cpp []
 #include <thread>
 using namespace std;
 
@@ -141,7 +141,7 @@ ___
 
 <div style="width: 50%;">
 
-```c++
+```cpp []
 #include <thread>
 #include <mutex>
 
@@ -162,7 +162,7 @@ int main() {
 
 <div style="width: 50%;">
 
-```c++
+```cpp []
     auto f = [&] {
         while (not stop()) {
             /* do sth... */
@@ -211,7 +211,7 @@ ___
 
 ## Przykład: jak zatrzymać zapętlony wątek – zmienna atomowa
 
-```c++
+```cpp []
 #include <thread>
 #include <atomic>
 using namespace std;

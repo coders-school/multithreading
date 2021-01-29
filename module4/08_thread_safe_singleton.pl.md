@@ -11,7 +11,7 @@ ___
 
 ## Przykład: thread-safe Singleton
 
-```c++
+```cpp []
 class Singleton {
     static std::unique_ptr<Singleton> instance_;
     Singleton() = default;
@@ -37,7 +37,7 @@ ___
 
 ## Przykład: thread-safe Singleton
 
-```c++
+```cpp []
 class Singleton {
     static std::unique_ptr<Singleton> instance_;
     static std::once_flag flag_;
@@ -61,7 +61,7 @@ ___
 
 ## Przykład: thread-safe Singleton
 
-```c++
+```cpp []
 class Singleton {
     Singleton() = default;
 

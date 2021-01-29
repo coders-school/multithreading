@@ -14,7 +14,7 @@ ___
 * <!-- .element: class="fragment fade-in" --> Each byte has a unique memory address
 * <!-- .element: class="fragment fade-in" --> Synchronization is not needed if you are writing something concurrently to different areas of memory
 
-```cpp
+```cpp []
 vector<int> v{10};
 thread t1([&]{ v[0] = 5; });
 thread t2([&]{ v[1] = 15; });
@@ -31,7 +31,7 @@ ___
 
 ## Is Synchronization Needed Here?
 
-```cpp
+```cpp []
 struct S {
     char a;
     int b;
@@ -48,7 +48,7 @@ ___
 
 ## Is Synchronization Needed Here?
 
-```cpp
+```cpp []
 vector<int> v(10, 0);
 for (int = 0; i < 10; i++)
     thread t([&]{ v[i] = i; });
@@ -61,7 +61,7 @@ for (int = 0; i < 10; i++)
 * <!-- .element: class="fragment fade-in" --> Despite the same structure, the memory areas in which we save data are separate
 * <!-- .element: class="fragment fade-in" --> Proper version that do not require synchronization:
 
-```cpp
+```cpp []
 vector<int> v(10, 0);
 for (int = 0; i < 10; i++)
    thread t([&, i]{ v[i] = i; });
@@ -72,7 +72,7 @@ ___
 
 ## Is Synchronization Needed Here?
 
-```cpp
+```cpp []
 vector<int> v;
 for (int = 0; i < 10; i++)
     thread t([&]{ v.emplace_back(i); });
@@ -92,7 +92,7 @@ How to sync writing / writing + reading?
 
 * <!-- .element: class="fragment fade-in" --> <code>std::mutex</code>
 
-```cpp
+```cpp []
 int a = 0;
 mutex m;
 thread t1([&]{
@@ -108,7 +108,7 @@ thread t2([&]{
 
 * <!-- .element: class="fragment fade-in" --> <code>std::atomic&lt;T&gt;</code>
 
-```cpp
+```cpp []
 atomic<int> a = 0;
 thread t1([&]{ a = 1; });
 thread t2([&]{ a = 2; });
