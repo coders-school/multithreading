@@ -8,6 +8,37 @@
 
 ___
 
+## Normal variables vs Atomic variables
+
+Normal variables
+<!-- .element: class="fragment fade-in" -->
+
+* <!-- .element: class="fragment fade-in" --> simultaneous write and read == undefined behavior
+* <!-- .element: class="fragment fade-in" --> need to block with mutexes in case of modification
+
+Atomic variables
+<!-- .element: class="fragment fade-in" -->
+
+* <!-- .element: class="fragment fade-in" --> simultaneous write and read == defined behavior
+* <!-- .element: class="fragment fade-in" --> no additional locking mechanisms required
+
+___
+
+## Atomic variables
+
+* <!-- .element: class="fragment fade-in" --> <code>#include &lt;atomic&gt;</code>
+* <!-- .element: class="fragment fade-in" --> <code>std::atomic</code>
+* <!-- .element: class="fragment fade-in" --> Light synchronization
+* <!-- .element: class="fragment fade-in" --> Allows simple arithmetic and bitwise operations: ++, --, +=, -=, &=, |=, ^=
+* <!-- .element: class="fragment fade-in" --> Typically: numbers, pointers
+* <!-- .element: class="fragment fade-in" --> The most important operations:
+  * <!-- .element: class="fragment fade-in" --> <code>store()</code> - saves the value in an atomic variable, you can also specify <code>std::memory_order</code>
+  * <!-- .element: class="fragment fade-in" --> <code>operator=()</code> - saves the value in an atomic variable
+  * <!-- .element: class="fragment fade-in" --> <code>load()</code> - reads the value from an atomic variable, you can also specify <code>std::memory_order</code>
+  * <!-- .element: class="fragment fade-in" --> <code>operator T()</code> - reads the value from an atomic variable
+
+___
+
 ## `std::memory_order`
 
 * <!-- .element: class="fragment fade-in" --> As part of optimization, the compiler has the right to change the order of operations

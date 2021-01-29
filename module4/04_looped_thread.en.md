@@ -9,7 +9,7 @@
 ___
 <!-- .slide: style="font-size: .85em" -->
 
-## Example: How do I stop a looped thread?
+## How to stop a looped thread?
 
 <div style="display: flex;">
 
@@ -57,20 +57,11 @@ deadlock
 <!-- .element: class="fragment fade-in" -->
 
 ___
-
-## Example: How do I stop a looped thread?
-
-* <!-- .element: class="fragment fade-in" --> Writing performed in several steps
-* <!-- .element: class="fragment fade-in" --> Compiler optimizations
-* <!-- .element: class="fragment fade-in" --> Optimizations in the processor (cache)
-* <!-- .element: class="fragment fade-in" --> There are race conditions
-* <!-- .element: class="fragment fade-in" --> Possible jam
-* <!-- .element: class="fragment fade-in" --> How to do it better?
-
-___
 <!-- .slide: style="font-size: .85em" -->
 
-### Example: how to stop a looped thread - volatile?
+## How to stop a looped thread?
+
+### volatile?
 
 <div style="display: flex;">
 
@@ -119,23 +110,11 @@ WARNING: ThreadSanitizer: data race (pid=10179)
 <!-- .element: class="fragment fade-in" -->
 
 ___
+<!-- .slide: style="font-size: .7em" -->
 
-## Example: how to stop a looped thread - volatile?
+## How to stop a looped thread?
 
-* <!-- .element: class="fragment fade-in" --> Writing performed in several steps
-* <!-- .element: class="fragment fade-in" --> <strike>Compiler optimizations</strike>
-* <!-- .element: class="fragment fade-in" --> Optimizations in the processor (cache)
-* <!-- .element: class="fragment fade-in" --> There are race conditions
-* <!-- .element: class="fragment fade-in" --> There is undefined behavior
-* <!-- .element: class="fragment fade-in" --> The illusion of correctness
-* <!-- .element: class="fragment fade-in" --> volatile == may be modified by external agents
-* <!-- .element: class="fragment fade-in" --> volatile != may be modified concurrently by the program
-* <!-- .element: class="fragment fade-in" --> How to do it better?
-
-___
-<!-- .slide: style="font-size: .95em" -->
-
-## Example: how to stop a looped thread - variable with mutex?
+### Variable with mutex?
 
 <div style="display: flex;">
 
@@ -155,14 +134,7 @@ int main() {
         lock_guard<mutex> lg(m);
         return flag;
     };
-```
-<!-- .element: class="fragment fade-in" -->
 
-</div>
-
-<div style="width: 50%;">
-
-```c++
     auto f = [&] {
         while (not stop()) {
             /* do sth... */
@@ -181,7 +153,11 @@ int main() {
 
 </div>
 
-</div>
+<div style="width: 50%;">
+
+<img data-src="img/spider_pig.jpg" alt="spider_pig" class="plain" style="width: 80%">
+<!-- .element: class="fragment fade-in" -->
+
 
 ```bash
 $> g++ 01c_mutex.cpp -lpthread -fsanitize=thread
@@ -191,25 +167,20 @@ $> ./a.out
 ```
 <!-- .element: class="fragment fade-in" -->
 
-___
-
-### Example: how to stop a looped thread - variable with mutex?
-
-* <!-- .element: class="fragment fade-in" --> Correct!
-* <!-- .element: class="fragment fade-in" --> Long code…
-* <!-- .element: class="fragment fade-in" --> Slow…
-
-<div>
-
-<img height="400px" data-src="img/spider_pig.jpg" alt="spider_pig" class="plain">
-<!-- .element: class="fragment fade-in" -->
+</div>
 
 </div>
 
-___ 
-<!-- .slide: style="font-size: .95em" -->
+___
+<!-- .slide: style="font-size: .9em" -->
 
-## Example: how to stop a looped thread - atomic variable
+## How to stop a looped thread?
+
+### atomic variable
+
+<div style="display: flex;">
+
+<div style="width: 50%;">
 
 ```c++
 #include <thread>
@@ -231,23 +202,19 @@ int main() {
 ```
 <!-- .element: class="fragment fade-in" -->
 
-```bash
-$> g++ 01d_atomic.cpp -lpthread -fsanitize=thread -03
-$> ./a.out
-```
-<!-- .element: class="fragment fade-in" -->
+</div>
 
-___
-
-## Example: how to stop a looped thread - atomic variable
-
-* <!-- .element: class="fragment fade-in" --> Correct!
-* <!-- .element: class="fragment fade-in" --> Light
-* <!-- .element: class="fragment fade-in" --> Little code
-
-<div>
+<div style="width: 50%;">
 
 <img height="400px" data-src="img/perfect.jpeg" alt="perfect" class="plain">
 <!-- .element: class="fragment fade-in" -->
 
 </div>
+
+</div>
+
+```bash
+$> g++ 01d_atomic.cpp -lpthread -fsanitize=thread -03
+$> ./a.out
+```
+<!-- .element: class="fragment fade-in" -->

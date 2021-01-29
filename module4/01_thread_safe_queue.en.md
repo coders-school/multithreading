@@ -12,13 +12,13 @@ ___
 
 <div style="display: flex;">
 
-<div style="width: 60%; font-size: .9em;">
+<div style="width: 50%; font-size: .9em;">
 
 ```c++
 template <typename T>
 class ThreadsafeQueue {
     deque<T> queue_;
-    // TODO: Make it thread-safe :)
+    // TODO: Make it thread-safe
 
 public:
     void push(const T & element) {
@@ -40,43 +40,52 @@ public:
 
 <div style="width: 40%; padding: 20px; font-size: .9em;">
 
-* <!-- .element: class="fragment fade-in" --> In the file <code>01_threadsafe_queue.cpp</code> there is a missing FIFO queue implementation
+* <!-- .element: class="fragment fade-in" --> In <code>exercises/01_threadsafe_queue.cpp</code> there is a FIFO queue implementation
 * <!-- .element: class="fragment fade-in" --> Fix the <code>textProducer</code> thread to generate correct strings:
   * <!-- .element: class="fragment fade-in" --> This is random text number 0
   * <!-- .element: class="fragment fade-in" --> This is random text number 1
   * <!-- .element: class="fragment fade-in" --> …
   * <!-- .element: class="fragment fade-in" --> This is random text number n
-  * <!-- .element: class="fragment fade-in" --> Prevent queue operations from being accessed by multiple threads (make it thread-safe 🙂)
-  * <!-- .element: class="fragment fade-in" --> What problem do you see?
+* <!-- .element: class="fragment fade-in" --> Prevent queue operations from being accessed by multiple threads at the same time (make it thread-safe 🙂)
+* <!-- .element: class="fragment fade-in" --> What kind of problem can you see?
 
 </div>
 
 </div>
 
 ___
+<!-- .slide: data-auto-animate -->
 
-## Exercise - solution
+## produceText - problem
+<!-- .element: data-id="title" -->
 
 ```c++
 void produceText(StringQueue & sq, int number) {
     for (int i = 0; i < number; i++)
-        sq.push("This is random text number "
-                + i);
+        sq.push("This is random text number " + i);
 }
+```
+<!-- .element: data-id="box" -->
 
+___
+<!-- .slide: data-auto-animate -->
+
+## produceText - solution
+<!-- .element: data-id="title" -->
+
+```cpp
 void produceText(StringQueue & sq, int number) {
     for (int i = 0; i < number; i++)
-        sq.push("This is random text number " +
-                to_string(i));
+        sq.push("This is random text number " + to_string(i));
 }
 
 ```
-<!-- .element: class="fragment fade-in" -->
+<!-- .element: data-id="box" -->
 
 ___
 <!-- .slide: style="font-size: .9em" -->
 
-## Exercise - solution: thread safe queue
+## Solution: thread-safe queue
 
 ```c++
 template <typename T>
@@ -106,14 +115,16 @@ public:
 <!-- .element: class="fragment fade-in" -->
 
 ___
+<!-- .slide: data-background="img/efekt_cieplarniany.jpg" data-background-opacity="0.5" -->
+## Problem
 
-## Problem - CPU heating and the greenhouse effect
+### CPU heating
 
-<img data-src="img/efekt_cieplarniany.jpg" alt="efekt cieplarniany" class="plain">
+### the greenhouse effect
 
 ___
 
-## Busy waiting
+## Spinlock
 
 ```c++
 void saveToFile(StringQueue & sq) {
@@ -126,9 +137,9 @@ void saveToFile(StringQueue & sq) {
 ```
 <!-- .element: class="fragment fade-in" -->
 
-* <!-- .element: class="fragment fade-in" --> Busy waiting is a state in which the thread is constantly checking if a certain condition has been met
-* <!-- .element: class="fragment fade-in" --> Another name for this problem is spinlock
-* <!-- .element: class="fragment fade-in" --> The problem is solved by the condition variable
+* <!-- .element: class="fragment fade-in" --> Spinlock is a state in which the thread is repeatedly checking if a certain condition has been met
+* <!-- .element: class="fragment fade-in" --> Another name for this problem is "busy waiting"
+* <!-- .element: class="fragment fade-in" --> The problem can be solved by the condition variable
 
 <img data-src="img/aktywne_czekanie.png" alt="aktywne_czekanie" class="plain">
 <!-- .element: class="fragment fade-in" -->

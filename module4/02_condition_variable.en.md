@@ -13,17 +13,17 @@ ___
 * <!-- .element: class="fragment fade-in" --> <code>#include &lt;condition_variable&gt;</code>
 * <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code>
 * <!-- .element: class="fragment fade-in" --> Key operations
-  * <!-- .element: class="fragment fade-in" --> <code>wait()</code> - waiting for a change - blocks the current thread until it wakes up
-  * <!-- .element: class="fragment fade-in" --> <code>notify_one()</code> - wakes up one of the threads waiting for change. We have no control over which thread is notified.
+  * <!-- .element: class="fragment fade-in" --> <code>wait()</code> - waiting for a change - blocks the current thread until it receives a notification
+  * <!-- .element: class="fragment fade-in" --> <code>notify_one()</code> - awakens one of the threads waiting to change. We have no control over which thread is notified.
   * <!-- .element: class="fragment fade-in" --> <code>notify_all()</code> - awakens all threads waiting for change. These threads may compete for resources.
 
 ___
-<!-- .slide: style="font-size: .9em" -->
+<!-- .slide: style="font-size: .85em" -->
 
 ## Exercise: Arctic friendly FIFO queue
 
-Correct code from file `02_wait_queue.cpp` so that it uses a conditional variable instead of busy waiting:
-<!-- .element: class="fragment fade-in" -->
+Correct the code from `exercises/02_wait_queue.cpp` file. A condition variable should be used instead of busy waiting.
+
 
 ```c++
 template <typename T>
@@ -48,7 +48,6 @@ public:
     }
 };
 ```
-<!-- .element: class="fragment fade-in" -->
 
 ___
 
@@ -119,77 +118,23 @@ int main() {
 </div>
 
 ___
+<!-- .slide: data-background="img/foczka.jpg" data-background-opacity="0.5" -->
 
-## Condition variables make seals happy 🙂
+## Seals are happy 🦭
 
-<img data-src="img/foczka.jpg" alt="foczka" class="plain">
+### Thanks condvar!
 
 ___
 
 ## Condition variable - details
 
-* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code> only works with exclusive locks (<code>unique_lock</code>)
-* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable_any</code> works with any type of lock (<code>shared_lock</code>)
-* <!-- .element: class="fragment fade-in" --> They cannot be copied, so they are mostly class fields to avoid passing them
-* <!-- .element: class="fragment fade-in" --> Method <code>wait()</code> takes a lock and optionally a predicate, so only those threads for which the condition is met will be woken up
-* <!-- .element: class="fragment fade-in" --> All threads waiting for the condition variable must have the same mutex locked. Otherwise, the behavior is undefined.
-* <!-- .element: class="fragment fade-in" --> Methods <code>wait_for()</code> and <code>wait_until()</code> take a point in time or a period of time, respectively, until which the threads wait to wake up. After that, the threads will wake up.
-* <!-- .element: class="fragment fade-in" --> If several threads are waiting on the condition variable and each has a different predicate, using  <code>notify_one()</code> may cause a jam. A thread for which the condition has not been met may wake up, and if no other thread calls <code>nofity_one()</code> or <code>notify_all()</code> they will all be waiting.
-
-___
-
-## Homework: ping-pong
-
-<div style="display: flex;">
-
-<div style="width: 60%; font-size: .9em;">
-
-* <!-- .element: class="fragment fade-in" --> First thread prints "ping" and the next number
-* <!-- .element: class="fragment fade-in" --> Second thread prints "pong" and the next number
-* <!-- .element: class="fragment fade-in" --> Ping thread starts and the pong thread always ends. Threads must work in turns. There may not be 2 pings or pongs in succession. The program cannot end with a ping that will not be answered with pong.
-* <!-- .element: class="fragment fade-in" --> The program is to terminate either after the number of hits or after the time limit, whichever occurs first. The reason for termination should be displayed on the screen
-* <!-- .element: class="fragment fade-in" --> Program parameters:
-  * <!-- .element: class="fragment fade-in" --> number of bounces
-  * <!-- .element: class="fragment fade-in" --> time limit (in seconds)
-
-</div>
-
-<div style="width: 40%; font-size: .9em;">
-
-```bash
-$> g++ 03_ping_pong.cpp -lpthread
--std=c++17 -fsanitize=thread
-$> ./a.out 1 10
-ping 0
-pong 0
-Ping reached repetitions limit
-Pong reached repetitions limit
-$> ./a.out 12 1
-ping 0
-pong 0
-ping 1
-pong 1
-ping 2
-pong 2
-Timeout
-```
-
-</div> <!-- .element: class="fragment fade-in" -->
-
-</div>
-
-___
-
-## Tips
-
-If you get stuck:
-
-* <!-- .element: class="fragment fade-in" --> You need a mutex and a condition variable in your <code>PingPong</code> class
-* <!-- .element: class="fragment fade-in" --> Wait for a condition variable with <code>wait_for()</code> in <code>stop()</code> function
-* <!-- .element: class="fragment fade-in" --> Check the number of repetitions in ping and pong threads
-* <!-- .element: class="fragment fade-in" --> Use an additional <code>bool</code> variable which will tell all threads to end, when the required conditions are met. Use <code>atomic<bool></code> type here (we'll talk later about it 🙂)
-* <!-- .element: class="fragment fade-in" --> Ping and pong threads should be using <code>wait()</code> to check if it's their turn to work. Use an additional <code>bool</code> variable that will be used in the predicate passed to <code>wait()</code>.
-* <!-- .element: class="fragment fade-in" --> The pong thread should end the program after reaching the bounce limit
+* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code> works only with exclusive locks (<code>unique_lock</code>)
+* <!-- .element: class="fragment fade-in" --> <code>std::condition_variable_any</code> works with any type of lock (eg. <code>shared_lock</code>)
+* <!-- .element: class="fragment fade-in" --> They are non-copyable, but movable
+* <!-- .element: class="fragment fade-in" --> The <code>wait()</code> method takes a lock and optionally a predicate, so only threads for which the condition is met will be woken up
+* <!-- .element: class="fragment fade-in" --> All threads waiting on the condition variable must have the same mutex locked. Otherwise, the behavior is undefined.
+* <!-- .element: class="fragment fade-in" --> The <code>wait_for()</code> and <code>wait_until()</code> methods take respectively a period of time or a point in time, until which the threads wait to wake up. After that, the threads will wake up.
+* <!-- .element: class="fragment fade-in" --> If several threads are waiting on the condition variable and each has a different predicate, using <code>notify_one()</code> may cause a deadlock. A thread for which the condition has not been met may wake up, and if no other thread calls <code>notify_one()</code> or <code>notify_all()</code> they all will be waiting.
 
 ___
 
@@ -210,7 +155,7 @@ ___
 
 ## Summary
 
-* <!-- .element: class="fragment fade-in" --> Condition variables are used to sychronize threads multiple times. The future and promise mechanism is for one-time synchronization.
-* <!-- .element: class="fragment fade-in" --> Condition variables are much more difficult to use. There are many details that need to be protected against.
-* <!-- .element: class="fragment fade-in" --> Condition variables do not support exception throwing. The future/promise mechanism allows it.
+* <!-- .element: class="fragment fade-in" --> Condition variables are used to sychronize threads multiple times. The future/promise mechanism is for one-time synchronization.
+* <!-- .element: class="fragment fade-in" --> Condition variables are more difficult to use. There are many details that you need to be aware of.
+* <!-- .element: class="fragment fade-in" --> Condition variables do not support exception forwarding. The future/promise mechanism allows it.
 * <!-- .element: class="fragment fade-in" --> General advice - use future/promise whenever possible (better: async/future). Only use condition_variable if multiple synchronization is required.
