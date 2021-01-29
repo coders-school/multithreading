@@ -8,7 +8,7 @@
 
         <meta name="description" content="OOP">
         <meta name="author" content="Mateusz Adamski & Łukasz Ziobroń">
-        
+
         <link rel="stylesheet" href="../../dist/reset.css">
         <link rel="stylesheet" href="../../dist/reveal.css">
         <link rel="stylesheet" href="../../dist/theme/coders.css" id="theme">
@@ -40,15 +40,15 @@
 
                         ## Agenda
 
-                        1. <!-- .element: class="fragment fade-in" --> Busy waiting
+                        1. <!-- .element: class="fragment fade-in" --> Thread-safe queue
                         2. <!-- .element: class="fragment fade-in" --> <code>std::condition_variable</code>
                         3. <!-- .element: class="fragment fade-in" --> Memory model
-                        4. <!-- .element: class="fragment fade-in" --> Example: how to stop a looped thread?
+                        4. <!-- .element: class="fragment fade-in" --> How to stop a looped thread?
                         5. <!-- .element: class="fragment fade-in" --> Atomic variables
                         6. <!-- .element: class="fragment fade-in" --> <code>std::memory_order</code>
                         7. <!-- .element: class="fragment fade-in" --> <code>std::call_once</code>
-                        8. <!-- .element: class="fragment fade-in" --> Example: thread-safe singletons
-                        9. <!-- .element: class="fragment fade-in" --> <code>std::call_once</code> exceptions
+                        8. <!-- .element: class="fragment fade-in" --> Thread-safe singletons
+                        9. <!-- .element: class="fragment fade-in" --> Exceptions in <code>std::call_once</code>
 
                         </textarea>
                     </section>
@@ -56,7 +56,7 @@
                 <!--
                     Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
                     For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
-                    
+
                     Usage:
                     Install dependencies
 
@@ -67,12 +67,12 @@
                     Open http://localhost:8000 to view your presentation
 
                     You can change the port by using npm start -- --port=8001.
-                -->                
+                -->
                 <section data-markdown="00_intro.en.md"
                          data-separator-vertical="^___"
                          data-separator-notes="^Note:">
                 </section>
-                <section data-markdown="01_busy_waiting.en.md"
+                <section data-markdown="01_thread_safe_queue.en.md"
                          data-separator-vertical="^___"
                          data-separator-notes="^Note:">
                 </section>

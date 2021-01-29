@@ -6,7 +6,7 @@
     <img width="500" data-src="../coders_school_logo.png" alt="Coders School" class="plain">
 </a>
 
-___ 
+___
 <!-- .slide: style="font-size: .9em" -->
 
 ## `std::call_once`
@@ -146,8 +146,8 @@ void setWinner() {
         << "(" << id << "). Chasing time: "
         << sleepDuration << "ms\n";
     cout << msg.str();
-this_thread::sleep_for(chrono::milliseconds(sleepDuration)
-        
+    this_thread::sleep_for(chrono::milliseconds(sleepDuration)
+
     // TODO: set me as a winner
     // but don't let others overwrite this!
 }
@@ -219,7 +219,7 @@ ___
 ```c++
 class X {
     vector<double> values;
-    
+
     void initializeOne() { values = {1.0}; }
     void initializeTwo() { values = {1.0, 2.0}; }
     void initializeThree() { values = {1.0, 2.0, 3.0}; }
@@ -283,7 +283,7 @@ ___
 class X {
     once_flag once;
     vector<double> values;
-    
+
     void initializeOne() {
         cout << __FUNCTION__ << '\n';
         call_once(once, [&]{

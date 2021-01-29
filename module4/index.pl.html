@@ -8,7 +8,7 @@
 
         <meta name="description" content="OOP">
         <meta name="author" content="Mateusz Adamski & Łukasz Ziobroń">
-        
+
         <link rel="stylesheet" href="../../dist/reset.css">
         <link rel="stylesheet" href="../../dist/reveal.css">
         <link rel="stylesheet" href="../../dist/theme/coders.css" id="theme">
@@ -40,7 +40,7 @@
 
                         ## Agenda
 
-                        1. <!-- .element: class="fragment fade-in" --> Aktywne czekanie
+                        1. <!-- .element: class="fragment fade-in" --> Wątkowo-bezpieczna kolejka
                         2. <!-- .element: class="fragment fade-in" --> Zmienna warunku (<code>std::condition_variable</code>)
                         3. <!-- .element: class="fragment fade-in" --> Model pamięci C++
                         4. <!-- .element: class="fragment fade-in" --> Przykład: Jak zatrzymać zapętlony wątek?
@@ -56,7 +56,7 @@
                 <!--
                     Note that Windows uses `\r\n` instead of `\n` as its linefeed character.
                     For a regex that supports all operating systems, use `\r?\n` instead of `\n`.
-                    
+
                     Usage:
                     Install dependencies
 
@@ -67,12 +67,12 @@
                     Open http://localhost:8000 to view your presentation
 
                     You can change the port by using npm start -- --port=8001.
-                -->                
+                -->
                 <section data-markdown="00_intro.pl.md"
                          data-separator-vertical="^___"
                          data-separator-notes="^Note:">
                 </section>
-                <section data-markdown="01_busy_waiting.pl.md"
+                <section data-markdown="01_thread_safe_queue.pl.md"
                          data-separator-vertical="^___"
                          data-separator-notes="^Note:">
                 </section>

@@ -1,7 +1,7 @@
 ## Something about you
 
-* One of the most interesting things from Cpp Core Guidelines pre-work?
-* Do you prefer threads or async?
+* One of the most interesting things from pre-work?
+* Have you ever used condition variable?
 
 ___
 <!-- .slide: data-background="img/lukasz.jpg" -->
@@ -49,8 +49,8 @@ ___
 * Motorcycles
 * Photography
 * Archery
+* Marketing
 * Andragogy
-* Marketing 🆕
 
 </div>
 
