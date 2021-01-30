@@ -519,7 +519,7 @@ There are 2 more:
   * <!-- .element: class="fragment fade-in" --> Must be 3m (10 feet) tall to use it 😉
 * <!-- .element: class="fragment fade-in" --> <code>memory_order_acq_rel</code>
   * <!-- .element: class="fragment fade-in" --> Both acquire and release fences in one sequence point = full barrier
-  * <!-- .element: class="fragment fade-in" --> But it's not sequentialy consistent
+  * <!-- .element: class="fragment fade-in" --> But it's not sequentially consistent
   * <!-- .element: class="fragment fade-in" --> Used in instructions that read and write data atomically - <code>compare_exchange_strong</code>, <code>compare_exchange_weak</code>, <code>exchange</code>
 
 ___

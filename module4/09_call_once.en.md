@@ -7,13 +7,20 @@
 </a>
 
 ___
-<!-- .slide: style="font-size: .9em" -->
 
 ## `std::call_once`
 
-<div style="display: flex;">
+* <!-- .element: class="fragment fade-in" --> <code>#include &lt;mutex&gt;</code>
+* <!-- .element: class="fragment fade-in" --> <code>std::call_once</code>
+* <!-- .element: class="fragment fade-in" --> Wraps a function that must be executed only once
+* <!-- .element: class="fragment fade-in" --> Guarantees one call, even when called concurrently by several threads
+* <!-- .element: class="fragment fade-in" --> Calls the passed function on its own thread (doesn't create a new one)
+* <!-- .element: class="fragment fade-in" --> It needs <code>std::once_flag</code> flag
 
-<div style="width: 60%; font-size: .85em;">
+___
+<!-- .slide: style="font-size: .8em" -->
+
+## `std::call_once`
 
 ```cpp []
 #include <iostream>
@@ -39,20 +46,6 @@ int main() {
 }
 ```
 <!-- .element: class="fragment fade-in" -->
-</div>
-
-<div style="width: 40%; padding: 20px;">
-
-* <!-- .element: class="fragment fade-in" --> <code>#include &lt;mutex&gt;</code>
-* <!-- .element: class="fragment fade-in" --> <code>std::call_once</code>
-* <!-- .element: class="fragment fade-in" --> Wraps a function that will only be executed once
-* <!-- .element: class="fragment fade-in" --> Guarantees one call, even when called concurrently by several threads
-* <!-- .element: class="fragment fade-in" --> Calls the passed function on its thread (doesn't create a new one)
-* <!-- .element: class="fragment fade-in" --> It needs <code>std::once_flag</code> flag
-
-</div>
-
-</div>
 
 ```bash
 $> g++ 01_call_once.cpp -lpthread -fsanitize=thread
@@ -62,66 +55,21 @@ Called once!
 <!-- .element: class="fragment fade-in" -->
 
 ___
-<!-- .slide: style="font-size: .9em" -->
 
 ## once_flag
-
-<div style="display: flex;">
-
-<div style="width: 60%; font-size: .8em;">
-
-```cpp []
-#include <iostream>
-#include <thread>
-#include <mutex>
-
-std::once_flag flag;
-
-void do_once() {
-    std::call_once(flag, [] {
-        std::cout << "Called once!\n";
-    });
-}
-
-int main() {
-    std::thread t1(do_once);
-    std::thread t2(do_once);
-    std::thread t3(do_once);
-    t1.join();
-    t2.join();
-    t3.join();
-    return 0;
-}
-
-```
-<!-- .element: class="fragment fade-in" -->
-</div>
-
-<div style="width: 40%; padding: 20px;">
 
 * <!-- .element: class="fragment fade-in" --> <code>#include &lt;mutex&gt;</code>
 * <!-- .element: class="fragment fade-in" --> <code>std::once_flag</code>
 * <!-- .element: class="fragment fade-in" --> An auxiliary structure for use with <code>std::call_once</code>
-* <!-- .element: class="fragment fade-in" --> No copying or moving
-* <!-- .element: class="fragment fade-in" --> Contains information whether the function with it has already been called
+* <!-- .element: class="fragment fade-in" --> Neither copyable nor movable
+* <!-- .element: class="fragment fade-in" --> Contains information whether the function has already been called
 * <!-- .element: class="fragment fade-in" --> The constructor sets the state to not called
-
-</div>
-
-</div>
-
-```bash
-$> g++ 01_call_once.cpp -lpthread -fsanitize=thread
-$> ./a.out
-Called once!
-```
-<!-- .element: class="fragment fade-in" -->
 
 ___
 
-## Principle of operation `call_once`
+## `call_once` way of operation
 
-* <!-- .element: class="fragment fade-in" --> If <code>once_flag</code> is in the "called" state, <code>call_once</code> immediately returns - return (passive call)
+* <!-- .element: class="fragment fade-in" --> If <code>once_flag</code> is in the "called" state, <code>call_once</code> immediately returns (passive call)
 * <!-- .element: class="fragment fade-in" --> If <code>once_flag</code> is in the "not called" state, <code>call_once</code> executes the passed function, passing further arguments to it (active call)
   * <!-- .element: class="fragment fade-in" --> If the function throws an exception, it is propagated on, and <code>once_flag</code> is not set to "called state" (exceptional call), so different <code>call_once</code> can be called <span style="color: #f33">(at least in theory 🙂)</span>
   * <!-- .element: class="fragment fade-in" --> If the function ends normally, <code>once_flag</code> is set to the "called" state. It is guaranteed that all other calls will be passive.
@@ -129,9 +77,9 @@ ___
 * <!-- .element: class="fragment fade-in" --> If the same flag is used for concurrent calls to different functions, it is not specified which function will be called.
 
 ___
-<!-- .slide: style="font-size: .85em" -->
+<!-- .slide: style="font-size: .78em" -->
 
-## Exercise: rat race
+### Exercise: rat race
 
 <div style="display: flex;">
 
@@ -148,8 +96,7 @@ void setWinner() {
     cout << msg.str();
     this_thread::sleep_for(chrono::milliseconds(sleepDuration)
 
-    // TODO: set me as a winner
-    // but don't let others overwrite this!
+    // TODO: set me as a winner but don't let others overwrite this!
 }
 
 ```
@@ -158,9 +105,11 @@ void setWinner() {
 
 <div style="width: 40%; padding: 20px;">
 
+#### `exercises/05_race.cpp`
+
 * <!-- .element: class="fragment fade-in" --> 10 contestants (threads) are racing for $1 million
 * <!-- .element: class="fragment fade-in" --> Only the first player wins the prize, the rest will get nothing
-* <!-- .element: class="fragment fade-in" --> Implement the function  <code>setWinner()</code> so that the winning thread sets itself the winner and does not allow others to override this value
+* <!-- .element: class="fragment fade-in" --> Implement the function  <code>setWinner()</code> so that the winning thread sets itself as the winner and does not allow others to override this value.
 
 </div>
 
@@ -193,24 +142,24 @@ void setWinner() {
         << "(" << id << "). Chasing time: "
         << sleepDuration << "ms\n";
     cout << msg.str();
-    this_thread::sleep_for(
-        chrono::milliseconds(sleepDuration)
-);
+    this_thread::sleep_for(chrono::milliseconds(sleepDuration));
 
-call_once(once, [&]{
-    cout << "Call once for " << id << '\n';
-    stringstream troublesomeConversion;
-    troublesomeConversion << id;
-    winnerId = troublesomeConversion.str();
+    call_once(once, [&]{
+        cout << "Call once for " << id << '\n';
+        std::stringstream troublesomeConversion;
+        troublesomeConversion << id;
+        winnerId = troublesomeConversion.str();
     });
 }
 ```
 <!-- .element: class="fragment fade-in" -->
 
 ___
-<!-- .slide: style="font-size: .88em" -->
+<!-- .slide: style="font-size: .85em" -->
 
-## Exercise: mutually exclusive calls
+### Exercise: mutually exclusive calls
+
+#### `exercises/06_exclusive_calls.cpp`
 
 <div style="display: flex;">
 
@@ -248,7 +197,7 @@ public:
 
 <div style="padding: 20px;">
 
-* <!-- .element: class="fragment fade-in" --> Add the appropriate single calls and messages so that the output appears as follows
+* <!-- .element: class="fragment fade-in" --> Add the appropriate <code>call_once</code> and messages so that the output appears as below
 * <!-- .element: class="fragment fade-in" --> Do not modify the constructor 😉
 
 </div>
