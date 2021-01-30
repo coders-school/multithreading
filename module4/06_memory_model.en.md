@@ -24,7 +24,7 @@ thread t2([&]{ v[1] = 15; });
 * <!-- .element: class="fragment fade-in" --> Synchronization is needed when you are writing something concurrently to the same memory areas
 * <!-- .element: class="fragment fade-in" --> Synchronization is needed if at least one thread is writing and others are reading the same area of ​​memory
 * <!-- .element: class="fragment fade-in" --> No synchronization when required == race condition == undefined behavior
-* <!-- .element: class="fragment fade-in" --> <code>const</code> implies multi-threaded security, because it guarantees reading only
+* <!-- .element: class="fragment fade-in" --> <code>const</code> implies multi-threaded safety, because it guarantees reading only
 * <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/language/memory_model">C++ Memory model on cppreference.com</a>
 
 ___
