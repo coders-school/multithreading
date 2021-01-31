@@ -62,7 +62,7 @@ ___
 * Ping-pong
   * difficult version - exercises/03a_ping_pong.cpp
   * easier version - exercises/03b_ping_pong.cpp
-* [Post-test](https://forms.gle/tF9a3Q2gATwnUmWU8)
+* [Post-test](https://forms.gle/dgw17Ac5vCT1YBAw7)
 * [Training evaluation](https://forms.gle/ADXRttpAaZgW8KwM6)
 
 ___
