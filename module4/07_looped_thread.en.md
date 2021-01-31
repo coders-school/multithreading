@@ -11,7 +11,7 @@ ___
 
 ## How to stop a looped thread?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 70%;">
 
@@ -63,7 +63,7 @@ ___
 
 ### volatile?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 70%;">
 
@@ -116,7 +116,7 @@ ___
 
 ### Variable with mutex?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 50%;">
 
@@ -178,7 +178,7 @@ ___
 
 ### atomic variable
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 50%;">
 

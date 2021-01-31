@@ -7,7 +7,7 @@
 </a>
 
 ___
-<!-- .slide: style="font-size: .85em" -->
+<!-- .slide: style="font-size: .85em" data-auto-animate -->
 
 ## Example: thread-safe singleton
 
@@ -27,13 +27,14 @@ public:
     }
 };
 ```
-<!-- .element: class="fragment fade-in" -->
+<!-- .element: class="fragment fade-in" data-id="singleton" -->
 
 * <!-- .element: class="fragment fade-in" --> Slow (mutexes)
 * <!-- .element: class="fragment fade-in" --> Safe
 * <!-- .element: class="fragment fade-in" --> Long Code
 
 ___
+<!-- .slide: style="font-size: .85em" data-auto-animate -->
 
 ## Example: thread-safe singleton
 
@@ -51,13 +52,14 @@ public:
     }
 };
 ```
-<!-- .element: class="fragment fade-in" -->
+<!-- .element: data-id="singleton" -->
 
 * <!-- .element: class="fragment fade-in" --> Slow (once_flag)
 * <!-- .element: class="fragment fade-in" --> Safe
-* <!-- .element: class="fragment fade-in" --> A little less code
+* <!-- .element: class="fragment fade-in" --> Less code
 
 ___
+<!-- .slide: style="font-size: .85em" data-auto-animate -->
 
 ## Example: thread-safe singleton
 
@@ -74,9 +76,9 @@ public:
 
 // Meyers Singleton
 ```
-<!-- .element: class="fragment fade-in" -->
+<!-- .element: data-id="singleton" -->
 
-* <!-- .element: class="fragment fade-in" --> Fastest
-* <!-- .element: class="fragment fade-in" --> Safe - static initialization is thread-safe as of C++11
+* <!-- .element: class="fragment fade-in" --> The fastest one
+* <!-- .element: class="fragment fade-in" --> Safe - static initialization is thread-safe since C++11
 * <!-- .element: class="fragment fade-in" --> Short
 * <!-- .element: class="fragment fade-in" --> Lovely

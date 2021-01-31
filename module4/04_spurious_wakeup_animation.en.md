@@ -11,7 +11,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -73,7 +73,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -135,7 +135,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -197,7 +197,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -259,7 +259,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -321,7 +321,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -382,7 +382,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -443,7 +443,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -507,7 +507,7 @@ ___
 
 ## Spurious wake-up
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 

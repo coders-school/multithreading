@@ -10,7 +10,7 @@ using namespace std;
 class X {
     once_flag once;
     vector<double> values;
-         
+
     void initializeOne() {
         cout << __FUNCTION__ << '\n';
         call_once(once, [&]{
@@ -18,7 +18,7 @@ class X {
             values = {1.0};
         });
     }
-    
+
     void initializeTwo() {
         cout << __FUNCTION__ << '\n';
         call_once(once, [&]{
@@ -34,7 +34,7 @@ class X {
             values = {1.0, 2.0, 3.0};
         });
     }
-  
+
     void initializePierdyliard() {
         cout << __FUNCTION__ << '\n';
         call_once(once, [&]{
@@ -73,13 +73,13 @@ public:
 int main() {
     X x2{2};
     x2.print();
-    
+
     X x3{3};
     x3.print();
-    
+
     X x0{0};
     x0.print();
-    
+
     X x{std::numeric_limits<int>::max()};
     x.print();
 

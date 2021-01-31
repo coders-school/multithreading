@@ -53,7 +53,7 @@ ___
 
 ## Exercise - solution
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 50%; font-size: .8em;">
 

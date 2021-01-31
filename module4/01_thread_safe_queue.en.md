@@ -10,7 +10,7 @@ ___
 
 ## Exercise: FIFO queue
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 50%; font-size: .9em;">
 

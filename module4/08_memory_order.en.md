@@ -53,7 +53,7 @@ ___
 
 ## Sequential consistency and optimizations
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 33%; font-size: .9em;">
 
@@ -489,7 +489,6 @@ ___
 * <!-- .element: class="fragment fade-in" --> <code>memory_order_release</code> ⬆️⬆️⬆️
   * <!-- .element: class="fragment fade-in" --> <code>mutex.unlock()</code>
   * <!-- .element: class="fragment fade-in" --> <code>atomic.store()</code>
-  * <!-- .element: class="fragment fade-in" --> <code>shared_ptr</code>'s reference counter decrementation
 * <!-- .element: class="fragment fade-in" --> <code>memory_order_seq_cst</code> ❌❌❌
   * <!-- .element: class="fragment fade-in" --> multiple producer-multiple consumer situations
 
@@ -521,6 +520,7 @@ There are 2 more:
   * <!-- .element: class="fragment fade-in" --> Both acquire and release fences in one sequence point = full barrier
   * <!-- .element: class="fragment fade-in" --> But it's not sequentially consistent
   * <!-- .element: class="fragment fade-in" --> Used in instructions that read and write data atomically - <code>compare_exchange_strong</code>, <code>compare_exchange_weak</code>, <code>exchange</code>
+  * <!-- .element: class="fragment fade-in" --> <code>shared_ptr</code>'s reference counter decrementation (<a href="https://youtu.be/KeLBd2EJLOU?t=4791">watch Atomic Weapons by Herb Sutter</a>)
 
 ___
 

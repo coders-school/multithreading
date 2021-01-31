@@ -54,7 +54,7 @@ ___
 
 ## Zadanie - rozwiązanie
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 50%; font-size: .8em;">
 
@@ -140,7 +140,7 @@ ___
 
 ## Zadanie domowe: ping-pong
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%; font-size: .9em;">
 

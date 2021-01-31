@@ -11,7 +11,7 @@ ___
 
 ## call_once
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%; font-size: .85em;">
 
@@ -66,7 +66,7 @@ ___
 
 ## once_flag
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%; font-size: .8em;">
 
@@ -133,7 +133,7 @@ ___
 
 ## Zadanie: gonitwa
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -212,7 +212,7 @@ ___
 
 ## Zadanie: wykluczające się wywołania
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 

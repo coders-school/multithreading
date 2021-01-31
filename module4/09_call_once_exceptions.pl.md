@@ -11,7 +11,7 @@ ___
 
 ## Zadanie: wyjątki w call_once
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 56%;">
 
@@ -74,7 +74,7 @@ ___
 
 ## Zadanie - rozwiązanie
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 57%;">
 

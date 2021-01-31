@@ -81,7 +81,7 @@ ___
 
 ### Exercise: rat race
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -161,7 +161,7 @@ ___
 
 #### `exercises/06_exclusive_calls.cpp`
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 

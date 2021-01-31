@@ -10,7 +10,7 @@ ___
 
 ## Zadanie: kolejka FIFO
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%; font-size: .9em;">
 

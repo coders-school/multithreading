@@ -11,7 +11,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -70,7 +70,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -129,7 +129,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -188,7 +188,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -250,7 +250,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -312,7 +312,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -374,7 +374,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -437,7 +437,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -502,7 +502,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -566,7 +566,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -630,7 +630,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -694,7 +694,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -756,7 +756,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -816,7 +816,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -876,7 +876,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -936,7 +936,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -997,7 +997,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1058,7 +1058,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1119,7 +1119,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1183,7 +1183,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1247,7 +1247,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1311,7 +1311,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1375,7 +1375,7 @@ ___
 
 ## How exactly does it work?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 

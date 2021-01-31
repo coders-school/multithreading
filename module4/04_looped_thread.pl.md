@@ -11,7 +11,7 @@ ___
 
 ## Przykład: jak zatrzymać zapętlony wątek?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 70%;">
 
@@ -72,7 +72,7 @@ ___
 
 ### Przykład: jak zatrzymać zapętlony wątek – volatile?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 70%;">
 
@@ -137,7 +137,7 @@ ___
 
 ## Przykład: jak zatrzymać zapętlony wątek – zmienna z mutexem?
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 50%;">
 

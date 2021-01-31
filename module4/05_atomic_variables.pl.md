@@ -42,7 +42,7 @@ ___
 
 ## Zadanie: synchronizacja danych
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 50%; font-size: .9em;">
 

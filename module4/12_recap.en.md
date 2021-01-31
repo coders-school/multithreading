@@ -8,22 +8,17 @@
 
 ___
 
-## 1. Describe one thing from today's session
+### 1. What was the most surprising for you? 😲
 
-## 2. What was the most obvious for you? 🙂
+### 2. What was the most obvious for you? 🥱
 
 ___
 <!-- .slide: style="font-size: .81em" -->
 
 ## Points to remember
 
-* <!-- .element: class="fragment fade-in" --> Your code is <span style="color: #cf802a">high-level</span> if you use only <code>std::async</code> and <code>std::future</code> object. Raw <code>std::thread</code>, <code>std::promise</code> or <code>std::packaged_task</code> objects means that it uses lower abstraction level, which is more complicated to understand.
-* <!-- .element: class="fragment fade-in" --> Calling <code>std::async</code> without a policy may cause unexpected behavior, like task not being called at all.
-* <!-- .element: class="fragment fade-in" --> <code>std::promise</code> can be set <span style="color: #cf802a">only once</span>
-* <!-- .element: class="fragment fade-in" --> <code>std::future</code> can be get <span style="color: #cf802a">only once</span>
-* <!-- .element: class="fragment fade-in" --> There is a <code style="color: limegreen">std::shared_future</code>, but there is no <code style="text-decoration: line-through; color: red">std::shared_promise</code>
-* <!-- .element: class="fragment fade-in" --> <code>std::async</code> <span style="color: #cf802a">does NOT</span> always spawn a new thread. It may use a thread pool or run the task synchronously on the thread that called <code>get()</code>
-* <!-- .element: class="fragment fade-in" --> Creating <code>std::future</code> via the default constructor <span style="color: #cf802a">does not make any sense</span>. It will be always invalid.
+* <!-- .element: class="fragment fade-in" -->A
+* <!-- .element: class="fragment fade-in" -->B
 
 ___
 
@@ -65,6 +60,8 @@ ___
 ## Post-work
 
 * Ping-pong
+  * difficult version - exercises/03a_ping_pong.cpp
+  * easier version - exercises/03b_ping_pong.cpp
 * [Post-test](https://forms.gle/tF9a3Q2gATwnUmWU8)
 * [Training evaluation](https://forms.gle/ADXRttpAaZgW8KwM6)
 
@@ -72,7 +69,7 @@ ___
 
 ## Homework: ping-pong
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%; font-size: .9em;">
 
@@ -87,7 +84,7 @@ ___
 
 </div>
 
-<div style="width: 40%; font-size: .9em;">
+<div style="width: 40%; font-size: .85em;">
 
 ```bash
 $> g++ 03_ping_pong.cpp -lpthread
@@ -115,7 +112,7 @@ ___
 
 ## Tips
 
-If you get stuck:
+If you got stuck:
 
 * <!-- .element: class="fragment fade-in" --> You need a mutex and a condition variable in your <code>PingPong</code> class
 * <!-- .element: class="fragment fade-in" --> Wait for a condition variable with <code>wait_for()</code> in <code>stop()</code> function
@@ -126,9 +123,14 @@ If you get stuck:
 
 ___
 
-### Useful links
+## Useful links
 
-* <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/thread/async">std::async on cppreference.com</a>
-* <!-- .element: class="fragment fade-in" --> <a href="https://en.cppreference.com/w/cpp/thread/packaged_task">std::packaged_task on cppreference.com</a>
-* <!-- .element: class="fragment fade-in" --> <a href="http://scottmeyers.blogspot.com/2013/03/stdfutures-from-stdasync-arent-special.html">std::futures from std::async aren't special! - Scott Meyers</a>
-* <!-- .element: class="fragment fade-in" --> <a href=https://stackoverflow.com/questions/18143661/what-is-the-difference-between-packaged-task-and-async">The difference between std::async and std::packaged_task</a>
+* <a href="http://www.open-std.org/jtc1/sc22/wg21/docs/papers/2007/n2393.html">C++ Atomic Types and Operations (C++ Standard)</a>
+* <a href="https://en.cppreference.com/w/cpp/language/memory_model">C++ Memory model on cppreference.com</a>
+* <a href="https://en.cppreference.com/w/cpp/atomic/memory_order">std::memory_order on cppreference.com</a>
+* <a href="https://en.cppreference.com/w/cpp/thread/call_once">std::call_once on cppreference.com</a>
+* <a href="https://en.cppreference.com/w/cpp/thread/once_flag">std::once_flag on cppreference.com</a>
+  * <a href="https://github.com/PaddlePaddle/Paddle/issues/6681">STL bug in exception handling in call_once</a>
+  * <a href="https://stackoverflow.com/questions/26985370/stdcall-once-vs-stdmutex-for-thread-safe-initialization">call_once vs mutex on stackoverflow</a>
+* <a href="https://stackoverflow.com/questions/17712001/how-is-meyers-implementation-of-a-singleton-actually-a-singleton">Meyers Singleton on stackoverflow</a>
+* [Atomic<> Weapons by Herb Sutter](https://www.youtube.com/watch?v=A8eCGOqgvH4)

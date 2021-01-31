@@ -11,7 +11,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -73,7 +73,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -135,7 +135,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -196,7 +196,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -257,7 +257,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -318,7 +318,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -379,7 +379,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -440,7 +440,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -501,7 +501,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -562,7 +562,7 @@ ___
 
 ## Lost notification
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -634,7 +634,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -697,7 +697,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -760,7 +760,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -822,7 +822,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -884,7 +884,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -946,7 +946,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1008,7 +1008,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1070,7 +1070,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1132,7 +1132,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1198,7 +1198,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 
@@ -1260,7 +1260,7 @@ ___
 
 ## `wait()` with predicate scenario
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 60%;">
 

@@ -21,7 +21,7 @@ ___
 
 ## Sequential consistency i optymalizacje kompilatora
 
-<div style="display: flex;">
+<div class="multicolumn">
 
 <div style="width: 33%; font-size: .9em;">
 
