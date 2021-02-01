@@ -224,6 +224,118 @@ std::thread t2{[&] {
 
 ___
 
+## sequential consistency (CS)
+
+* <!-- .element: class="fragment fade-in" --> Aka "full barrier", "standalone fence", "full memory fence"
+* <!-- .element: class="fragment fade-in" --> Not only order memory the same way as release/acquire ordering, but also establish a single total modification order of all atomic operations that are so tagged.
+
+___
+<!-- .slide: style="font-size: .9em" data-auto-animate -->
+## Sequential consistency
+
+```cpp []
+int v1 = 0;
+int v2 = 0;
+int v3 = 0;
+std::atomic<int> number = 0;
+
+v1 = 5;
+v2 = 10;
+auto value = number.load(std::memory_order_seq_cst); // full barrier ❌❌❌
+v2 = 15;
+v1 = 20;
+number.store(10, std::memory_order_seq_cst);         // full barrier ❌❌❌
+v2 = 25;
+v3 = 30;
+```
+<!-- .element: class="fragment fade-in" data-id="sc" -->
+
+* Instructions can't be reordered across full barriers
+<!-- .element: class="fragment fade-in" -->
+
+___
+<!-- .slide: style="font-size: .9em" data-auto-animate -->
+## Sequential consistency
+
+```cpp []
+int v1 = 0;
+int v2 = 0;
+int v3 = 0;
+std::atomic<int> number = 0;
+
+v2 = 10;
+v1 = 5;
+auto value = number.load(std::memory_order_seq_cst); // full barrier ❌❌❌
+v1 = 20;
+v2 = 15;
+number.store(10, std::memory_order_seq_cst);         // full barrier ❌❌❌
+v3 = 30;
+v2 = 25;
+```
+<!-- .element: data-id="sc" -->
+
+* Instructions can't be reordered across full barriers
+
+___
+<!-- .slide: style="font-size: .9em" data-auto-animate -->
+## Sequential consistency
+
+```cpp []
+int v1 = 0;
+int v2 = 0;
+int v3 = 0;
+std::atomic<int> number = 0;
+
+v2 = 10;
+v1 = 5;
+auto value = number.load(); // full barrier ❌❌❌
+v1 = 20;
+v2 = 15;
+number.store(10);           // full barrier ❌❌❌
+v3 = 30;
+v2 = 25;
+```
+<!-- .element: data-id="sc" -->
+
+* Instructions can't be reordered across full barriers
+* `std::memory_order_seq_cst` is a default value for `load()` and `store()`
+
+___
+<!-- .slide: style="font-size: .9em" data-auto-animate -->
+## Sequential consistency
+
+```cpp []
+int v1 = 0;
+int v2 = 0;
+int v3 = 0;
+std::atomic<int> number = 0;
+
+v2 = 10;
+v1 = 5;
+int value = number; // full barrier ❌❌❌
+v1 = 20;
+v2 = 15;
+number = 10;        // full barrier ❌❌❌
+v3 = 30;
+v2 = 25;
+```
+<!-- .element: data-id="sc" -->
+
+* Instructions can't be reordered across full barriers
+* `std::memory_order_seq_cst` is a default value for `load()` and `store()`
+* You can also read data with conversion `operator T()`
+* And write data with assignment `operator=()`
+
+___
+
+## Sequential consistency
+
+* <!-- .element: class="fragment fade-in" --> Sequential ordering may be necessary for multiple producer-multiple consumer situations where all consumers must observe the actions of all producers occurring in the same order.
+* <!-- .element: class="fragment fade-in" --> SC may become a performance bottleneck since it forces the affected memory accesses to propagate to every CPU core.
+* <!-- .element: class="fragment fade-in" --> Conceptually, there is single global memory and a "switch" that connects an arbitrary processor to memory at any time step
+
+___
+
 ## `memory_order_acquire` / `memory_order_release`
 
 * <!-- .element: class="fragment fade-in" --> Aka "one-way barriers", "acquire/release fences", "half fences"
@@ -366,118 +478,6 @@ ___
 
 ___
 
-## sequential consistency (CS)
-
-* <!-- .element: class="fragment fade-in" --> Aka "full barrier", "standalone fence", "full memory fence"
-* <!-- .element: class="fragment fade-in" --> Not only order memory the same way as release/acquire ordering, but also establish a single total modification order of all atomic operations that are so tagged.
-
-___
-<!-- .slide: style="font-size: .9em" data-auto-animate -->
-## Sequential consistency
-
-```cpp []
-int v1 = 0;
-int v2 = 0;
-int v3 = 0;
-std::atomic<int> number = 0;
-
-v1 = 5;
-v2 = 10;
-auto value = number.load(std::memory_order_seq_cst); // full barrier ❌❌❌
-v2 = 15;
-v1 = 20;
-number.store(10, std::memory_order_seq_cst);         // full barrier ❌❌❌
-v2 = 25;
-v3 = 30;
-```
-<!-- .element: class="fragment fade-in" data-id="sc" -->
-
-* Instructions can't be reordered across full barriers
-<!-- .element: class="fragment fade-in" -->
-
-___
-<!-- .slide: style="font-size: .9em" data-auto-animate -->
-## Sequential consistency
-
-```cpp []
-int v1 = 0;
-int v2 = 0;
-int v3 = 0;
-std::atomic<int> number = 0;
-
-v2 = 10;
-v1 = 5;
-auto value = number.load(std::memory_order_seq_cst); // full barrier ❌❌❌
-v1 = 20;
-v2 = 15;
-number.store(10, std::memory_order_seq_cst);         // full barrier ❌❌❌
-v3 = 30;
-v2 = 25;
-```
-<!-- .element: data-id="sc" -->
-
-* Instructions can't be reordered across full barriers
-
-___
-<!-- .slide: style="font-size: .9em" data-auto-animate -->
-## Sequential consistency
-
-```cpp []
-int v1 = 0;
-int v2 = 0;
-int v3 = 0;
-std::atomic<int> number = 0;
-
-v2 = 10;
-v1 = 5;
-auto value = number.load(); // full barrier ❌❌❌
-v1 = 20;
-v2 = 15;
-number.store(10);           // full barrier ❌❌❌
-v3 = 30;
-v2 = 25;
-```
-<!-- .element: data-id="sc" -->
-
-* Instructions can't be reordered across full barriers
-* `std::memory_order_seq_cst` is a default value for `load()` and `store()`
-
-___
-<!-- .slide: style="font-size: .9em" data-auto-animate -->
-## Sequential consistency
-
-```cpp []
-int v1 = 0;
-int v2 = 0;
-int v3 = 0;
-std::atomic<int> number = 0;
-
-v2 = 10;
-v1 = 5;
-int value = number; // full barrier ❌❌❌
-v1 = 20;
-v2 = 15;
-number = 10;        // full barrier ❌❌❌
-v3 = 30;
-v2 = 25;
-```
-<!-- .element: data-id="sc" -->
-
-* Instructions can't be reordered across full barriers
-* `std::memory_order_seq_cst` is a default value for `load()` and `store()`
-* You can also read data with conversion `operator T()`
-* And write data with assignment `operator=()`
-
-___
-
-## Sequential consistency
-
-* <!-- .element: class="fragment fade-in" --> Sequential ordering may be necessary for multiple producer-multiple consumer situations where all consumers must observe the actions of all producers occurring in the same order.
-* <!-- .element: class="fragment fade-in" --> SC may become a performance bottleneck since it forces the affected memory accesses to propagate to every CPU core.
-* <!-- .element: class="fragment fade-in" --> Conceptually, there is single global memory and a "switch" that connects an arbitrary processor to memory at any time step
-
-___
-
 ## Examples
 
 * <!-- .element: class="fragment fade-in" --> <code>memory_order_relaxed</code> ↕️↕️↕️
@@ -542,4 +542,6 @@ ___
   * <!-- .element: class="fragment fade-in" --> But remember, that clear code is better than prematurely optimized code 😉
 
 [Atomic<> Weapons by Herb Sutter](https://www.youtube.com/watch?v=A8eCGOqgvH4)
+<!-- .element: class="fragment fade-in" -->
+[What do each memory_order mean? - StackOverflow](https://stackoverflow.com/questions/12346487/what-do-each-memory-order-mean)
 <!-- .element: class="fragment fade-in" -->

@@ -114,8 +114,9 @@ class X {
   * <i>If that invocation throws an exception, it is propagated to the caller of call_once, and the flag is not flipped so that another call will be attempted (such call to call_once is known as exceptional)</i>
 
 ### NOT POSSIBLE?
-
+<!-- .element: class="fragment fade-in" -->
 #### (At least for g++7.4.0 🙂)
+<!-- .element: class="fragment fade-in" -->
 
 ```bash
 $> g++ 03_exceptional_exclusive_calls.cpp

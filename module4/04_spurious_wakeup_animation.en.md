@@ -289,6 +289,7 @@ public:
     }
 };
 ```
+<!-- .element data-id="wait_code" -->
 
 </div>
 
@@ -350,6 +351,7 @@ public:
     }
 };
 ```
+<!-- .element data-id="wait_code" -->
 
 </div>
 
@@ -571,7 +573,7 @@ ___
 ## Spurious wake-up
 
 * <!-- .element: class="fragment fade-in" --> The thread waiting on the <code>condition_variable</code> periodically wakes up from time to time.
-* <!-- .element: class="fragment fade-in" --> A <code>unique_lock</code> is required to wait on a condition variable. During sleep, the thread unlocks it, and when it wakes up, it locks again.
+* <!-- .element: class="fragment fade-in" --> A <code>unique_lock</code> is required to wait on a condition variable. During sleep, the thread unlocks it, and when it wakes up, it locks it again.
 * <!-- .element: class="fragment fade-in" --> Predicate added to the <code>wait()</code> function makes spurious wake-ups not dangerous.
   * <!-- .element: class="fragment fade-in" --> Only when the condition is met, the thread will continue its work.
   * <!-- .element: class="fragment fade-in" --> If the condition is not met, the thread releases the lock and goes to sleep again.

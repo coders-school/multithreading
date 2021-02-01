@@ -94,7 +94,7 @@ void setWinner() {
         << "(" << id << "). Chasing time: "
         << sleepDuration << "ms\n";
     cout << msg.str();
-    this_thread::sleep_for(chrono::milliseconds(sleepDuration)
+    this_thread::sleep_for(chrono::milliseconds(sleepDuration);
 
     // TODO: set me as a winner but don't let others overwrite this!
 }

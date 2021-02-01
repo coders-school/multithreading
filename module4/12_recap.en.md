@@ -17,43 +17,77 @@ ___
 
 ## Points to remember
 
-* <!-- .element: class="fragment fade-in" -->A
-* <!-- .element: class="fragment fade-in" -->B
+* <!-- .element: class="fragment fade-in" --> <code>condition_variable</code>
+  * <!-- .element: class="fragment fade-in" --> Always use <code>wait()</code> with a predicate!
+  * <!-- .element: class="fragment fade-in" --> Remember about spurious wake-ups and lost notifications
+  * <!-- .element: class="fragment fade-in" --> Remember about a fight for locking a mutex when you use <code>notify_all()</code>
+  * <!-- .element: class="fragment fade-in" --> You can't choose which thread should wake up when you use <code>notify_one()</code>
+* <!-- .element: class="fragment fade-in" --> <code>atomic</code>
+  * <!-- .element: class="fragment fade-in" --> Only a single operation on atomic type is atomic. Read + write may not be atomic, if you use it incorrectly
+  * <!-- .element: class="fragment fade-in" --> You need to use proper operators to have atomic read + write, or use <code>fetch_*()</code> functions, <code>exchange()</code> or <code>compare_exchange_*()</code>
+  * <!-- .element: class="fragment fade-in" --> The default memory order for <code>atomic</code> is sequential consistency. If you need some optimizations you have to loosen the memory order by specifying it manually.
+  * <!-- .element: class="fragment fade-in" --> Memory order acquire is used with <code>load()</code> and release is used with <code>store</code>. If you exchange them, you have undefined behavior.
+* <!-- .element: class="fragment fade-in" --> <code>call_once</code>
+  * <!-- .element: class="fragment fade-in" --> Mind the <span style="text-decoration: line-through;">gap</span> bug in g++ and clang++ - exceptional call may hang the program
+  * <!-- .element: class="fragment fade-in" --> If you use the same <code>once_flag</code> for different functions, you don't know which function will be called.
 
 ___
+<!-- .slide: style="font-size: .65em" -->
 
-<!-- .slide: style="font-size: 0.7em" -->
+## Pre-test 🤯
 
-## Pre-test answers
+<div class="multicolumn">
 
-```cpp []
-#include <future>
-#include <iostream>
+<div style="width: 60%">
+
+```cpp
+// assume all necessary includes are here
 
 int main() {
-    int x = 0;
-    auto f = std::async(std::launch::deferred, [&x]{
-        x = 1;
-    });
+    std::mutex m;
+    std::condition_variable cv;
+    std::vector<int> v;
+    std::vector<std::thread> producers;
+    std::vector<std::thread> consumers;
 
-    x = 2;
-    f.get();
-    x = 3;
-    std::cout << x;
-    return 0;
+    auto consume = [&] {
+        std::unique_lock<std::mutex> ul(m);
+        cv.wait(ul);
+        std::cout << v.back();
+        v.pop_back();
+    };
+    for (int i = 0; i < 10; i++) consumers.emplace_back(consume);
+
+    auto produce = [&](int i) {
+        {
+            std::lock_guard<std::mutex> lg(m);
+            v.push_back(i);
+        }
+        cv.notify_all();
+    };
+    for (int i = 0; i < 10; i++) producers.emplace_back(produce, i);
+
+    for (auto && p : producers) p.join();
+    for (auto && c : consumers) c.join();
 }
 ```
 
-1. <!-- .element: class="fragment highlight-red" --> the type of f is <code>promise&lt;int&gt;</code>
-1. <!-- .element: class="fragment highlight-green" --> the type of f is <code>future&lt;void&gt;</code>
-1. <!-- .element: class="fragment highlight-green" --> <code>async()</code> without a launch policy may never be called
-1. <!-- .element: class="fragment highlight-green" --> this program always prints 3
-1. <!-- .element: class="fragment highlight-red" -->  <code>x = 2</code> assignment cause a data race
-1. <!-- .element: class="fragment highlight-green" --> if async was run with <code>std::launch::async</code>, there would be a data race
-1. <!-- .element: class="fragment highlight-green" --> <code>x = 3</code> assignment is safe, because it happens after synchronization with async task
-1. <!-- .element: class="fragment highlight-green" --> <code>future&lt;void&gt;</code> may be used to synchronize tasks
+</div>
 
-Note: 2, 3, 4, 6, 7, 8
+<div class="col" style="margin-top: 20px">
+
+1. <!-- .element: class="fragment highlight-green" --> there may be an Undefined Behavior in this code
+2. <!-- .element: class="fragment highlight-red" --> the output is guaranteed to always be <code>0123456789</code>
+3. <!-- .element: class="fragment highlight-red" --> <code>v</code> is always an empty vector at the end of this program
+4. <!-- .element: class="fragment highlight-green" --> if some producers threads started before some consumers, we would have a deadlock because of lost notifications
+5. <!-- .element: class="fragment highlight-green" --> a change from <code>notify_all()</code> to <code>notify_one()</code> guarantees that each consumer thread will receive a different number
+6. <!-- .element: class="fragment highlight-green" --> this code can be improved by providing a predicate to <code>wait()</code> to disallow getting elements when the vector is empty
+
+Note: 1, 4, 5, 6
+
+</div>
+
+</div>
 
 ___
 

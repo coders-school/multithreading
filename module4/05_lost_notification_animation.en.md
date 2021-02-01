@@ -1321,10 +1321,10 @@ ___
 
 ## Lost notification
 
-* <!-- .element: class="fragment fade-in" --> If the notification was sent before the thread started waiting on the <code>condition_variable</code>, it is lost and will not wake the thread
+* <!-- .element: class="fragment fade-in" --> If the notification was sent before the thread started waiting on the <code>condition_variable</code>, it is lost and will not wake up the thread
 * <!-- .element: class="fragment fade-in" --> A spurious wake-up may help to unlock such thread
 * <!-- .element: class="fragment fade-in" --> If the thread was waiting on a <code>condition_variable</code> with a predicate, then the predicate must be met to resume the threads' job
-* <!-- .element: class="fragment fade-in" --> In case the predicate is true, the receiver is able to continue its work independently of the notification of the sender
+* <!-- .element: class="fragment fade-in" --> In case the predicate is true, the receiver is able to continue its work independently on the notification of the sender
   * (condition == true) => notification was delivered
 
 ___

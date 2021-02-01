@@ -57,7 +57,7 @@ deadlock
 <!-- .element: class="fragment fade-in" -->
 
 ___
-<!-- .slide: style="font-size: .85em" -->
+<!-- .slide: style="font-size: .75em" -->
 
 ## How to stop a looped thread?
 
