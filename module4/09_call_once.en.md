@@ -79,7 +79,7 @@ ___
 ___
 <!-- .slide: style="font-size: .78em" -->
 
-### Exercise: rat race
+### Exercise: race
 
 <div class="multicolumn">
 
@@ -100,16 +100,16 @@ void setWinner() {
 }
 
 ```
-<!-- .element: class="fragment fade-in" -->
+
 </div>
 
 <div style="width: 40%; padding: 20px;">
 
 #### `exercises/05_race.cpp`
 
-* <!-- .element: class="fragment fade-in" --> 10 contestants (threads) are racing for $1 million
-* <!-- .element: class="fragment fade-in" --> Only the first player wins the prize, the rest will get nothing
-* <!-- .element: class="fragment fade-in" --> Implement the function  <code>setWinner()</code> so that the winning thread sets itself as the winner and does not allow others to override this value.
+* 10 contestants (threads) are racing for $1 million
+* Only the first player wins the prize, the rest will get nothing
+* Implement the function <code>setWinner()</code> so that the winning thread sets itself as the winner and does not allow others to override this value.
 
 </div>
 
@@ -190,15 +190,15 @@ public:
 };
 
 ```
-<!-- .element: class="fragment fade-in" -->
+
 </div>
 
 <div style="width: 40%;">
 
 <div style="padding: 20px;">
 
-* <!-- .element: class="fragment fade-in" --> Add the appropriate <code>call_once</code> and messages so that the output appears as below
-* <!-- .element: class="fragment fade-in" --> Do not modify the constructor 😉
+* Add the appropriate <code>call_once</code> and messages so that the output appears as below
+* Do not modify the constructor 😉
 
 </div>
 

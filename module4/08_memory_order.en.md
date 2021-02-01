@@ -26,16 +26,13 @@ ___
 
 ## Atomic variables
 
-* <!-- .element: class="fragment fade-in" --> <code>#include &lt;atomic&gt;</code>
-* <!-- .element: class="fragment fade-in" --> <code>std::atomic</code>
-* <!-- .element: class="fragment fade-in" --> Light synchronization
-* <!-- .element: class="fragment fade-in" --> Allows simple arithmetic and bitwise operations: ++, --, +=, -=, &=, |=, ^=
-* <!-- .element: class="fragment fade-in" --> Typically: numbers, pointers
-* <!-- .element: class="fragment fade-in" --> The most important operations:
-  * <!-- .element: class="fragment fade-in" --> <code>store()</code> - saves the value in an atomic variable, you can also specify <code>std::memory_order</code>
-  * <!-- .element: class="fragment fade-in" --> <code>operator=()</code> - saves the value in an atomic variable
-  * <!-- .element: class="fragment fade-in" --> <code>load()</code> - reads the value from an atomic variable, you can also specify <code>std::memory_order</code>
-  * <!-- .element: class="fragment fade-in" --> <code>operator T()</code> - reads the value from an atomic variable
+### The most important operations
+<!-- .element: class="fragment fade-in" -->
+
+* <!-- .element: class="fragment fade-in" --> <code>store()</code> - saves the value in an atomic variable, you can also specify <code>std::memory_order</code>
+* <!-- .element: class="fragment fade-in" --> <code>operator=()</code> - saves the value in an atomic variable
+* <!-- .element: class="fragment fade-in" --> <code>load()</code> - reads the value from an atomic variable, you can also specify <code>std::memory_order</code>
+* <!-- .element: class="fragment fade-in" --> <code>operator T()</code> - reads the value from an atomic variable
 
 ___
 
@@ -146,7 +143,8 @@ ___
 
 ```cpp []
 int main() {
-    int x{}, y{}, r1{}, r2{};
+    std::atomic<int> x{}, y{};
+    int r1{}, r2{};
 
     std::thread t1{[&] {
         r1 = y.load(std::memory_order_relaxed); // A
@@ -237,7 +235,7 @@ ___
 int v1 = 0;
 int v2 = 0;
 int v3 = 0;
-std::atomic<int> number = 0;
+std::atomic<int> number{0};
 
 v1 = 5;
 v2 = 10;
@@ -261,7 +259,7 @@ ___
 int v1 = 0;
 int v2 = 0;
 int v3 = 0;
-std::atomic<int> number = 0;
+std::atomic<int> number{0};
 
 v2 = 10;
 v1 = 5;
@@ -284,7 +282,7 @@ ___
 int v1 = 0;
 int v2 = 0;
 int v3 = 0;
-std::atomic<int> number = 0;
+std::atomic<int> number{0};
 
 v2 = 10;
 v1 = 5;
@@ -308,7 +306,7 @@ ___
 int v1 = 0;
 int v2 = 0;
 int v3 = 0;
-std::atomic<int> number = 0;
+std::atomic<int> number{0};
 
 v2 = 10;
 v1 = 5;
@@ -397,7 +395,7 @@ ___
 int v1 = 0;
 int v2 = 0;
 int v3 = 0;
-std::atomic<int> number = 0;
+std::atomic<int> number{0};
 
 v1 = 5;
 v2 = 10;
@@ -422,7 +420,7 @@ ___
 int v1 = 0;
 int v2 = 0;
 int v3 = 0;
-std::atomic<int> number = 0;
+std::atomic<int> number{0};
 
 auto value = number.load(std::memory_order_acquire); // ⬇️⬇️⬇️
 v1 = 5;
@@ -447,7 +445,7 @@ ___
 int v1 = 0;
 int v2 = 0;
 int v3 = 0;
-std::atomic<int> number = 0;
+std::atomic<int> number{0};
 
 auto value = number.load(std::memory_order_acquire); // ⬇️⬇️⬇️
 v1 = 20;
@@ -491,19 +489,6 @@ ___
   * <!-- .element: class="fragment fade-in" --> <code>atomic.store()</code>
 * <!-- .element: class="fragment fade-in" --> <code>memory_order_seq_cst</code> ❌❌❌
   * <!-- .element: class="fragment fade-in" --> multiple producer-multiple consumer situations
-
-___
-
-## Exercise: synchronization
-
-### `exercises/04_synchronization.cpp`
-
-* Use proper synchronization mechanisms
-  * `std::mutex` + locks
-  * `std::atomic` + memory_order
-* Choose proper places for locking
-* Avoid unnecessary locking
-* Specify optimal memory_order for atomics
 
 ___
 
