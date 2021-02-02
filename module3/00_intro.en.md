@@ -88,7 +88,7 @@ int main() {
 
 1. the type of f is <code>promise&lt;int&gt;</code>
 2. the type of f is <code>future&lt;void&gt;</code>
-3. running <code>async()</code> without a launch policy may cause an undefined behavior
+3. <code>async()</code> without a launch policy may never be called
 4. this program always prints 3
 5. <code>x = 2</code> assignment cause a data race
 6. if async was run with <code>std::launch::async</code>, there would be a data race

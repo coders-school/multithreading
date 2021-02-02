@@ -12,7 +12,7 @@ ___
 ## Points to remember
 
 * <!-- .element: class="fragment fade-in" --> Your code is <span style="color: #cf802a">high-level</span> if you use only <code>std::async</code> and <code>std::future</code> object. Raw <code>std::thread</code>, <code>std::promise</code> or <code>std::packaged_task</code> objects means that it uses lower abstraction level, which is more complicated to understand.
-* <!-- .element: class="fragment fade-in" --> Calling <code>std::async</code> without a policy may cause <span style="color: #cf802a">Undefined Behavior</span>
+* <!-- .element: class="fragment fade-in" --> Calling <code>std::async</code> without a policy may cause unexpected behavior, like task not being called at all.
 * <!-- .element: class="fragment fade-in" --> <code>std::promise</code> can be set <span style="color: #cf802a">only once</span>
 * <!-- .element: class="fragment fade-in" --> <code>std::future</code> can be get <span style="color: #cf802a">only once</span>
 * <!-- .element: class="fragment fade-in" --> There is a <code style="color: limegreen">std::shared_future</code>, but there is no <code style="text-decoration: line-through; color: red">std::shared_promise</code>
@@ -45,7 +45,7 @@ int main() {
 
 1. <!-- .element: class="fragment highlight-red" --> the type of f is <code>promise&lt;int&gt;</code>
 1. <!-- .element: class="fragment highlight-green" --> the type of f is <code>future&lt;void&gt;</code>
-1. <!-- .element: class="fragment highlight-green" --> running <code>async()</code> without a launch policy may cause an undefined behavior
+1. <!-- .element: class="fragment highlight-green" --> <code>async()</code> without a launch policy may never be called
 1. <!-- .element: class="fragment highlight-green" --> this program always prints 3
 1. <!-- .element: class="fragment highlight-red" -->  <code>x = 2</code> assignment cause a data race
 1. <!-- .element: class="fragment highlight-green" --> if async was run with <code>std::launch::async</code>, there would be a data race

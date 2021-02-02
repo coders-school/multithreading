@@ -12,15 +12,15 @@ ___
 
 ```c++
 void promise_future_approach() {
-  std::promise<int> promise;
-  std::future<int> future = promise.get_future();
-  auto function = [] (std::promise<int> promise) {
+  std::promise<int> prom;
+  std::future<int> fut = prom.get_future();
+  auto function = [] (std::promise<int> prom) {
     // ...
-    promise.set_value(10);
+    prom.set_value(10);
   };
-  std::thread t(function, std::move(promise));
+  std::thread t(function, std::move(prom));
   t.detach();
-  std::cout << future.get() << std::endl;
+  std::cout << fut.get() << std::endl;
 }
 ```
 
@@ -30,8 +30,8 @@ void async_approach () {
     // ...
     return 20;
   };
-  std::future<int> future = std::async(function);
-  std::cout << future.get() << std::endl;
+  std::future<int> fut = std::async(function);
+  std::cout << fut.get() << std::endl;
 }
 ```
 <!-- .element: class="fragment fade-in" -->
@@ -115,8 +115,7 @@ int main() {
         try {
             std::rethrow_exception(thread_exception);
         } catch (const std::exception & ex) {
-            std::cout << "Task exited with an exception: "
-            << ex.what() << "\n";
+            std::cout << "Task exited with an exception: " << ex.what() << "\n";
         }
     } else {
         std::cout << "Task exited normally with result: " << result << '\n';
