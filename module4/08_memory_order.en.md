@@ -466,10 +466,10 @@ ___
 
 * <!-- .element: class="fragment fade-in" --> Acquire: no reads or writes in the current thread can be reordered before this load.
   * <!-- .element: class="fragment fade-in" --> Acquire allows earlier instruction to be executed later
-  * <!-- .element: class="fragment fade-in" --> <code>atomic.load()</code> == acquire
+  * <!-- .element: class="fragment fade-in" --> <code>atomic.load()</code> -> use acquire (the default is seq_cst)
 * <!-- .element: class="fragment fade-in" --> Release: no reads or writes in the current thread can be reordered after this store.
   * <!-- .element: class="fragment fade-in" --> Release allows later instructions to be executed earlier
-  * <!-- .element: class="fragment fade-in" --> <code>atomic.store()</code> == release
+  * <!-- .element: class="fragment fade-in" --> <code>atomic.store()</code> -> use release (the default is seq_cst)
 * <!-- .element: class="fragment fade-in" --> <code>std::mutex</code> is an example of release-acquire synchronization: when the lock is released by thread A and acquired by thread B, everything that took place in the critical section (before the release) in the context of thread A has to be visible to thread B (after the acquire).
   * <!-- .element: class="fragment fade-in" --> <code>mutex.lock()</code> == acquire
   * <!-- .element: class="fragment fade-in" --> <code>mutex.unlock()</code> == release
@@ -483,10 +483,10 @@ ___
   * <!-- .element: class="fragment fade-in" --> <code>shared_ptr</code>'s reference counter incrementation (but not decrementation!)
 * <!-- .element: class="fragment fade-in" --> <code>memory_order_acquire</code> ⬇️⬇️⬇️
   * <!-- .element: class="fragment fade-in" --> <code>mutex.lock()</code>
-  * <!-- .element: class="fragment fade-in" --> <code>atomic.load()</code>
+  * <!-- .element: class="fragment fade-in" --> <code>atomic.load()</code> (the default is seq_cst, but you can safely use acquire)
 * <!-- .element: class="fragment fade-in" --> <code>memory_order_release</code> ⬆️⬆️⬆️
   * <!-- .element: class="fragment fade-in" --> <code>mutex.unlock()</code>
-  * <!-- .element: class="fragment fade-in" --> <code>atomic.store()</code>
+  * <!-- .element: class="fragment fade-in" --> <code>atomic.store()</code> (the default is seq_cst, but you can safely use release)
 * <!-- .element: class="fragment fade-in" --> <code>memory_order_seq_cst</code> ❌❌❌
   * <!-- .element: class="fragment fade-in" --> multiple producer-multiple consumer situations
 

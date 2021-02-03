@@ -14,15 +14,16 @@ ___
 ```cpp []
 class Singleton {
     static std::unique_ptr<Singleton> instance_;
+    static std::mutex mutex_;
     Singleton() = default;
 public:
     static Singleton& getInstance() {
-        std::mutex mutex_;
-        std::unique_lock<std::mutex> lock(mutex_);
-        if (!instance_) {
-            instance_.reset(new Singleton{});
+        {
+            std::unique_lock<std::mutex> lock(mutex_);
+            if (!instance_) {
+                instance_.reset(new Singleton{});
+            }
         }
-        lock.unlock();
         return *instance_;
     }
 };
