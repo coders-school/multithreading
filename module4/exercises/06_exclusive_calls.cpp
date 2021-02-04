@@ -1,21 +1,32 @@
 #include <vector>
 #include <iostream>
+#include <mutex>
 using namespace std;
 
 class X {
     vector<double> values;
+    std::once_flag flag;
 
     void initializeOne() {
         cout << __FUNCTION__ << '\n';
-        values = {1.0};
+        std::call_once(flag, [&](const char* fn = __FUNCTION__){
+            std::cout << "Call once " << fn << '\n';
+            values = {1.0};
+        });
     }
     void initializeTwo() {
         cout << __FUNCTION__ << '\n';
-        values = {1.0, 2.0};
+        std::call_once(flag, [&](const char* fn = __FUNCTION__){
+            std::cout << "Call once " << fn << '\n';
+            values = {1.0, 2.0};
+        });
     }
     void initializeThree() {
         cout << __FUNCTION__ << '\n';
-        values = {1.0, 2.0, 3.0};
+        std::call_once(flag, [&](const char* fn = __FUNCTION__){
+            std::cout << "Call once " << fn << '\n';
+            values = {1.0, 2.0, 3.0};
+        });
     }
 
 public:

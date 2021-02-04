@@ -4,28 +4,28 @@
 #include <mutex>
 #include <string>
 #include <fstream>
+#include <condition_variable>
 using namespace std;
 
 template <typename T>
 class WaitQueue {
     deque<T> queue_;
     mutable mutex m_;
-    using Lock = lock_guard<mutex>;
+    condition_variable cv_;
+    using Lock = unique_lock<mutex>;
 
 public:
     void push(const T & element) {
         Lock l(m_);
         queue_.push_front(element);
+        cv_.notify_one();
     }
     T pop() {
         Lock l(m_);
+        cv_.wait(l, [&] { return !queue_.empty(); });
         auto top = queue_.back();
         queue_.pop_back();
         return top;
-    }
-    bool empty() const {
-        Lock l(m_);
-        return queue_.empty();
     }
 };
 
@@ -40,7 +40,6 @@ void provideData(StringQueue & sq) {
 void saveToFile(StringQueue & sq) {
     ofstream file("/tmp/sth.txt");
     while (file) {
-        while (sq.empty()) { /* nop */ }
         file << sq.pop() << endl;
     }
 }

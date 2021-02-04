@@ -3,6 +3,7 @@
 #include <iostream>
 #include <sstream>
 #include <random>
+#include <mutex>
 
 using namespace std;
 
@@ -11,6 +12,7 @@ class Prize {
     std::random_device dev{};
     std::mt19937 rng{dev()};
     std::uniform_int_distribution<int> dist{10, 50};
+    std::once_flag flag;
 
 public:
     void setWinner() {
@@ -21,6 +23,12 @@ public:
         cout << msg.str(); // single operation on stream is atomic
         this_thread::sleep_for(chrono::milliseconds(sleepDuration));
 
+        std::call_once(flag, [&] {
+            stringstream ss;
+            ss << id; 
+            winnerId = ss.str();
+            std::cout << "Called once with winner id=" + ss.str() << '\n';
+        });
         // TODO: set me as a winner, but don't let others overwrite this!
     }
 

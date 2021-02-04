@@ -35,13 +35,16 @@ class X {
         });
     }
 
-    void initializePierdyliard() {
+    void initializePierdyliard() try {
         cout << __FUNCTION__ << '\n';
         call_once(once, [&]{
             cout << "Call once initializePierdyliard\n";
             throw std::bad_alloc{};
             // TODO: Can you fix me?
         });
+    } catch(...) {
+        // silently ignore
+        // Bug in glibc
     }
 
 public:
