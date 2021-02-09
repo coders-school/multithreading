@@ -4,6 +4,7 @@
 #include <chrono>
 #include <condition_variable>
 #include <atomic>
+#include <sstream>
 using namespace std;
 
 class PingPong {
@@ -20,34 +21,74 @@ public:
 
     void ping() {
         thread_local int reps = 0;
+        cout << "Ready to ping" << endl;
         while (reps < repetitions_ and play_)
         {
             unique_lock<mutex> l(m_);
             // TODO: wait to be used here + printing, reps incrementation, chainging turn to pong
+            auto myTurn = [&] {return isPingTurn_ ;};//&& play_;};
+            opponentsTurn_.wait(l, myTurn);
+            cout << "ping..." << reps << endl;
+            reps++;
+            isPingTurn_ = false;
+            opponentsTurn_.notify_all();
             this_thread::sleep_for(500ms);
         }
         if (reps >= repetitions_)
         {
             // TOOD: only print message here
+            unique_lock<mutex> l(m_);
+            auto myTurn = [&] {return isPingTurn_ ;};//&& play_;};
+            opponentsTurn_.wait(l, myTurn);
+            cout << "Ping Repetitions Reached" << endl;
+            isPingTurn_ = false;
+            opponentsTurn_.notify_all();
         }
     }
 
     void pong() {
         thread_local int reps = 0;
+        //cout << "Ready to pong" << endl;
         while (reps < repetitions_ and play_)
         {
             unique_lock<mutex> l(m_);
             // TODO: wait to be used here + printing, reps incrementation, chainging turn to ping
+            auto myTurn = [&] {return !isPingTurn_ ;};//&& play_;};
+            opponentsTurn_.wait(l, myTurn);
+            cout << reps << "...pong"  << endl;
+            reps++;
+            isPingTurn_ = true;
             this_thread::sleep_for(500ms);
+            opponentsTurn_.notify_all();
         }
         if (reps >= repetitions_) {
             // TODO:  set play_ to false, display message, notify others to avoid deadlocks
+            unique_lock<mutex> l(m_);
+            auto myTurn = [&] {return !isPingTurn_ ;};//&& play_;};
+            opponentsTurn_.wait(l, myTurn);
+            opponentsTurn_.notify_all();
+            play_ = false;
+            cout << "Pong Repetitions Reached" << endl;
+            
         }
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
         unique_lock<mutex> l(m_);
         // TODO: wait_for to be used here. Check for a return value and set play_ to false
+        //cout << "I am about to wait" << endl;
+        auto finishedPonging = [&] {return !play_;};
+        auto cvstat = opponentsTurn_.wait_for(l, timeout, finishedPonging);
+        //if (cvstat == cv_status::no_timeout){
+        if (cvstat == false){
+            auto myTurn = [&] {return !isPingTurn_ ;};
+            opponentsTurn_.wait(l, myTurn);
+            play_ = false;
+            cout << "Timeout reached" << endl;
+            
+            //opponentsTurn_.notify_all();
+        }
+        //cout << "Finished waiting" << endl;
 
     }
 };
