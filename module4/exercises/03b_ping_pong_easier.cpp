@@ -4,6 +4,7 @@
 #include <chrono>
 #include <condition_variable>
 #include <atomic>
+#include <sstream>
 using namespace std;
 
 class PingPong {
@@ -23,12 +24,17 @@ public:
         while (reps < repetitions_ and play_)
         {
             unique_lock<mutex> l(m_);
-            // TODO: wait to be used here + printing, reps incrementation, chainging turn to pong
-            this_thread::sleep_for(500ms);
+            opponentsTurn_.wait(l, [&] {return isPingTurn_; });
+            cout << "Ping" << endl;
+            reps++;
+            isPingTurn_=false;
+            opponentsTurn_.notify_all();
         }
         if (reps >= repetitions_)
         {
-            // TOOD: only print message here
+            std::stringstream notify;
+            notify << "Ping is finishing game. Num reps has reached " << reps << endl;
+            cout << notify.str();
         }
     }
 
@@ -37,18 +43,34 @@ public:
         while (reps < repetitions_ and play_)
         {
             unique_lock<mutex> l(m_);
-            // TODO: wait to be used here + printing, reps incrementation, chainging turn to ping
-            this_thread::sleep_for(500ms);
+            opponentsTurn_.wait(l,  [&] {return !isPingTurn_; });
+            cout << "Pong" << endl;
+            reps++;
+            isPingTurn_=true;
+            if (reps >= repetitions_) {
+                play_ = false;
+            opponentsTurn_.notify_all(); 
         }
         if (reps >= repetitions_) {
-            // TODO:  set play_ to false, display message, notify others to avoid deadlocks
+            play_ = false;
+            std::stringstream notify;
+            notify << "Ping is finishing game. Num reps has reached " << reps << endl;
+            cout << notify.str();
         }
     }
 
     void stop([[maybe_unused]] chrono::seconds timeout) {
         unique_lock<mutex> l(m_);
         // TODO: wait_for to be used here. Check for a return value and set play_ to false
-
+        auto ret = opponentsTurn_.wait_for(l, timeout, [&] {return not play_.load(); });
+        if (ret) {
+            cout << "Game finished.\n";
+        }
+        else {
+            cout << "Stop is finishing game - timeout.\n";
+            play_ = false;
+            opponentsTurn_.notify_one();
+        }
     }
 };
 
