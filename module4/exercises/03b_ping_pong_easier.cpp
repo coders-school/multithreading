@@ -52,7 +52,6 @@ public:
             opponentsTurn_.notify_all(); 
         }
         if (reps >= repetitions_) {
-            play_ = false;
             std::stringstream notify;
             notify << "Ping is finishing game. Num reps has reached " << reps << endl;
             cout << notify.str();
