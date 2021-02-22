@@ -25,9 +25,9 @@ public:
         {
             unique_lock<mutex> l(m_);
             opponentsTurn_.wait(l, [&] {return isPingTurn_; });
-            cout << "Ping" << endl;
+            cout << "Ping " << reps << endl;
             reps++;
-            isPingTurn_=false;
+            isPingTurn_ = false;
             opponentsTurn_.notify_all();
         }
         if (reps >= repetitions_)
@@ -44,16 +44,17 @@ public:
         {
             unique_lock<mutex> l(m_);
             opponentsTurn_.wait(l,  [&] {return !isPingTurn_; });
-            cout << "Pong" << endl;
+            cout << "Pong " << reps  << endl;
             reps++;
-            isPingTurn_=true;
+            isPingTurn_ = true;
             if (reps >= repetitions_) {
                 play_ = false;
+            }
             opponentsTurn_.notify_all(); 
         }
         if (reps >= repetitions_) {
             std::stringstream notify;
-            notify << "Ping is finishing game. Num reps has reached " << reps << endl;
+            notify << "Pong is finishing game. Num reps has reached " << reps << endl;
             cout << notify.str();
         }
     }
