@@ -498,6 +498,7 @@ public:
 
 ___
 <!-- .slide: style="font-size: .75em" data-auto-animate -->
+<!-- step 10 -->
 
 ## Lost notification
 
@@ -543,7 +544,10 @@ public:
     Queue
     <div data-id="el1" class="element">Element 1</div>
 </div>
-<div data-id="condvar" class="condvar">Condvar</div>
+<div data-id="condvar" class="condvar">
+    Condvar
+    <div data-id="elA" class="element">A</div>
+</div>
 <div data-id="mutex" class="mutex">Mutex</div>
 
 <div data-id="pop1" class="consumer">
@@ -604,7 +608,10 @@ public:
     Queue
     <div data-id="el1" class="element">Element 1</div>
 </div>
-<div data-id="condvar" class="condvar">Condvar</div>
+<div data-id="condvar" class="condvar">
+    Condvar
+     <div data-id="elA" class="element">A</div>
+</div>
 <div data-id="mutex" class="mutex">Mutex</div>
 
 <div data-id="pop1" class="consumer">

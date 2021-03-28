@@ -813,6 +813,7 @@ public:
 
 ___
 <!-- .slide: style="font-size: .75em" data-auto-animate -->
+<!-- step 15 -->
 
 ## How exactly does it work?
 
@@ -820,7 +821,7 @@ ___
 
 <div style="width: 60%;">
 
-```cpp [17]
+```cpp [16-17]
 template <typename T>
 class WaitQueue {
     deque<T> queue_;
