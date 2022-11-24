@@ -66,7 +66,7 @@ struct Bar {
     void operator()() {
         std::cout << "Hello world";
     }
-}
+};
 
 void foo() {
     std::cout << "Hello world";
@@ -74,13 +74,17 @@ void foo() {
 
 int main() {
     std::thread t1([]() {
-        "Hello world"
+        std::cout << "Hello world";
     });
 
     std::thread t2(foo);
 
     Bar bar;
     std::thread t3(bar);
+    
+    t1.join();
+    t2.join();
+    t3.join();
 }
 ```
 
