@@ -9,8 +9,9 @@ int add(int a, int b)
 
 int main()
 {
-    // run add function in a thread
-    // pass 3 and 4 as arguments
+    int a = 3, b = 4;
+    thread t(add, a, b);
+    t.join();
     return 0;
 }
 
