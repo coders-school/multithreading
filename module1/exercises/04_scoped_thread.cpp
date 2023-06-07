@@ -5,8 +5,23 @@
 using namespace std;
 
 class scoped_thread {
+private:
+    thread t1;
 public:
-    // TODO: Your implementation goes here
+    explicit scoped_thread(std::thread && t) : t1(move(t)) {
+        if (!t1.joinable()) {
+            throw logic_error("cannot create empty scoped_thread");
+        }
+    };
+    ~scoped_thread() {
+        if (t1.joinable()) {
+            t1.join();
+        }
+    }
+    scoped_thread(const scoped_thread & other) = delete;
+    scoped_thread& operator=(const scoped_thread & other) = delete;
+    scoped_thread(scoped_thread && other) = default;
+    scoped_thread& operator=(scoped_thread && other) = default;
 };
 
 void do_sth(int) {
@@ -19,11 +34,8 @@ void do_sth_unsafe_in_current_thread() {
 }
 
 int main() try {
-    // TODO: Uncomment
-    // scoped_thread st(std::thread(do_sth, 42));
-    // // auto st2 = st; // copying not allowed
-    // [[maybe_unused]] auto st3 = move(st);
-    // scoped_thread st4(do_sth, 42);
+    scoped_thread st(thread(&do_sh, 42));
+    auto st3 = move(st);
     do_sth_unsafe_in_current_thread();
     return 0;
 } catch (const exception & e) {
