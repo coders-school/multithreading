@@ -71,6 +71,9 @@ ___
 <div class="col">
 
 ```cpp
+#include <thread>
+#include <iostream>
+
 struct Bar {
     void operator()() {
         std::cout << "Hello world\n";
@@ -98,6 +101,9 @@ int main() {
 <div class="col">
 
 ```cpp
+#include <thread>
+#include <iostream>
+
 void foo() {
     std::cout << "Hello world\n";
 }

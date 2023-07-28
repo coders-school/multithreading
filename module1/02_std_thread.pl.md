@@ -62,19 +62,22 @@ ___
 <div class="col">
 
 ```cpp
+#include <thread>
+#include <iostream>
+
 struct Bar {
     void operator()() {
-        std::cout << "Hello world";
+        std::cout << "Hello world\n";
     }
 };
 
 void foo() {
-    std::cout << "Hello world";
+    std::cout << "Hello world\n";
 }
 
 int main() {
     std::thread t1([]() {
-        std::cout << "Hello world";
+        std::cout << "Hello world\n";
     });
 
     std::thread t2(foo);
@@ -92,6 +95,9 @@ int main() {
 <div class="col">
 
 ```cpp
+#include <thread>
+#include <iostream>
+
 void foo() {
     std::cout << "Hello world\n";
 }
