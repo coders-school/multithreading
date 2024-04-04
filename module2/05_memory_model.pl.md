@@ -51,7 +51,7 @@ ___
 
 ```cpp
 vector<int> v(10, 0);
-for (int = 0; i < 10; i++)
+for (int i = 0; i < 10; i++)
    thread t([&]{ v[i] = i; });
 ```
 
@@ -63,8 +63,8 @@ for (int = 0; i < 10; i++)
 
 ```cpp
 vector<int> v(10, 0);
-for (int = 0; i < 10; i++)
-   thread t([&]{ v[i] = i; });
+for (int i = 0; i < 10; i++)
+   thread t([i, &]{ v[i] = i; });
 ```
 <!-- .element: class="fragment fade-in" -->
 
@@ -74,7 +74,7 @@ ___
 
 ```cpp
 vector<int> v;
-for (int = 0; i < 10; i++)
+for (int i = 0; i < 10; i++)
     thread t([&]{ v.emplace_back(i); });
 ```
 
