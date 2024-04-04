@@ -37,7 +37,7 @@ ___
   * <!-- .element: class="fragment fade-in" --> menadżer współdzielonych blokad do odczytu zmiennych
   * <!-- .element: class="fragment fade-in" --> kilka wątków może współdzielić blokadę <code>SharedMutex</code>
   * <!-- .element: class="fragment fade-in" --> inny wątek może pozyskać blokadę <code>SharedMutex</code> na wyłączność za pomocą menadżera <code>unique_lock</code>
-  * <!-- .element: class="fragment fade-in" --> te same własności co <code>unique_lock</code>
+  * <!-- .element: class="fragment fade-in" --> te same własności co <code>unique_lock</code> (niekopiowalny, przenaszalny)
 * <!-- .element: class="fragment fade-in" --> <code>scoped_lock&lt;Mutexes...></code>
   * <!-- .element: class="fragment fade-in" --> blokuje kilka mutexów
   * <!-- .element: class="fragment fade-in" --> zapobiega zakleszczeniom (deadlock)
